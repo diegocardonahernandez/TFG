@@ -1,0 +1,150 @@
+<?php
+
+require_once __DIR__ . '/../../Config/Database.php';
+
+class Product
+{
+    private $id_producto;
+    private $nombre;
+    private $descripcion;
+    private $precio;
+    private $stock;
+    private $id_categoria;
+    private $imagen;
+    private $descuento;
+    private $popularidad;
+    private $estado;
+    private $fecha_creacion;
+    private $categoria;
+
+    public function getIdProducto()
+    {
+        return $this->id_producto;
+    }
+
+    public function setIdProducto($id_producto)
+    {
+        $this->id_producto = $id_producto;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+    }
+
+    public function getPrecio()
+    {
+        return $this->precio;
+    }
+
+    public function setPrecio($precio)
+    {
+        $this->precio = $precio;
+    }
+
+    public function getStock()
+    {
+        return $this->stock;
+    }
+
+    public function setStock($stock)
+    {
+        $this->stock = $stock;
+    }
+
+    public function getIdCategoria()
+    {
+        return $this->id_categoria;
+    }
+
+    public function setIdCategoria($id_categoria)
+    {
+        $this->id_categoria = $id_categoria;
+    }
+
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+    }
+
+    public function getDescuento()
+    {
+        return $this->descuento;
+    }
+
+    public function setDescuento($descuento)
+    {
+        $this->descuento = $descuento;
+    }
+
+    public function getPopularidad()
+    {
+        return $this->popularidad;
+    }
+
+    public function setPopularidad($popularidad)
+    {
+        $this->popularidad = $popularidad;
+    }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    public function getFechaCreacion()
+    {
+        return $this->fecha_creacion;
+    }
+
+    public function setFechaCreacion($fecha_creacion)
+    {
+        $this->fecha_creacion = $fecha_creacion;
+    }
+
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
+
+    public function setCategoria($categoria)
+    {
+        $this->categoria = $categoria;
+    }
+
+
+    public static function getMostViewed()
+    {
+
+        $db = Database::getInstance();
+        $sql = "SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY p.popularidad DESC LIMIT 12";
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
+}
