@@ -34,9 +34,11 @@
                             Tienda
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Nutrición</a></li>
-                            <li><a class="dropdown-item" href="#">Equipamiento</a></li>
-                            <li><a class="dropdown-item" href="#">Ropa Fit</a></li>
+                            <?php
+                            foreach ($categoriesNames as $categoryName) {
+                                echo "<li><a class='dropdown-item' href='/" . $categoryName->getNombre() . "'>" . $categoryName->getNombre() . "</a></li>";
+                            } ?>
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
