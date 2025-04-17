@@ -366,6 +366,7 @@ body.has-shipping-bar .hero-section {
   background-color: transparent;
   color: var(--puro-black);
   border: 2px solid var(--puro-black);
+  align-items: center;
 }
 
 .btn-details:hover {

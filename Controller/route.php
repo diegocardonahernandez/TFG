@@ -9,17 +9,19 @@ switch ($method) {
             case '/':
                 require_once __DIR__ . '/../Controller/homeController.php';
                 break;
-            case '/nutricion':
-                require_once __DIR__ . '/../Controller/ProductsControllers/nutritionController.php';
+            case '/Equipamiento':
+            case '/Ropa':
+            case '/Suplementos':
+                require_once __DIR__ . '/../Controller/categoriesController.php';
                 break;
-            default:
+            default:;
                 echo "Página no encontrada";
                 break;
         }
         break;
 
     case 'POST':
-        // Aquí podrías manejar peticiones POST
+        
         break;
 
     default:
