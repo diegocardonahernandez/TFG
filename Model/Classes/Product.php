@@ -147,4 +147,14 @@ class Product
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
     }
+
+    public static function getProductsCategory($category)
+
+    {
+        $db = Database::getInstance();
+        $sql = "SELECT p.* , c.nombre AS categoria FROM productos p JOIN categorias c USING(id_categoria) WHERE c.nombre = :category";
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['category' => $category]);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
 }
