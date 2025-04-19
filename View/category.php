@@ -1,7 +1,7 @@
 <?php
 
-$category = ltrim($currentCategory,'/');
+echo 'Bienvenido a ' . $category . '<br>';
 
-echo 'Bienvenido amigo a ' . $category;
-
-//Solo para probar que llegamos aquí bien .
+foreach($products as $product){
+    echo $product->getNombre() . '<br>';
+}

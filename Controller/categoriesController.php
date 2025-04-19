@@ -7,6 +7,4 @@ $currentCategory = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $category = ltrim($currentCategory,'/');
 $productsCategory = Product::getProductsCategory($category);
 
-foreach($productsCategory as $product){
-    echo $product->getNombre() . '<br>';
-}
+renderLayout('category' , ['category' => $category , 'products' => $productsCategory]);
