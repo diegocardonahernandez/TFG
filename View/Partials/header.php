@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/css/headerStyle.css">
     <link rel="stylesheet" href="/css/footerStyle.css">
     <link rel="stylesheet" href="/css/homeStyle.css">
+    <link rel="stylesheet" href="/css/categoryStyle.css">
 </head>
 
 <body>
