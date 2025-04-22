@@ -56,6 +56,10 @@
                                     <span class="meta-label">Categoría</span>
                                     <span class="meta-value"><?= $popularProduct->getCategoria() ?></span>
                                 </li>
+                                <li class="product-meta-item">
+                                    <span class="meta-label">Valoración</span>
+                                    <span class="meta-value"><?= productStars($popularProduct->getPopularidad()) ?></span>
+                                </li>
                             </ul>
 
                             <div class="product-actions">
