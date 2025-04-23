@@ -213,13 +213,3 @@
         </div>
     </div>
 </section>
-
-<!-- Productos relacionados -->
-<section class="pdv-related">
-    <div class="container">
-        <h2 class="pdv-section-heading">También te puede interesar</h2>
-        <div class="row">
-            <!-- Aquí se mostrarían productos relacionados con código similar al de la vista de categoría -->
-        </div>
-    </div>
-</section>

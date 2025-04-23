@@ -20,6 +20,10 @@ switch ($method) {
                 require_once __DIR__ . '/../Controller/productDetailsController.php';
                 break;
 
+            case '/imc':
+                require_once __DIR__ . '/../Controller/imcController.php';
+                break;
+
             default:;
                 echo "Página no encontrada";
                 break;

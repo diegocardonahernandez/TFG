@@ -490,32 +490,6 @@
   color: var(--puro-gray);
 }
 
-/* Productos relacionados */
-.pdv-related {
-  padding: 3rem 0;
-  background-color: var(--puro-light-gray);
-}
-
-.pdv-section-heading {
-  font-size: 2rem;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  position: relative;
-  color: var(--puro-black);
-}
-
-.pdv-section-heading::after {
-  content: "";
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 3px;
-  background-color: var(--puro-red);
-}
-
 /* Responsive */
 @media (max-width: 992px) {
   .pdv-title {
