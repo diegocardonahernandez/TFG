@@ -1,11 +1,5 @@
-<!-- Encabezado de la categoría con efecto parallax -->
-<section class="category-header has-parallax">
-    <!-- Elementos para el efecto parallax -->
-    <div class="category-parallax-bg" data-parallax-speed="0.2"></div>
-    <div class="parallax-element parallax-element-1" data-parallax-speed="0.3"></div>
-    <div class="parallax-element parallax-element-2" data-parallax-speed="0.5"></div>
-    <div class="parallax-element parallax-element-3" data-parallax-speed="0.4"></div>
-
+<!-- Encabezado de la categoría -->
+<section class="category-header">
     <div class="container">
         <div class="category-title-container">
             <h1 class="category-title"><?= $category ?></h1>

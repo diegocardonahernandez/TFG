@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/js/navScroller.js"></script>
-<!-- <script src="/js/sideBar.js"></script> -->
+<script src="/js/parallax.js"></script>
 </body>
 
 <footer class="footer">
