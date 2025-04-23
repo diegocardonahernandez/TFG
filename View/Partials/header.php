@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/footerStyle.css">
     <link rel="stylesheet" href="/css/homeStyle.css">
     <link rel="stylesheet" href="/css/categoryStyle.css">
+    <link rel="stylesheet" href="/css/productDetailsStyle.css">
 </head>
 
 <body>

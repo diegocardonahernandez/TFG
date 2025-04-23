@@ -64,7 +64,7 @@
 
                             <div class="product-actions">
                                 <a href="#" class="btn-product btn-add-cart">Añadir al carrito</a>
-                                <a href="#" class="btn-product btn-details">Detalles</a>
+                                <a href="/product?id=<?= $popularProduct->getIdProducto() ?>" class="btn-product btn-details">Detalles</a>
                             </div>
                         </div>
                     </div>

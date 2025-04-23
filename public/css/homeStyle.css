@@ -88,7 +88,7 @@ body.has-shipping-bar .hero-section {
   right: -10em;
   width: 90%;
   height: 100%;
-  background-image: url("/imgs/heroSection.png"); /* Replace with the actual path to your image */
+  background-image: url("/imgs/heroSection.png");
   background-size: cover;
   background-position: center;
 }
@@ -336,6 +336,7 @@ body.has-shipping-bar .hero-section {
   display: flex;
   z-index: 2;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .btn-product {
@@ -367,6 +368,7 @@ body.has-shipping-bar .hero-section {
   color: var(--puro-black);
   border: 2px solid var(--puro-black);
   align-items: center;
+  padding: 0.7em;
 }
 
 .btn-details:hover {
