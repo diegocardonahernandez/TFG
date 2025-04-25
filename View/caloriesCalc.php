@@ -100,7 +100,7 @@
                             </div>
 
                             <div class="calorie-form-actions">
-                                <button type="submit" class="calorie-btn-calculate">
+                                <button type="submit" class="calorie-btn-calculate" id="calorieCalculateBtn">
                                     <i class="fas fa-calculator"></i> Calcular Calorías
                                 </button>
                                 <button type="reset" class="calorie-btn-reset">
