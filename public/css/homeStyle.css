@@ -6,7 +6,7 @@
   min-height: 600px;
   background-color: var(--puro-black);
   overflow: hidden;
-  margin-top: 0; /* Eliminado el margen para evitar superposición */
+  margin-top: 0;
 }
 
 /* La sección hero ya no necesita ajustes de margen ya que el body tiene padding-top */

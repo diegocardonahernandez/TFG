@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/css/categoryStyle.css">
     <link rel="stylesheet" href="/css/productDetailsStyle.css">
     <link rel="stylesheet" href="/css/imcCalcStyle.css">
+    <link rel="stylesheet" href="/css/caloriesCalcStyle.css">
+    <link rel="stylesheet" href="/css/loginStyle.css">
 </head>
 
 <body>
@@ -23,7 +25,7 @@
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="/imgs/logo.png" id="logo"></a>
+            <a class="navbar-brand" href="/"><img src="/imgs/logo.png" id="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -53,8 +55,8 @@
                             Tu Desafio
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Calcula Tus Calorías</a></li>
-                            <li><a class="dropdown-item" href="#">Calculadora IMC</a></li>
+                            <li><a class="dropdown-item" href="/calories">Calcula Tus Calorías</a></li>
+                            <li><a class="dropdown-item" href="/imc">Calculadora IMC</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -62,7 +64,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a href="#"><button class="btn btn-danger">Iniciar Sesión</button></a>
+                        <a href="/login"><button class="btn btn-danger">Iniciar Sesión</button></a>
                     </li>
                 </ul>
                 <form class="d-flex" role="search" id="searchBar">

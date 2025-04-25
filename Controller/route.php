@@ -20,8 +20,16 @@ switch ($method) {
                 require_once __DIR__ . '/../Controller/productDetailsController.php';
                 break;
 
+            case '/calories':
+                require_once __DIR__ . '/../Controller/caloriesController.php';
+                break;
+
             case '/imc':
                 require_once __DIR__ . '/../Controller/imcController.php';
+                break;
+
+            case '/login':
+                require_once __DIR__ . '/../Controller/loginController.php';
                 break;
 
             default:;

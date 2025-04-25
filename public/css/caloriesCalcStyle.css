@@ -1,0 +1,893 @@
+/* Encabezado de calculadora de calorías - Diseño coherente con el resto del sitio */
+.calorie-header {
+  background: linear-gradient(135deg, var(--puro-black) 0%, #333 100%);
+  color: var(--puro-white);
+  padding: 3rem 0;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calorie-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--puro-red) 0%,
+    #ff3333 50%,
+    var(--puro-red) 100%
+  );
+  z-index: 2;
+}
+
+.calorie-title-container {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.calorie-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+}
+
+.calorie-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background-color: var(--puro-red);
+}
+
+.calorie-subtitle {
+  font-size: 1.2rem;
+  font-weight: 300;
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* Sección de calculadora */
+.calorie-calculator-section {
+  padding: 3rem 0;
+  background-color: var(--puro-light-gray);
+}
+
+/* Tarjeta de calculadora */
+.calorie-calculator-card {
+  background-color: var(--puro-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calorie-calculator-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.calorie-calculator-content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.calorie-calculator-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--puro-black);
+  position: relative;
+}
+
+.calorie-calculator-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--puro-red);
+}
+
+.calorie-calculator-description {
+  font-size: 0.95rem;
+  color: var(--puro-gray);
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Formulario de calculadora */
+.calorie-calculator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.calorie-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.calorie-form-label {
+  font-weight: 600;
+  color: var(--puro-black);
+  font-size: 0.95rem;
+}
+
+.calorie-input-wrapper {
+  position: relative;
+}
+
+.calorie-form-input {
+  width: 100%;
+  padding: 0.8rem 3rem 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.calorie-form-input:focus {
+  border-color: var(--puro-red);
+  box-shadow: 0 0 0 2px rgba(170, 3, 3, 0.1);
+  outline: none;
+}
+
+.calorie-input-suffix {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--puro-gray);
+  font-weight: 600;
+}
+
+.calorie-radio-group {
+  display: flex;
+  gap: 2rem;
+}
+
+.calorie-radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calorie-radio-option input[type="radio"] {
+  accent-color: var(--puro-red);
+}
+
+.calorie-radio-option label {
+  font-size: 0.95rem;
+  color: var(--puro-black);
+  cursor: pointer;
+}
+
+/* Opciones de objetivo */
+.calorie-goal-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.calorie-goal-option {
+  position: relative;
+}
+
+.calorie-goal-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.calorie-goal-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.2rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.calorie-goal-label i {
+  font-size: 1.8rem;
+  margin-bottom: 0.7rem;
+  color: var(--puro-gray);
+  transition: all 0.3s ease;
+}
+
+.calorie-goal-label span {
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: var(--puro-black);
+  transition: all 0.3s ease;
+}
+
+.calorie-goal-label small {
+  font-size: 0.8rem;
+  color: var(--puro-gray);
+  transition: all 0.3s ease;
+}
+
+.calorie-goal-option input[type="radio"]:checked + .calorie-goal-label {
+  border-color: var(--puro-red);
+  background-color: rgba(170, 3, 3, 0.05);
+  box-shadow: 0 3px 6px rgba(170, 3, 3, 0.1);
+}
+
+.calorie-goal-option input[type="radio"]:checked + .calorie-goal-label i,
+.calorie-goal-option input[type="radio"]:checked + .calorie-goal-label span {
+  color: var(--puro-red);
+}
+
+.calorie-goal-label:hover {
+  border-color: var(--puro-red);
+  transform: translateY(-3px);
+}
+
+.calorie-form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.calorie-btn-calculate {
+  background-color: var(--puro-red);
+  color: var(--puro-white);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex: 3;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.calorie-btn-calculate:hover {
+  background-color: #df0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(170, 3, 3, 0.2);
+}
+
+.calorie-btn-reset {
+  background-color: transparent;
+  color: var(--puro-black);
+  border: 1px solid #ddd;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.calorie-btn-reset:hover {
+  background-color: #000000;
+  color: white;
+}
+
+/* Tarjeta de resultados */
+.calorie-results-card {
+  background-color: var(--puro-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.calorie-results-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.calorie-results-content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.calorie-results-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--puro-black);
+  position: relative;
+}
+
+.calorie-results-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background-color: var(--puro-red);
+}
+
+/* Estado inicial (antes de calcular) */
+.calorie-initial-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.calorie-icon-container {
+  font-size: 4rem;
+  color: #e0e0e0;
+  margin-bottom: 1.5rem;
+}
+
+.calorie-initial-text {
+  color: var(--puro-gray);
+  font-size: 1.1rem;
+}
+
+/* Resultado de calorías */
+.calorie-result-summary {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  border-left: 4px solid var(--puro-red);
+}
+
+.calorie-daily-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--puro-red);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.calorie-daily-label {
+  font-size: 1rem;
+  color: var(--puro-gray);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Distribución de macronutrientes */
+.calorie-macros-container {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.calorie-macros-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--puro-black);
+  position: relative;
+}
+
+.calorie-macros-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--puro-red);
+}
+
+.calorie-macro-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.calorie-chart-container {
+  width: 100%;
+  max-width: 220px;
+  height: 220px;
+  margin-bottom: 1rem;
+}
+
+.calorie-chart-legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.calorie-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.calorie-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.protein-color {
+  background-color: #4caf50;
+}
+
+.carbs-color {
+  background-color: #2196f3;
+}
+
+.fat-color {
+  background-color: #ffc107;
+}
+
+.calorie-legend-text {
+  font-size: 0.85rem;
+  color: var(--puro-gray);
+  font-weight: 600;
+}
+
+.calorie-macros-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.calorie-macro-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.calorie-macro-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.calorie-macro-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.protein-icon {
+  background-color: #4caf50;
+}
+
+.carbs-icon {
+  background-color: #2196f3;
+}
+
+.fat-icon {
+  background-color: #ffc107;
+}
+
+.calorie-macro-content {
+  flex-grow: 1;
+}
+
+.calorie-macro-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--puro-black);
+  margin-bottom: 0.3rem;
+}
+
+.calorie-macro-value {
+  font-size: 0.9rem;
+  color: var(--puro-gray);
+}
+
+/* Plan de comidas sugerido */
+.calorie-meal-plan {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.calorie-meal-plan-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--puro-black);
+  position: relative;
+}
+
+.calorie-meal-plan-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--puro-red);
+}
+
+.calorie-meals-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.calorie-meal-item {
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  transition: all 0.3s ease;
+}
+
+.calorie-meal-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.calorie-meal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.calorie-meal-icon {
+  color: var(--puro-red);
+  font-size: 1.1rem;
+}
+
+.calorie-meal-name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--puro-black);
+}
+
+.calorie-meal-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--puro-red);
+  margin-bottom: 0.3rem;
+}
+
+.calorie-meal-macros {
+  font-size: 0.85rem;
+  color: var(--puro-gray);
+}
+
+/* Productos recomendados */
+.calorie-products-suggestion {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.calorie-products-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--puro-black);
+  position: relative;
+}
+
+.calorie-products-title::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--puro-red);
+}
+
+.calorie-products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.calorie-product-card {
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.calorie-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calorie-product-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--puro-red);
+}
+
+.calorie-product-content {
+  padding: 1rem;
+}
+
+.calorie-product-name {
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  color: var(--puro-black);
+}
+
+.calorie-product-description {
+  font-size: 0.8rem;
+  color: var(--puro-gray);
+  margin-bottom: 0.8rem;
+  line-height: 1.4;
+}
+
+.calorie-product-btn {
+  display: block;
+  width: 100%;
+  background-color: var(--puro-red);
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.calorie-product-btn:hover {
+  background-color: #df0000;
+  transform: translateY(-2px);
+}
+
+/* Sección informativa */
+.calorie-info-card {
+  background-color: var(--puro-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 2rem;
+}
+
+.calorie-info-header {
+  background-color: var(--puro-black);
+  color: var(--puro-white);
+  padding: 1.5rem;
+  position: relative;
+}
+
+.calorie-info-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--puro-red);
+}
+
+.calorie-info-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.calorie-info-content {
+  padding: 2rem;
+}
+
+.calorie-info-content p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--puro-gray);
+  margin-bottom: 1.5rem;
+}
+
+.calorie-info-subtitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 2rem 0 1.5rem;
+  color: var(--puro-black);
+  position: relative;
+}
+
+.calorie-info-subtitle::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--puro-red);
+}
+
+.calorie-info-macros {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.calorie-info-macro-item {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.calorie-info-macro-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calorie-info-macro-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.protein-header {
+  color: #4caf50;
+}
+
+.carbs-header {
+  color: #2196f3;
+}
+
+.fat-header {
+  color: #ffc107;
+}
+
+.calorie-info-macro-header i {
+  font-size: 1.5rem;
+}
+
+.calorie-info-macro-header h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.calorie-info-macro-content {
+  padding: 1rem;
+}
+
+.calorie-info-macro-content p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--puro-gray);
+  line-height: 1.5;
+}
+
+.calorie-disclaimer {
+  background-color: #f9f9f9;
+  border-left: 4px solid var(--puro-red);
+  padding: 1.5rem;
+  border-radius: 0 8px 8px 0;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.calorie-disclaimer i {
+  color: var(--puro-red);
+  font-size: 1.5rem;
+  margin-top: 0.2rem;
+}
+
+.calorie-disclaimer p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--puro-gray);
+  line-height: 1.5;
+}
+
+/* Estilos responsivos */
+@media (max-width: 991px) {
+  .calorie-goal-options {
+    flex-direction: row;
+  }
+
+  .calorie-goal-option {
+    flex: 1;
+  }
+
+  .calorie-chart-legend {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 767px) {
+  .calorie-title {
+    font-size: 2rem;
+  }
+
+  .calorie-subtitle {
+    font-size: 1rem;
+  }
+
+  .calorie-form-actions {
+    flex-direction: column;
+  }
+
+  .calorie-btn-calculate,
+  .calorie-btn-reset {
+    width: 100%;
+  }
+
+  .calorie-goal-options {
+    flex-direction: column;
+  }
+
+  .calorie-info-macros {
+    grid-template-columns: 1fr;
+  }
+
+  .calorie-products-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  .calorie-radio-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .calorie-products-container {
+    grid-template-columns: 1fr;
+  }
+
+  .calorie-daily-value {
+    font-size: 2.5rem;
+  }
+}
