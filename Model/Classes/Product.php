@@ -7,6 +7,7 @@ class Product
     private $id_producto;
     private $nombre;
     private $descripcion;
+    private $detalles_producto;
     private $precio;
     private $stock;
     private $id_categoria;
@@ -135,6 +136,15 @@ class Product
     public function setCategoria($categoria)
     {
         $this->categoria = $categoria;
+    }
+
+    public function getDetallesProducto()
+    {
+        return $this->detalles_producto;
+    }
+    public function setDetallesProducto($detalles_producto)
+    {
+        $this->detalles_producto = $detalles_producto;
     }
 
 

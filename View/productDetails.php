@@ -148,7 +148,7 @@
             <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                 <div class="pdv-tab-inner">
                     <h3>Especificaciones del producto</h3>
-                    <p>Información detallada sobre <?= $details[0]->getNombre() ?></p>
+                    <p><?= $details[0]->getDetallesProducto() ?></p>
                     <div class="pdv-specs">
                         <!-- Aquí iría información técnica específica del producto -->
                         <p>Este producto ha sido diseñado para ofrecer el máximo rendimiento y durabilidad. Fabricado con materiales de alta calidad que garantizan una experiencia de uso superior.</p>
