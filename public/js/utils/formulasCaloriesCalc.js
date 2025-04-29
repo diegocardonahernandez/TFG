@@ -25,13 +25,19 @@ export function adjustAccordingToGoal(calories, goal) {
 }
 
 export function macroNutrientDistribution(calories, weight) {
-  const protein = 2 * weight;
-  const fat = (calories * 0.25) / 9;
-  const carbs = (calories - (protein * 4 + fat * 9)) / 4;
+  const proteinGrams = 2 * weight;
+  const proteinCalories = proteinGrams * 4;
+  const fatGrams = (calories * 0.3) / 9;
+  const fatCalories = calories * 0.3;
+  const carbsGrams = (calories - (proteinCalories + fatCalories)) / 4;
+  const carbsCalories = calories - proteinCalories - fatCalories;
 
   return {
-    protein,
-    fat,
-    carbs,
+    proteinGrams,
+    proteinCalories,
+    fatGrams,
+    fatCalories,
+    carbsGrams,
+    carbsCalories,
   };
 }
