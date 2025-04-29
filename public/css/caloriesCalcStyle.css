@@ -444,15 +444,15 @@
 }
 
 .protein-color {
-  background-color: #a60f2d;
+  background-color: #d91a36;
 }
 
 .carbs-color {
-  background-color: #ffcd8b;
+  background-color: #f7a928;
 }
 
 .fat-color {
-  background-color: #4b0082;
+  background-color: #2a5a8c;
 }
 
 .calorie-legend-text {
@@ -495,15 +495,15 @@
 }
 
 .protein-icon {
-  background-color: #a60f2d;
+  background-color: #d91a36;
 }
 
 .carbs-icon {
-  background-color: #ffcd8b;
+  background-color: #f7a928;
 }
 
 .fat-icon {
-  background-color: #4b0082;
+  background-color: #2a5a8c;
 }
 
 .calorie-macro-content {
@@ -776,15 +776,15 @@
 }
 
 .protein-header {
-  color: #4caf50;
+  color: #d91a36;
 }
 
 .carbs-header {
-  color: #2196f3;
+  color: #f7a928;
 }
 
 .fat-header {
-  color: #ffc107;
+  color: #2a5a8c;
 }
 
 .calorie-info-macro-header i {

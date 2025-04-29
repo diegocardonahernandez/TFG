@@ -191,7 +191,8 @@
 }
 
 .category-meta-value {
-  color: var(--puro-gray);
+  color: var(--puro-red);
+  font-weight: 600;
 }
 
 .category-product-actions {

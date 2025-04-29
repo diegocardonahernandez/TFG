@@ -20,6 +20,7 @@ const resultCarbsCalories = document.getElementById("carbsCalories");
 const resultFatCalories = document.getElementById("fatCalories");
 const initialText = document.getElementById("calorieInitialText");
 const nutrientsChart = document.getElementById("macroChart");
+let nutrientsChartInstance = null;
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -48,19 +49,22 @@ form.addEventListener("submit", (event) => {
 
   resultCalories.innerHTML = Math.round(result);
 
-  new Chart(nutrientsChart, {
+  if (nutrientsChartInstance) {
+    nutrientsChartInstance.destroy();
+  }
+
+  nutrientsChartInstance = new Chart(nutrientsChart, {
     type: "doughnut",
     data: {
-      labels: ["Proteínas", "carbohidratos", "Grasas"],
       datasets: [
         {
-          label: "Distribución de Macronutrientes",
+          label: "Calorías ",
           data: [
-            nutrients.proteinCalories,
-            nutrients.carbsCalories,
-            nutrients.fatCalories,
+            nutrients.proteinCalories.toFixed(0),
+            nutrients.carbsCalories.toFixed(0),
+            nutrients.fatCalories.toFixed(0),
           ],
-          backgroundColor: ["#a60f2d", "#ffcd8b", "#4b0082"],
+          backgroundColor: ["#d91a36", "#f7a928 ", "#2a5a8c"],
           hoverOffset: 4,
         },
       ],
@@ -71,14 +75,16 @@ form.addEventListener("submit", (event) => {
         legend: {
           position: "top",
         },
-        title: {
-          display: true,
-          text: "Distribución de Macronutrientes",
-        },
       },
     },
   });
 
   resultContainer.style.display = "block";
   initialText.style.display = "none";
+});
+
+document.getElementById("calorieResetBtn").addEventListener("click", () => {
+  form.reset();
+  resultContainer.style.display = "none";
+  initialText.style.display = "block";
 });

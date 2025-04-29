@@ -107,7 +107,7 @@
                                 <button type="submit" class="calorie-btn-calculate" id="calorieCalculateBtn">
                                     <i class="fas fa-calculator"></i> Calcular Calorías
                                 </button>
-                                <button type="reset" class="calorie-btn-reset">
+                                <button type="reset" class="calorie-btn-reset" id="calorieResetBtn">
                                     <i class="fas fa-redo"></i> Reiniciar
                                 </button>
                             </div>

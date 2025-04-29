@@ -17,13 +17,15 @@
                 <div class="imc-calculator-card">
                     <div class="imc-calculator-content">
                         <h3 class="imc-calculator-title">Ingresa tus datos</h3>
-                        <p class="imc-calculator-description">Completa los campos para calcular tu IMC y conocer tu estado físico actual.</p>
+                        <p class="imc-calculator-description">Completa los campos para calcular tu IMC y conocer tu
+                            estado físico actual.</p>
 
                         <form id="imcCalculatorForm" class="imc-calculator-form">
                             <div class="imc-form-group">
                                 <label for="height" class="imc-form-label">Altura (cm)</label>
                                 <div class="imc-input-wrapper">
-                                    <input type="number" id="height" class="imc-form-input" placeholder="Ej: 170" min="100" max="250" required>
+                                    <input type="number" id="imc-height" class="imc-form-input" placeholder="Ej: 170"
+                                        min="100" max="250" required>
                                     <span class="imc-input-suffix">cm</span>
                                 </div>
                             </div>
@@ -31,7 +33,8 @@
                             <div class="imc-form-group">
                                 <label for="weight" class="imc-form-label">Peso (kg)</label>
                                 <div class="imc-input-wrapper">
-                                    <input type="number" id="weight" class="imc-form-input" placeholder="Ej: 70" min="30" max="300" required>
+                                    <input type="number" id="imc-weight" class="imc-form-input" placeholder="Ej: 70"
+                                        min="30" max="300" required>
                                     <span class="imc-input-suffix">kg</span>
                                 </div>
                             </div>
@@ -48,6 +51,7 @@
                                         <label for="female">Mujer</label>
                                     </div>
                                 </div>
+                                <p></p>
                             </div>
 
                             <div class="imc-form-actions">
@@ -74,7 +78,8 @@
                             <div class="imc-icon-container">
                                 <i class="fas fa-calculator"></i>
                             </div>
-                            <p class="imc-initial-text">Completa el formulario para ver tu resultado de IMC</p>
+                            <p class="imc-initial-text" id="imcInitialText">Completa el formulario para ver tu resultado
+                                de IMC</p>
                         </div>
 
                         <!-- Contenedor de resultados (oculto inicialmente) -->
@@ -112,13 +117,6 @@
                                 <div class="imc-scale-marker" id="imcMarker"></div>
                             </div>
 
-                            <div class="imc-recommendations">
-                                <h4 class="imc-recommendations-title">Recomendaciones</h4>
-                                <ul class="imc-recommendations-list" id="imcRecommendations">
-                                    <!-- Las recomendaciones se insertarán dinámicamente -->
-                                </ul>
-                            </div>
-
                             <div class="imc-products-suggestion">
                                 <h4 class="imc-products-title">Productos recomendados</h4>
                                 <div class="imc-products-container" id="imcProducts">
@@ -139,7 +137,8 @@
                         <h3 class="imc-info-title">¿Qué es el IMC?</h3>
                     </div>
                     <div class="imc-info-content">
-                        <p>El Índice de Masa Corporal (IMC) es una medida que relaciona el peso con la altura. Se calcula dividiendo el peso en kilogramos por el cuadrado de la altura en metros (kg/m²).</p>
+                        <p>El Índice de Masa Corporal (IMC) es una medida que relaciona el peso con la altura. Se
+                            calcula dividiendo el peso en kilogramos por el cuadrado de la altura en metros (kg/m²).</p>
 
                         <h4 class="imc-info-subtitle">Clasificación del IMC según la OMS:</h4>
                         <ul class="imc-info-list">
@@ -171,7 +170,9 @@
 
                         <div class="imc-disclaimer">
                             <i class="fas fa-exclamation-circle"></i>
-                            <p>El IMC es solo un indicador y no considera la distribución de la masa corporal, el género, la edad u otros factores importantes. Consulta siempre con un profesional de la salud para una evaluación completa.</p>
+                            <p>El IMC es solo un indicador y no considera la distribución de la masa corporal, el
+                                género, la edad u otros factores importantes. Consulta siempre con un profesional de la
+                                salud para una evaluación completa.</p>
                         </div>
                     </div>
                 </div>

@@ -79,6 +79,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/navScroller.js"></script>
     <script type="module" src="/js/caloriesCalculator.js"></script>
+    <script type="module" src="/js/imcCalculator.js"></script>
 </footer>
 </body>
 

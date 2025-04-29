@@ -418,40 +418,6 @@
   transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-/* Recomendaciones */
-.imc-recommendations {
-  margin-top: 1rem;
-}
-
-.imc-recommendations-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--puro-black);
-}
-
-.imc-recommendations-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.imc-recommendations-list li {
-  padding: 0.7rem 0;
-  border-bottom: 1px solid #f0f0f0;
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.imc-recommendations-list li:last-child {
-  border-bottom: none;
-}
-
-.imc-recommendations-list li i {
-  color: var(--puro-red);
-}
-
 /* Productos sugeridos */
 .imc-products-suggestion {
   margin-top: 1rem;
