@@ -17,13 +17,15 @@
                 <div class="calorie-calculator-card">
                     <div class="calorie-calculator-content">
                         <h3 class="calorie-calculator-title">Ingresa tus datos</h3>
-                        <p class="calorie-calculator-description">Completa los campos para calcular tus necesidades calóricas y recomendaciones de macronutrientes.</p>
+                        <p class="calorie-calculator-description">Completa los campos para calcular tus necesidades
+                            calóricas y recomendaciones de macronutrientes.</p>
 
                         <form id="calorieCalculatorForm" class="calorie-calculator-form">
                             <div class="calorie-form-group">
                                 <label for="cal-height" class="calorie-form-label">Altura (cm)</label>
                                 <div class="calorie-input-wrapper">
-                                    <input type="number" id="cal-height" class="calorie-form-input" placeholder="Ej: 170" min="100" max="250" required>
+                                    <input type="number" id="cal-height" class="calorie-form-input"
+                                        placeholder="Ej: 170" min="100" max="250" required>
                                     <span class="calorie-input-suffix">cm</span>
                                 </div>
                             </div>
@@ -31,7 +33,8 @@
                             <div class="calorie-form-group">
                                 <label for="cal-weight" class="calorie-form-label">Peso (kg)</label>
                                 <div class="calorie-input-wrapper">
-                                    <input type="number" id="cal-weight" class="calorie-form-input" placeholder="Ej: 70" min="30" max="300" required>
+                                    <input type="number" id="cal-weight" class="calorie-form-input" placeholder="Ej: 70"
+                                        min="30" max="300" required>
                                     <span class="calorie-input-suffix">kg</span>
                                 </div>
                             </div>
@@ -39,7 +42,8 @@
                             <div class="calorie-form-group">
                                 <label for="cal-age" class="calorie-form-label">Edad</label>
                                 <div class="calorie-input-wrapper">
-                                    <input type="number" id="cal-age" class="calorie-form-input" placeholder="Ej: 30" min="15" max="100" required>
+                                    <input type="number" id="cal-age" class="calorie-form-input" placeholder="Ej: 30"
+                                        min="15" max="100" required>
                                     <span class="calorie-input-suffix">años</span>
                                 </div>
                             </div>
@@ -123,7 +127,8 @@
                             <div class="calorie-icon-container">
                                 <i class="fas fa-utensils"></i>
                             </div>
-                            <p class="calorie-initial-text">Completa el formulario para ver tus necesidades calóricas</p>
+                            <p class="calorie-initial-text" id="calorieInitialText">Completa el formulario para ver tus
+                                necesidades calóricas</p>
                         </div>
 
                         <!-- Contenedor de resultados (oculto inicialmente) -->
@@ -200,7 +205,7 @@
                             </div>
 
                             <!-- Plan de comidas sugerido -->
-                            <div class="calorie-meal-plan">
+                            <div class="calorie-meal-plan" style="display: none;">
                                 <h4 class="calorie-meal-plan-title">Distribución de comidas recomendada</h4>
                                 <div class="calorie-meals-container">
                                     <div class="calorie-meal-item">
@@ -307,7 +312,9 @@
                         <h3 class="calorie-info-title">¿Por qué calcular tus necesidades calóricas?</h3>
                     </div>
                     <div class="calorie-info-content">
-                        <p>Conocer tus necesidades calóricas diarias es fundamental para alcanzar tus objetivos de fitness. Ya sea que busques perder peso, ganar masa muscular o mantener tu composición corporal actual, la nutrición adecuada es clave para el éxito.</p>
+                        <p>Conocer tus necesidades calóricas diarias es fundamental para alcanzar tus objetivos de
+                            fitness. Ya sea que busques perder peso, ganar masa muscular o mantener tu composición
+                            corporal actual, la nutrición adecuada es clave para el éxito.</p>
 
                         <h4 class="calorie-info-subtitle">Macronutrientes y su importancia:</h4>
                         <div class="calorie-info-macros">
@@ -317,7 +324,8 @@
                                     <h5>Proteínas</h5>
                                 </div>
                                 <div class="calorie-info-macro-content">
-                                    <p>Fundamentales para la reparación y construcción de tejido muscular. Aportan 4 calorías por gramo.</p>
+                                    <p>Fundamentales para la reparación y construcción de tejido muscular. Aportan 4
+                                        calorías por gramo.</p>
                                 </div>
                             </div>
                             <div class="calorie-info-macro-item">
@@ -326,7 +334,8 @@
                                     <h5>Carbohidratos</h5>
                                 </div>
                                 <div class="calorie-info-macro-content">
-                                    <p>Principal fuente de energía para el cuerpo y el cerebro. Aportan 4 calorías por gramo.</p>
+                                    <p>Principal fuente de energía para el cuerpo y el cerebro. Aportan 4 calorías por
+                                        gramo.</p>
                                 </div>
                             </div>
                             <div class="calorie-info-macro-item">
@@ -335,14 +344,18 @@
                                     <h5>Grasas</h5>
                                 </div>
                                 <div class="calorie-info-macro-content">
-                                    <p>Esenciales para la absorción de vitaminas y la producción hormonal. Aportan 9 calorías por gramo.</p>
+                                    <p>Esenciales para la absorción de vitaminas y la producción hormonal. Aportan 9
+                                        calorías por gramo.</p>
                                 </div>
                             </div>
                         </div>
 
                         <div class="calorie-disclaimer">
                             <i class="fas fa-exclamation-circle"></i>
-                            <p>Esta calculadora proporciona una estimación de tus necesidades calóricas basada en fórmulas establecidas. Las necesidades individuales pueden variar según factores como la composición corporal, metabolismo y nivel de actividad específicos. Para un plan nutricional personalizado, consulta con un nutricionista deportivo.</p>
+                            <p>Esta calculadora proporciona una estimación de tus necesidades calóricas basada en
+                                fórmulas establecidas. Las necesidades individuales pueden variar según factores como la
+                                composición corporal, metabolismo y nivel de actividad específicos. Para un plan
+                                nutricional personalizado, consulta con un nutricionista deportivo.</p>
                         </div>
                     </div>
                 </div>

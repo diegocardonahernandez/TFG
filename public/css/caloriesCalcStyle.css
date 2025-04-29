@@ -444,15 +444,15 @@
 }
 
 .protein-color {
-  background-color: #4caf50;
+  background-color: #a60f2d;
 }
 
 .carbs-color {
-  background-color: #2196f3;
+  background-color: #ffcd8b;
 }
 
 .fat-color {
-  background-color: #ffc107;
+  background-color: #4b0082;
 }
 
 .calorie-legend-text {
@@ -495,15 +495,15 @@
 }
 
 .protein-icon {
-  background-color: #4caf50;
+  background-color: #a60f2d;
 }
 
 .carbs-icon {
-  background-color: #2196f3;
+  background-color: #ffcd8b;
 }
 
 .fat-icon {
-  background-color: #ffc107;
+  background-color: #4b0082;
 }
 
 .calorie-macro-content {

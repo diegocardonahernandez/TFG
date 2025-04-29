@@ -1,8 +1,3 @@
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/navScroller.js"></script>
-<script type="module" src="/js/caloriesCalculator.js"></script>
-</body>
-
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
@@ -10,7 +5,8 @@
             <div class="footer-brand">
                 <a href="/" class="footer-logo">PuroGains</a>
                 <p class="footer-description">
-                    Tu mejor aliado para alcanzar tus objetivos fitness y nutricionales. Comprometidos con tu éxito y bienestar.
+                    Tu mejor aliado para alcanzar tus objetivos fitness y nutricionales. Comprometidos con tu éxito y
+                    bienestar.
                 </p>
             </div>
 
@@ -74,12 +70,18 @@
 
         <!-- Footer Bottom / Copyright -->
         <div class="footer-bottom">
-            <p>&copy; 2025 PuroGains. Todos los derechos reservados. <a href="/privacidad">Política de privacidad</a> | <a href="/terminos">Términos de uso</a></p>
+            <p>&copy; 2025 PuroGains. Todos los derechos reservados. <a href="/privacidad">Política de privacidad</a> |
+                <a href="/terminos">Términos de uso</a>
+            </p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/js/navScroller.js"></script>
+    <script type="module" src="/js/caloriesCalculator.js"></script>
 </footer>
+</body>
 
-<!-- FontAwesome Icons (añadir si no están incluidos en el head) -->
-<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+
 
 </html>
