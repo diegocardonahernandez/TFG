@@ -1,10 +1,10 @@
-/* Estilos para la página de detalles del producto */
+/* Estilos para la página de detalles del producto - Versión compacta */
 
 /* Encabezado del producto */
 .pdv-product-header {
   background: linear-gradient(135deg, var(--puro-black) 0%, #333 100%);
   color: var(--puro-white);
-  padding: 2.5rem 0;
+  padding: 1.5rem 0; /* Reducido de 2.5rem */
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
@@ -32,26 +32,26 @@
 }
 
 .pdv-title {
-  font-size: 2.5rem;
+  font-size: 2rem; /* Reducido de 2.5rem */
   font-weight: 800;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem; /* Reducido de 0.5rem */
   position: relative;
   display: inline-block;
   letter-spacing: 1px;
-  color: var(--puro-white); /* Aseguramos que el título tenga color blanco */
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); /* Añadimos sombra para mejorar visibilidad */
+  color: var(--puro-white);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .pdv-rating {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
+  margin-top: 0.25rem; /* Reducido de 0.5rem */
+  font-size: 1.1rem; /* Reducido de 1.2rem */
   color: #ffb400;
 }
 
 /* Sección de detalles del producto */
 .pdv-details {
-  padding: 3rem 0;
+  padding: 1.5rem 0; /* Reducido de 3rem */
   background-color: var(--puro-light-gray);
 }
 
@@ -60,16 +60,16 @@
   background-color: var(--puro-white);
   border-radius: 8px;
   overflow: hidden;
-  padding: 2rem;
+  padding: 1.5rem; /* Reducido de 2rem */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem; /* Reducido de 2rem */
 }
 
 .pdv-main-image-wrapper {
   position: relative;
   text-align: center;
   overflow: hidden;
-  min-height: 400px;
+  min-height: 350px; /* Reducido de 400px */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -77,7 +77,7 @@
 
 .pdv-main-image {
   max-width: 100%;
-  max-height: 400px;
+  max-height: 350px; /* Reducido de 400px */
   object-fit: contain;
   transition: transform 0.3s ease;
 }
@@ -90,8 +90,8 @@
 .pdv-badge {
   position: absolute;
   z-index: 5;
-  padding: 0.4rem 1rem;
-  font-size: 0.85rem;
+  padding: 0.3rem 0.8rem; /* Reducido de 0.4rem 1rem */
+  font-size: 0.8rem; /* Reducido de 0.85rem */
   font-weight: 600;
   border-radius: 3px;
 }
@@ -107,19 +107,26 @@
 .pdv-info-panel {
   background-color: var(--puro-white);
   border-radius: 8px;
-  padding: 2rem;
+  padding: 1.5rem; /* Reducido de 2rem */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   height: 100%;
 }
 
-.pdv-category-wrapper {
+.pdv-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
+}
+
+.pdv-category-wrapper {
+  margin-bottom: 0; /* Reducido de 1rem */
 }
 
 .pdv-category-link {
   color: var(--puro-gray);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.9rem; /* Reducido de 1rem */
   text-transform: uppercase;
   letter-spacing: 1px;
   transition: color 0.3s ease;
@@ -132,24 +139,24 @@
 .pdv-price-display {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0; /* Reducido de 1.5rem */
 }
 
 .pdv-current-price {
   color: var(--puro-red);
-  font-size: 2rem;
+  font-size: 1.8rem; /* Reducido de 2rem */
   font-weight: 700;
 }
 
 .pdv-desc-block {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem; /* Reducido de 2rem */
   color: var(--puro-black);
 }
 
 .pdv-desc-block h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Reducido de 1.4rem */
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem; /* Reducido de 1rem */
   position: relative;
 }
 
@@ -164,13 +171,14 @@
 }
 
 .pdv-desc-block p {
-  line-height: 1.7;
+  line-height: 1.5; /* Reducido de 1.7 */
   color: var(--puro-gray);
+  margin-top: 0.75rem; /* Añadido para compensar la reducción del margen del título */
 }
 
 /* Metadatos del producto */
 .pdv-meta-info {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem; /* Reducido de 2rem */
 }
 
 .pdv-meta-list {
@@ -184,7 +192,7 @@
 .pdv-meta-list-item {
   display: flex;
   justify-content: space-between;
-  padding: 0.8rem 1rem;
+  padding: 0.6rem 1rem; /* Reducido de 0.8rem */
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -213,18 +221,25 @@
 
 /* Sección de compra */
 .pdv-purchase-section {
-  margin-bottom: 2rem;
+  margin-bottom: 0; /* Reducido de 2rem */
+}
+
+.pdv-purchase-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .pdv-quantity-control {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0; /* Reducido de 1.5rem */
   display: flex;
   flex-direction: column;
 }
 
 .pdv-quantity-control label {
   font-weight: 600;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem; /* Reducido de 0.5rem */
+  font-size: 0.9rem; /* Añadido para hacerlo más compacto */
 }
 
 .pdv-quantity-buttons {
@@ -233,7 +248,7 @@
   border: 1px solid #ddd;
   border-radius: 4px;
   overflow: hidden;
-  width: 140px;
+  width: 120px; /* Reducido de 140px */
 }
 
 .pdv-qty-btn {
@@ -241,8 +256,8 @@
   border: none;
   color: var(--puro-black);
   font-size: 1.2rem;
-  width: 40px;
-  height: 40px;
+  width: 35px; /* Reducido de 40px */
+  height: 35px; /* Reducido de 40px */
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -252,8 +267,8 @@
 }
 
 .pdv-quantity-buttons input {
-  width: 60px;
-  height: 40px;
+  width: 50px; /* Reducido de 60px */
+  height: 35px; /* Reducido de 40px */
   text-align: center;
   border: none;
   border-left: 1px solid #ddd;
@@ -261,12 +276,17 @@
   font-weight: 600;
 }
 
+.pdv-action-buttons {
+  display: flex;
+  gap: 0.75rem;
+}
+
 .pdv-action-btn {
   display: block;
-  width: 100%;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+  flex: 1;
+  padding: 0.75rem; /* Reducido de 1rem */
+  margin-bottom: 0; /* Reducido de 1rem */
+  font-size: 0.9rem; /* Reducido de 1rem */
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 4px;
@@ -310,56 +330,32 @@
 }
 
 .pdv-out-of-stock {
+  display: flex;
+  flex-wrap: wrap;
   text-align: center;
-  padding: 1rem;
+  padding: 0.75rem; /* Reducido de 1rem */
   background-color: rgba(255, 152, 0, 0.1);
   border-radius: 4px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reducido de 1.5rem */
+  justify-content: center;
 }
 
 .pdv-out-of-stock p {
+  width: 100%;
   color: #ff9800;
   font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-/* Garantías y beneficios */
-.pdv-promises {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.pdv-promise-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex: 1;
-  min-width: 150px;
-}
-
-.pdv-promise-item i {
-  color: var(--puro-red);
-  font-size: 1.2rem;
-  margin-right: 0.5rem;
-}
-
-.pdv-promise-item span {
-  font-size: 0.9rem;
-  color: var(--puro-gray);
+  margin-bottom: 0.75rem; /* Reducido de 1rem */
 }
 
 /* Tabs de información adicional */
 .pdv-info-tabs {
-  padding: 3rem 0;
+  padding: 0.75rem 0; /* Reducido de 1rem */
   background-color: var(--puro-white);
 }
 
 .nav-tabs {
   border-bottom: 2px solid #f0f0f0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem; /* Reducido de 2rem */
 }
 
 .nav-tabs .nav-link {
@@ -367,9 +363,10 @@
   border-bottom: 2px solid transparent;
   color: var(--puro-gray);
   font-weight: 600;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.25rem; /* Reducido de 1rem 1.5rem */
   margin-bottom: -2px;
   transition: all 0.3s ease;
+  font-size: 0.95rem; /* Añadido para hacerlo más compacto */
 }
 
 .nav-tabs .nav-link:hover {
@@ -383,94 +380,109 @@
 }
 
 .pdv-tab-inner {
-  padding: 1rem 0;
+  padding: 0.75rem 0; /* Reducido de 1rem */
 }
 
 .pdv-tab-inner h3 {
-  font-size: 1.4rem;
+  font-size: 1.2rem; /* Reducido de 1.4rem */
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reducido de 1.5rem */
   color: var(--puro-black);
 }
 
 .pdv-tab-inner h4 {
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Reducido de 1.2rem */
   font-weight: 600;
-  margin: 1.5rem 0 1rem;
+  margin: 1rem 0 0.75rem; /* Reducido de 1.5rem 0 1rem */
   color: var(--puro-black);
 }
 
 .pdv-tab-inner p {
-  line-height: 1.7;
+  line-height: 1.5; /* Reducido de 1.7 */
   color: var(--puro-gray);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem; /* Reducido de 1.5rem */
 }
 
 .pdv-specs {
   background-color: #f9f9f9;
-  padding: 1.5rem;
+  padding: 1.25rem; /* Reducido de 1.5rem */
   border-radius: 4px;
 }
 
 .pdv-warranty-info {
   background-color: #f9f9f9;
-  padding: 1.5rem;
+  padding: 1.25rem; /* Reducido de 1.5rem */
   border-radius: 4px;
-  margin-top: 1rem;
+  margin-top: 0.75rem; /* Reducido de 1rem */
 }
 
+/* Estructura de columnas para información */
+.pdv-info-columns {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.pdv-info-col {
+  flex: 1;
+}
+
+/* Sección de reviews */
 .pdv-reviews-overview {
   display: flex;
-  align-items: center;
-  margin-bottom: 2rem;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem; /* Reducido de 2rem */
 }
 
 .pdv-rating-summary {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
+  padding: 1.25rem; /* Reducido de 1.5rem */
   background-color: #f9f9f9;
   border-radius: 4px;
-  min-width: 200px;
+  min-width: 180px; /* Reducido de 200px */
+  flex: 1;
 }
 
 .pdv-rating-number {
-  font-size: 3rem;
+  font-size: 2.5rem; /* Reducido de 3rem */
   font-weight: 700;
   color: var(--puro-black);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem; /* Reducido de 0.5rem */
 }
 
 .pdv-rating-stars {
   color: #ffb400;
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.1rem; /* Reducido de 1.2rem */
+  margin-bottom: 0.25rem; /* Reducido de 0.5rem */
 }
 
 .pdv-rating-total {
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* Reducido de 0.9rem */
   color: var(--puro-gray);
 }
 
 .pdv-customer-reviews {
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem; /* Reducido de 2rem */
   background-color: #f9f9f9;
   border-radius: 4px;
+  flex: 2;
 }
 
 .pdv-write-review {
   background-color: var(--puro-red);
   color: var(--puro-white);
-  padding: 0.75rem 2rem;
+  padding: 0.6rem 1.5rem; /* Reducido de 0.75rem 2rem */
   font-weight: 600;
   text-transform: uppercase;
   border-radius: 4px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: 1rem;
+  margin-top: 0.75rem; /* Reducido de 1rem */
+  font-size: 0.9rem; /* Añadido para hacerlo más compacto */
 }
 
 .pdv-write-review:hover {
@@ -481,90 +493,22 @@
 
 .pdv-shipping-list {
   list-style: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 2rem;
+  padding-left: 1.25rem; /* Reducido de 1.5rem */
+  margin-bottom: 1.5rem; /* Reducido de 2rem */
 }
 
 .pdv-shipping-list li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem; /* Reducido de 0.5rem */
   color: var(--puro-gray);
 }
 
 /* Responsive */
 @media (max-width: 992px) {
   .pdv-title {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Reducido de 2rem */
   }
 
   .pdv-main-image-wrapper {
-    min-height: 300px;
-  }
-
-  .pdv-main-image {
-    max-height: 300px;
-  }
-
-  .pdv-info-panel {
-    margin-top: 1rem;
-  }
-
-  .pdv-promise-item {
-    flex: 0 0 50%;
-  }
-}
-
-@media (max-width: 768px) {
-  .pdv-product-header {
-    padding: 2rem 0;
-  }
-
-  .pdv-title {
-    font-size: 1.8rem;
-  }
-
-  .pdv-info-panel {
-    padding: 1.5rem;
-  }
-
-  .pdv-current-price {
-    font-size: 1.8rem;
-  }
-
-  .nav-tabs .nav-link {
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .pdv-title {
-    font-size: 1.5rem;
-  }
-
-  .pdv-main-image-wrapper {
-    min-height: 250px;
-  }
-
-  .pdv-main-image {
-    max-height: 250px;
-  }
-
-  .pdv-promise-item {
-    flex: 0 0 100%;
-  }
-
-  .pdv-gallery,
-  .pdv-info-panel {
-    padding: 1rem;
-  }
-
-  .pdv-current-price {
-    font-size: 1.5rem;
-  }
-
-  .nav-tabs {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    white-space: nowrap;
+    min-height: 280px; /* Reducido de 300px */
   }
 }
