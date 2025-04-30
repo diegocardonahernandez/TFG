@@ -32,6 +32,10 @@ switch ($method) {
                 require_once __DIR__ . '/../Controller/loginController.php';
                 break;
 
+            case '/register':
+                require_once __DIR__ . '/../Controller/registerController.php';
+                break;
+
             default:;
                 echo "Página no encontrada";
                 break;

@@ -51,7 +51,7 @@
 
 
             <div class="register-link">
-                ¿No tienes una cuenta? <a href="register.php">Regístrate ahora</a>
+                ¿No tienes una cuenta? <a href="/register">Regístrate ahora</a>
             </div>
         </div>
     </div>

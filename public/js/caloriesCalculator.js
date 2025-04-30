@@ -22,69 +22,195 @@ const initialText = document.getElementById("calorieInitialText");
 const nutrientsChart = document.getElementById("macroChart");
 let nutrientsChartInstance = null;
 
+// Función para mostrar animaciones
+function animateValue(element, start, end, duration) {
+  let startTimestamp = null;
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const currentValue = Math.floor(progress * (end - start) + start);
+    element.innerHTML = currentValue;
+    if (progress < 1) {
+      window.requestAnimationFrame(step);
+    }
+  };
+  window.requestAnimationFrame(step);
+}
+
+// Función para animar la aparición de elementos con delay
+function animateElements(elements, delay = 100) {
+  elements.forEach((element, index) => {
+    setTimeout(() => {
+      element.style.opacity = "1";
+      element.style.transform = "translateY(0)";
+    }, index * delay);
+  });
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const tmb = calculateTMB(
-    +weightInput.value,
-    +heightInput.value,
-    +ageInput.value,
-    document.querySelector("input[name=gender]:checked").value
-  );
+  // Mostrar indicador de carga
+  initialText.innerHTML =
+    '<i class="fas fa-circle-notch fa-spin"></i> Calculando...';
 
-  const calories = activityLevel(tmb, +activityLevelInput.value);
+  // Simulamos un breve retraso para dar sensación de procesamiento
+  setTimeout(() => {
+    // Realizar cálculos
+    const tmb = calculateTMB(
+      +weightInput.value,
+      +heightInput.value,
+      +ageInput.value,
+      document.querySelector("input[name=gender]:checked").value
+    );
 
-  const result = adjustAccordingToGoal(
-    calories,
-    document.querySelector("input[name=goal]:checked").value
-  );
+    const calories = activityLevel(tmb, +activityLevelInput.value);
 
-  const nutrients = macroNutrientDistribution(result, +weightInput.value);
-  resultProteinGrams.innerHTML = Math.round(nutrients.proteinGrams);
-  resultCarbsGrams.innerHTML = Math.round(nutrients.carbsGrams);
-  resultFatGrams.innerHTML = Math.round(nutrients.fatGrams);
-  resultProteinCalories.innerHTML = Math.round(nutrients.proteinCalories);
-  resultCarbsCalories.innerHTML = Math.round(nutrients.carbsCalories);
-  resultFatCalories.innerHTML = Math.round(nutrients.fatCalories);
+    const result = adjustAccordingToGoal(
+      calories,
+      document.querySelector("input[name=goal]:checked").value
+    );
 
-  resultCalories.innerHTML = Math.round(result);
+    const nutrients = macroNutrientDistribution(result, +weightInput.value);
 
-  if (nutrientsChartInstance) {
-    nutrientsChartInstance.destroy();
-  }
+    // Preparar para animaciones (establecer valores iniciales)
+    resultProteinGrams.innerHTML = "0";
+    resultCarbsGrams.innerHTML = "0";
+    resultFatGrams.innerHTML = "0";
+    resultProteinCalories.innerHTML = "0";
+    resultCarbsCalories.innerHTML = "0";
+    resultFatCalories.innerHTML = "0";
+    resultCalories.innerHTML = "0";
 
-  nutrientsChartInstance = new Chart(nutrientsChart, {
-    type: "doughnut",
-    data: {
-      datasets: [
-        {
-          label: "Calorías ",
-          data: [
-            nutrients.proteinCalories.toFixed(0),
-            nutrients.carbsCalories.toFixed(0),
-            nutrients.fatCalories.toFixed(0),
+    // Mostrar contenedor de resultados
+    resultContainer.style.display = "block";
+    initialText.innerHTML = "Resultados:";
+
+    // Configurar animaciones de elementos con opacidad y posición
+    const macroItems = document.querySelectorAll(".calorie-macro-item");
+    macroItems.forEach((item) => {
+      item.style.opacity = "0";
+      item.style.transform = "translateY(20px)";
+      item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+    });
+
+    // Iniciar animación de conteo para el valor de calorías
+    animateValue(resultCalories, 0, Math.round(result), 1500);
+
+    // Iniciar animaciones para los valores de macronutrientes (con un poco de retraso)
+    setTimeout(() => {
+      animateValue(
+        resultProteinGrams,
+        0,
+        Math.round(nutrients.proteinGrams),
+        1200
+      );
+      animateValue(resultCarbsGrams, 0, Math.round(nutrients.carbsGrams), 1200);
+      animateValue(resultFatGrams, 0, Math.round(nutrients.fatGrams), 1200);
+      animateValue(
+        resultProteinCalories,
+        0,
+        Math.round(nutrients.proteinCalories),
+        1200
+      );
+      animateValue(
+        resultCarbsCalories,
+        0,
+        Math.round(nutrients.carbsCalories),
+        1200
+      );
+      animateValue(
+        resultFatCalories,
+        0,
+        Math.round(nutrients.fatCalories),
+        1200
+      );
+
+      // Animar aparición de elementos
+      animateElements(macroItems, 150);
+    }, 600);
+
+    // Eliminar instancia de gráfico existente si hay una
+    if (nutrientsChartInstance) {
+      nutrientsChartInstance.destroy();
+    }
+
+    // Crear nueva instancia de gráfico con animación
+    setTimeout(() => {
+      nutrientsChartInstance = new Chart(nutrientsChart, {
+        type: "doughnut",
+        data: {
+          labels: ["Proteínas", "Carbohidratos", "Grasas"],
+          datasets: [
+            {
+              data: [
+                nutrients.proteinCalories.toFixed(0),
+                nutrients.carbsCalories.toFixed(0),
+                nutrients.fatCalories.toFixed(0),
+              ],
+              backgroundColor: ["#d62839", "#ff9505", "#0a2463"],
+              hoverBackgroundColor: ["#f73b51", "#ffb23d", "#2565c9"],
+              borderWidth: 0,
+              hoverOffset: 8,
+            },
           ],
-          backgroundColor: ["#d91a36", "#f7a928 ", "#2a5a8c"],
-          hoverOffset: 4,
         },
-      ],
-    },
-    options: {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: "top",
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          cutout: "70%",
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  const label = context.label || "";
+                  const value = context.formattedValue;
+                  const percentage = Math.round((context.raw / result) * 100);
+                  return `${label}: ${value} kcal (${percentage}%)`;
+                },
+              },
+              padding: 12,
+              boxPadding: 6,
+            },
+          },
+          animation: {
+            animateScale: true,
+            animateRotate: true,
+            duration: 1200,
+            easing: "easeOutCirc",
+          },
         },
-      },
-    },
-  });
-
-  resultContainer.style.display = "block";
-  initialText.style.display = "none";
+      });
+    }, 400);
+  }, 800); // Fin de setTimeout
 });
 
+// Mejora visual del botón de reset
 document.getElementById("calorieResetBtn").addEventListener("click", () => {
   form.reset();
-  resultContainer.style.display = "none";
-  initialText.style.display = "block";
+
+  // Ocultar resultados con animación fade-out
+  resultContainer.style.opacity = "0";
+  setTimeout(() => {
+    resultContainer.style.display = "none";
+    resultContainer.style.opacity = "1"; // Restaurar opacidad para próxima vez
+    initialText.style.display = "block";
+    initialText.innerHTML =
+      "Completa el formulario para ver tus necesidades calóricas";
+  }, 300);
+
+  // Si hay un gráfico, destruirlo
+  if (nutrientsChartInstance) {
+    nutrientsChartInstance.destroy();
+    nutrientsChartInstance = null;
+  }
+});
+
+// Inicializar transiciones
+document.addEventListener("DOMContentLoaded", function () {
+  // Añadir transición al contenedor de resultados
+  resultContainer.style.transition = "opacity 0.3s ease";
 });

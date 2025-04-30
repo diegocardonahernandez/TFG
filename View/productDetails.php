@@ -21,7 +21,7 @@
                 <div class="pdv-gallery">
                     <div class="pdv-main-image-wrapper">
                         <?php if ($details[0]->getStock() <= 10 && $details[0]->getStock() > 0): ?>
-                        <span class="pdv-badge pdv-stock-alert">¡Últimas unidades!</span>
+                            <span class="pdv-badge pdv-stock-alert">¡Últimas unidades!</span>
                         <?php endif; ?>
 
                         <img src="<?= $details[0]->getImagen() ?>" class="pdv-main-image"
@@ -74,36 +74,36 @@
 
                     <div class="pdv-purchase-section">
                         <?php if ($details[0]->getStock() > 0): ?>
-                        <div class="pdv-purchase-controls">
-                            <div class="pdv-quantity-control">
-                                <label for="quantity">Cantidad</label>
-                                <div class="pdv-quantity-buttons">
-                                    <button class="pdv-qty-btn pdv-qty-decrease"
-                                        aria-label="Disminuir cantidad">-</button>
-                                    <input type="number" id="quantity" name="quantity" value="1" min="1"
-                                        max="<?= $details[0]->getStock() ?>">
-                                    <button class="pdv-qty-btn pdv-qty-increase"
-                                        aria-label="Aumentar cantidad">+</button>
+                            <div class="pdv-purchase-controls">
+                                <div class="pdv-quantity-control">
+                                    <label for="quantity">Cantidad</label>
+                                    <div class="pdv-quantity-buttons">
+                                        <button class="pdv-qty-btn pdv-qty-decrease"
+                                            aria-label="Disminuir cantidad">-</button>
+                                        <input type="number" id="quantity" name="quantity" value="1" min="1"
+                                            max="<?= $details[0]->getStock() ?>">
+                                        <button class="pdv-qty-btn pdv-qty-increase"
+                                            aria-label="Aumentar cantidad">+</button>
+                                    </div>
+                                </div>
+                                <div class="pdv-action-buttons">
+                                    <button class="pdv-action-btn pdv-add-to-cart"
+                                        data-product="<?= $details[0]->getIdProducto() ?>">
+                                        <i class="fas fa-shopping-cart"></i> Añadir al carrito
+                                    </button>
+                                    <button class="pdv-action-btn pdv-buy-now">
+                                        <i class="fas fa-bolt"></i> Comprar ahora
+                                    </button>
                                 </div>
                             </div>
-                            <div class="pdv-action-buttons">
-                                <button class="pdv-action-btn pdv-add-to-cart"
+                        <?php else: ?>
+                            <div class="pdv-out-of-stock">
+                                <p>Actualmente este producto está agotado</p>
+                                <button class="pdv-action-btn pdv-notify-me"
                                     data-product="<?= $details[0]->getIdProducto() ?>">
-                                    <i class="fas fa-shopping-cart"></i> Añadir al carrito
-                                </button>
-                                <button class="pdv-action-btn pdv-buy-now">
-                                    <i class="fas fa-bolt"></i> Comprar ahora
+                                    <i class="fas fa-bell"></i> Notificarme cuando esté disponible
                                 </button>
                             </div>
-                        </div>
-                        <?php else: ?>
-                        <div class="pdv-out-of-stock">
-                            <p>Actualmente este producto está agotado</p>
-                            <button class="pdv-action-btn pdv-notify-me"
-                                data-product="<?= $details[0]->getIdProducto() ?>">
-                                <i class="fas fa-bell"></i> Notificarme cuando esté disponible
-                            </button>
-                        </div>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -146,10 +146,13 @@
             <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
                 <div class="pdv-tab-inner">
                     <h3>Especificaciones del producto</h3>
-                    <p><?= $details[0]->getDetallesProducto() ?></p>
+                    <p><?= $details[0]->getDetallesProducto() ?></p><br>
                     <div class="pdv-specs">
+                        <span class="pdv-spec-title">Información general de calidad</span>
                         <p>Este producto ha sido diseñado para ofrecer el máximo rendimiento y durabilidad. Fabricado
-                            con materiales de alta calidad que garantizan una experiencia de uso superior.</p>
+                            con materiales de alta calidad que garantizan una experiencia de uso superior. Todos
+                            nuestros productos cumplen con los más estrictos estándares de calidad y pasan por rigurosos
+                            controles antes de llegar a nuestros clientes.</p>
                     </div>
                 </div>
             </div>
