@@ -204,97 +204,28 @@
                                 </div>
                             </div>
 
-                            <!-- Plan de comidas sugerido -->
-                            <div class="calorie-meal-plan" style="display: none;">
-                                <h4 class="calorie-meal-plan-title">Distribución de comidas recomendada</h4>
-                                <div class="calorie-meals-container">
-                                    <div class="calorie-meal-item">
-                                        <div class="calorie-meal-header">
-                                            <div class="calorie-meal-icon">
-                                                <i class="fas fa-sun"></i>
-                                            </div>
-                                            <div class="calorie-meal-name">Desayuno</div>
-                                        </div>
-                                        <div class="calorie-meal-value">
-                                            <span id="breakfastCalories">0</span> kcal
-                                        </div>
-                                        <div class="calorie-meal-macros">
-                                            <span id="breakfastProtein">0</span>g P &nbsp;|&nbsp;
-                                            <span id="breakfastCarbs">0</span>g C &nbsp;|&nbsp;
-                                            <span id="breakfastFat">0</span>g G
-                                        </div>
-                                    </div>
-                                    <div class="calorie-meal-item">
-                                        <div class="calorie-meal-header">
-                                            <div class="calorie-meal-icon">
-                                                <i class="fas fa-coffee"></i>
-                                            </div>
-                                            <div class="calorie-meal-name">Media Mañana</div>
-                                        </div>
-                                        <div class="calorie-meal-value">
-                                            <span id="snack1Calories">0</span> kcal
-                                        </div>
-                                        <div class="calorie-meal-macros">
-                                            <span id="snack1Protein">0</span>g P &nbsp;|&nbsp;
-                                            <span id="snack1Carbs">0</span>g C &nbsp;|&nbsp;
-                                            <span id="snack1Fat">0</span>g G
-                                        </div>
-                                    </div>
-                                    <div class="calorie-meal-item">
-                                        <div class="calorie-meal-header">
-                                            <div class="calorie-meal-icon">
-                                                <i class="fas fa-cloud-sun"></i>
-                                            </div>
-                                            <div class="calorie-meal-name">Almuerzo</div>
-                                        </div>
-                                        <div class="calorie-meal-value">
-                                            <span id="lunchCalories">0</span> kcal
-                                        </div>
-                                        <div class="calorie-meal-macros">
-                                            <span id="lunchProtein">0</span>g P &nbsp;|&nbsp;
-                                            <span id="lunchCarbs">0</span>g C &nbsp;|&nbsp;
-                                            <span id="lunchFat">0</span>g G
-                                        </div>
-                                    </div>
-                                    <div class="calorie-meal-item">
-                                        <div class="calorie-meal-header">
-                                            <div class="calorie-meal-icon">
-                                                <i class="fas fa-apple-alt"></i>
-                                            </div>
-                                            <div class="calorie-meal-name">Merienda</div>
-                                        </div>
-                                        <div class="calorie-meal-value">
-                                            <span id="snack2Calories">0</span> kcal
-                                        </div>
-                                        <div class="calorie-meal-macros">
-                                            <span id="snack2Protein">0</span>g P &nbsp;|&nbsp;
-                                            <span id="snack2Carbs">0</span>g C &nbsp;|&nbsp;
-                                            <span id="snack2Fat">0</span>g G
-                                        </div>
-                                    </div>
-                                    <div class="calorie-meal-item">
-                                        <div class="calorie-meal-header">
-                                            <div class="calorie-meal-icon">
-                                                <i class="fas fa-moon"></i>
-                                            </div>
-                                            <div class="calorie-meal-name">Cena</div>
-                                        </div>
-                                        <div class="calorie-meal-value">
-                                            <span id="dinnerCalories">0</span> kcal
-                                        </div>
-                                        <div class="calorie-meal-macros">
-                                            <span id="dinnerProtein">0</span>g P &nbsp;|&nbsp;
-                                            <span id="dinnerCarbs">0</span>g C &nbsp;|&nbsp;
-                                            <span id="dinnerFat">0</span>g G
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <!-- Productos recomendados -->
                             <div class="calorie-products-suggestion">
                                 <h4 class="calorie-products-title">Suplementos recomendados</h4>
                                 <div class="calorie-products-container" id="calorieProducts">
+                                    <?php if (!empty($recommendProducts)): ?>
+                                        <?php foreach ($recommendProducts as $product): ?>
+                                            <div class="calorie-product-card">
+                                                <img src="<?= $product->getImagen() ?>" alt="<?= $product->getNombre() ?>"
+                                                    class="calorie-product-image">
+                                                <div class="calorie-product-content">
+                                                    <h5 class="calorie-product-name"><?= $product->getNombre() ?></h5>
+                                                    <p class="calorie-product-description"><?= $product->getDescripcion() ?></p>
+                                                    <a href="/product?id=<?= $product->getIdProducto() ?>"
+                                                        class="calorie-product-btn">Ver producto</a>
+
+                                                </div>
+                                            </div>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <p>No se encontraron recomendaciones para este objetivo.</p>
+                                    <?php endif; ?>
+
                                     <!-- Los productos recomendados se insertarán dinámicamente -->
                                 </div>
                             </div>

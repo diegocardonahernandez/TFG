@@ -177,4 +177,22 @@ class Product
         $stmt->execute(['id' => $id]);
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
     }
+
+    public static function getProductsForGoal($productGoal)
+    {
+        $db = Database::getInstance();
+
+        $placeholders = rtrim(str_repeat('?,', count($productGoal)), ',');
+
+        $sql = "SELECT p.*, c.nombre AS categoria 
+            FROM productos p 
+            JOIN categorias c USING(id_categoria) 
+            WHERE p.nombre IN ($placeholders) 
+            LIMIT 4";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute($productGoal);
+
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
 }
