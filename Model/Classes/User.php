@@ -1,0 +1,151 @@
+<?php
+
+require_once __DIR__ . '/../../Config/Database.php';
+
+class User
+{
+    private $id_usuario;
+    private $nombre;
+    private $apellido;
+    private $telefono;
+    private $correo;
+    private $contrasena;
+    private $fecha_nacimiento;
+    private $genero;
+    private $peso;
+    private $altura;
+    private $tipo_usuario;
+    private $estado;
+    private $foto_perfil;
+
+
+    public function getIdUsuario()
+    {
+        return $this->id_usuario;
+    }
+
+    public function setIdUsuario($id_usuario)
+    {
+        $this->id_usuario = $id_usuario;
+    }
+
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    public function getApellido()
+    {
+        return $this->apellido;
+    }
+
+    public function setApellido($apellido)
+    {
+        $this->apellido = $apellido;
+    }
+
+    public function getTelefono()
+    {
+        return $this->telefono;
+    }
+
+    public function setTelefono($telefono)
+    {
+        $this->telefono = $telefono;
+    }
+
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+    }
+
+    public function getContrasena()
+    {
+        return $this->contrasena;
+    }
+
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+    }
+
+    public function getFechaNacimiento()
+    {
+        return $this->fecha_nacimiento;
+    }
+
+    public function setFechaNacimiento($fecha_nacimiento)
+    {
+        $this->fecha_nacimiento = $fecha_nacimiento;
+    }
+
+    public function getGenero()
+    {
+        return $this->genero;
+    }
+
+    public function setGenero($genero)
+    {
+        $this->genero = $genero;
+    }
+
+    public function getPeso()
+    {
+        return $this->peso;
+    }
+
+    public function setPeso($peso)
+    {
+        $this->peso = $peso;
+    }
+
+    public function getAltura()
+    {
+        return $this->altura;
+    }
+
+    public function setAltura($altura)
+    {
+        $this->altura = $altura;
+    }
+
+    public function getTipoUsuario()
+    {
+        return $this->tipo_usuario;
+    }
+
+    public function setTipoUsuario($tipo_usuario)
+    {
+        $this->tipo_usuario = $tipo_usuario;
+    }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    public function setEstado($estado)
+    {
+        $this->estado = $estado;
+    }
+
+    public function getFotoPerfil()
+    {
+        return $this->foto_perfil;
+    }
+
+    public function setFotoPerfil($foto_perfil)
+    {
+        $this->foto_perfil = $foto_perfil;
+    }
+}

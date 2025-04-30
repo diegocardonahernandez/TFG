@@ -1,0 +1,398 @@
+/* Variables compartidas con el sitio principal */
+:root {
+  --puro-red: #aa0303;
+  --puro-black: #000000;
+  --puro-white: #ffffff;
+  --puro-gray: #666666;
+  --puro-light-gray: #f8f8f8;
+}
+
+/* Estilos para la sección de registro */
+.register-section {
+  min-height: calc(100vh - 150px); /* Ajustar según el header y footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  background-color: var(--puro-light-gray);
+  position: relative;
+}
+
+.register-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--puro-red) 0%,
+    #ff3333 50%,
+    var(--puro-red) 100%
+  );
+  z-index: 1;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  background-color: var(--puro-white);
+  height: auto;
+  min-height: 700px;
+}
+
+/* Panel izquierdo con imagen */
+.register-image-panel {
+  width: 45%;
+  background-image: url("/imgs/register.webp"); /* Imagen de fondo de personas ejercitándose en grupo */
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(139, 0, 0, 0.6) 100%
+  );
+}
+
+.register-motivational {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--puro-white);
+  padding: 2rem;
+}
+
+.register-motto {
+  font-size: 2.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  position: relative;
+}
+
+.register-motto::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--puro-red);
+}
+
+.register-submotto {
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin-top: 1.5rem;
+}
+
+/* Panel derecho con formulario */
+.register-form-panel {
+  width: 55%;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.register-title-container {
+  position: relative;
+  display: inline-block;
+}
+
+.register-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--puro-black);
+  text-transform: uppercase;
+  position: relative;
+}
+
+.register-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--puro-red);
+}
+
+/* Estilos del formulario */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--puro-black);
+}
+
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--puro-gray);
+  z-index: 1;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: var(--puro-red);
+  box-shadow: 0 0 0 2px rgba(170, 3, 3, 0.1);
+  outline: none;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 1rem;
+  color: var(--puro-gray);
+  cursor: pointer;
+}
+
+/* Estilos para el select */
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
+/* Estilos para el input de archivo */
+.file-wrapper {
+  flex-direction: column;
+}
+
+.file-input {
+  margin-bottom: 1rem;
+}
+
+.file-preview-container {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+  border: 2px solid #ddd;
+  position: relative;
+}
+
+.file-preview-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.form-options {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.terms-agreement,
+.newsletter-subscription {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.terms-agreement input[type="checkbox"],
+.newsletter-subscription input[type="checkbox"] {
+  margin-top: 0.25rem;
+  accent-color: var(--puro-red);
+}
+
+.terms-agreement label {
+  line-height: 1.4;
+}
+
+.terms-link {
+  color: var(--puro-red);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.terms-link:hover {
+  color: #df0000;
+  text-decoration: underline;
+}
+
+.btn-register {
+  background-color: var(--puro-red);
+  color: var(--puro-white);
+  border: none;
+  padding: 0.9rem;
+  border-radius: 4px;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  margin-top: 1.5rem;
+}
+
+.btn-register:hover {
+  background-color: #df0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(170, 3, 3, 0.2);
+}
+
+.login-link {
+  text-align: center;
+  margin-top: auto;
+  font-size: 0.95rem;
+  color: var(--puro-gray);
+  padding-top: 1.5rem;
+}
+
+.login-link a {
+  color: var(--puro-red);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.login-link a:hover {
+  color: #df0000;
+  text-decoration: underline;
+}
+
+/* Animación del formulario */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register-form-panel {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .register-container {
+    flex-direction: column;
+    height: auto;
+    max-width: 600px;
+  }
+
+  .register-image-panel,
+  .register-form-panel {
+    width: 100%;
+  }
+
+  .register-image-panel {
+    height: 250px;
+  }
+
+  .register-motto {
+    font-size: 1.8rem;
+  }
+
+  .register-submotto {
+    font-size: 1rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .register-section {
+    padding: 2rem 1rem;
+  }
+
+  .register-form-panel {
+    padding: 2rem 1.5rem;
+  }
+
+  .register-motto {
+    font-size: 1.5rem;
+  }
+
+  .form-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .terms-agreement,
+  .newsletter-subscription {
+    width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+}

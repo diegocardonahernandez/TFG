@@ -7,6 +7,7 @@ class Product
     private $id_producto;
     private $nombre;
     private $descripcion;
+    private $detalles_producto;
     private $precio;
     private $stock;
     private $id_categoria;
@@ -137,6 +138,15 @@ class Product
         $this->categoria = $categoria;
     }
 
+    public function getDetallesProducto()
+    {
+        return $this->detalles_producto;
+    }
+    public function setDetallesProducto($detalles_producto)
+    {
+        $this->detalles_producto = $detalles_producto;
+    }
+
 
     public static function getMostViewed()
     {
@@ -165,6 +175,24 @@ class Product
         $sql = "SELECT p.* , c.nombre AS categoria FROM productos p JOIN categorias c USING(id_categoria) WHERE p.id_producto = :id";
         $stmt = $db->prepare($sql);
         $stmt->execute(['id' => $id]);
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
+
+    public static function getProductsForGoal($productGoal)
+    {
+        $db = Database::getInstance();
+
+        $placeholders = rtrim(str_repeat('?,', count($productGoal)), ',');
+
+        $sql = "SELECT p.*, c.nombre AS categoria 
+            FROM productos p 
+            JOIN categorias c USING(id_categoria) 
+            WHERE p.nombre IN ($placeholders) 
+            LIMIT 4";
+
+        $stmt = $db->prepare($sql);
+        $stmt->execute($productGoal);
+
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
     }
 }

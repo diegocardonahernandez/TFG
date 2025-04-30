@@ -1,0 +1,58 @@
+<!-- Login Section -->
+<section class="login-section">
+    <div class="login-container">
+        <!-- Panel izquierdo con imagen y mensaje motivacional -->
+        <div class="login-image-panel">
+            <div class="overlay"></div>
+            <div class="login-motivational">
+                <h2 class="login-motto">EL CAMINO HACIA TU MEJOR VERSIÓN</h2>
+                <p class="login-submotto">Accede a tu cuenta y continúa superando tus límites</p>
+            </div>
+        </div>
+
+        <!-- Panel derecho con formulario de login -->
+        <div class="login-form-panel">
+            <!-- Logo y cabecera -->
+            <div class="login-header">
+                <div class="login-title-container">
+                    <h1 class="login-title">Iniciar Sesión</h1>
+                </div>
+            </div>
+
+            <!-- Formulario -->
+            <form class="login-form" action="process_login.php" method="post">
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="email" name="email" class="form-input" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" name="password" class="form-input" required>
+                        <i class="fas fa-eye toggle-password"></i>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember" name="remember">
+                        <label for="remember">Recordarme</label>
+                    </div>
+                    <a href="forgot-password.php" class="forgot-password">¿Olvidaste tu contraseña?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Iniciar Sesión</button>
+            </form>
+
+
+            <div class="register-link">
+                ¿No tienes una cuenta? <a href="/register">Regístrate ahora</a>
+            </div>
+        </div>
+    </div>
+</section>
