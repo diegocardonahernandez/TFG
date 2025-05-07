@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const weightInput = document.getElementById("imc-weight");
   const resultContainer = document.getElementById("imcResultsContainer");
   const initialState = document.getElementById("imcInitialState");
-  const resultIMC = document.getElementById("imcValue");
+  const resultIMC = document.querySelector(".imc-result-value");
   const imcInterpretation = document.getElementById("imcInterpretation");
   const categoryElement = document.getElementById("imcCategory");
 
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
     initialState.style.display = "none";
 
     // Asegurar que el valor del IMC se actualice correctamente
-    resultIMC.textContent = formattedIMC;
+    resultIMC.innerHTML = formattedIMC;
 
     // Mostrar la interpretación (en lugar de ocultarla)
     imcInterpretation.style.display = "block";
