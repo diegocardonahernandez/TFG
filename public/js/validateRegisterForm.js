@@ -47,14 +47,17 @@ nameNewUser.addEventListener("input", () => {
   if (nameNewUser.value.length < 3) {
     errorName.innerHTML = "El nombre debe tener al menos 3 caracteres.";
     errorName.style.display = "block";
+    nameNewUser.style.border = "1px solid red";
   } else if (/\d/.test(nameNewUser.value)) {
     errorName.innerHTML = "El nombre no puede contener números.";
     errorName.style.display = "block";
+    nameNewUser.style.border = "1px solid red";
   } else {
     nameNewUser.value =
       nameNewUser.value[0].toUpperCase() + nameNewUser.value.slice(1);
     errorName.innerHTML = "";
     errorName.style.display = "none";
+    nameNewUser.style.border = "1px solid #1f7a1f";
     isNameValid = true;
   }
 });
@@ -63,14 +66,17 @@ apellidoNewUser.addEventListener("input", () => {
   if (apellidoNewUser.value.length < 3) {
     errorLastName.innerHTML = "El apellido debe tener al menos 3 caracteres.";
     errorLastName.style.display = "block";
+    apellidoNewUser.style.border = "1px solid red";
   } else if (/\d/.test(apellidoNewUser.value)) {
     errorLastName.innerHTML = "El apellido no puede contener números.";
     errorLastName.style.display = "block";
+    apellidoNewUser.style.border = "1px solid red";
   } else {
     apellidoNewUser.value =
       apellidoNewUser.value[0].toUpperCase() + apellidoNewUser.value.slice(1);
     errorLastName.innerHTML = "";
     errorLastName.style.display = "none";
+    apellidoNewUser.style.border = "1px solid #1f7a1f";
     isLastNameValid = true;
   }
 });
@@ -80,9 +86,11 @@ correoNewUser.addEventListener("input", () => {
   if (!emailPattern.test(correoNewUser.value)) {
     errorEmail.innerHTML = "El correo electrónico no es válido.";
     errorEmail.style.display = "block";
+    correoNewUser.style.border = "1px solid red";
   } else {
     errorEmail.innerHTML = "";
     errorEmail.style.display = "none";
+    correoNewUser.style.border = "1px solid #1f7a1f";
     isEmailValid = true;
   }
 });
@@ -109,17 +117,19 @@ contrasenaNewUser.addEventListener("input", () => {
     passwordStrength.style.backgroundColor = "#f4a261";
     passwordStrengthText.textContent = "Media";
   } else {
-    passwordStrength.style.backgroundColor = "#2a9d8f";
+    passwordStrength.style.backgroundColor = "#1f7a1f";
     passwordStrengthText.textContent = "Fuerte";
   }
 
   if (!regexPasswordFuerte.test(password)) {
     errorPassword.innerHTML = "La contraseña aún no cumple los requisitos.";
     errorPassword.style.display = "block";
-    isPasswordValid = false;
+    contrasenaNewUser.style.border = "1px solid red";
   } else {
     errorPassword.innerHTML = "";
     errorPassword.style.display = "none";
+    contrasenaNewUser.style.border = "1px solid #1f7a1f";
+    xz;
     isPasswordValid = true;
   }
 });
@@ -128,17 +138,30 @@ confirmarContrasena.addEventListener("input", () => {
   if (contrasenaNewUser.value !== confirmarContrasena.value) {
     errorConfirm.innerHTML = "Las contraseñas no coinciden.";
     errorConfirm.style.display = "block";
+    confirmarContrasena.style.border = "1px solid red";
   } else {
     errorConfirm.innerHTML = "";
     errorConfirm.style.display = "none";
+    confirmarContrasena.style.border = "1px solid #1f7a1f";
     isConfirmPasswordValid = true;
   }
 });
 
 nacimientoNewUser.addEventListener("input", () => {
-  const birthDate = new Date(nacimientoNewUser.value);
+  const value = nacimientoNewUser.value;
+
+  if (!value) {
+    errorBirthday.innerHTML = "Por favor, ingresa tu fecha de nacimiento.";
+    errorBirthday.style.display = "block";
+    nacimientoNewUser.style.border = "1px solid red";
+    isBirthdayValid = false;
+    return;
+  }
+
+  const birthDate = new Date(value);
   const today = new Date();
-  const age = today.getFullYear() - birthDate.getFullYear();
+
+  let age = today.getFullYear() - birthDate.getFullYear();
   const monthDiff = today.getMonth() - birthDate.getMonth();
 
   if (
@@ -151,28 +174,40 @@ nacimientoNewUser.addEventListener("input", () => {
   if (age < 16) {
     errorBirthday.innerHTML = "Debes ser mayor de 16 años para registrarte.";
     errorBirthday.style.display = "block";
+    nacimientoNewUser.style.border = "1px solid red";
     isBirthdayValid = false;
   } else {
     errorBirthday.innerHTML = "";
     errorBirthday.style.display = "none";
+    nacimientoNewUser.style.border = "1px solid #1f7a1f";
     isBirthdayValid = true;
   }
 });
 
 telefonoNewUser.addEventListener("input", () => {
-  if (telefonoNewUser.value[0] != "6") {
+  const numero = telefonoNewUser.value.replace(/\D/g, "");
+
+  if (numero[0] !== "6") {
     errorPhone.innerHTML =
       "El número de teléfono debe pertenecer a la región española.";
     errorPhone.style.display = "block";
-  } else if (
-    !isNaN(telefonoNewUser.value) &&
-    telefonoNewUser.value.length != 9
-  ) {
+    telefonoNewUser.style.border = "1px solid red";
+    isPhoneValid = false;
+  } else if (numero.length !== 9) {
     errorPhone.innerHTML = "El número de teléfono debe tener 9 dígitos.";
     errorPhone.style.display = "block";
+    telefonoNewUser.style.border = "1px solid red";
+    isPhoneValid = false;
   } else {
+    const numeroFormateado = numero.replace(
+      /(\d{3})(\d{2})(\d{2})(\d{2})/,
+      "$1 $2 $3 $4"
+    );
+    telefonoNewUser.value = numeroFormateado;
+
     errorPhone.innerHTML = "";
     errorPhone.style.display = "none";
+    telefonoNewUser.style.border = "1px solid #1f7a1f";
     isPhoneValid = true;
   }
 });

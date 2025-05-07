@@ -146,9 +146,6 @@
                         <i class="fas fa-camera input-icon"></i>
                         <input type="file" id="registro_foto_perfil" name="registro_foto_perfil"
                             class="form-input file-input" accept="image/*">
-                        <div class="file-preview-container">
-                            <img id="preview-image" src="/imgs/default-avatar.png" alt="Vista previa">
-                        </div>
                     </div>
                     <span class="register-errorMessage" id="register-errorUserImage"></span>
                 </div>

@@ -1,4 +1,87 @@
-/* Encabezado de calculadora de calorías - Diseño coherente con el resto del sitio */
+/* 
+=======================================
+  CALCULADORA DE CALORÍAS - PURO FITNESS
+  Estilos y animaciones completos
+=======================================
+*/
+
+/* ---------- VARIABLES Y ANIMACIONES ---------- */
+:root {
+  --puro-red: #aa0303;
+  --puro-black: #121212;
+  --puro-white: #ffffff;
+  --puro-gray: #666666;
+  --puro-light-gray: #f4f4f4;
+}
+
+/* Animaciones clave */
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes floatUpDown {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes growLine {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes pulseBg {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* ---------- ENCABEZADO DE CALCULADORA ---------- */
 .calorie-header {
   background: linear-gradient(135deg, var(--puro-black) 0%, #333 100%);
   color: var(--puro-white);
@@ -30,6 +113,7 @@
 }
 
 .calorie-title {
+  color: var(--puro-white) !important;
   font-size: 2.8rem;
   font-weight: 800;
   text-transform: uppercase;
@@ -37,17 +121,26 @@
   position: relative;
   display: inline-block;
   letter-spacing: 1px;
+  /* Quitar el fondo degradado animado */
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  -webkit-text-fill-color: initial;
+  animation: none;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* opcional para mejor visibilidad */
 }
 
 .calorie-title::after {
   content: "";
   position: absolute;
   bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
+  left: 0;
+  width: 100%;
   height: 3px;
-  background-color: var(--puro-red);
+  background: var(--puro-red);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: growLine 2s forwards ease-out;
 }
 
 .calorie-subtitle {
@@ -57,39 +150,68 @@
   margin: 1.5rem auto 0;
   opacity: 0.9;
   line-height: 1.5;
+  animation: fadeIn 1s ease-out;
 }
 
-/* Sección de calculadora */
+/* ---------- SECCIÓN DE CALCULADORA ---------- */
 .calorie-calculator-section {
   padding: 3rem 0;
   background-color: var(--puro-light-gray);
 }
 
-/* Tarjeta de calculadora */
-.calorie-calculator-card {
+/* ---------- TARJETAS BASE ---------- */
+.calorie-calculator-card,
+.calorie-results-card {
   background-color: var(--puro-white);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.4s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
-.calorie-calculator-card:hover {
+.calorie-calculator-card::before,
+.calorie-results-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--puro-red), #ff5555, var(--puro-red));
+  background-size: 200% 100%;
+  animation: gradientFlow 3s infinite linear;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.calorie-calculator-card:hover::before,
+.calorie-results-card:hover::before {
+  opacity: 1;
+}
+
+.calorie-calculator-card:hover,
+.calorie-results-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
-.calorie-calculator-content {
+.calorie-calculator-content,
+.calorie-results-content {
   padding: 2rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.calorie-calculator-title {
+/* ---------- TÍTULOS DE SECCIÓN ---------- */
+.calorie-calculator-title,
+.calorie-results-title {
   font-size: 1.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
@@ -97,7 +219,8 @@
   position: relative;
 }
 
-.calorie-calculator-title::after {
+.calorie-calculator-title::after,
+.calorie-results-title::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -114,17 +237,46 @@
   line-height: 1.5;
 }
 
-/* Formulario de calculadora */
+/* ---------- FORMULARIO DE CALCULADORA ---------- */
 .calorie-calculator-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.calorie-calculator-form::-webkit-scrollbar {
+  width: 5px;
+}
+
+.calorie-calculator-form::-webkit-scrollbar-thumb {
+  background-color: var(--puro-red);
+  border-radius: 10px;
 }
 
 .calorie-form-group {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  position: relative;
+}
+
+.calorie-form-group::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  width: 5px;
+  height: 0;
+  background: var(--puro-red);
+  transition: height 0.3s ease, top 0.3s ease;
+}
+
+.calorie-form-group:focus-within::before {
+  height: 100%;
+  top: 0;
 }
 
 .calorie-form-label {
@@ -161,6 +313,7 @@
   font-weight: 600;
 }
 
+/* ---------- OPCIONES DE RADIO ---------- */
 .calorie-radio-group {
   display: flex;
   gap: 2rem;
@@ -182,7 +335,7 @@
   cursor: pointer;
 }
 
-/* Opciones de objetivo */
+/* ---------- OPCIONES DE OBJETIVO ---------- */
 .calorie-goal-options {
   display: flex;
   flex-direction: column;
@@ -208,8 +361,33 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.calorie-goal-label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: scale(0);
+  opacity: 0;
+  transition: transform 0.5s, opacity 0.5s;
+}
+
+.calorie-goal-label:active::after {
+  transform: scale(3);
+  opacity: 0;
+  transition: 0s;
 }
 
 .calorie-goal-label i {
@@ -243,11 +421,16 @@
   color: var(--puro-red);
 }
 
+.calorie-goal-option input[type="radio"]:checked + .calorie-goal-label i {
+  animation: pulse 1s infinite;
+}
+
 .calorie-goal-label:hover {
   border-color: var(--puro-red);
   transform: translateY(-3px);
 }
 
+/* ---------- BOTONES DE ACCIÓN ---------- */
 .calorie-form-actions {
   display: flex;
   gap: 1rem;
@@ -265,8 +448,32 @@
   font-size: 0.9rem;
   cursor: pointer;
   flex: 3;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.calorie-btn-calculate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.calorie-btn-calculate:hover::before {
+  left: 100%;
 }
 
 .calorie-btn-calculate:hover {
@@ -294,49 +501,7 @@
   color: white;
 }
 
-/* Tarjeta de resultados */
-.calorie-results-card {
-  background-color: var(--puro-white);
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.calorie-results-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-}
-
-.calorie-results-content {
-  padding: 2rem;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.calorie-results-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-  color: var(--puro-black);
-  position: relative;
-}
-
-.calorie-results-title::after {
-  content: "";
-  position: absolute;
-  bottom: -6px;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: var(--puro-red);
-}
-
-/* Estado inicial (antes de calcular) */
+/* ---------- ESTADO INICIAL (ANTES DE CALCULAR) ---------- */
 .calorie-initial-state {
   display: flex;
   flex-direction: column;
@@ -352,12 +517,32 @@
   margin-bottom: 1.5rem;
 }
 
+.calorie-icon-container i {
+  animation: floatUpDown 3s ease-in-out infinite;
+}
+
 .calorie-initial-text {
   color: var(--puro-gray);
   font-size: 1.1rem;
 }
 
-/* Resultado de calorías */
+/* ---------- RESULTADOS DE CALORÍAS ---------- */
+#calorieResultsContainer {
+  animation: fadeIn 0.8s ease-out;
+  /* Eliminamos max-height y overflow-y para que no tenga scroll */
+  display: flex;
+  flex-direction: column;
+}
+
+#calorieResultsContainer::-webkit-scrollbar {
+  width: 5px;
+}
+
+#calorieResultsContainer::-webkit-scrollbar-thumb {
+  background-color: var(--puro-red);
+  border-radius: 10px;
+}
+
 .calorie-result-summary {
   text-align: center;
   margin-bottom: 2rem;
@@ -365,6 +550,24 @@
   background-color: #f9f9f9;
   border-radius: 8px;
   border-left: 4px solid var(--puro-red);
+  position: relative;
+  overflow: hidden;
+}
+
+.calorie-result-summary::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  opacity: 0;
+  animation: pulseBg 3s infinite;
 }
 
 .calorie-daily-value {
@@ -373,6 +576,13 @@
   color: var(--puro-red);
   line-height: 1;
   margin-bottom: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.calorie-daily-value span {
+  display: inline-block;
 }
 
 .calorie-daily-label {
@@ -383,7 +593,7 @@
   letter-spacing: 1px;
 }
 
-/* Distribución de macronutrientes */
+/* ---------- DISTRIBUCIÓN DE MACRONUTRIENTES ---------- */
 .calorie-macros-container {
   margin-bottom: 2rem;
   padding: 1.5rem;
@@ -429,6 +639,7 @@
   justify-content: center;
   gap: 1.5rem;
   margin-bottom: 1rem;
+  flex-wrap: wrap;
 }
 
 .calorie-legend-item {
@@ -494,6 +705,16 @@
   font-size: 1.1rem;
 }
 
+.calorie-macro-icon i,
+.calorie-info-macro-header i {
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.calorie-macro-item:hover .calorie-macro-icon i,
+.calorie-info-macro-item:hover .calorie-info-macro-header i {
+  transform: rotate(15deg) scale(1.2);
+}
+
 .protein-icon {
   background-color: #d91a36;
 }
@@ -522,13 +743,13 @@
   color: var(--puro-gray);
 }
 
-/* Productos recomendados */
+/* ---------- PRODUCTOS RECOMENDADOS ---------- */
 .calorie-products-suggestion {
-  margin-bottom: 2rem;
+  margin-top: 2rem;
   padding: 1.5rem;
-  background-color: #fff;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
 }
 
 .calorie-products-title {
@@ -553,25 +774,47 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 1rem;
+  padding: 1rem;
+  overflow-x: hidden; /* Cambiamos a hidden el overflow horizontal */
+  overflow-y: auto; /* Mantenemos el scroll vertical */
+  max-height: 350px; /* Altura máxima para el contenedor de productos */
+  scroll-behavior: smooth;
+}
+
+.calorie-products-container::-webkit-scrollbar {
+  width: 5px; /* Ancho del scrollbar vertical */
+  height: 5px; /* Altura del scrollbar horizontal */
+  display: block; /* Hacemos visible el scrollbar */
+}
+
+.calorie-products-container::-webkit-scrollbar-thumb {
+  background-color: var(--puro-red);
+  border-radius: 10px;
 }
 
 .calorie-product-card {
-  background-color: #f9f9f9;
-  border-radius: 6px;
-  overflow: hidden;
-  transition: all 0.3s ease;
+  min-width: unset; /* Eliminamos el ancho mínimo */
+  max-width: unset; /* Eliminamos el ancho máximo */
+  width: 100%; /* Ocupan todo el ancho de su celda en el grid */
+  flex: unset; /* Eliminamos la configuración flex */
 }
 
 .calorie-product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .calorie-product-image {
   width: 100%;
   height: 140px;
   object-fit: contain;
-  border-bottom: 2px solid var(--puro-red);
+  padding: 1rem;
+  background-color: #fff;
+  transition: transform 0.5s ease;
+}
+
+.calorie-product-card:hover .calorie-product-image {
+  transform: scale(1.08);
 }
 
 .calorie-product-content {
@@ -612,7 +855,31 @@
   transform: translateY(-2px);
 }
 
-/* Sección informativa */
+/* Flechas de navegación para el carrusel */
+.calorie-products-controls {
+  display: none; /* Ocultamos las flechas de navegación */
+}
+
+.calorie-product-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--puro-red);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(170, 3, 3, 0.2);
+}
+
+.calorie-product-arrow:hover {
+  transform: scale(1.1);
+  background: #df0000;
+}
+
+/* ---------- SECCIÓN INFORMATIVA ---------- */
 .calorie-info-card {
   background-color: var(--puro-white);
   border-radius: 8px;
@@ -754,65 +1021,4 @@
   font-size: 0.9rem;
   color: var(--puro-gray);
   line-height: 1.5;
-}
-
-/* Estilos responsivos */
-@media (max-width: 991px) {
-  .calorie-goal-options {
-    flex-direction: row;
-  }
-
-  .calorie-goal-option {
-    flex: 1;
-  }
-
-  .calorie-chart-legend {
-    flex-wrap: wrap;
-  }
-}
-
-@media (max-width: 767px) {
-  .calorie-title {
-    font-size: 2rem;
-  }
-
-  .calorie-subtitle {
-    font-size: 1rem;
-  }
-
-  .calorie-form-actions {
-    flex-direction: column;
-  }
-
-  .calorie-btn-calculate,
-  .calorie-btn-reset {
-    width: 100%;
-  }
-
-  .calorie-goal-options {
-    flex-direction: column;
-  }
-
-  .calorie-info-macros {
-    grid-template-columns: 1fr;
-  }
-
-  .calorie-products-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 575px) {
-  .calorie-radio-group {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .calorie-products-container {
-    grid-template-columns: 1fr;
-  }
-
-  .calorie-daily-value {
-    font-size: 2.5rem;
-  }
 }

@@ -34,14 +34,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar resultado
     resultContainer.style.display = "block";
     initialState.style.display = "none";
-    resultIMC.innerHTML = formattedIMC;
-    imcInterpretation.style.display = "none";
+
+    // Asegurar que el valor del IMC se actualice correctamente
+    resultIMC.textContent = formattedIMC;
+
+    // Mostrar la interpretación (en lugar de ocultarla)
+    imcInterpretation.style.display = "block";
 
     // Generar interpretación del IMC
     generateInterpretation(formattedIMC);
 
     // Posicionar el marcador en la escala
     positionImcMarker(formattedIMC);
+
+    // Mostrar productos recomendados basados en IMC
+    showRecommendedProducts(formattedIMC);
   });
 
   // Agregar listener para resetear el formulario
@@ -168,6 +175,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar la interpretación
     interpretation.textContent = message;
     interpretation.style.display = "block";
+  }
+
+  /**
+   * Muestra productos recomendados basados en el IMC
+   * @param {number} imcValue - Valor del IMC calculado
+   */
+  function showRecommendedProducts(imcValue) {
+    const productsContainer = document.getElementById("imcProducts");
+
+    // Limpiar productos anteriores
+    productsContainer.innerHTML = "";
+
+    // Aquí se implementaría la lógica para mostrar productos recomendados
+    // basados en el IMC calculado
+    // Por ahora, dejamos esta función como un marcador de posición
   }
 
   /**
