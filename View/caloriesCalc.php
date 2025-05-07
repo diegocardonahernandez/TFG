@@ -20,7 +20,8 @@
                         <p class="calorie-calculator-description">Completa los campos para calcular tus necesidades
                             calóricas y recomendaciones de macronutrientes.</p>
 
-                        <form id="calorieCalculatorForm" class="calorie-calculator-form">
+                        <form id="calorieCalculatorForm" class="calorie-calculator-form" method="POST"
+                            action="../Controller//caloriesController.php">
                             <div class="calorie-form-group">
                                 <label for="cal-height" class="calorie-form-label">Altura (cm)</label>
                                 <div class="calorie-input-wrapper">

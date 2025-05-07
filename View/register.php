@@ -20,132 +20,152 @@
             </div>
 
             <!-- Formulario -->
-            <form class="register-form" action="process_register.php" method="post" enctype="multipart/form-data">
+            <form class="register-form" action="#" method="post" enctype="multipart/form-data" id="register-form">
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
+                        <label for="registro_nombre">Nombre</label>
                         <div class="input-wrapper">
                             <i class="fas fa-user input-icon"></i>
-                            <input type="text" id="nombre" name="nombre" class="form-input" required>
+                            <input type="text" id="registro_nombre" name="registro_nombre" class="form-input" required>
                         </div>
+                        <span class="register-errorMessage" id="register-errorName"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="apellido">Apellido</label>
+                        <label for="registro_apellido">Apellido</label>
                         <div class="input-wrapper">
                             <i class="fas fa-user input-icon"></i>
-                            <input type="text" id="apellido" name="apellido" class="form-input" required>
+                            <input type="text" id="registro_apellido" name="registro_apellido" class="form-input"
+                                required>
                         </div>
+                        <span class="register-errorMessage" id="register-errorLastName"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="correo">Correo Electrónico</label>
+                    <label for="registro_correo">Correo Electrónico</label>
                     <div class="input-wrapper">
                         <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="correo" name="correo" class="form-input" required>
+                        <input type="email" id="registro_correo" name="registro_correo" class="form-input" required>
+                    </div>
+                    <span class="register-errorMessage" id="register-errorEmail"></span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="registro_contrasena">Contraseña</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="registro_contrasena" name="registro_contrasena"
+                                class="form-input" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                        <span class="register-errorMessage" id="register-errorPassword"></span>
+                        <div class="password-strength-container">
+                            <span id="passwordStrengthText"></span>
+                            <div class="password-strength-bar">
+                                <div id="passwordStrength" class="strength-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registro_confirm_password">Confirmar Contraseña</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="registro_confirm_password" name="registro_confirm_password"
+                                class="form-input" required>
+                            <i class="fas fa-eye toggle-password"></i>
+                        </div>
+                        <span class="register-errorMessage" id="register-errorConfirm"></span>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="contrasena">Contraseña</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-lock input-icon"></i>
-                            <input type="password" id="contrasena" name="contrasena" class="form-input" required>
-                            <i class="fas fa-eye toggle-password"></i>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="confirm_password">Confirmar Contraseña</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-lock input-icon"></i>
-                            <input type="password" id="confirm_password" name="confirm_password" class="form-input"
-                                required>
-                            <i class="fas fa-eye toggle-password"></i>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                        <label for="registro_fecha_nacimiento">Fecha de Nacimiento</label>
                         <div class="input-wrapper">
                             <i class="fas fa-calendar input-icon"></i>
-                            <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" class="form-input"
-                                required>
+                            <input type="date" id="registro_fecha_nacimiento" name="registro_fecha_nacimiento"
+                                class="form-input" required>
                         </div>
+                        <span class="register-errorMessage" id="register-errorBirthday"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="genero">Género</label>
+                        <label for="registro_genero">Género</label>
                         <div class="input-wrapper select-wrapper">
                             <i class="fas fa-venus-mars input-icon"></i>
-                            <select id="genero" name="genero" class="form-input" required>
+                            <select id="registro_genero" name="registro_genero" class="form-input" required>
                                 <option value="" disabled selected>Selecciona una opción</option>
                                 <option value="Masculino">Masculino</option>
                                 <option value="Femenino">Femenino</option>
                                 <option value="Otro">Otro</option>
                             </select>
                         </div>
+                        <span class="register-errorMessage" id="register-errorGender"></span>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="telefono">Teléfono (opcional)</label>
+                        <label for="registro_telefono">Teléfono (opcional)</label>
                         <div class="input-wrapper">
-                            <i class="fas fa-phone input-icon"></i>
-                            <input type="tel" id="telefono" name="telefono" class="form-input">
+                            <i class="fas fa-phone input-icon">+34</i>
+                            <input type="tel" id="registro_telefono" name="registro_telefono" class="form-input">
                         </div>
+                        <span class="register-errorMessage" id="register-errorPhone"></span>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="peso">Peso (kg) (opcional)</label>
+                        <label for="registro_peso">Peso (kg) (opcional)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-weight input-icon"></i>
-                            <input type="number" id="peso" name="peso" step="0.01" min="30" max="300"
+                            <input type="number" id="registro_peso" name="registro_peso" step="0.01" min="30" max="300"
                                 class="form-input">
                         </div>
+                        <span class="register-errorMessage" id="register-errorWeight"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="altura">Altura (m) (opcional)</label>
+                        <label for="registro_altura">Altura (m) (opcional)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-ruler-vertical input-icon"></i>
-                            <input type="number" id="altura" name="altura" step="0.01" min="1" max="2.5"
-                                class="form-input">
+                            <input type="number" id="registro_altura" name="registro_altura" step="0.01" min="1"
+                                max="2.5" class="form-input">
                         </div>
+                        <span class="register-errorMessage" id="register-errorHeight"></span>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="foto_perfil">Foto de Perfil</label>
+                    <label for="registro_foto_perfil">Foto de Perfil</label>
                     <div class="input-wrapper file-wrapper">
                         <i class="fas fa-camera input-icon"></i>
-                        <input type="file" id="foto_perfil" name="foto_perfil" class="form-input file-input"
-                            accept="image/*">
+                        <input type="file" id="registro_foto_perfil" name="registro_foto_perfil"
+                            class="form-input file-input" accept="image/*">
                         <div class="file-preview-container">
                             <img id="preview-image" src="/imgs/default-avatar.png" alt="Vista previa">
                         </div>
                     </div>
+                    <span class="register-errorMessage" id="register-errorUserImage"></span>
                 </div>
 
                 <div class="form-options">
                     <div class="terms-agreement">
-                        <input type="checkbox" id="terms" name="terms" required>
-                        <label for="terms">Acepto los <a href="terms.php" class="terms-link">Términos y Condiciones</a>
+                        <input type="checkbox" id="registro_terms" name="registro_terms" required>
+                        <label for="registro_terms">Acepto los <a href="terms.php" class="terms-link">Términos y
+                                Condiciones</a>
                             y la <a href="privacy.php" class="terms-link">Política de Privacidad</a></label>
                     </div>
                 </div>
 
                 <div class="form-options">
                     <div class="newsletter-subscription">
-                        <input type="checkbox" id="newsletter" name="newsletter">
-                        <label for="newsletter">Quiero recibir ofertas y novedades por email</label>
+                        <input type="checkbox" id="registro_newsletter" name="registro_newsletter">
+                        <label for="registro_newsletter">Quiero recibir ofertas y novedades por email</label>
                     </div>
                 </div>
 

@@ -15,26 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Función para calcular IMC
   function calculateIMC(weight, height) {
-    // Convertir altura de cm a metros
     const heightInMeters = height / 100;
-    // Calcular IMC: peso(kg) / altura²(m)
-    return weight / (heightInMeters * heightInMeters);
+    return weight / Math.pow(heightInMeters, 2);
   }
 
-  // Función principal que se ejecuta al enviar el formulario
+  // Función que se ejecuta al enviar el formulario
   formIMC.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const height = +heightInput.value;
     const weight = +weightInput.value;
 
-    // Validar datos
-    if (!height || !weight || height < 100 || weight < 30) {
-      alert("Por favor, ingresa datos válidos de altura y peso.");
-      return;
-    }
-
-    // Calcular IMC
     const imc = calculateIMC(weight, height);
 
     // Formatear IMC a un decimal
@@ -43,7 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar resultado
     resultContainer.style.display = "block";
     initialState.style.display = "none";
-    resultIMC.textContent = formattedIMC;
+    resultIMC.innerHTML = formattedIMC;
+    imcInterpretation.style.display = "none";
 
     // Generar interpretación del IMC
     generateInterpretation(formattedIMC);

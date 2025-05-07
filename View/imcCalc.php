@@ -2,7 +2,7 @@
 <section class="imc-header">
     <div class="container">
         <div class="imc-title-container">
-            <h1 class="imc-title">Calculadora de IMC</h1>
+            <h1 class="imc-title"><span>Calculadora de IMC</span></h1>
             <p class="imc-subtitle">Calcula tu Índice de Masa Corporal y descubre tu estado físico actual</p>
         </div>
     </div>
@@ -123,6 +123,29 @@
                                     <!-- Los productos recomendados se insertarán dinámicamente -->
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- NUEVA SECCIÓN: Banner de consulta profesional -->
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="imc-consultation-banner">
+                    <div class="imc-consultation-content">
+                        <div class="imc-consultation-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div class="imc-consultation-text">
+                            <h3>¿Necesitas asesoramiento profesional?</h3>
+                            <p>Nuestros especialistas pueden ofrecerte un plan personalizado según tus resultados de IMC
+                            </p>
+                        </div>
+                        <div class="imc-consultation-action">
+                            <a href="#" class="imc-consultation-btn">
+                                <i class="fas fa-calendar-check"></i> Agendar consulta
+                            </a>
                         </div>
                     </div>
                 </div>
