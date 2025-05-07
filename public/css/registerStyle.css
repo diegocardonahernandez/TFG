@@ -176,9 +176,18 @@
   align-items: center;
 }
 
+.register-errorMessage {
+  color: var(--puro-red);
+  font-size: 0.76rem;
+  margin-top: 4px;
+  display: none;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
 .input-icon {
   position: absolute;
-  left: 1rem;
+  left: 0.5rem;
   color: var(--puro-gray);
   z-index: 1;
 }
@@ -205,6 +214,26 @@
   cursor: pointer;
 }
 
+.password-strength-container {
+  margin-top: 8px;
+}
+
+.password-strength-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  width: 0%;
+  background-color: #e63946;
+  transition: width 0.3s ease, background-color 0.3s ease;
+  border-radius: 4px;
+}
+
 /* Estilos para el select */
 .select-wrapper {
   position: relative;
@@ -226,23 +255,6 @@
 
 .file-input {
   margin-bottom: 1rem;
-}
-
-.file-preview-container {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  overflow: hidden;
-  margin: 0 auto;
-  border: 2px solid #ddd;
-  position: relative;
-}
-
-.file-preview-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: all 0.3s ease;
 }
 
 .form-options {

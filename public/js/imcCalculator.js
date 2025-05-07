@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const weightInput = document.getElementById("imc-weight");
   const resultContainer = document.getElementById("imcResultsContainer");
   const initialState = document.getElementById("imcInitialState");
-  const resultIMC = document.getElementById("imcValue");
+  const resultIMC = document.querySelector(".imc-result-value");
   const imcInterpretation = document.getElementById("imcInterpretation");
   const categoryElement = document.getElementById("imcCategory");
 
@@ -15,26 +15,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Función para calcular IMC
   function calculateIMC(weight, height) {
-    // Convertir altura de cm a metros
     const heightInMeters = height / 100;
-    // Calcular IMC: peso(kg) / altura²(m)
-    return weight / (heightInMeters * heightInMeters);
+    return weight / Math.pow(heightInMeters, 2);
   }
 
-  // Función principal que se ejecuta al enviar el formulario
+  // Función que se ejecuta al enviar el formulario
   formIMC.addEventListener("submit", function (event) {
     event.preventDefault();
 
     const height = +heightInput.value;
     const weight = +weightInput.value;
 
-    // Validar datos
-    if (!height || !weight || height < 100 || weight < 30) {
-      alert("Por favor, ingresa datos válidos de altura y peso.");
-      return;
-    }
-
-    // Calcular IMC
     const imc = calculateIMC(weight, height);
 
     // Formatear IMC a un decimal
@@ -43,13 +34,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar resultado
     resultContainer.style.display = "block";
     initialState.style.display = "none";
-    resultIMC.textContent = formattedIMC;
+
+    // Asegurar que el valor del IMC se actualice correctamente
+    resultIMC.innerHTML = formattedIMC;
+
+    // Mostrar la interpretación (en lugar de ocultarla)
+    imcInterpretation.style.display = "block";
 
     // Generar interpretación del IMC
     generateInterpretation(formattedIMC);
 
     // Posicionar el marcador en la escala
     positionImcMarker(formattedIMC);
+
+    // Mostrar productos recomendados basados en IMC
+    showRecommendedProducts(formattedIMC);
   });
 
   // Agregar listener para resetear el formulario
@@ -176,6 +175,21 @@ document.addEventListener("DOMContentLoaded", function () {
     // Mostrar la interpretación
     interpretation.textContent = message;
     interpretation.style.display = "block";
+  }
+
+  /**
+   * Muestra productos recomendados basados en el IMC
+   * @param {number} imcValue - Valor del IMC calculado
+   */
+  function showRecommendedProducts(imcValue) {
+    const productsContainer = document.getElementById("imcProducts");
+
+    // Limpiar productos anteriores
+    productsContainer.innerHTML = "";
+
+    // Aquí se implementaría la lógica para mostrar productos recomendados
+    // basados en el IMC calculado
+    // Por ahora, dejamos esta función como un marcador de posición
   }
 
   /**

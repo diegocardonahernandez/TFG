@@ -21,7 +21,8 @@
     <div class="container">
         <div class="section-title-container">
             <h2 class="section-title">Productos Más Visitados</h2>
-            <p class="section-subtitle">Descubre los suplementos favoritos de nuestra comunidad para potenciar tu rendimiento</p>
+            <p class="section-subtitle">Descubre los suplementos favoritos de nuestra comunidad para potenciar tu
+                rendimiento</p>
         </div>
 
         <!-- Utilizando Bootstrap para la adaptación responsiva -->
@@ -36,7 +37,8 @@
                         <?php endif; ?>
 
                         <div class="product-image-container">
-                            <img src="<?= $popularProduct->getImagen() ?>" class="product-image" alt="<?= $popularProduct->getNombre() ?>">
+                            <img src="<?= $popularProduct->getImagen() ?>" class="product-image"
+                                alt="<?= $popularProduct->getNombre() ?>">
                         </div>
 
                         <div class="product-content">
@@ -50,7 +52,8 @@
                                 </li>
                                 <li class="product-meta-item">
                                     <span class="meta-label">Disponibilidad</span>
-                                    <span class="meta-value"><?= $popularProduct->getStock() > 0 ? 'En stock' : 'Agotado' ?></span>
+                                    <span
+                                        class="meta-value"><?= $popularProduct->getStock() > 0 ? 'En stock' : 'Agotado' ?></span>
                                 </li>
                                 <li class="product-meta-item">
                                     <span class="meta-label">Categoría</span>
@@ -64,7 +67,8 @@
 
                             <div class="product-actions">
                                 <a href="#" class="btn-product btn-add-cart">Añadir al carrito</a>
-                                <a href="/product?id=<?= $popularProduct->getIdProducto() ?>" class="btn-product btn-details">Detalles</a>
+                                <a href="/product?id=<?= $popularProduct->getIdProducto() ?>"
+                                    class="btn-product btn-details">Detalles</a>
                             </div>
                         </div>
                     </div>
@@ -73,7 +77,7 @@
         </div>
 
         <div class="view-more-container">
-            <a href="/productos" class="btn-view-more">Ver todos los productos</a>
+            <a href="#" class="btn-view-more">Ver todos los productos</a>
         </div>
     </div>
 </section>

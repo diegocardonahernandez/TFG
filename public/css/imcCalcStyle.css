@@ -1,6 +1,195 @@
-/* Encabezado de calculadora IMC - Diseño formal y atractivo */
+/* ===== 1. VARIABLES Y CONFIGURACIÓN GLOBAL ===== */
+:root {
+  --puro-red: #aa0303;
+  --puro-dark-red: #8a0202;
+  --puro-light-red: #df0000;
+  --puro-black: #161616;
+  --puro-white: #ffffff;
+  --puro-gray: #666666;
+  --puro-light-gray: #f5f5f5;
+  --puro-border-gray: #ddd;
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 15px 30px rgba(0, 0, 0, 0.15);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 20px;
+  --radius-full: 50%;
+  --transition-fast: all 0.3s ease;
+  --transition-medium: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  --transition-slow: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Colores de categorías IMC */
+  --underweight-bg: #90caf9;
+  --underweight-text: #0d47a1;
+  --normal-bg: #a5d6a7;
+  --normal-text: #1b5e20;
+  --overweight-bg: #ffe082;
+  --overweight-text: #ff6f00;
+  --obese-bg: #ef9a9a;
+  --obese-text: #b71c1c;
+  --disclaimer-bg: #fff8e1;
+  --disclaimer-text: #5d4037;
+  --disclaimer-icon: #f57c00;
+}
+
+/* ===== 2. ANIMACIONES ===== */
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes titleLineAnimation {
+  0%,
+  100% {
+    transform: scaleX(0.3);
+    left: 0;
+  }
+  50% {
+    transform: scaleX(1);
+    left: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes iconPulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes buttonShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes resultAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  60% {
+    transform: scale(1.1) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes resultLineAnimation {
+  0%,
+  100% {
+    width: 30%;
+  }
+  50% {
+    width: 70%;
+  }
+}
+
+@keyframes scaleShimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes markerPulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    transform: translateX(-50%) scale(1.2);
+  }
+}
+
+@keyframes infoPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: rotate(45deg) scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: rotate(45deg) scale(1.2);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* ===== 3. ESTRUCTURA PRINCIPAL Y ENCABEZADO ===== */
 .imc-header {
-  background: linear-gradient(135deg, var(--puro-black) 0%, #333 100%);
+  background: linear-gradient(
+    135deg,
+    var(--puro-black) 0%,
+    #333 50%,
+    #222 75%,
+    var(--puro-black) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite, fadeInUp 0.6s ease both;
   color: var(--puro-white);
   padding: 3rem 0;
   position: relative;
@@ -37,17 +226,29 @@
   position: relative;
   display: inline-block;
   letter-spacing: 1px;
+  overflow: hidden;
 }
 
-.imc-title::after {
+.imc-title::before {
   content: "";
   position: absolute;
+  left: 0;
   bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
+  width: 100%;
   height: 3px;
-  background-color: var(--puro-red);
+  background: var(--puro-red);
+  animation: titleLineAnimation 3s ease-in-out infinite;
+}
+
+.imc-title span {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  border-right: 3px solid var(--puro-red);
+  width: 0;
+  white-space: nowrap;
+  animation: typing 2s steps(30, end) forwards, blink 1s step-end infinite;
+  animation-delay: 1s;
 }
 
 .imc-subtitle {
@@ -59,27 +260,29 @@
   line-height: 1.5;
 }
 
-/* Sección de calculadora */
 .imc-calculator-section {
   padding: 3rem 0;
   background-color: var(--puro-light-gray);
 }
 
-/* Tarjeta de calculadora */
+/* ===== 4. COMPONENTES DE LA CALCULADORA ===== */
+/* 4.1 Tarjeta calculadora */
 .imc-calculator-card {
   background-color: var(--puro-white);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition-medium);
+  animation: fadeInUp 0.8s ease both;
+  animation-delay: 0.2s;
 }
 
 .imc-calculator-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 .imc-calculator-content {
@@ -114,7 +317,7 @@
   line-height: 1.5;
 }
 
-/* Formulario de calculadora */
+/* 4.2 Formulario */
 .imc-calculator-form {
   display: flex;
   flex-direction: column;
@@ -140,15 +343,16 @@
 .imc-form-input {
   width: 100%;
   padding: 0.8rem 3rem 0.8rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 4px;
+  border: 1px solid var(--puro-border-gray);
+  border-radius: var(--radius-sm);
   font-size: 1rem;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .imc-form-input:focus {
   border-color: var(--puro-red);
-  box-shadow: 0 0 0 2px rgba(170, 3, 3, 0.1);
+  box-shadow: 0 5px 15px rgba(170, 3, 3, 0.15);
+  transform: translateY(-2px);
   outline: none;
 }
 
@@ -182,6 +386,7 @@
   cursor: pointer;
 }
 
+/* 4.3 Botones y acciones */
 .imc-form-actions {
   display: flex;
   gap: 1rem;
@@ -193,56 +398,101 @@
   color: var(--puro-white);
   border: none;
   padding: 0.8rem 1.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.9rem;
   cursor: pointer;
   flex: 3;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.imc-btn-calculate::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: all 0.6s ease;
+  z-index: -1;
 }
 
 .imc-btn-calculate:hover {
-  background-color: #df0000;
+  background-color: var(--puro-light-red);
   transform: translateY(-2px);
   box-shadow: 0 4px 8px rgba(170, 3, 3, 0.2);
+}
+
+.imc-btn-calculate:hover::before {
+  left: 100%;
+  animation: shimmer 1.5s infinite;
 }
 
 .imc-btn-reset {
   background-color: transparent;
   color: var(--puro-black);
-  border: 1px solid #ddd;
+  border: 1px solid var(--puro-border-gray);
   padding: 0.8rem 1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-weight: 600;
   text-transform: uppercase;
   font-size: 0.9rem;
   cursor: pointer;
   flex: 1;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .imc-btn-reset:hover {
-  background-color: #000000;
-  color: white;
+  background-color: var(--puro-black);
+  color: var(--puro-white);
 }
 
-/* Tarjeta de resultados */
+/* 4.4 Validación de formulario */
+.imc-form-input.error {
+  border-color: var(--puro-red);
+  box-shadow: 0 0 0 2px rgba(170, 3, 3, 0.1);
+}
+
+.imc-error-message {
+  color: var(--puro-red);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.imc-form-input.error + .imc-error-message {
+  display: block;
+}
+
+/* ===== 5. COMPONENTES DE RESULTADOS ===== */
+/* 5.1 Tarjeta de resultados */
 .imc-results-card {
   background-color: var(--puro-white);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: var(--transition-medium);
+  animation: fadeInUp 0.8s ease both;
+  animation-delay: 0.4s;
 }
 
 .imc-results-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-lg);
 }
 
 .imc-results-content {
@@ -270,7 +520,7 @@
   background-color: var(--puro-red);
 }
 
-/* Estado inicial (antes de calcular) */
+/* 5.2 Estado inicial */
 .imc-initial-state {
   display: flex;
   flex-direction: column;
@@ -291,12 +541,13 @@
   font-size: 1.1rem;
 }
 
-/* Contenedor de resultados */
+/* 5.3 Visualización de resultados */
 .imc-results-container {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  animation: resultAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .imc-result-indicator {
@@ -312,6 +563,20 @@
   font-weight: 800;
   color: var(--puro-red);
   line-height: 1;
+  position: relative;
+  display: inline-block;
+}
+
+.imc-result-value::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 3px;
+  background: var(--puro-red);
+  animation: resultLineAnimation 2s ease-in-out infinite;
 }
 
 .imc-result-category {
@@ -319,36 +584,36 @@
   font-weight: 600;
   margin-top: 0.5rem;
   padding: 0.5rem 1.5rem;
-  border-radius: 20px;
+  border-radius: var(--radius-lg);
   background-color: #f0f0f0;
   display: inline-block;
 }
 
 /* Colores para cada categoría de IMC */
 .imc-category-underweight {
-  background-color: #90caf9;
-  color: #0d47a1;
+  background-color: var(--underweight-bg);
+  color: var(--underweight-text);
 }
 
 .imc-category-normal {
-  background-color: #a5d6a7;
-  color: #1b5e20;
+  background-color: var(--normal-bg);
+  color: var(--normal-text);
 }
 
 .imc-category-overweight {
-  background-color: #ffe082;
-  color: #ff6f00;
+  background-color: var(--overweight-bg);
+  color: var(--overweight-text);
 }
 
 .imc-category-obese {
-  background-color: #ef9a9a;
-  color: #b71c1c;
+  background-color: var(--obese-bg);
+  color: var(--obese-text);
 }
 
 .imc-result-interpretation {
   background-color: #f9f9f9;
   padding: 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   border-left: 4px solid var(--puro-red);
 }
 
@@ -358,7 +623,7 @@
   color: var(--puro-gray);
 }
 
-/* Escala visual de IMC */
+/* 5.4 Escala visual de IMC */
 .imc-scale-container {
   position: relative;
   padding: 2rem 0;
@@ -370,6 +635,23 @@
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.imc-scale::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  animation: scaleShimmer 3s infinite;
 }
 
 .imc-scale-segment {
@@ -382,6 +664,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: var(--transition-fast);
 }
 
 .imc-scale-segment span {
@@ -390,20 +673,41 @@
   white-space: nowrap;
 }
 
+.imc-scale-segment:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--puro-black);
+  color: var(--puro-white);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.imc-scale-segment.active {
+  outline: 2px solid var(--puro-black);
+  outline-offset: -2px;
+  z-index: 2;
+}
+
 .imc-segment-underweight {
-  background-color: #90caf9;
+  background-color: var(--underweight-bg);
 }
 
 .imc-segment-normal {
-  background-color: #a5d6a7;
+  background-color: var(--normal-bg);
 }
 
 .imc-segment-overweight {
-  background-color: #ffe082;
+  background-color: var(--overweight-bg);
 }
 
 .imc-segment-obese {
-  background-color: #ef9a9a;
+  background-color: var(--obese-bg);
 }
 
 .imc-scale-marker {
@@ -415,10 +719,11 @@
   left: 0;
   border-radius: 6px;
   transform: translateX(-50%);
-  transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  transition: left 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: markerPulse 2s infinite;
 }
 
-/* Productos sugeridos */
+/* 5.5 Productos sugeridos */
 .imc-products-suggestion {
   margin-top: 1rem;
 }
@@ -435,20 +740,36 @@
   gap: 1rem;
   overflow-x: auto;
   padding: 0.5rem 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--puro-red) #f0f0f0;
+}
+
+.imc-products-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.imc-products-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+.imc-products-container::-webkit-scrollbar-thumb {
+  background-color: var(--puro-red);
+  border-radius: 10px;
 }
 
 .imc-product-item {
   background-color: #f9f9f9;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   padding: 1rem;
   min-width: 200px;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
   border: 1px solid #f0f0f0;
 }
 
 .imc-product-item:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .imc-product-name {
@@ -469,35 +790,34 @@
   color: var(--puro-white);
   text-align: center;
   padding: 0.5rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   margin-top: 0.5rem;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.8rem;
-  transition: all 0.3s ease;
+  transition: var(--transition-fast);
 }
 
 .imc-product-link:hover {
-  background-color: #cf0000;
+  background-color: var(--puro-dark-red);
+  transform: translateY(-2px);
 }
 
-/* Sección informativa */
-.imc-info-card {
-  background-color: var(--puro-white);
-  border-radius: 8px;
+/* ===== 6. COMPONENTES INFORMATIVOS ===== */
+/* 6.1 Banner de consulta */
+.imc-consultation-banner {
+  background: linear-gradient(135deg, #c53e3e 0%, #da2a2a 100%);
+  border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  margin-top: 2rem;
-}
-
-.imc-info-header {
-  background-color: var(--puro-black);
-  color: var(--puro-white);
-  padding: 1.5rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
+  margin-top: 1rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeInUp 0.8s ease both;
+  animation-delay: 0.6s;
 }
 
-.imc-info-header::before {
+.imc-consultation-banner::before {
   content: "";
   position: absolute;
   top: 0;
@@ -507,10 +827,195 @@
   background-color: var(--puro-red);
 }
 
-.imc-info-title {
-  margin: 0;
-  font-size: 1.4rem;
+.imc-consultation-banner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.2) 0%,
+    transparent 50%
+  );
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.imc-consultation-banner:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(197, 62, 62, 0.3);
+}
+
+.imc-consultation-banner:hover::after {
+  opacity: 1;
+  animation: pulseGlow 2s infinite;
+}
+
+.imc-consultation-content {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.imc-consultation-icon {
+  background-color: rgba(255, 255, 255, 0.15);
+  height: 80px;
+  width: 80px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: var(--puro-white);
+  position: relative;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.imc-consultation-icon::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: var(--radius-full);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  animation: iconPulse 2s infinite;
+}
+
+.imc-consultation-banner:hover .imc-consultation-icon {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.imc-consultation-text {
+  flex-grow: 1;
+}
+
+.imc-consultation-text h3 {
+  color: var(--puro-white);
+  font-size: 1.5rem;
   font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.imc-consultation-text p {
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.imc-consultation-action {
+  flex-shrink: 0;
+}
+
+.imc-consultation-btn {
+  background-color: var(--puro-white);
+  color: #d52f2f;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-medium);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.imc-consultation-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.imc-consultation-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.imc-consultation-btn:hover::before {
+  left: 100%;
+  animation: buttonShimmer 1.5s infinite;
+}
+
+/* 6.2 Tarjeta informativa */
+.imc-info-card {
+  background-color: var(--puro-white);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  margin-top: 2rem;
+  position: relative;
+  animation: fadeInUp 0.8s ease both;
+  animation-delay: 0.8s;
+}
+
+.imc-info-card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(170, 3, 3, 0.05) 0%,
+    transparent 70%
+  );
+  transform: rotate(45deg);
+  transition: all 1s ease;
+}
+
+.imc-info-card:hover::before {
+  animation: infoPulse 4s infinite;
+}
+
+.imc-info-header {
+  background-color: var(--puro-black);
+  color: var(--puro-white);
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+/* Continuación de 6.2 Tarjeta informativa */
+.imc-info-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--puro-red) 0%,
+    #ff3333 50%,
+    var(--puro-red) 100%
+  );
+}
+
+.imc-info-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
 }
 
 .imc-info-content {
@@ -526,62 +1031,149 @@
 .imc-info-subtitle {
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 2rem 0 1rem;
+  margin: 1.5rem 0 1rem;
   color: var(--puro-black);
 }
 
 .imc-info-list {
   list-style: none;
   padding: 0;
-  margin: 0;
-  border: 1px solid #f0f0f0;
-  border-radius: 8px;
-  overflow: hidden;
+  margin: 1.5rem 0;
 }
 
 .imc-info-item {
-  padding: 1rem 1.5rem;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--puro-border-gray);
 }
 
-.imc-info-item:nth-child(odd) {
-  background-color: #f9f9f9;
+.imc-info-item:last-child {
+  border-bottom: none;
 }
 
 .imc-info-label {
   font-weight: 600;
   color: var(--puro-black);
+  min-width: 150px;
+  padding-right: 1rem;
 }
 
 .imc-info-value {
   color: var(--puro-gray);
+  margin-right: 3%;
 }
 
+/* 6.3 Disclaimer */
 .imc-disclaimer {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  background-color: var(--disclaimer-bg);
+  border-radius: var(--radius-md);
   padding: 1.5rem;
-  background-color: #fff8e1;
-  border-radius: 8px;
   margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 .imc-disclaimer i {
-  color: #f57c00;
-  font-size: 1.2rem;
-  margin-top: 0.2rem;
+  color: var(--disclaimer-icon);
+  font-size: 1.5rem;
 }
 
 .imc-disclaimer p {
   margin: 0;
-  font-size: 0.9rem;
-  color: #5d4037;
+  color: var(--disclaimer-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
 
-/* Responsive */
+/* ===== 7. UTILIDADES Y AYUDANTES ===== */
+/* 7.1 Tooltips */
+[data-tooltip] {
+  position: relative;
+  cursor: help;
+}
+
+[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--puro-black);
+  color: var(--puro-white);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+[data-tooltip]:hover::after {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* 7.2 Estados y modificadores */
+.imc-text-bold {
+  font-weight: 600;
+}
+
+.imc-text-red {
+  color: var(--puro-red);
+}
+
+.imc-text-center {
+  text-align: center;
+}
+
+.imc-hidden {
+  display: none !important;
+}
+
+.imc-visible {
+  display: block !important;
+}
+
+.imc-pulsing {
+  animation: pulseGlow 2s infinite;
+}
+
+.imc-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.imc-shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+/* ===== 8. RESPONSIVIDAD ===== */
+@media (max-width: 1200px) {
+  .imc-title {
+    font-size: 2.5rem;
+  }
+
+  .imc-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
 @media (max-width: 992px) {
   .imc-title {
     font-size: 2.2rem;
@@ -591,31 +1183,60 @@
     font-size: 1rem;
   }
 
-  .imc-header {
-    padding: 2.5rem 0;
+  .imc-consultation-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
   }
 
-  .imc-results-card {
-    margin-top: 2rem;
+  .imc-consultation-icon {
+    margin: 0 auto;
   }
 
-  .imc-scale-segment span {
-    font-size: 0.6rem;
+  .imc-consultation-action {
+    margin-top: 1rem;
+  }
+
+  .imc-consultation-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
+  .imc-header {
+    padding: 2rem 0;
+  }
+
+  .imc-title {
+    font-size: 2rem;
+  }
+
+  .imc-calculator-card,
+  .imc-results-card {
+    margin-bottom: 2rem;
+  }
+
   .imc-form-actions {
     flex-direction: column;
   }
 
+  .imc-btn-calculate,
   .imc-btn-reset {
     width: 100%;
   }
 
-  .imc-radio-group {
+  .imc-result-value {
+    font-size: 3rem;
+  }
+
+  .imc-info-item {
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .imc-info-label {
+    margin-bottom: 0.5rem;
   }
 }
 
@@ -624,21 +1245,111 @@
     font-size: 1.8rem;
   }
 
-  .imc-header {
-    padding: 2rem 0;
+  .imc-subtitle {
+    font-size: 0.9rem;
   }
 
   .imc-calculator-content,
-  .imc-results-content,
+  .imc-results-content {
+    padding: 1.5rem;
+  }
+
+  .imc-result-indicator {
+    margin-bottom: 1.5rem;
+  }
+
+  .imc-result-value {
+    font-size: 2.5rem;
+  }
+
+  .imc-result-category {
+    font-size: 1rem;
+  }
+
+  .imc-scale-segment span {
+    font-size: 0.6rem;
+  }
+
+  .imc-info-header {
+    padding: 1rem 1.5rem;
+  }
+
   .imc-info-content {
     padding: 1.5rem;
   }
 
-  .imc-result-value {
-    font-size: 3rem;
+  .imc-info-title {
+    font-size: 1.3rem;
   }
 
-  .imc-scale-segment span {
-    font-size: 0.5rem;
+  .imc-info-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== 9. MEJORAS DE ACCESIBILIDAD ===== */
+.imc-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ===== 10. OPTIMIZACIONES DE RENDIMIENTO ===== */
+.imc-hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* ===== 11. TEMAS Y MODO OSCURO ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --puro-white: #161616;
+    --puro-black: #f0f0f0;
+    --puro-light-gray: #1c1c1c;
+    --puro-gray: #a0a0a0;
+    --puro-border-gray: #333;
+
+    --underweight-bg: rgba(144, 202, 249, 0.3);
+    --normal-bg: rgba(165, 214, 167, 0.3);
+    --overweight-bg: rgba(255, 224, 130, 0.3);
+    --obese-bg: rgba(239, 154, 154, 0.3);
+
+    --disclaimer-bg: rgba(255, 248, 225, 0.1);
+  }
+
+  .imc-calculator-card,
+  .imc-results-card,
+  .imc-info-card {
+    background-color: #1f1f1f;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .imc-form-input {
+    background-color: #2a2a2a;
+    color: var(--puro-black);
+  }
+
+  .imc-result-interpretation {
+    background-color: #2a2a2a;
+  }
+
+  .imc-consultation-btn {
+    background-color: #2a2a2a;
+  }
+
+  .imc-product-item {
+    background-color: #2a2a2a;
+    border-color: #333;
+  }
+
+  .imc-disclaimer {
+    background-color: rgba(30, 30, 30, 0.5);
   }
 }

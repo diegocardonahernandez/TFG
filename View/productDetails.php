@@ -78,12 +78,10 @@
                                 <div class="pdv-quantity-control">
                                     <label for="quantity">Cantidad</label>
                                     <div class="pdv-quantity-buttons">
-                                        <button class="pdv-qty-btn pdv-qty-decrease"
-                                            aria-label="Disminuir cantidad">-</button>
+                                        <button class="pdv-qty-btn btnDecrease" aria-label="Disminuir cantidad">-</button>
                                         <input type="number" id="quantity" name="quantity" value="1" min="1"
                                             max="<?= $details[0]->getStock() ?>">
-                                        <button class="pdv-qty-btn pdv-qty-increase"
-                                            aria-label="Aumentar cantidad">+</button>
+                                        <button class="pdv-qty-btn btnIncrease" aria-label="Aumentar cantidad">+</button>
                                     </div>
                                 </div>
                                 <div class="pdv-action-buttons">
