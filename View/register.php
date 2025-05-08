@@ -166,7 +166,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="btn-register">Crear Cuenta</button>
+                <button type="submit" class="btn-register" disabled>Crear Cuenta</button>
             </form>
 
             <div class="login-link">

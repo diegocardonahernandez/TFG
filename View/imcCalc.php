@@ -71,7 +71,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="imc-results-card">
                     <div class="imc-results-content">
-                        <h3 class="imc-results-title">Tu resultado</h3>
+                        <h3 class="imc-results-title">Índice de Masa Corporal</h3>
 
                         <!-- Contenedor inicial (visible por defecto) -->
                         <div id="imcInitialState" class="imc-initial-state">
