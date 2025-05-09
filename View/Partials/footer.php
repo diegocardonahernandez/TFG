@@ -84,6 +84,7 @@
     <script src="/js/validateRegisterForm.js"></script>
     <script src="/js/animationIMC.js"></script>
     <script src="/js/imcCalculator.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </footer>
 </body>
 

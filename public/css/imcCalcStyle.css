@@ -510,12 +510,17 @@
   position: relative;
 }
 
+.imc-results-title a {
+  text-decoration: none;
+  color: var(--puro-black);
+}
+
 .imc-results-title::after {
   content: "";
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 40px;
+  width: 8em;
   height: 2px;
   background-color: var(--puro-red);
 }

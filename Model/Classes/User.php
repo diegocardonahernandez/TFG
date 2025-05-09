@@ -148,4 +148,53 @@ class User
     {
         $this->foto_perfil = $foto_perfil;
     }
+
+
+    public static function insertNewUser(
+        $nombre,
+        $apellido,
+        $telefono,
+        $correo,
+        $contrasena,
+        $fecha_nacimiento,
+        $genero,
+        $peso,
+        $altura,
+        $tipo_usuario,
+        $estado,
+        $foto_perfil
+    ) {
+        $db = Database::getInstance();
+        $query = "INSERT INTO usuarios 
+                  (nombre, apellido, telefono, correo, contrasena, fecha_nacimiento, genero, peso, altura, tipo_usuario, estado, foto_perfil) 
+                  VALUES 
+                  (:nombre, :apellido, :telefono, :correo, :contrasena, :fecha_nacimiento, :genero, :peso, :altura, :tipo_usuario, :estado, :foto_perfil)";
+
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellido', $apellido);
+        $stmt->bindParam(':telefono', $telefono);
+        $stmt->bindParam(':correo', $correo);
+        $stmt->bindParam(':contrasena', $contrasena);
+        $stmt->bindParam(':fecha_nacimiento', $fecha_nacimiento);
+        $stmt->bindParam(':genero', $genero);
+        $stmt->bindParam(':peso', $peso);
+        $stmt->bindParam(':altura', $altura);
+        $stmt->bindParam(':tipo_usuario', $tipo_usuario);
+        $stmt->bindParam(':estado', $estado);
+        $stmt->bindParam(':foto_perfil', $foto_perfil);
+
+        return $stmt->execute();
+    }
+
+
+
+    public static function getAllUSers()
+    {
+        $db = Database::getInstance();
+        $query = "SELECT * FROM usuarios";
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+    }
 }

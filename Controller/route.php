@@ -48,6 +48,10 @@ switch ($method) {
 
     case 'POST':
 
+    case '/registerForm':
+        require_once __DIR__ . '/../Controller/formControllers/registerForm.php';
+        break;
+
         break;
 
     default:

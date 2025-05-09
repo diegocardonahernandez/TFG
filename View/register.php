@@ -20,7 +20,8 @@
             </div>
 
             <!-- Formulario -->
-            <form class="register-form" action="#" method="post" enctype="multipart/form-data" id="register-form">
+            <form class="register-form" action="/registerForm" method="post" enctype="multipart/form-data"
+                id="register-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="registro_nombre">Nombre</label>
@@ -123,18 +124,16 @@
                         <label for="registro_peso">Peso (kg) (opcional)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-weight input-icon"></i>
-                            <input type="number" id="registro_peso" name="registro_peso" step="0.01" min="30" max="300"
-                                class="form-input">
+                            <input type="number" id="registro_peso" name="registro_peso" class=" form-input">
                         </div>
                         <span class="register-errorMessage" id="register-errorWeight"></span>
                     </div>
 
                     <div class="form-group">
-                        <label for="registro_altura">Altura (m) (opcional)</label>
+                        <label for="registro_altura">Altura (cm) (opcional)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-ruler-vertical input-icon"></i>
-                            <input type="number" id="registro_altura" name="registro_altura" step="0.01" min="1"
-                                max="2.5" class="form-input">
+                            <input type="number" id="registro_altura" name="registro_altura" class="form-input">
                         </div>
                         <span class="register-errorMessage" id="register-errorHeight"></span>
                     </div>
