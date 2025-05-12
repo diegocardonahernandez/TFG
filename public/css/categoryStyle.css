@@ -215,14 +215,45 @@
 }
 
 .category-btn-add-cart {
+  position: relative;
+  overflow: hidden;
   background-color: var(--puro-red);
   color: var(--puro-white);
   flex: 1;
   margin-right: 0.5rem;
+  border: 2px solid var(--puro-red);
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
+/* Brillo deslizante */
+.category-btn-add-cart::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transition: all 0.6s;
+  z-index: -1;
+}
+
+.category-btn-add-cart:hover::before {
+  left: 100%;
+}
+
+/* Sombra y desplazamiento */
 .category-btn-add-cart:hover {
   background-color: #cf0000;
+  border-color: #cf0000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(170, 3, 3, 0.2);
 }
 
 .category-btn-notify {

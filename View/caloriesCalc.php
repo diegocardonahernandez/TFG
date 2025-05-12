@@ -20,8 +20,8 @@
                         <p class="calorie-calculator-description">Completa los campos para calcular tus necesidades
                             calóricas y recomendaciones de macronutrientes.</p>
 
-                        <form id="calorieCalculatorForm" class="calorie-calculator-form" method="GET"
-                            action="/recommendProducts">
+                        <form id="calorieCalculatorForm" class="calorie-calculator-form" method="POST"
+                            action="/caloriesForm">
                             <div class="calorie-form-group">
                                 <label for="cal-height" class="calorie-form-label">Altura (cm)</label>
                                 <div class="calorie-input-wrapper">
@@ -209,25 +209,6 @@
                             <div class="calorie-products-suggestion">
                                 <h4 class="calorie-products-title">Suplementos recomendados</h4>
                                 <div class="calorie-products-container" id="calorieProducts">
-                                    <?php if (!empty($recommendProducts)): ?>
-                                        <?php foreach ($recommendProducts as $product): ?>
-                                            <div class="calorie-product-card">
-                                                <img src="<?= $product->getImagen() ?>" alt="<?= $product->getNombre() ?>"
-                                                    class="calorie-product-image">
-                                                <div class="calorie-product-content">
-                                                    <h5 class="calorie-product-name"><?= $product->getNombre() ?></h5>
-                                                    <p class="calorie-product-description"><?= $product->getDescripcion() ?></p>
-                                                    <a href="/product?id=<?= $product->getIdProducto() ?>"
-                                                        class="calorie-product-btn">Ver producto</a>
-
-                                                </div>
-                                            </div>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <p>No se encontraron recomendaciones para este objetivo.</p>
-                                    <?php endif; ?>
-
-                                    <!-- Los productos recomendados se insertarán dinámicamente -->
                                 </div>
                             </div>
                         </div>
