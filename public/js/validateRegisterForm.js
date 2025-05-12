@@ -322,33 +322,62 @@ function checkFormValidity() {
 
 btnCreateAccount.addEventListener("click", (e) => {
   e.preventDefault();
+
   let isFormValid = checkFormValidity();
+  if (!isFormValid) return;
 
-  if (isFormValid) {
-    // Primero mostramos la alerta de "procesando datos"
-    Swal.fire({
-      title: "Procesando datos",
-      text: "Por favor espere mientras procesamos su solicitud...",
-      icon: "info",
-      iconColor: "#666666",
-      showConfirmButton: false,
-      allowOutsideClick: false,
-      didOpen: () => {
-        Swal.showLoading();
-      },
-    });
+  const formData = new FormData(formRegister);
 
-    setTimeout(() => {
-      Swal.fire({
-        title: "¡Registro exitoso!",
-        text: "Tu cuenta ha sido creada con éxito. Serás redirigido al forulario de inicio de sesión.",
-        confirmButtonText: "Aceptar",
-        confirmButtonColor: "#aa0303",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          formRegister.submit();
+  // Mostrar mensaje de carga inmediatamente
+  Swal.fire({
+    title: "Procesando datos",
+    text: "Por favor espere mientras procesamos su solicitud...",
+    icon: "info",
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    didOpen: () => Swal.showLoading(),
+  });
+
+  // Esperar 3 segundos antes de enviar el fetch
+  setTimeout(() => {
+    fetch("/registerForm", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.invalidEmail) {
+          Swal.fire({
+            title: "¡Error! Correo Incorrecto",
+            text: "Ya existe un usuario con ese correo electrónico , por favor intenta con otro.",
+            icon: "error",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#aa0303",
+          });
+          errorEmail.innerHTML =
+            "El correo electrónico ya está en uso. Por favor, intenta con otro.";
+          errorEmail.style.display = "block";
+          correoNewUser.style.border = "1px solid red";
+        } else {
+          Swal.fire({
+            title: "¡Registro exitoso!",
+            text: "Tu cuenta ha sido creada con éxito. Seras redirigido a la página de inicio de sesión.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#aa0303",
+          }).then(() => {
+            formRegister.submit();
+            window.location.href = "/login";
+          });
         }
+      })
+      .catch((error) => {
+        console.error("Error en el fetch:", error);
+        Swal.fire({
+          title: "Error inesperado",
+          text: "No se pudo completar el registro.",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+        });
       });
-    }, 3000);
-  }
+  }, 3000);
 });

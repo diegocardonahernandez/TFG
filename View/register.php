@@ -110,7 +110,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="registro_telefono">Teléfono (opcional)</label>
+                        <label for="registro_telefono">Teléfono</label>
                         <div class="input-wrapper">
                             <i class="fas fa-phone input-icon">+34</i>
                             <input type="tel" id="registro_telefono" name="registro_telefono" class="form-input">
@@ -121,7 +121,7 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="registro_peso">Peso (kg) (opcional)</label>
+                        <label for="registro_peso">Peso (kg)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-weight input-icon"></i>
                             <input type="number" id="registro_peso" name="registro_peso" class=" form-input">
@@ -130,7 +130,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="registro_altura">Altura (cm) (opcional)</label>
+                        <label for="registro_altura">Altura (cm)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-ruler-vertical input-icon"></i>
                             <input type="number" id="registro_altura" name="registro_altura" class="form-input">
