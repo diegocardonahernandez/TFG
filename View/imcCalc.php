@@ -202,4 +202,6 @@
             </div>
         </div>
     </div>
+    <script src="/js/animationIMC.js"></script>
+    <script src="/js/imcCalculator.js"></script>
 </section>

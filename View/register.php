@@ -179,4 +179,5 @@
             </div>
         </div>
     </div>
+    <script src="/js/validateRegisterForm.js"></script>
 </section>

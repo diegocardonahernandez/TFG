@@ -45,6 +45,9 @@ switch ($method) {
             case '/caloriesForm':
                 require_once __DIR__ . '/../Controller/formControllers/caloriesForm.php';
                 break;
+            case '/loginForm':
+                require_once __DIR__ . '/../Controller/formControllers/loginForm.php';
+                break;
             default:
                 echo "Ruta POST no reconocida";
                 break;

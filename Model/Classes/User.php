@@ -187,8 +187,6 @@ class User
         return $stmt->execute();
     }
 
-
-
     public static function getAllUSers()
     {
         $db = Database::getInstance();

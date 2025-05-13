@@ -203,25 +203,32 @@
   font-size: 0.9rem;
 }
 
-.remember-me {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.remember-me input[type="checkbox"] {
-  accent-color: var(--puro-red);
-}
-
-.forgot-password {
-  color: var(--puro-red);
+.help-link {
+  color: var(--puro-black); /* Color visible sobre fondo blanco */
   text-decoration: none;
-  transition: color 0.3s ease;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
 }
 
-.forgot-password:hover {
-  color: #df0000;
-  text-decoration: underline;
+.help-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--puro-red);
+  transition: width 0.3s ease;
+}
+
+.help-link:hover {
+  color: var(--puro-red);
+}
+
+.help-link:hover::after {
+  width: 100%;
 }
 
 .btn-login {
@@ -262,6 +269,15 @@
 .register-link a:hover {
   color: #df0000;
   text-decoration: underline;
+}
+
+.login-errorMessage {
+  color: var(--puro-red);
+  font-size: 0.75rem; /* Slightly smaller */
+  margin-top: 4px;
+  display: none;
+  font-weight: 500;
+  line-height: 1.2;
 }
 
 /* Animaciones */

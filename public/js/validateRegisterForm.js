@@ -1,18 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const params = new URLSearchParams(window.location.search);
-  const error = params.get("error");
-
-  if (error === "correo") {
-    Swal.fire({
-      title: "¡Error! Correo duplicado",
-      text: "Ya existe un usuario con ese correo electrónico.",
-      icon: "error",
-      confirmButtonText: "Aceptar",
-      confirmButtonColor: "#aa0303",
-    });
-  }
-});
-
 const nameNewUser = document.getElementById("registro_nombre");
 const apellidoNewUser = document.getElementById("registro_apellido");
 const correoNewUser = document.getElementById("registro_correo");
