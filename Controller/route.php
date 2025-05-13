@@ -2,6 +2,10 @@
 $method = $_SERVER["REQUEST_METHOD"];
 $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 switch ($method) {
     case 'GET':
         switch ($request) {
@@ -30,6 +34,9 @@ switch ($method) {
                 break;
             case '/register':
                 require_once __DIR__ . '/../Controller/registerController.php';
+                break;
+            case '/accountUser':
+                require_once __DIR__ . '/../Controller/userAccountController.php';
                 break;
             default:
                 echo "Página no encontrada";

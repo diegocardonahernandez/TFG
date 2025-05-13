@@ -52,8 +52,10 @@
 
 
             <div class="register-link">
-                ¿No tienes una cuenta? <a href="/register">Regístrate ahora</a>
+                ¿No tienes una cuenta?
+                <a href="/register" class="register-link-a">Regístrate ahora</a>
             </div>
+
         </div>
     </div>
     <script src="/js/validateLogin.js"></script>

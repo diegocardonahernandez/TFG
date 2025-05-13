@@ -187,6 +187,17 @@ class User
         return $stmt->execute();
     }
 
+    public static function getUserById($id)
+    {
+        $db = Database::getInstance();
+        $query = "SELECT * FROM usuarios WHERE id_usuario = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        return $stmt->fetch();
+    }
+
     public static function getAllUSers()
     {
         $db = Database::getInstance();
