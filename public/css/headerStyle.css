@@ -327,3 +327,122 @@ body:not(.has-shipping-bar) .navbar {
 .navbar-toggler-icon {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(139, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
+
+/* Mobile Responsive Fixes */
+@media (max-width: 991.98px) {
+  /* Fix navbar height issues on mobile */
+  .navbar {
+    height: auto;
+    min-height: var(--navbar-height);
+  }
+
+  /* Adjust body padding for mobile */
+  body.has-shipping-bar {
+    padding-top: calc(var(--shipping-bar-height) + var(--navbar-height));
+  }
+
+  /* Adjust the mobile menu appearance */
+  .navbar-collapse {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: whitesmoke;
+    padding: 1rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(139, 0, 0, 0.2);
+    z-index: 1000;
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+
+  /* Adjust dropdown behavior for mobile */
+  .dropdown-menu {
+    position: static;
+    display: none;
+    transform: none;
+    opacity: 1;
+    pointer-events: auto;
+    box-shadow: none;
+    border-left: 3px solid var(--puro-red);
+    border-right: none;
+    border-top: none;
+    border-bottom: none;
+    border-radius: 0;
+    padding-left: 1rem;
+    margin-left: 1rem;
+    width: auto;
+  }
+
+  /* Show dropdown items immediately in mobile view */
+  .dropdown-item {
+    transform: none;
+    opacity: 1;
+    padding-left: 1.5rem;
+  }
+
+  /* Show dropdown on click instead of hover for mobile */
+  .dropdown .dropdown-menu.show {
+    display: block;
+  }
+
+  /* Adjust search bar for mobile */
+  #searchBar {
+    margin: 1rem 0;
+    width: 100%;
+  }
+
+  /* Adjust login button for mobile */
+  .nav-item .btn-danger {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /* Cart icon positioning for mobile */
+  .cart-icon-container {
+    margin: 0.5rem 0;
+    text-align: right;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Fix spacing for navbar items */
+  .navbar-nav {
+    margin-bottom: 0;
+    width: 100%;
+  }
+
+  /* Ensure dropdown effects don't break layout */
+  .dropdown:hover .dropdown-menu {
+    transform: none;
+  }
+
+  /* Make dropdown items visible immediately on mobile */
+  .dropdown-item::before {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Prevent after pseudo-element from affecting layout */
+  .navbar-nav .nav-link:hover::after,
+  .navbar-nav .nav-link.active::after {
+    display: none;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 575.98px) {
+  .shipping-info-bar p {
+    font-size: 0.8rem;
+  }
+
+  #logo {
+    width: 7em;
+  }
+
+  .navbar-brand {
+    padding-left: 0;
+  }
+}

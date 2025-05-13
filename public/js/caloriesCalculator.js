@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
                   product.descripcion || "Sin descripción"
                 }</p>
                 <a href="/product?id=${
-                  product.id_producto
+                  product.IdProducto
                 }" class="calorie-product-btn">Ver producto</a>
               </div>
             </div>
