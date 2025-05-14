@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/../Model/Classes/Product.php';
+
 function recommendProducts($goal)
 {
     $productsGoal = [];

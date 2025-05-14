@@ -20,13 +20,15 @@
             </div>
 
             <!-- Formulario -->
-            <form class="register-form" action="#" method="post" enctype="multipart/form-data" id="register-form">
+            <form class="register-form" action="/registerForm" method="post" enctype="multipart/form-data"
+                id="register-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="registro_nombre">Nombre</label>
                         <div class="input-wrapper">
                             <i class="fas fa-user input-icon"></i>
                             <input type="text" id="registro_nombre" name="registro_nombre" class="form-input" required>
+                            <i class="bi bi-check-circle-fill" id="iconNameCheck"></i>
                         </div>
                         <span class="register-errorMessage" id="register-errorName"></span>
                     </div>
@@ -37,6 +39,7 @@
                             <i class="fas fa-user input-icon"></i>
                             <input type="text" id="registro_apellido" name="registro_apellido" class="form-input"
                                 required>
+                            <i class="bi bi-check-circle-fill" id="iconLastNameCheck"></i>
                         </div>
                         <span class="register-errorMessage" id="register-errorLastName"></span>
                     </div>
@@ -47,6 +50,7 @@
                     <div class="input-wrapper">
                         <i class="fas fa-envelope input-icon"></i>
                         <input type="email" id="registro_correo" name="registro_correo" class="form-input" required>
+                        <i class="bi bi-check-circle-fill" id="iconEmailCheck"></i>
                     </div>
                     <span class="register-errorMessage" id="register-errorEmail"></span>
                 </div>
@@ -58,7 +62,7 @@
                             <i class="fas fa-lock input-icon"></i>
                             <input type="password" id="registro_contrasena" name="registro_contrasena"
                                 class="form-input" required>
-                            <i class="fas fa-eye toggle-password"></i>
+                            <i class="bi bi-check-circle-fill" id="iconPasswordCheck"></i>
                         </div>
                         <span class="register-errorMessage" id="register-errorPassword"></span>
                         <div class="password-strength-container">
@@ -75,7 +79,7 @@
                             <i class="fas fa-lock input-icon"></i>
                             <input type="password" id="registro_confirm_password" name="registro_confirm_password"
                                 class="form-input" required>
-                            <i class="fas fa-eye toggle-password"></i>
+                            <i class="bi bi-check-circle-fill" id="iconConfirmCheck"></i>
                         </div>
                         <span class="register-errorMessage" id="register-errorConfirm"></span>
                     </div>
@@ -109,45 +113,46 @@
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="registro_telefono">Teléfono (opcional)</label>
+                        <label for="registro_telefono">Teléfono</label>
                         <div class="input-wrapper">
                             <i class="fas fa-phone input-icon">+34</i>
                             <input type="tel" id="registro_telefono" name="registro_telefono" class="form-input">
+                            <i class="bi bi-check-circle-fill" id="iconNumberCheck"></i>
                         </div>
                         <span class="register-errorMessage" id="register-errorPhone"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="registro_peso">Peso (kg)</label>
+                        <div class="input-wrapper">
+                            <i class="fas fa-weight input-icon"></i>
+                            <input type="number" id="registro_peso" name="registro_peso" class="form-input">
+                            <i class="bi bi-check-circle-fill" id="iconWeightCheck"></i>
+                        </div>
+                        <span class="register-errorMessage" id="register-errorWeight"></span>
                     </div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="registro_peso">Peso (kg) (opcional)</label>
-                        <div class="input-wrapper">
-                            <i class="fas fa-weight input-icon"></i>
-                            <input type="number" id="registro_peso" name="registro_peso" step="0.01" min="30" max="300"
-                                class="form-input">
-                        </div>
-                        <span class="register-errorMessage" id="register-errorWeight"></span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="registro_altura">Altura (m) (opcional)</label>
+                        <label for="registro_altura">Altura (cm)</label>
                         <div class="input-wrapper">
                             <i class="fas fa-ruler-vertical input-icon"></i>
-                            <input type="number" id="registro_altura" name="registro_altura" step="0.01" min="1"
-                                max="2.5" class="form-input">
+                            <input type="number" id="registro_altura" name="registro_altura" class="form-input">
+                            <i class="bi bi-check-circle-fill" id="iconHeightCheck"></i>
                         </div>
                         <span class="register-errorMessage" id="register-errorHeight"></span>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="registro_foto_perfil">Foto de Perfil</label>
-                    <div class="input-wrapper file-wrapper">
-                        <i class="fas fa-camera input-icon"></i>
-                        <input type="file" id="registro_foto_perfil" name="registro_foto_perfil"
-                            class="form-input file-input" accept="image/*">
+                    <div class="form-group">
+                        <label for="registro_foto_perfil">Foto de Perfil</label>
+                        <div class="input-wrapper file-wrapper">
+                            <i class="fas fa-camera input-icon"></i>
+                            <input type="file" id="registro_foto_perfil" name="registro_foto_perfil"
+                                class="form-input file-input" accept="image/*">
+                        </div>
+                        <span class="register-errorMessage" id="register-errorUserImage"></span>
                     </div>
-                    <span class="register-errorMessage" id="register-errorUserImage"></span>
                 </div>
 
                 <div class="form-options">
@@ -174,4 +179,5 @@
             </div>
         </div>
     </div>
+    <script src="/js/validateRegisterForm.js"></script>
 </section>

@@ -12,6 +12,15 @@ const pesoNewUser = document.getElementById("registro_peso");
 const alturaNewUser = document.getElementById("registro_altura");
 const fotoNewUser = document.getElementById("registro_foto_perfil");
 const terminosYcondiciones = document.getElementById("registro_terms");
+const btnCreateAccount = document.querySelector(".btn-register");
+const iconNameCheck = document.getElementById("iconNameCheck");
+const iconLastNameCheck = document.getElementById("iconLastNameCheck");
+const iconEmailCheck = document.getElementById("iconEmailCheck");
+const iconPasswordCheck = document.getElementById("iconPasswordCheck");
+const iconConfirmCheck = document.getElementById("iconConfirmCheck");
+const iconNumberCheck = document.getElementById("iconNumberCheck");
+const iconWeightCheck = document.getElementById("iconWeightCheck");
+const iconHeightCheck = document.getElementById("iconHeightCheck");
 
 const errorMesasage = document.querySelectorAll(".register-errorMessage");
 const errorName = document.getElementById("register-errorName");
@@ -43,23 +52,45 @@ let isHeightValid = false;
 let isUserImageValid = false;
 let isTermsAccepted = false;
 
+function animateIcon(iconElement) {
+  iconElement.style.display = "inline";
+  iconElement.classList.remove("animate-check");
+  void iconElement.offsetWidth; // fuerza reflow para reiniciar la animación
+  iconElement.classList.add("animate-check");
+}
+
 nameNewUser.addEventListener("input", () => {
   if (nameNewUser.value.length < 3) {
     errorName.innerHTML = "El nombre debe tener al menos 3 caracteres.";
     errorName.style.display = "block";
     nameNewUser.style.border = "1px solid red";
+    iconNameCheck.style.display = "none";
+    iconNameCheck.classList.remove("animate-check");
+    isNameValid = false;
   } else if (/\d/.test(nameNewUser.value)) {
     errorName.innerHTML = "El nombre no puede contener números.";
     errorName.style.display = "block";
     nameNewUser.style.border = "1px solid red";
+    iconNameCheck.style.display = "none";
+    iconNameCheck.classList.remove("animate-check");
+    isNameValid = false;
   } else {
     nameNewUser.value =
       nameNewUser.value[0].toUpperCase() + nameNewUser.value.slice(1);
     errorName.innerHTML = "";
     errorName.style.display = "none";
-    nameNewUser.style.border = "1px solid #1f7a1f";
+    nameNewUser.style.border = "1px solid #ccc";
+
+    // Mostrar el icono y activar la animación
+    iconNameCheck.style.display = "inline";
+    iconNameCheck.classList.remove("animate-check"); // Reiniciar
+    void iconNameCheck.offsetWidth; // Forzar reflow para reiniciar animación
+    iconNameCheck.classList.add("animate-check");
+
     isNameValid = true;
   }
+
+  checkFormValidity();
 });
 
 apellidoNewUser.addEventListener("input", () => {
@@ -67,18 +98,24 @@ apellidoNewUser.addEventListener("input", () => {
     errorLastName.innerHTML = "El apellido debe tener al menos 3 caracteres.";
     errorLastName.style.display = "block";
     apellidoNewUser.style.border = "1px solid red";
+    iconLastNameCheck.style.display = "none";
+    isLastNameValid = false;
   } else if (/\d/.test(apellidoNewUser.value)) {
     errorLastName.innerHTML = "El apellido no puede contener números.";
     errorLastName.style.display = "block";
     apellidoNewUser.style.border = "1px solid red";
+    iconLastNameCheck.style.display = "none";
+    isLastNameValid = false;
   } else {
     apellidoNewUser.value =
       apellidoNewUser.value[0].toUpperCase() + apellidoNewUser.value.slice(1);
     errorLastName.innerHTML = "";
     errorLastName.style.display = "none";
-    apellidoNewUser.style.border = "1px solid #1f7a1f";
+    apellidoNewUser.style.border = "1px solid #ccc";
+    animateIcon(iconLastNameCheck);
     isLastNameValid = true;
   }
+  checkFormValidity();
 });
 
 correoNewUser.addEventListener("input", () => {
@@ -87,12 +124,16 @@ correoNewUser.addEventListener("input", () => {
     errorEmail.innerHTML = "El correo electrónico no es válido.";
     errorEmail.style.display = "block";
     correoNewUser.style.border = "1px solid red";
+    iconEmailCheck.style.display = "none";
+    isEmailValid = false;
   } else {
     errorEmail.innerHTML = "";
     errorEmail.style.display = "none";
-    correoNewUser.style.border = "1px solid #1f7a1f";
+    correoNewUser.style.border = "1px solid #ccc";
+    animateIcon(iconEmailCheck);
     isEmailValid = true;
   }
+  checkFormValidity();
 });
 
 contrasenaNewUser.addEventListener("input", () => {
@@ -125,13 +166,16 @@ contrasenaNewUser.addEventListener("input", () => {
     errorPassword.innerHTML = "La contraseña aún no cumple los requisitos.";
     errorPassword.style.display = "block";
     contrasenaNewUser.style.border = "1px solid red";
+    iconPasswordCheck.style.display = "none";
+    isPasswordValid = false;
   } else {
     errorPassword.innerHTML = "";
     errorPassword.style.display = "none";
-    contrasenaNewUser.style.border = "1px solid #1f7a1f";
-    xz;
+    contrasenaNewUser.style.border = "1px solid #ccc";
+    animateIcon(iconPasswordCheck);
     isPasswordValid = true;
   }
+  checkFormValidity();
 });
 
 confirmarContrasena.addEventListener("input", () => {
@@ -139,12 +183,16 @@ confirmarContrasena.addEventListener("input", () => {
     errorConfirm.innerHTML = "Las contraseñas no coinciden.";
     errorConfirm.style.display = "block";
     confirmarContrasena.style.border = "1px solid red";
+    iconConfirmCheck.style.display = "none";
+    isConfirmPasswordValid = false;
   } else {
     errorConfirm.innerHTML = "";
     errorConfirm.style.display = "none";
-    confirmarContrasena.style.border = "1px solid #1f7a1f";
+    confirmarContrasena.style.border = "1px solid #ccc";
+    animateIcon(iconConfirmCheck);
     isConfirmPasswordValid = true;
   }
+  checkFormValidity();
 });
 
 nacimientoNewUser.addEventListener("input", () => {
@@ -179,9 +227,23 @@ nacimientoNewUser.addEventListener("input", () => {
   } else {
     errorBirthday.innerHTML = "";
     errorBirthday.style.display = "none";
-    nacimientoNewUser.style.border = "1px solid #1f7a1f";
+    nacimientoNewUser.style.border = "1px solid #ccc";
     isBirthdayValid = true;
   }
+  checkFormValidity();
+});
+
+generoNewUser.addEventListener("change", () => {
+  if (generoNewUser.value !== "") {
+    isGenderValid = true;
+    errorGender.style.display = "none";
+  } else {
+    isGenderValid = false;
+    errorGender.innerHTML = "Selecciona un género.";
+    errorGender.style.display = "block";
+    generoNewUser.style.border = "1px solid red";
+  }
+  checkFormValidity();
 });
 
 telefonoNewUser.addEventListener("input", () => {
@@ -192,11 +254,13 @@ telefonoNewUser.addEventListener("input", () => {
       "El número de teléfono debe pertenecer a la región española.";
     errorPhone.style.display = "block";
     telefonoNewUser.style.border = "1px solid red";
+    iconNumberCheck.style.display = "none";
     isPhoneValid = false;
   } else if (numero.length !== 9) {
     errorPhone.innerHTML = "El número de teléfono debe tener 9 dígitos.";
     errorPhone.style.display = "block";
     telefonoNewUser.style.border = "1px solid red";
+    iconNumberCheck.style.display = "none";
     isPhoneValid = false;
   } else {
     const numeroFormateado = numero.replace(
@@ -207,7 +271,155 @@ telefonoNewUser.addEventListener("input", () => {
 
     errorPhone.innerHTML = "";
     errorPhone.style.display = "none";
-    telefonoNewUser.style.border = "1px solid #1f7a1f";
+    telefonoNewUser.style.border = "1px solid #ccc";
+    animateIcon(iconNumberCheck);
     isPhoneValid = true;
   }
+  checkFormValidity();
+});
+
+pesoNewUser.addEventListener("input", () => {
+  const peso = parseInt(pesoNewUser.value);
+
+  if (!pesoNewUser.value.trim()) {
+    errorWeight.innerHTML = "Este campo es obligatorio.";
+    errorWeight.style.display = "block";
+    pesoNewUser.style.border = "1px solid red";
+    iconWeightCheck.style.display = "none";
+    isWeightValid = false;
+  } else if (peso < 30 || peso > 200) {
+    errorWeight.innerHTML = "El peso debe estar entre 30 y 200 kg.";
+    errorWeight.style.display = "block";
+    pesoNewUser.style.border = "1px solid red";
+    iconWeightCheck.style.display = "none";
+    isWeightValid = false;
+  } else {
+    errorWeight.innerHTML = "";
+    errorWeight.style.display = "none";
+    pesoNewUser.style.border = "1px solid #ccc";
+    animateIcon(iconWeightCheck);
+    isWeightValid = true;
+  }
+
+  checkFormValidity();
+});
+
+alturaNewUser.addEventListener("input", () => {
+  const altura = parseInt(alturaNewUser.value);
+
+  if (!alturaNewUser.value.trim()) {
+    errorHeight.innerHTML = "Este campo es obligatorio.";
+    errorHeight.style.display = "block";
+    alturaNewUser.style.border = "1px solid red";
+    iconHeightCheck.style.display = "none";
+    isHeightValid = false;
+  } else if (altura < 100 || altura > 250) {
+    errorHeight.innerHTML = "La altura debe estar entre 100 y 250 cm.";
+    errorHeight.style.display = "block";
+    alturaNewUser.style.border = "1px solid red";
+    iconHeightCheck.style.display = "none";
+    isHeightValid = false;
+  } else {
+    errorHeight.innerHTML = "";
+    errorHeight.style.display = "none";
+    alturaNewUser.style.border = "1px solid #ccc";
+    animateIcon(iconHeightCheck);
+    isHeightValid = true;
+  }
+
+  checkFormValidity();
+});
+
+terminosYcondiciones.addEventListener("change", () => {
+  if (terminosYcondiciones.checked) {
+    isTermsAccepted = true;
+  } else {
+    isTermsAccepted = false;
+  }
+  checkFormValidity();
+});
+
+function checkFormValidity() {
+  if (
+    isNameValid &&
+    isLastNameValid &&
+    isEmailValid &&
+    isPasswordValid &&
+    isConfirmPasswordValid &&
+    isBirthdayValid &&
+    isGenderValid &&
+    isPhoneValid &&
+    isWeightValid &&
+    isHeightValid &&
+    isTermsAccepted
+  ) {
+    btnCreateAccount.removeAttribute("disabled");
+    return true;
+  } else {
+    btnCreateAccount.setAttribute("disabled", "true");
+    return false;
+  }
+}
+
+btnCreateAccount.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  let isFormValid = checkFormValidity();
+  if (!isFormValid) return;
+
+  const formData = new FormData(formRegister);
+
+  // Mostrar mensaje de carga inmediatamente
+  Swal.fire({
+    title: "Procesando datos",
+    text: "Por favor espere mientras procesamos su solicitud...",
+    icon: "info",
+    showConfirmButton: false,
+    allowOutsideClick: false,
+    didOpen: () => Swal.showLoading(),
+  });
+
+  // Esperar 3 segundos antes de enviar el fetch
+  setTimeout(() => {
+    fetch("/registerForm", {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.invalidEmail) {
+          Swal.fire({
+            title: "¡Error! Correo Incorrecto",
+            text: "Ya existe un usuario con ese correo electrónico .",
+            icon: "error",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#aa0303",
+          });
+          errorEmail.innerHTML =
+            "El correo electrónico ya está en uso. Por favor, intenta con otro.";
+          errorEmail.style.display = "block";
+          correoNewUser.style.border = "1px solid red";
+          iconEmailCheck.style.display = "none";
+        } else {
+          Swal.fire({
+            title: "¡Registro exitoso!",
+            text: "Tu cuenta ha sido creada con éxito. Seras redirigido a la página de inicio de sesión.",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#aa0303",
+          }).then(() => {
+            formRegister.submit();
+            window.location.href = "/login";
+          });
+        }
+      })
+      .catch((error) => {
+        console.error("Error en el fetch:", error);
+        Swal.fire({
+          title: "Error inesperado",
+          text: "No se pudo completar el registro.",
+          icon: "error",
+          confirmButtonText: "Aceptar",
+        });
+      });
+  }, 3000);
 });

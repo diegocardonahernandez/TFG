@@ -78,12 +78,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="/js/navScroller.js"></script>
-    <script src="/js/utils/btnsCuantities.js"></script>
-    <script src="/js/animationCalories.js"></script>
-    <script type="module" src="/js/caloriesCalculator.js"></script>
-    <script src="/js/validateRegisterForm.js"></script>
-    <script src="/js/animationIMC.js"></script>
-    <script src="/js/imcCalculator.js"></script>
+    <script src="/js/utils/mobileNavScroll.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </footer>
 </body>
 

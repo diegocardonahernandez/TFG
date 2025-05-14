@@ -148,4 +148,119 @@ class User
     {
         $this->foto_perfil = $foto_perfil;
     }
+
+
+    public static function insertNewUser(
+        $nombre,
+        $apellido,
+        $telefono,
+        $correo,
+        $contrasena,
+        $fecha_nacimiento,
+        $genero,
+        $peso,
+        $altura,
+        $tipo_usuario,
+        $estado,
+        $foto_perfil
+    ) {
+        $db = Database::getInstance();
+        $query = "INSERT INTO usuarios 
+                  (nombre, apellido, telefono, correo, contrasena, fecha_nacimiento, genero, peso, altura, tipo_usuario, estado, foto_perfil) 
+                  VALUES 
+                  (:nombre, :apellido, :telefono, :correo, :contrasena, :fecha_nacimiento, :genero, :peso, :altura, :tipo_usuario, :estado, :foto_perfil)";
+
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellido', $apellido);
+        $stmt->bindParam(':telefono', $telefono);
+        $stmt->bindParam(':correo', $correo);
+        $stmt->bindParam(':contrasena', $contrasena);
+        $stmt->bindParam(':fecha_nacimiento', $fecha_nacimiento);
+        $stmt->bindParam(':genero', $genero);
+        $stmt->bindParam(':peso', $peso);
+        $stmt->bindParam(':altura', $altura);
+        $stmt->bindParam(':tipo_usuario', $tipo_usuario);
+        $stmt->bindParam(':estado', $estado);
+        $stmt->bindParam(':foto_perfil', $foto_perfil);
+
+        return $stmt->execute();
+    }
+
+    public static function getUserById($id)
+    {
+        $db = Database::getInstance();
+        $query = "SELECT * FROM usuarios WHERE id_usuario = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'User');
+        return $stmt->fetch();
+    }
+
+    public static function getAllUSers()
+    {
+        $db = Database::getInstance();
+        $query = "SELECT * FROM usuarios";
+        $stmt = $db->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
+    }
+
+    public static function updateUserData($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $idUsuario)
+    {
+
+        $db = Database::getInstance();
+        $query =  "UPDATE usuarios 
+        SET nombre = :nombre,
+            apellido = :apellido,
+            telefono = :telefono,
+            fecha_nacimiento = :fecha_nacimiento,
+            genero = :genero,
+            peso = :peso,
+            altura = :altura,
+            foto_perfil = :foto_perfil
+        WHERE id_usuario = :id_usuario";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            ':nombre'           => $nombre,
+            ':apellido'         => $apellido,
+            ':telefono'         => $telefono,
+            ':fecha_nacimiento' => $fechaNacimiento,
+            ':genero'           => $genero,
+            ':peso'             => $peso,
+            ':altura'           => $altura,
+            ':foto_perfil'      => $fotoPerfil,
+            ':id_usuario'       => $idUsuario
+        ]);
+    }
+
+    public static function updateUserDataAndPassw($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $contrasena, $idUsuario)
+    {
+        $db = Database::getInstance();
+        $query =  "UPDATE usuarios 
+    SET nombre = :nombre,
+        apellido = :apellido,
+        telefono = :telefono,
+        fecha_nacimiento = :fecha_nacimiento,
+        genero = :genero,
+        peso = :peso,
+        altura = :altura,
+        foto_perfil = :foto_perfil,
+        contrasena = :contrasena
+    WHERE id_usuario = :id_usuario";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            ':nombre'           => $nombre,
+            ':apellido'         => $apellido,
+            ':telefono'         => $telefono,
+            ':fecha_nacimiento' => $fechaNacimiento,
+            ':genero'           => $genero,
+            ':peso'             => $peso,
+            ':altura'           => $altura,
+            ':foto_perfil'      => $fotoPerfil,
+            ':contrasena'       => $contrasena,
+            ':id_usuario'       => $idUsuario
+        ]);
+    }
 }

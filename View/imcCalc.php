@@ -71,7 +71,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="imc-results-card">
                     <div class="imc-results-content">
-                        <h3 class="imc-results-title">Índice de Masa Corporal</h3>
+                        <h3 class="imc-results-title"><a href="#imcExplication">Índice de Masa Corporal</a></h3>
 
                         <!-- Contenedor inicial (visible por defecto) -->
                         <div id="imcInitialState" class="imc-initial-state">
@@ -155,7 +155,7 @@
         <!-- Sección informativa sobre IMC -->
         <div class="row mt-5">
             <div class="col-12">
-                <div class="imc-info-card">
+                <div class="imc-info-card" id="imcExplication">
                     <div class="imc-info-header">
                         <h3 class="imc-info-title">¿Qué es el IMC?</h3>
                     </div>
@@ -202,4 +202,6 @@
             </div>
         </div>
     </div>
+    <script src="/js/animationIMC.js"></script>
+    <script src="/js/imcCalculator.js"></script>
 </section>

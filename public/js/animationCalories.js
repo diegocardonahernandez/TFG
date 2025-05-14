@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
   );
   buttons.forEach((button) => {
     button.addEventListener("mouseenter", function () {
-      this.style.letterSpacing = "1px";
+      this.style.letterSpacing = "0.7px";
     });
 
     button.addEventListener("mouseleave", function () {

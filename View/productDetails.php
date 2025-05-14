@@ -228,4 +228,5 @@
             </div>
         </div>
     </div>
+    <script src="/js/utils/btnsCuantities.js"></script>
 </section>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($title) ? "$title - Puro Gains" : 'Puro Gains' ?> </title>
+    <title><?php echo 'Puro Gains' ?> </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/css/headerStyle.css">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/css/caloriesCalcStyle.css">
     <link rel="stylesheet" href="/css/loginStyle.css">
     <link rel="stylesheet" href="/css/registerStyle.css">
+    <link rel="stylesheet" href="/css/userAccountStyle.css">
 </head>
 
 <body>
@@ -46,7 +47,6 @@
                             foreach ($categoriesNames as $categoryName) {
                                 echo "<li><a class='dropdown-item' href='/" . $categoryName->getNombre() . "'>" . $categoryName->getNombre() . "</a></li>";
                             } ?>
-
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -66,9 +66,21 @@
                             <li><a class="dropdown-item disabled" href="#">Tu Rutina Ideal</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="/login" class="nav-link"><button class="btn btn-danger">Iniciar Sesión</button></a>
-                    </li>
+                    <?php
+                    if (!isset($_SESSION['userId'])) {
+                        echo '<li class="nav-item">
+								<a href="/login" class="nav-link">
+									<button class="btn btn-danger">Iniciar Sesión</button>
+								</a>
+							</li>';
+                    } else {
+                        echo '<li class="nav-item">
+								<a href="/accountUser" class="nav-link">
+									<button class="btn btn-danger"> Mi Cuenta </button>
+								</a>
+							</li>';
+                    }
+                    ?>
                 </ul>
                 <form class="d-flex" role="search" id="searchBar">
                     <input class="form-control me-2" type="search" placeholder="Encuentra tu producto"
@@ -85,7 +97,6 @@
             </div>
         </div>
     </nav>
-
-
+</body>
 
 </html>
