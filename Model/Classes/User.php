@@ -198,7 +198,7 @@ class User
         return $stmt->fetch();
     }
 
-    public static function getAllUSers()
+    public static function getAllUsers()
     {
         $db = Database::getInstance();
         $query = "SELECT * FROM usuarios";

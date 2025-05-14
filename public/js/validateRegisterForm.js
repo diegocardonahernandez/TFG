@@ -49,7 +49,7 @@ let isGenderValid = false;
 let isPhoneValid = false;
 let isWeightValid = false;
 let isHeightValid = false;
-let isUserImageValid = false;
+let isUserImageValid = true; // Cambiado a true por defecto ya que la foto es opcional
 let isTermsAccepted = false;
 
 function animateIcon(iconElement) {
@@ -148,18 +148,24 @@ contrasenaNewUser.addEventListener("input", () => {
   if (/\d/.test(password)) strength++;
   if (/[\W_]/.test(password)) strength++;
 
-  const percent = (strength / 5) * 100;
-  passwordStrength.style.width = `${percent}%`;
+  // Verifica que passwordStrength existe antes de usarlo
+  const passwordStrength = document.getElementById("passwordStrength");
+  const passwordStrengthText = document.getElementById("passwordStrengthText");
+  
+  if (passwordStrength && passwordStrengthText) {
+    const percent = (strength / 5) * 100;
+    passwordStrength.style.width = `${percent}%`;
 
-  if (strength <= 2) {
-    passwordStrength.style.backgroundColor = "#e63946";
-    passwordStrengthText.textContent = "Débil";
-  } else if (strength <= 4) {
-    passwordStrength.style.backgroundColor = "#f4a261";
-    passwordStrengthText.textContent = "Media";
-  } else {
-    passwordStrength.style.backgroundColor = "#1f7a1f";
-    passwordStrengthText.textContent = "Fuerte";
+    if (strength <= 2) {
+      passwordStrength.style.backgroundColor = "#e63946";
+      passwordStrengthText.textContent = "Débil";
+    } else if (strength <= 4) {
+      passwordStrength.style.backgroundColor = "#f4a261";
+      passwordStrengthText.textContent = "Media";
+    } else {
+      passwordStrength.style.backgroundColor = "#1f7a1f";
+      passwordStrengthText.textContent = "Fuerte";
+    }
   }
 
   if (!regexPasswordFuerte.test(password)) {
@@ -237,6 +243,7 @@ generoNewUser.addEventListener("change", () => {
   if (generoNewUser.value !== "") {
     isGenderValid = true;
     errorGender.style.display = "none";
+    generoNewUser.style.border = "1px solid #ccc";
   } else {
     isGenderValid = false;
     errorGender.innerHTML = "Selecciona un género.";
@@ -249,7 +256,13 @@ generoNewUser.addEventListener("change", () => {
 telefonoNewUser.addEventListener("input", () => {
   const numero = telefonoNewUser.value.replace(/\D/g, "");
 
-  if (numero[0] !== "6") {
+  if (numero.length === 0) {
+    errorPhone.innerHTML = "Este campo es obligatorio.";
+    errorPhone.style.display = "block";
+    telefonoNewUser.style.border = "1px solid red";
+    iconNumberCheck.style.display = "none";
+    isPhoneValid = false;
+  } else if (numero[0] !== "6") {
     errorPhone.innerHTML =
       "El número de teléfono debe pertenecer a la región española.";
     errorPhone.style.display = "block";
@@ -330,6 +343,38 @@ alturaNewUser.addEventListener("input", () => {
   checkFormValidity();
 });
 
+// Añadir listener para la foto de perfil
+fotoNewUser.addEventListener("change", () => {
+  const file = fotoNewUser.files[0];
+  
+  if (file) {
+    // Validar tipo de archivo (opcional)
+    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    if (!validTypes.includes(file.type)) {
+      errorUserImage.innerHTML = "Solo se permiten archivos de imagen (JPG, PNG, GIF).";
+      errorUserImage.style.display = "block";
+      fotoNewUser.value = "";
+      isUserImageValid = false;
+    } else if (file.size > 5000000) { // 5MB
+      errorUserImage.innerHTML = "La imagen no debe exceder los 5MB.";
+      errorUserImage.style.display = "block";
+      fotoNewUser.value = "";
+      isUserImageValid = false;
+    } else {
+      errorUserImage.innerHTML = "";
+      errorUserImage.style.display = "none";
+      isUserImageValid = true;
+    }
+  } else {
+    // No hay archivo seleccionado, pero esto es opcional
+    errorUserImage.innerHTML = "";
+    errorUserImage.style.display = "none";
+    isUserImageValid = true;
+  }
+  
+  checkFormValidity();
+});
+
 terminosYcondiciones.addEventListener("change", () => {
   if (terminosYcondiciones.checked) {
     isTermsAccepted = true;
@@ -351,6 +396,7 @@ function checkFormValidity() {
     isPhoneValid &&
     isWeightValid &&
     isHeightValid &&
+    isUserImageValid && // Incluido en la validación
     isTermsAccepted
   ) {
     btnCreateAccount.removeAttribute("disabled");
@@ -400,14 +446,22 @@ btnCreateAccount.addEventListener("click", (e) => {
           errorEmail.style.display = "block";
           correoNewUser.style.border = "1px solid red";
           iconEmailCheck.style.display = "none";
+        } else if (data.error) {
+          Swal.fire({
+            title: "¡Error!",
+            text: data.error,
+            icon: "error",
+            confirmButtonText: "Aceptar",
+            confirmButtonColor: "#aa0303",
+          });
         } else {
           Swal.fire({
             title: "¡Registro exitoso!",
-            text: "Tu cuenta ha sido creada con éxito. Seras redirigido a la página de inicio de sesión.",
+            text: "Tu cuenta ha sido creada con éxito. Serás redirigido a la página de inicio de sesión.",
+            icon: "success",
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#aa0303",
           }).then(() => {
-            formRegister.submit();
             window.location.href = "/login";
           });
         }

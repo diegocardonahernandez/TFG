@@ -461,10 +461,32 @@
   left: 100%;
 }
 
+.user-profile-btn-save:disabled {
+  background-color: var(--puro-gray-300);
+  color: var(--puro-gray-500);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.7;
+  border: solid 1px #ccc;
+}
+
+.user-profile-btn-save:disabled:hover {
+  background-color: var(--puro-gray-300);
+  transform: none;
+  box-shadow: none;
+}
+
+.user-profile-btn-save:disabled::before {
+  display: none;
+}
+
+
 .user-profile-btn-cancel {
   background-color: transparent;
-  color: var(--puro-gray);
+  color: whitesmoke;
   border: 1px solid var(--puro-border-gray);
+  background-color: var(--puro-black);
   padding: 0.8rem 1.5rem;
   border-radius: 8px;
   font-weight: 600;

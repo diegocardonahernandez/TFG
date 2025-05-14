@@ -464,15 +464,12 @@ profileForm.addEventListener("submit", function (event) {
           text: "Tus datos personales han sido actualizados correctamente.",
           confirmButtonColor: "#aa0303",
         });
-        setTimeout(() => {
-          window.location.href = "/accountUser";
-        }, 2500);
       } else if (data.success) {
         // Caso 2: Se actualizaron datos y contraseña correctamente
         Swal.fire({
           title: "¡Cambios guardados!",
           text: isChangingPassword
-            ? "Tu contraseña ha sido actualizada"
+            ? "Tu contraseña se cambió con éxito. En breve serás redirigido al inicio de sesión."
             : "Tus datos personales han sido actualizados correctamente.",
           confirmButtonColor: "#aa0303",
         }).then((result) => {
