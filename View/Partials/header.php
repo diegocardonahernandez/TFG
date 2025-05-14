@@ -76,7 +76,7 @@
                     } else {
                         echo '<li class="nav-item">
 								<a href="/accountUser" class="nav-link">
-									<button class="btn btn-danger"> Tu Cuenta </button>
+									<button class="btn btn-danger"> Mi Cuenta </button>
 								</a>
 							</li>';
                     }

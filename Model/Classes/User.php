@@ -206,4 +206,61 @@ class User
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
+
+    public static function updateUserData($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $idUsuario)
+    {
+
+        $db = Database::getInstance();
+        $query =  "UPDATE usuarios 
+        SET nombre = :nombre,
+            apellido = :apellido,
+            telefono = :telefono,
+            fecha_nacimiento = :fecha_nacimiento,
+            genero = :genero,
+            peso = :peso,
+            altura = :altura,
+            foto_perfil = :foto_perfil
+        WHERE id_usuario = :id_usuario";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            ':nombre'           => $nombre,
+            ':apellido'         => $apellido,
+            ':telefono'         => $telefono,
+            ':fecha_nacimiento' => $fechaNacimiento,
+            ':genero'           => $genero,
+            ':peso'             => $peso,
+            ':altura'           => $altura,
+            ':foto_perfil'      => $fotoPerfil,
+            ':id_usuario'       => $idUsuario
+        ]);
+    }
+
+    public static function updateUserDataAndPassw($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $contrasena, $idUsuario)
+    {
+        $db = Database::getInstance();
+        $query =  "UPDATE usuarios 
+    SET nombre = :nombre,
+        apellido = :apellido,
+        telefono = :telefono,
+        fecha_nacimiento = :fecha_nacimiento,
+        genero = :genero,
+        peso = :peso,
+        altura = :altura,
+        foto_perfil = :foto_perfil,
+        contrasena = :contrasena
+    WHERE id_usuario = :id_usuario";
+        $stmt = $db->prepare($query);
+        $stmt->execute([
+            ':nombre'           => $nombre,
+            ':apellido'         => $apellido,
+            ':telefono'         => $telefono,
+            ':fecha_nacimiento' => $fechaNacimiento,
+            ':genero'           => $genero,
+            ':peso'             => $peso,
+            ':altura'           => $altura,
+            ':foto_perfil'      => $fotoPerfil,
+            ':contrasena'       => $contrasena,
+            ':id_usuario'       => $idUsuario
+        ]);
+    }
 }

@@ -38,6 +38,9 @@ switch ($method) {
             case '/accountUser':
                 require_once __DIR__ . '/../Controller/userAccountController.php';
                 break;
+            case '/logout':
+                require_once __DIR__ . '/../Controller/logout.php';
+                break;
             default:
                 echo "Página no encontrada";
                 break;
@@ -54,6 +57,9 @@ switch ($method) {
                 break;
             case '/loginForm':
                 require_once __DIR__ . '/../Controller/formControllers/loginForm.php';
+                break;
+            case '/updateUserData':
+                require_once __DIR__ . '/../Controller/formControllers/profileUserForm.php';
                 break;
             default:
                 echo "Ruta POST no reconocida";

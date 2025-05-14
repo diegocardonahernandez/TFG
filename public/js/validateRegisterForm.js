@@ -245,6 +245,7 @@ generoNewUser.addEventListener("change", () => {
   }
   checkFormValidity();
 });
+
 telefonoNewUser.addEventListener("input", () => {
   const numero = telefonoNewUser.value.replace(/\D/g, "");
 
