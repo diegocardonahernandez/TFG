@@ -14,7 +14,6 @@ export function activityLevel(tmb, activityLevel) {
 
 export function adjustAccordingToGoal(calories, goal) {
   let res = calories;
-
   if (goal === "lose") {
     res = calories * 0.8;
   } else if (goal === "gain") {
