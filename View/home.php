@@ -1,20 +1,82 @@
-<!-- Hero Section - Sin cambios -->
-<section class="hero-section">
-    <div class="hero-container">
-        <div class="hero-image-container">
-            <!-- Image will be added via CSS background for better control -->
+<!-- Incluir Animate.css para animaciones más llamativas -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<!-- Carrusel rediseñado para imágenes 1536x1024 -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <!-- Primer Slide - Contenido a la izquierda -->
+        <div class="carousel-item active hero-slide slide-1">
+            <div class="slide-background"></div>
+            <div class="container h-100">
+                <div class="carousel-caption position-left">
+                    <div class="hero-content animate__animated animate__fadeInLeft">
+                        <h1 class="hero-title">Tu mayor rival es aquel que ves en el espejo</h1>
+                        <p class="hero-subtitle">No pongas límites a tu potencial. Únete al plan premium</p>
+                        <div class="hero-cta">
+                            <a href="#programs" class="btn btn-primary">¡Vamos!</a>
+                            <a href="#about" class="btn btn-outline">Ver Beneficios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="hero-content">
-            <h1 class="hero-title">Tu mayor rival es aquel que ves en el espejo</h1>
-            <p class="hero-subtitle">No pongas límites a tu potencial. Únete al plan premium</p>
-            <div class="hero-cta">
-                <a href="#programs" class="btn btn-primary">¡Vamos!</a>
-                <a href="#about" class="btn btn-outline">Ver Beneficios</a>
+
+        <!-- Segundo Slide - Contenido abajo -->
+        <div class="carousel-item hero-slide slide-2">
+            <div class="slide-background"></div>
+            <div class="container h-100">
+                <div class="carousel-caption position-bottom">
+                    <div class="hero-content animate__animated animate__fadeInUp">
+                        <h1 class="hero-title">Transforma tu cuerpo, cambia tu vida</h1>
+                        <p class="hero-subtitle">Productos de calidad para maximizar tu rendimiento</p>
+                        <div class="hero-cta" id="btnsSlide2">
+                            <a href="#products" class="btn btn-primary">Ver Productos</a>
+                            <a href="#testimonials" class="btn btn-outline">Testimonios</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tercer Slide - Contenido a la derecha -->
+        <div class="carousel-item hero-slide slide-3">
+            <div class="slide-background"></div>
+            <div class="container h-100">
+                <div class="carousel-caption position-right">
+                    <div class="hero-content animate__animated animate__fadeInRight">
+                        <h1 class="hero-title">Entrena con propósito, vive con pasión</h1>
+                        <p class="hero-subtitle">Descubre nuestra gama de suplementos premium</p>
+                        <div class="hero-cta">
+                            <a href="#subscription" class="btn btn-primary">Suscríbete</a>
+                            <a href="#faq" class="btn btn-outline">Preguntas Frecuentes</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</section>
 
+    <!-- Controles de navegación mejorados -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- El resto del contenido sigue igual... -->
 
 <!-- Nueva sección de productos destacados -->
 <section class="featured-products">
@@ -80,4 +142,5 @@
             <a href="#" class="btn-view-more">Ver todos los productos</a>
         </div>
     </div>
+    <script src="/js/animations/home.js"></script>
 </section>

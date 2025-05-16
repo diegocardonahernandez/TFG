@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $ruta_foto = '/imgs/FotosPerfiles/' . $nombre_archivo_unico;
     } else {
         // Foto por defecto si no se sube nada nuevo
-        $ruta_foto = '/imgs/FotosPerfiles/userIcon.png';
+        $ruta_foto = $userToUpdate->getFotoPerfil();
     }
 
     // Si no se quiere cambiar la contraseña

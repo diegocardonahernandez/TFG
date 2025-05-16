@@ -263,4 +263,15 @@ class User
             ':id_usuario'       => $idUsuario
         ]);
     }
+
+    public static function deleteUser($id)
+    {
+
+        $db = Database::getInstance();
+        $query = "DELETE FROM usuarios WHERE id_usuario = :id";
+        $stmt = $db->prepare($query);
+        $stmt->execute([":id" => $id]);
+
+        return $stmt->rowCount();
+    }
 }

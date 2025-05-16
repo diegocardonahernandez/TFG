@@ -64,6 +64,12 @@ const profilePasswordStrengthText = document.getElementById(
   "user-profile-passwordStrengthText"
 );
 
+// Añadir referencia al contenedor de la imagen de perfil
+const profileImagePreview = document.getElementById(
+  "user-profile-image-preview"
+);
+const profileImageInput = document.getElementById("user-profile-image-upload");
+
 // Función para validar los campos al cargar la página
 function validateInitialFormValues() {
   // Validar nombre
@@ -434,6 +440,19 @@ function checkFormValidity() {
   }
 }
 
+// Añadir listener para la vista previa de la imagen
+profileImageInput.addEventListener("change", function () {
+  if (this.files && this.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function (e) {
+      profileImagePreview.style.backgroundImage = `url('${e.target.result}')`;
+    };
+
+    reader.readAsDataURL(this.files[0]);
+  }
+});
+
 // Ejecutar validación inicial al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   validateInitialFormValues();
@@ -463,15 +482,22 @@ profileForm.addEventListener("submit", function (event) {
           title: "¡Datos actualizados!",
           text: "Tus datos personales han sido actualizados correctamente.",
           confirmButtonColor: "#aa0303",
+          confirmButtonText: "Volver",
         });
+
+        // Si el servidor ha devuelto la ruta de la nueva imagen, actualizamos la vista
+        if (data.new_image_path) {
+          profileImagePreview.style.backgroundImage = `url('${data.new_image_path}')`;
+        }
       } else if (data.success) {
         // Caso 2: Se actualizaron datos y contraseña correctamente
         Swal.fire({
           title: "¡Cambios guardados!",
           text: isChangingPassword
-            ? "Tu contraseña se cambió con éxito. En breve serás redirigido al inicio de sesión."
+            ? "Tu contraseña se cambió con éxito."
             : "Tus datos personales han sido actualizados correctamente.",
           confirmButtonColor: "#aa0303",
+          confirmButtonText: "Volver",
         }).then((result) => {
           if (result.isConfirmed && isChangingPassword) {
             // Si se cambió la contraseña, limpiamos los campos relacionados
@@ -482,9 +508,11 @@ profileForm.addEventListener("submit", function (event) {
             profilePasswordStrengthText.textContent = "";
           }
         });
-        setTimeout(() => {
-          window.location.href = "/login";
-        }, 2500);
+
+        // Si el servidor ha devuelto la ruta de la nueva imagen, actualizamos la vista
+        if (data.new_image_path) {
+          profileImagePreview.style.backgroundImage = `url('${data.new_image_path}')`;
+        }
       } else if (data.incorrectPassword) {
         // Caso 3: La contraseña actual es incorrecta
         Swal.fire({
@@ -492,6 +520,7 @@ profileForm.addEventListener("submit", function (event) {
           title: "Contraseña incorrecta",
           text: "La contraseña actual que has introducido no es correcta.",
           confirmButtonColor: "#aa0303",
+          confirmButtonText: "Volver",
         });
         // Marcar el campo de contraseña actual como inválido
         profileInputCurrentPassword.style.border = "1px solid red";
@@ -561,11 +590,13 @@ document
       title: "¿Estás seguro?",
       text: "Esta acción eliminará permanentemente tu cuenta y todos tus datos. No podrás recuperarlos.",
       icon: "warning",
+      iconColor: "red",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
       confirmButtonText: "Sí, eliminar cuenta",
       cancelButtonText: "Cancelar",
+      cancelButtonColor: " #2E8B57",
     }).then((result) => {
       if (result.isConfirmed) {
         // Aquí iría el código para eliminar la cuenta

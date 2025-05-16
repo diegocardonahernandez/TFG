@@ -61,6 +61,9 @@ switch ($method) {
             case '/updateUserData':
                 require_once __DIR__ . '/../Controller/formControllers/profileUserForm.php';
                 break;
+            case '/deleteAccount':
+                require_once __DIR__ . '/../Controller/deleteUser.php';
+                break;
             default:
                 echo "Ruta POST no reconocida";
                 break;

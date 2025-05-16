@@ -1,48 +1,179 @@
-/* Hero Section styles */
-.hero-section {
+/* Hero Section Styles - Adaptado para imágenes 1536x1024 */
+
+/* Estilos generales para el carousel y slides */
+.carousel {
+  position: relative;
+}
+
+.hero-slide {
   position: relative;
   width: 100%;
-  height: 80vh;
-  min-height: 600px;
-  background-color: var(--puro-black);
+  /* Altura modificada para mantener proporciones 1536x1024 */
+  height: 75vh; /* Reducido de 86vh */
+  min-height: 450px; /* Reducido de 600px */
   overflow: hidden;
-  margin-top: 0;
+  background-color: black;
 }
 
-body.has-shipping-bar .hero-section {
-  margin-top: 0;
-}
-
-.hero-container {
-  position: relative;
+/* Fondos específicos para cada slide */
+.slide-background {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 1rem;
+  /* Cambiado a cover para mejor adaptación */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.hero-content {
-  width: 50%;
+/* Primer slide - Imagen y overlay */
+.slide-1 .slide-background {
+  background-image: url();
+  background-size: 100% 100%;
+}
+
+.slide-1 .slide-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 40%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  z-index: 1;
+}
+
+/* Segundo slide - Imagen y overlay */
+.slide-2 .slide-background {
+  background-image: url();
+}
+
+.slide-2 .slide-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  z-index: 1;
+}
+
+#btnsSlide2 {
+  justify-content: center;
+}
+
+/* Tercer slide - Imagen y overlay */
+.slide-3 .slide-background {
+  background-image: url();
+}
+
+.slide-3 .slide-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.5) 60%,
+    rgba(0, 0, 0, 0.9) 100%
+  );
+  z-index: 1;
+}
+
+/* Posicionamiento del contenido según cada slide */
+.carousel-caption {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
   color: var(--puro-white);
-  z-index: 2;
-  padding-left: 2rem;
+  text-align: left;
+  left: 0;
+  right: 0;
+}
+
+/* Posición izquierda - Primer slide */
+.position-left {
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+  margin-left: 3%;
+}
+
+.position-left .hero-content {
+  width: 50%;
+  padding-left: 3rem; /* Reducido de 4rem */
+  margin-right: auto;
+}
+
+/* Posición abajo - Segundo slide */
+.position-bottom {
+  align-items: flex-end;
+  justify-content: center;
+  text-align: center;
+}
+
+.position-bottom .hero-content {
+  width: 80%;
+  padding-bottom: 3rem; /* Reducido de 4rem */
+  margin: 0 auto;
+}
+
+/* Posición derecha - Tercer slide */
+.position-right {
+  align-items: center;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.position-right .hero-content {
+  width: 50%;
+  padding-right: 3rem; /* Reducido de 4rem */
+  margin-left: auto;
+}
+
+.position-right .hero-cta {
+  justify-content: flex-end;
+}
+
+/* Estilos del contenido */
+.hero-content {
+  color: var(--puro-white);
+  padding: 1.5rem; /* Reducido de 2rem */
 }
 
 .hero-title {
-  font-size: 3.2rem;
+  font-size: 2.8rem; /* Reducido de 3.2rem */
   font-weight: 800;
-  margin-bottom: 1rem;
+  margin-bottom: 0.8rem; /* Reducido de 1rem */
   line-height: 1.1;
   text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .hero-subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
+  font-size: 1.2rem; /* Reducido de 1.4rem */
+  margin-bottom: 1.5rem; /* Reducido de 2rem */
   font-weight: 300;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
 
 .hero-cta {
@@ -50,13 +181,14 @@ body.has-shipping-bar .hero-section {
   gap: 1rem;
 }
 
+/* Botones y controles estilizados */
 .hero-cta .btn {
-  padding: 0.75rem 2rem;
+  padding: 0.6rem 1.8rem; /* Reducido de 0.75rem 2rem */
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  border-radius: 4px;
   transition: all 0.3s ease;
+  border-radius: 0;
 }
 
 .btn-primary {
@@ -69,29 +201,6 @@ body.has-shipping-bar .hero-section {
   transition: all 0.3s ease;
 }
 
-/* Efecto de brillo deslizante */
-.btn-primary::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transition: all 0.6s;
-  z-index: -1;
-}
-
-.btn-primary:hover::before {
-  left: 100%;
-}
-
-/* Efecto visual de hover */
 .btn-primary:hover {
   background-color: #a30000;
   border-color: #a30000;
@@ -110,73 +219,136 @@ body.has-shipping-bar .hero-section {
   color: var(--puro-black);
 }
 
-.hero-image-container {
-  position: absolute;
-  top: 0;
-  right: -10em;
-  width: 90%;
-  height: 100%;
-  background-image: url("/imgs/heroSection.png");
-  background-size: cover;
-  background-position: center;
+/* Indicadores personalizados */
+.carousel-indicators {
+  z-index: 15;
+  margin-bottom: 1.5rem; /* Reducido de 2rem */
 }
 
-/* Add a gradient overlay to enhance text readability */
-.hero-image-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.4) 50%,
-    rgba(139, 0, 0, 0.2) 100%
-  );
+.carousel-indicators button {
+  width: 25px; /* Reducido de 30px */
+  height: 4px; /* Reducido de 5px */
+  border-radius: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  border: none;
+  margin: 0 5px;
+  transition: all 0.3s ease;
 }
 
-/* Responsive adjustments */
+.carousel-indicators button.active {
+  background-color: var(--puro-red);
+  transform: none;
+  border: none;
+}
+
+/* Controles de navegación */
+.carousel-control-next,
+.carousel-control-prev {
+  width: 5%;
+  z-index: 15;
+  opacity: 0.7;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 30px; /* Reducido de 35px */
+  height: 30px; /* Reducido de 35px */
+  background-size: 50%;
+  border-radius: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+  background-color: var(--puro-red);
+  transform: none;
+  opacity: 1;
+}
+
+/* Efectos de transición entre slides */
+.carousel .carousel-item {
+  transition: transform 1.5s ease-in-out;
+}
+
+.carousel-item.active {
+  z-index: 9;
+}
+
+/* Animaciones para entradas con Animate.css */
+.animate__animated {
+  animation-duration: 1.2s;
+  animation-fill-mode: both;
+}
+
+.animate__fadeInLeft,
+.animate__fadeInRight,
+.animate__fadeInUp {
+  animation-delay: 0.3s;
+}
+
+/* Responsive - Adaptado a los diferentes posicionamientos */
 @media (max-width: 992px) {
-  .hero-content {
-    width: 100%;
-    text-align: center;
-    padding: 0 1rem;
-  }
-
   .hero-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* Reducido de 2.5rem */
   }
 
   .hero-subtitle {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Reducido de 1.2rem */
+  }
+
+  .position-left .hero-content,
+  .position-right .hero-content {
+    width: 90%;
+    padding-left: 1.5rem; /* Reducido de 2rem */
+    padding-right: 1.5rem; /* Reducido de 2rem */
+  }
+
+  .position-left,
+  .position-right,
+  .position-bottom {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .position-bottom .hero-content {
+    padding-bottom: 1.5rem; /* Reducido de 2rem */
+  }
+
+  .position-right .hero-cta {
+    justify-content: center;
   }
 
   .hero-cta {
     justify-content: center;
   }
 
-  .hero-image-container {
-    width: 100%;
-    opacity: 0.5;
-    margin-right: 10em;
-  }
-
-  .hero-image-container::after {
-    background: linear-gradient(
-      0deg,
-      rgba(0, 0, 0, 0.7) 0%,
-      rgba(139, 0, 0, 0.3) 100%
-    );
-  }
-
-  .cart-icon-container {
-    margin: 0.5rem 0;
+  .carousel-item.active .slide-background {
+    animation: none;
   }
 }
 
-/* Product Section Styles - Add to homeStyle.css */
+@media (max-width: 576px) {
+  .hero-slide {
+    height: 60vh; /* Reducido de 70vh */
+    min-height: 400px; /* Reducido de 500px */
+  }
+
+  .hero-title {
+    font-size: 1.8rem; /* Reducido de 2rem */
+  }
+
+  .hero-subtitle {
+    font-size: 0.9rem; /* Reducido de 1rem */
+    margin-bottom: 1.2rem; /* Reducido de 1.5rem */
+  }
+
+  .hero-cta .btn {
+    padding: 0.5rem 1.2rem; /* Reducido de 0.6rem 1.5rem */
+    font-size: 0.85rem; /* Reducido de 0.9rem */
+  }
+}
 
 /* Featured Products Section */
 .featured-products {

@@ -45,9 +45,10 @@ form.addEventListener("submit", (e) => {
       .then((data) => {
         if (data.success === "true") {
           Swal.fire({
-            title: "Bienvenido",
-            text: "Inicio de sesión exitoso",
+            title: "¡Bienvenido!",
+            text: "Has iniciado sesión exitosamente",
             icon: "success",
+            iconColor: "#aa0303",
             showConfirmButton: false,
             timer: 2000,
           }).then(() => {
