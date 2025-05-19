@@ -17,6 +17,8 @@
     <link rel="stylesheet" href="/css/loginStyle.css">
     <link rel="stylesheet" href="/css/registerStyle.css">
     <link rel="stylesheet" href="/css/userAccountStyle.css">
+    <link rel="stylesheet" href="/css/administration.css">
+    <link rel="stylesheet" href="/css/profits.css">
 </head>
 
 <body>
@@ -39,7 +41,7 @@
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Tienda
                         </a>
                         <ul class="dropdown-menu">
@@ -50,11 +52,17 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item disabled" href="#">Descuentos</a></li>
+                            <?php
+                            if (isset($_SESSION['userType']) && $_SESSION['userType'] === 'Premium') {
+                                echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
+                            } else {
+                                echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Descuentos</a></li>';
+                            }
+                            ?>
                         </ul>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Tu Desafio
                         </a>
                         <ul class="dropdown-menu">
@@ -63,31 +71,35 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item disabled" href="#">Tu Rutina Ideal</a></li>
+                            <?php
+                            if (isset($_SESSION['userType']) && $_SESSION['userType'] === 'Premium') {
+                                echo '<li><a class="dropdown-item" href="#">Tu Rutina Ideal</a></li>';
+                            } else {
+                                echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Tu Rutina Ideal</a></li>';
+                            }
+                            ?>
                         </ul>
                     </li>
                     <?php
                     if (!isset($_SESSION['userId'])) {
                         echo '<li class="nav-item">
-								<a href="/login" class="nav-link">
-									<button class="btn btn-danger">Iniciar Sesión</button>
-								</a>
-							</li>';
+                                <a href="/login" class="nav-link">
+                                    <button class="btn btn-danger">Iniciar Sesión</button>
+                                </a>
+                              </li>';
                     } else {
-
                         if ($_SESSION['userType'] == 'Administrador') {
                             echo '<li class="nav-item">
-								<a href="#" class="nav-link">
-									<button class="btn btn-dark"> Administración </button>
-								</a>
-							</li>';
+                                    <a href="/adminPanel" class="nav-link">
+                                        <button class="btn btn-dark"> Administración </button>
+                                    </a>
+                                  </li>';
                         }
-
                         echo '<li class="nav-item">
-								<a href="/accountUser" class="nav-link">
-									<button class="btn btn-danger"> Mi Cuenta </button>
-								</a>
-							</li>';
+                                <a href="/accountUser" class="nav-link">
+                                    <button class="btn btn-danger"> Mi Cuenta </button>
+                                </a>
+                              </li>';
                     }
                     ?>
                 </ul>

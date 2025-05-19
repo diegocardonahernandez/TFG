@@ -23,7 +23,7 @@
                         <p class="hero-subtitle">No pongas límites a tu potencial. Únete al plan premium</p>
                         <div class="hero-cta">
                             <a href="#programs" class="btn btn-primary">¡Vamos!</a>
-                            <a href="#about" class="btn btn-outline">Ver Beneficios</a>
+                            <a href="/profits" class="btn btn-outline">Ver Beneficios</a>
                         </div>
                     </div>
                 </div>

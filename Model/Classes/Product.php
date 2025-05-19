@@ -167,6 +167,16 @@ class Product implements JsonSerializable
         $this->detalles_producto = $detalles_producto;
     }
 
+    public static function getAll()
+    {
+
+        $db = Database::getInstance();
+        $sql = 'SELECT * FROM productos';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
+
 
     public static function getMostViewed()
     {
