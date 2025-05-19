@@ -728,41 +728,6 @@
   animation: markerPulse 2s infinite;
 }
 
-/* 5.5 Productos sugeridos */
-.imc-products-suggestion {
-  margin-top: 1rem;
-}
-
-.imc-products-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-  color: var(--puro-black);
-}
-
-.imc-products-container {
-  display: flex;
-  gap: 1rem;
-  overflow-x: auto;
-  padding: 0.5rem 0;
-  scrollbar-width: thin;
-  scrollbar-color: var(--puro-red) #f0f0f0;
-}
-
-.imc-products-container::-webkit-scrollbar {
-  height: 6px;
-}
-
-.imc-products-container::-webkit-scrollbar-track {
-  background: #f0f0f0;
-  border-radius: 10px;
-}
-
-.imc-products-container::-webkit-scrollbar-thumb {
-  background-color: var(--puro-red);
-  border-radius: 10px;
-}
-
 .imc-product-item {
   background-color: #f9f9f9;
   border-radius: var(--radius-md);
@@ -959,6 +924,71 @@
 .imc-consultation-btn:hover::before {
   left: 100%;
   animation: buttonShimmer 1.5s infinite;
+}
+
+/* Estilos para el modal de consulta */
+.swal-consulta-form {
+  text-align: left;
+  margin-top: 15px;
+}
+
+.swal-form-group {
+  margin-bottom: 15px;
+}
+
+.swal-form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #333;
+}
+
+.swal-form-input,
+.swal-form-textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.swal-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Estilos personalizados para SweetAlert */
+.consulta-sweet-popup {
+  padding: 20px;
+  width: 500px;
+  max-width: 90%;
+}
+
+.consulta-confirm-button,
+.consulta-cancel-button {
+  padding: 10px 24px;
+  font-weight: 500;
+}
+
+/* Estilos responsive */
+@media (max-width: 576px) {
+  .consulta-sweet-popup {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .swal-form-input,
+  .swal-form-textarea {
+    font-size: 14px;
+  }
+}
+
+/* Efecto de enfoque para los inputs */
+.swal-form-input:focus,
+.swal-form-textarea:focus {
+  border-color: #2e8b57;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
 }
 
 /* 6.2 Tarjeta informativa */

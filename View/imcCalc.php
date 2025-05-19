@@ -116,13 +116,6 @@
                                 </div>
                                 <div class="imc-scale-marker" id="imcMarker"></div>
                             </div>
-
-                            <div class="imc-products-suggestion">
-                                <h4 class="imc-products-title">Productos recomendados</h4>
-                                <div class="imc-products-container" id="imcProducts">
-                                    <!-- Los productos recomendados se insertarán dinámicamente -->
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -202,6 +195,7 @@
             </div>
         </div>
     </div>
-    <script src="/js/animationIMC.js"></script>
+    <script src="/js/animations/animationIMC.js"></script>
+    <script src="/js/utils/scheduleDate.js"></script>
     <script src="/js/imcCalculator.js"></script>
 </section>

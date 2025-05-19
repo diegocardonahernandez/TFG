@@ -51,11 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Función para cargar productos relacionados con el objetivo
-  function loadRecommendedProducts(calories, goal) {
+  function loadRecommendedProducts() {
     const formData = new FormData(form);
-    formData.append("estimatedCalories", calories);
-    formData.append("goal", goal);
 
     fetch("/caloriesForm", {
       method: "POST",
@@ -68,22 +65,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (productsGoal && productsGoal.length > 0) {
           productsGoal.forEach((product) => {
+            // Verificar las propiedades que vienen en el objeto product
+            console.log("Producto recibido:", product);
+
+            // Usar las propiedades correctas con verificación de existencia
             const productHTML = `
-            <div class="calorie-product-card">
-              <img src="${product.imagen}" alt="${
-              product.nombre
+          <div class="calorie-product-card">
+            <img src="${product.imagen || ""}" alt="${
+              product.nombre || "Producto"
             }" class="calorie-product-image">
-              <div class="calorie-product-content">
-                <h5 class="calorie-product-name">${product.nombre}</h5>
-                <p class="calorie-product-description">${
-                  product.descripcion || "Sin descripción"
-                }</p>
-                <a href="/product?id=${
-                  product.IdProducto
-                }" class="calorie-product-btn">Ver producto</a>
-              </div>
+            <div class="calorie-product-content">
+              <h5 class="calorie-product-name">${
+                product.nombre || "Producto sin nombre"
+              }</h5>
+              <p class="calorie-product-description">${
+                product.descripcion || "Sin descripción"
+              }</p>
+              <a href="/product?id=${
+                product.id_producto || product.IdProducto || "#"
+              }" class="calorie-product-btn">Ver producto</a>
             </div>
-          `;
+          </div>
+        `;
 
             productsGoalContainer.innerHTML += productHTML;
           });
@@ -95,7 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
       .catch((error) => {
         console.error("Error al obtener los productos:", error);
         productsGoalContainer.innerHTML =
-          "<p>Hubo un error al cargar los productos.</p>";
+          "<p>Hubo un error al cargar los productos. Detalles: " +
+          error.message +
+          "</p>";
       });
   }
 
@@ -129,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const nutrients = macroNutrientDistribution(result, +weightInput.value);
 
       // Cargar productos recomendados (pasando el objetivo)
-      loadRecommendedProducts(result, selectedGoal);
+      loadRecommendedProducts();
 
       // Preparar para animaciones (establecer valores iniciales)
       resultProteinGrams.innerHTML = "0";

@@ -74,6 +74,15 @@
 								</a>
 							</li>';
                     } else {
+
+                        if ($_SESSION['userType'] == 'Administrador') {
+                            echo '<li class="nav-item">
+								<a href="#" class="nav-link">
+									<button class="btn btn-dark"> Administración </button>
+								</a>
+							</li>';
+                        }
+
                         echo '<li class="nav-item">
 								<a href="/accountUser" class="nav-link">
 									<button class="btn btn-danger"> Mi Cuenta </button>

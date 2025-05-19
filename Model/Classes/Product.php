@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../Config/Database.php';
 
-class Product
+class Product implements JsonSerializable
 {
     private $id_producto;
     private $nombre;
@@ -17,6 +17,26 @@ class Product
     private $estado;
     private $fecha_creacion;
     private $categoria;
+
+    // Implementación de JsonSerializable para incluir propiedades privadas en la serialización JSON
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id_producto' => $this->id_producto,
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion,
+            'detalles_producto' => $this->detalles_producto,
+            'precio' => $this->precio,
+            'stock' => $this->stock,
+            'id_categoria' => $this->id_categoria,
+            'imagen' => $this->imagen,
+            'descuento' => $this->descuento,
+            'popularidad' => $this->popularidad,
+            'estado' => $this->estado,
+            'fecha_creacion' => $this->fecha_creacion,
+            'categoria' => $this->categoria
+        ];
+    }
 
     public function getIdProducto()
     {

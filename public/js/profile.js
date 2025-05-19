@@ -599,7 +599,6 @@ document
       cancelButtonColor: " #2E8B57",
     }).then((result) => {
       if (result.isConfirmed) {
-        // Aquí iría el código para eliminar la cuenta
         fetch("/deleteAccount", {
           method: "POST",
           headers: {
@@ -609,12 +608,13 @@ document
           .then((response) => response.json())
           .then((data) => {
             if (data.success) {
-              Swal.fire(
-                "¡Cuenta eliminada!",
-                "Tu cuenta ha sido eliminada correctamente.",
-                "success"
-              ).then(() => {
-                window.location.href = "/";
+              Swal.fire({
+                title: "¡Cuenta eliminada!",
+                text: "Tu cuenta ha sido eliminada correctamente.",
+                icon: null,
+                confirmButtonColor: "#aa0303",
+              }).then(() => {
+                window.location.href = "/logout";
               });
             } else {
               Swal.fire(

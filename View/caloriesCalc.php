@@ -275,6 +275,6 @@
             </div>
         </div>
     </div>
-    <script src="/js/animationCalories.js"></script>
+    <script src="/js/animations/animationCalories.js"></script>
     <script type="module" src="/js/caloriesCalculator.js"></script>
 </section>

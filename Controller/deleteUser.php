@@ -7,5 +7,4 @@ header('Content-Type: application/json');
 
 if ($count > 0) {
     echo json_encode(["success" => true]);
-    // enviar a cerrar sesion
 }

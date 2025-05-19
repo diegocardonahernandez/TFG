@@ -178,21 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /**
-   * Muestra productos recomendados basados en el IMC
-   * @param {number} imcValue - Valor del IMC calculado
-   */
-  function showRecommendedProducts(imcValue) {
-    const productsContainer = document.getElementById("imcProducts");
-
-    // Limpiar productos anteriores
-    productsContainer.innerHTML = "";
-
-    // Aquí se implementaría la lógica para mostrar productos recomendados
-    // basados en el IMC calculado
-    // Por ahora, dejamos esta función como un marcador de posición
-  }
-
-  /**
    * Añade los estilos CSS necesarios para los marcadores de IMC
    */
   function addMarkerStyles() {
