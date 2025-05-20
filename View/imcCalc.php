@@ -135,11 +135,23 @@
                             <p>Nuestros especialistas pueden ofrecerte un plan personalizado según tus resultados de IMC
                             </p>
                         </div>
-                        <div class="imc-consultation-action">
-                            <a href="#" class="imc-consultation-btn">
+
+                        <?php
+                        if (!isset($_SESSION['userId'])) {
+                            echo '<div class="imc-consultation-action">
+                            <a href="/login" class="imc-consultation-btn"
+                                <i class="fas fa-calendar-check"></i> Iniciar Sesión
+                            </a>
+                        </div>';
+                        } else {
+                            echo '  <div class="imc-consultation-action">
+                            <a href="#" class="imc-consultation-btn" id="scheduleBtn">
                                 <i class="fas fa-calendar-check"></i> Agendar consulta
                             </a>
-                        </div>
+                        </div>';
+                        }
+
+                        ?>
                     </div>
                 </div>
             </div>

@@ -43,8 +43,8 @@ switch ($method) {
                 require_once __DIR__ . '/../Controller/logout.php';
                 break;
 
-            case '/adminPanel':
-                require_once __DIR__ . '/../Controller/administrationController.php';
+            case '/processProducts':
+                require_once __DIR__ . '/../Controller/processProductsController.php';
                 break;
             case '/profits':
                 renderLayout('premiumProfits');

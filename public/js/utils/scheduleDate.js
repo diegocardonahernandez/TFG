@@ -1,7 +1,7 @@
 // Script para la funcionalidad de "Agendar consulta"
 document.addEventListener("DOMContentLoaded", function () {
   // Elementos del DOM
-  const consultaBtn = document.querySelector(".imc-consultation-btn");
+  const consultaBtn = document.getElementById("scheduleBtn");
 
   // Evento para el botón de agendar consulta
   if (consultaBtn) {
@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Aquí podrías enviar los datos a un servidor o procesarlos
         Swal.fire({
           title: "¡Consulta agendada!",
-          text: `Recibiras un correo resumiendo la información de la consulta solicitada. 
+          text: `Recibiras un correo resumiendo la información de la consulta solicitada . 
           ¡Gracias por confiar en nosotros!`,
           icon: "success",
           confirmButtonColor: "#2E8B57",

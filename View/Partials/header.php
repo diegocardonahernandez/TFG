@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/css/loginStyle.css">
     <link rel="stylesheet" href="/css/registerStyle.css">
     <link rel="stylesheet" href="/css/userAccountStyle.css">
-    <link rel="stylesheet" href="/css/administration.css">
     <link rel="stylesheet" href="/css/profits.css">
 </head>
 
@@ -53,7 +52,9 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <?php
-                            if (isset($_SESSION['userType']) && $_SESSION['userType'] === 'Premium') {
+                            if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Premium') {
+                                echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
+                            } else if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Administrador') {
                                 echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
                             } else {
                                 echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Descuentos</a></li>';
@@ -72,7 +73,9 @@
                                 <hr class="dropdown-divider">
                             </li>
                             <?php
-                            if (isset($_SESSION['userType']) && $_SESSION['userType'] === 'Premium') {
+                            if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Premium') {
+                                echo '<li><a class="dropdown-item" href="#">Tu Rutina Ideal</a></li>';
+                            } else if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Administrador') {
                                 echo '<li><a class="dropdown-item" href="#">Tu Rutina Ideal</a></li>';
                             } else {
                                 echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Tu Rutina Ideal</a></li>';
@@ -89,11 +92,15 @@
                               </li>';
                     } else {
                         if ($_SESSION['userType'] == 'Administrador') {
-                            echo '<li class="nav-item">
-                                    <a href="/adminPanel" class="nav-link">
-                                        <button class="btn btn-dark"> Administración </button>
-                                    </a>
-                                  </li>';
+                            echo '<li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-gear"></i>  Administración
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/processProducts">Productos</a></li>
+                            <li><a class="dropdown-item" href="#">Usuarios</a></li>
+                        </ul>
+                    </li>';
                         }
                         echo '<li class="nav-item">
                                 <a href="/accountUser" class="nav-link">
