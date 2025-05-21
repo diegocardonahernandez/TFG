@@ -1,66 +1,66 @@
-const productsSkeleton = document.getElementById("productsSkeleton")
-const productsTable = document.getElementById("productsTable")
-const productsCountSkeleton = document.getElementById("productsCountSkeleton")
-const productsCountReal = document.getElementById("productsCountReal")
-const productsTableBody = document.getElementById("productsTableBody")
-const paginationContainer = document.getElementById("paginationContainer")
-const paginationInfo = document.getElementById("paginationInfo")
-const noProductsMessage = document.getElementById("noProductsMessage")
-const totalProductsSpan = document.getElementById("totalProducts")
+const productsSkeleton = document.getElementById("productsSkeleton");
+const productsTable = document.getElementById("productsTable");
+const productsCountSkeleton = document.getElementById("productsCountSkeleton");
+const productsCountReal = document.getElementById("productsCountReal");
+const productsTableBody = document.getElementById("productsTableBody");
+const paginationContainer = document.getElementById("paginationContainer");
+const paginationInfo = document.getElementById("paginationInfo");
+const noProductsMessage = document.getElementById("noProductsMessage");
+const totalProductsSpan = document.getElementById("totalProducts");
 
-let currentPage = 1
+let currentPage = 1;
 
 async function fetchAndRenderProducts(page = 1) {
   // Mostrar skeleton y ocultar tabla
-  productsSkeleton.classList.remove("d-none")
-  productsTable.classList.add("d-none")
-  productsCountSkeleton.classList.remove("d-none")
-  productsCountReal.classList.add("d-none")
+  productsSkeleton.classList.remove("d-none");
+  productsTable.classList.add("d-none");
+  productsCountSkeleton.classList.remove("d-none");
+  productsCountReal.classList.add("d-none");
 
   try {
-    const res = await fetch(`/getProducts?page=${page}`)
-    const data = await res.json()
+    const res = await fetch(`/getProducts?page=${page}`);
+    const data = await res.json();
 
     // Renderizar productos
-    renderProducts(data.products)
+    renderProducts(data.products);
     // Renderizar contador
-    totalProductsSpan.textContent = data.totalProducts
-    productsCountSkeleton.classList.add("d-none")
-    productsCountReal.classList.remove("d-none")
+    totalProductsSpan.textContent = data.totalProducts;
+    productsCountSkeleton.classList.add("d-none");
+    productsCountReal.classList.remove("d-none");
     // Renderizar paginación
-    renderPagination(data.currentPage, data.totalPages)
+    renderPagination(data.currentPage, data.totalPages);
     // Renderizar info de paginación
     if (paginationInfo) {
       if (data.totalProducts > 0) {
         paginationInfo.textContent = `Mostrando ${data.startIndex + 1}-${
           data.endIndex
-        } de ${data.totalProducts} productos`
+        } de ${data.totalProducts} productos`;
       } else {
-        paginationInfo.textContent = ""
+        paginationInfo.textContent = "";
       }
     }
     // Mostrar/ocultar mensaje de no productos
     if (data.products.length === 0) {
-      noProductsMessage.classList.remove("d-none")
+      noProductsMessage.classList.remove("d-none");
     } else {
-      noProductsMessage.classList.add("d-none")
+      noProductsMessage.classList.add("d-none");
     }
     // Ocultar skeleton y mostrar tabla
-    productsSkeleton.classList.add("d-none")
-    productsTable.classList.remove("d-none")
+    productsSkeleton.classList.add("d-none");
+    productsTable.classList.remove("d-none");
   } catch (error) {
-    productsSkeleton.classList.add("d-none")
-    productsTable.classList.remove("d-none")
-    noProductsMessage.classList.remove("d-none")
-    if (paginationInfo) paginationInfo.textContent = ""
+    productsSkeleton.classList.add("d-none");
+    productsTable.classList.remove("d-none");
+    noProductsMessage.classList.remove("d-none");
+    if (paginationInfo) paginationInfo.textContent = "";
   }
 }
 
 function renderProducts(products) {
-  productsTableBody.innerHTML = ""
+  productsTableBody.innerHTML = "";
   products.forEach((product) => {
-    const row = document.createElement("tr")
-    row.className = "product-row"
+    const row = document.createElement("tr");
+    row.className = "product-row";
     row.innerHTML = `
         <td class="px-4 py-3">${product.id_producto}</td>
         <td class="px-4 py-3">
@@ -113,101 +113,101 @@ function renderProducts(products) {
             </button>
           </div>
         </td>
-      `
-    productsTableBody.appendChild(row)
-  })
+      `;
+    productsTableBody.appendChild(row);
+  });
   // Reasignar handlers de edición y borrado
-  assignActionHandlers()
+  assignActionHandlers();
 }
 
 function renderPagination(currentPage, totalPages) {
-  paginationContainer.innerHTML = ""
-  if (totalPages <= 1) return
-  let html = `<nav aria-label="Navegación de páginas de productos"><ul class="pagination pagination-md justify-content-center mb-0">`
+  paginationContainer.innerHTML = "";
+  if (totalPages <= 1) return;
+  let html = `<nav aria-label="Navegación de páginas de productos"><ul class="pagination pagination-md justify-content-center mb-0">`;
   html += `<li class="page-item ${
     currentPage <= 1 ? "disabled" : ""
   }"><a class="page-link rounded-start" href="#" data-page="${
     currentPage - 1
-  }" aria-label="Anterior"><span aria-hidden="true"><i class="bi bi-chevron-left"></i></span></a></li>`
-  let startPage = Math.max(1, currentPage - 2)
-  let endPage = Math.min(startPage + 4, totalPages)
+  }" aria-label="Anterior"><span aria-hidden="true"><i class="bi bi-chevron-left"></i></span></a></li>`;
+  let startPage = Math.max(1, currentPage - 2);
+  let endPage = Math.min(startPage + 4, totalPages);
   if (startPage > 1) {
-    html += `<li class="page-item"><a class="page-link" href="#" data-page="1">1</a></li>`
+    html += `<li class="page-item"><a class="page-link" href="#" data-page="1">1</a></li>`;
     if (startPage > 2) {
-      html += `<li class="page-item disabled"><span class="page-link">...</span></li>`
+      html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
     }
   }
   for (let i = startPage; i <= endPage; i++) {
     html += `<li class="page-item ${
       i === currentPage ? "active" : ""
-    }"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`
+    }"><a class="page-link" href="#" data-page="${i}">${i}</a></li>`;
   }
   if (endPage < totalPages) {
     if (endPage < totalPages - 1) {
-      html += `<li class="page-item disabled"><span class="page-link">...</span></li>`
+      html += `<li class="page-item disabled"><span class="page-link">...</span></li>`;
     }
-    html += `<li class="page-item"><a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a></li>`
+    html += `<li class="page-item"><a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a></li>`;
   }
   html += `<li class="page-item ${
     currentPage >= totalPages ? "disabled" : ""
   }"><a class="page-link rounded-end" href="#" data-page="${
     currentPage + 1
-  }" aria-label="Siguiente"><span aria-hidden="true"><i class="bi bi-chevron-right"></i></span></a></li>`
-  html += `</ul></nav>`
-  paginationContainer.innerHTML = html
+  }" aria-label="Siguiente"><span aria-hidden="true"><i class="bi bi-chevron-right"></i></span></a></li>`;
+  html += `</ul></nav>`;
+  paginationContainer.innerHTML = html;
   // Asignar eventos
   paginationContainer.querySelectorAll("a.page-link").forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault()
-      const page = parseInt(this.getAttribute("data-page"))
+      e.preventDefault();
+      const page = parseInt(this.getAttribute("data-page"));
       if (!isNaN(page) && page !== currentPage) {
-        currentPage = page
-        fetchAndRenderProducts(page)
+        currentPage = page;
+        fetchAndRenderProducts(page);
       }
-    })
-  })
+    });
+  });
 }
 
 function assignActionHandlers() {
   // Editar producto
   document.querySelectorAll(".edit-product").forEach((button) => {
     button.addEventListener("click", function () {
-      const productId = this.dataset.productId
-      loadProductData(productId)
-    })
-  })
+      const productId = this.dataset.productId;
+      loadProductData(productId);
+    });
+  });
   // Eliminar producto
   document.querySelectorAll(".delete-product").forEach((button) => {
     button.addEventListener("click", function () {
-      const productId = this.dataset.productId
-      confirmDelete(productId)
-    })
-  })
+      const productId = this.dataset.productId;
+      confirmDelete(productId);
+    });
+  });
 }
 
 async function initializeProductManagement() {
   // Load categories for both forms
-  await loadCategories()
+  await loadCategories();
 
   // Set default status for new products
-  document.getElementById("productStatus").value = "1"
+  document.getElementById("productStatus").value = "1";
 
   // Add Product Form Handler
-  const addProductForm = document.getElementById("addProductForm")
-  const saveProductBtn = document.getElementById("saveProduct")
+  const addProductForm = document.getElementById("addProductForm");
+  const saveProductBtn = document.getElementById("saveProduct");
 
   saveProductBtn.addEventListener("click", function () {
     if (addProductForm.checkValidity()) {
-      const formData = new FormData(addProductForm)
+      const formData = new FormData(addProductForm);
 
       Swal.fire({
         title: "Guardando producto",
         text: "Por favor espere...",
         allowOutsideClick: false,
         didOpen: () => {
-          Swal.showLoading()
+          Swal.showLoading();
         },
-      })
+      });
 
       fetch("/addProduct", {
         method: "POST",
@@ -223,15 +223,15 @@ async function initializeProductManagement() {
               iconColor: "#aa0303",
               confirmButtonColor: "#aa0303",
             }).then(() => {
-              window.location.reload()
-            })
+              window.location.reload();
+            });
           } else {
             Swal.fire({
               title: "Error",
               text: data.message || "Error al guardar el producto",
               icon: "error",
               confirmButtonColor: "#aa0303",
-            })
+            });
           }
         })
         .catch((error) => {
@@ -240,52 +240,52 @@ async function initializeProductManagement() {
             text: "Error al procesar la solicitud",
             icon: "error",
             confirmButtonColor: "#aa0303",
-          })
-        })
+          });
+        });
     } else {
-      addProductForm.reportValidity()
+      addProductForm.reportValidity();
     }
-  })
+  });
 
   // Edit Product Handlers
-  const editButtons = document.querySelectorAll(".edit-product")
+  const editButtons = document.querySelectorAll(".edit-product");
   editButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      const productId = this.dataset.productId
-      loadProductData(productId)
-    })
-  })
+      const productId = this.dataset.productId;
+      loadProductData(productId);
+    });
+  });
 
   // Delete Product Handlers
-  const deleteButtons = document.querySelectorAll(".delete-product")
+  const deleteButtons = document.querySelectorAll(".delete-product");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function () {
-      const productId = this.dataset.productId
-      confirmDelete(productId)
-    })
-  })
+      const productId = this.dataset.productId;
+      confirmDelete(productId);
+    });
+  });
 
   // Update Product Handler
-  const updateProductBtn = document.getElementById("updateProduct")
-  const editProductForm = document.getElementById("editProductForm")
+  const updateProductBtn = document.getElementById("updateProduct");
+  const editProductForm = document.getElementById("editProductForm");
 
   updateProductBtn.addEventListener("click", function () {
     // Asegurar que el valor de 'estado' es el del radio seleccionado
-    const estadoValue = document.querySelector('input[name="estado"]:checked')
+    const estadoValue = document.querySelector('input[name="estado"]:checked');
     if (estadoValue) {
       // Si existe un input hidden con name="estado", actualízalo, si no, ignora (FormData lo recoge del radio)
     }
     if (editProductForm.checkValidity()) {
-      const formData = new FormData(editProductForm)
+      const formData = new FormData(editProductForm);
 
       Swal.fire({
         title: "Actualizando producto",
         text: "Por favor espere...",
         allowOutsideClick: false,
         didOpen: () => {
-          Swal.showLoading()
+          Swal.showLoading();
         },
-      })
+      });
 
       fetch("/updateProduct", {
         method: "POST",
@@ -301,60 +301,60 @@ async function initializeProductManagement() {
               iconColor: "#aa0303",
               confirmButtonColor: "#aa0303",
             }).then(() => {
-              window.location.reload()
-            })
+              window.location.reload();
+            });
           } else {
             Swal.fire({
               title: "Error",
               text: data.error || "Error al actualizar el producto",
               icon: "error",
               confirmButtonColor: "#aa0303",
-            })
+            });
           }
         })
         .catch((error) => {
-          console.error("Error al actualizar el producto:", error)
+          console.error("Error al actualizar el producto:", error);
           Swal.fire({
             title: "Error",
             text: "Error al procesar la solicitud",
             icon: "error",
             confirmButtonColor: "#aa0303",
-          })
-        })
+          });
+        });
     } else {
-      editProductForm.reportValidity()
+      editProductForm.reportValidity();
     }
-  })
+  });
 }
 
 // Helper Functions
 async function loadCategories(selectedId = null, forEdit = false) {
   try {
-    const response = await fetch("/getCategories")
-    const categories = await response.json()
-    const addCategorySelect = document.getElementById("productCategory")
-    const editCategorySelect = document.getElementById("editProductCategory")
+    const response = await fetch("/getCategories");
+    const categories = await response.json();
+    const addCategorySelect = document.getElementById("productCategory");
+    const editCategorySelect = document.getElementById("editProductCategory");
     if (!forEdit) {
       addCategorySelect.innerHTML =
-        '<option value="">Seleccionar categoría</option>'
+        '<option value="">Seleccionar categoría</option>';
       categories.forEach((category) => {
         addCategorySelect.add(
           new Option(category.nombre, category.id_categoria)
-        )
-      })
+        );
+      });
     } else {
       editCategorySelect.innerHTML =
-        '<option value="">Seleccionar categoría</option>'
+        '<option value="">Seleccionar categoría</option>';
       categories.forEach((category) => {
-        const option = new Option(category.nombre, category.id_categoria)
+        const option = new Option(category.nombre, category.id_categoria);
         if (selectedId && category.id_categoria == selectedId) {
-          option.selected = true
+          option.selected = true;
         }
-        editCategorySelect.add(option)
-      })
+        editCategorySelect.add(option);
+      });
     }
   } catch (error) {
-    console.error("Error loading categories:", error)
+    console.error("Error loading categories:", error);
   }
 }
 
@@ -362,71 +362,71 @@ function loadProductData(productId) {
   fetch(`/getProduct?id=${productId}`)
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Error en la respuesta del servidor")
+        throw new Error("Error en la respuesta del servidor");
       }
-      return response.json()
+      return response.json();
     })
     .then((product) => {
-      document.getElementById("editProductId").value = product.id_producto
-      document.getElementById("editProductName").value = product.nombre
-      document.getElementById("editProductPrice").value = product.precio
-      document.getElementById("editProductStock").value = product.stock
+      document.getElementById("editProductId").value = product.id_producto;
+      document.getElementById("editProductName").value = product.nombre;
+      document.getElementById("editProductPrice").value = product.precio;
+      document.getElementById("editProductStock").value = product.stock;
       document.getElementById("editProductDescription").value =
-        product.descripcion
+        product.descripcion;
       document.getElementById("editProductDetails").value =
-        product.detalles_producto || ""
+        product.detalles_producto || "";
       // Establecer el estado del producto en los radio buttons
       if (product.estado) {
-        document.getElementById("editProductStatusActive").checked = true
+        document.getElementById("editProductStatusActive").checked = true;
       } else {
-        document.getElementById("editProductStatusInactive").checked = true
+        document.getElementById("editProductStatusInactive").checked = true;
       }
       // Cargar categorías y seleccionar la correcta
-      loadCategories(product.id_categoria, true)
+      loadCategories(product.id_categoria, true);
       // Previsualización de imagen
-      const preview = document.getElementById("editProductImagePreview")
+      const preview = document.getElementById("editProductImagePreview");
       if (product.imagen) {
-        preview.src = product.imagen
-        preview.style.display = "block"
+        preview.src = product.imagen;
+        preview.style.display = "block";
       } else {
-        preview.src = ""
-        preview.style.display = "none"
+        preview.src = "";
+        preview.style.display = "none";
       }
       // Limpiar input de imagen
-      document.getElementById("editProductImage").value = ""
+      document.getElementById("editProductImage").value = "";
       const editModal = new bootstrap.Modal(
         document.getElementById("editProductModal")
-      )
-      editModal.show()
+      );
+      editModal.show();
     })
     .catch((error) => {
-      console.error("Error al cargar el producto:", error)
+      console.error("Error al cargar el producto:", error);
       Swal.fire({
         title: "Error",
         text: "Error al cargar los datos del producto",
         icon: "error",
-      })
-    })
+      });
+    });
 }
 
 // Previsualización de imagen en edición
-const editProductImageInput = document.getElementById("editProductImage")
+const editProductImageInput = document.getElementById("editProductImage");
 if (editProductImageInput) {
   editProductImageInput.addEventListener("change", function (e) {
-    const preview = document.getElementById("editProductImagePreview")
-    const file = e.target.files[0]
+    const preview = document.getElementById("editProductImagePreview");
+    const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader()
+      const reader = new FileReader();
       reader.onload = function (ev) {
-        preview.src = ev.target.result
-        preview.style.display = "block"
-      }
-      reader.readAsDataURL(file)
+        preview.src = ev.target.result;
+        preview.style.display = "block";
+      };
+      reader.readAsDataURL(file);
     } else {
-      preview.src = ""
-      preview.style.display = "none"
+      preview.src = "";
+      preview.style.display = "none";
     }
-  })
+  });
 }
 
 function confirmDelete(productId) {
@@ -441,9 +441,9 @@ function confirmDelete(productId) {
     cancelButtonText: "Cancelar",
   }).then((result) => {
     if (result.isConfirmed) {
-      deleteProduct(productId)
+      deleteProduct(productId);
     }
-  })
+  });
 }
 
 function deleteProduct(productId) {
@@ -452,18 +452,18 @@ function deleteProduct(productId) {
     text: "Por favor espere...",
     allowOutsideClick: false,
     didOpen: () => {
-      Swal.showLoading()
+      Swal.showLoading();
     },
-  })
+  });
 
   fetch(`/deleteProduct?id=${productId}`, {
     method: "POST",
   })
     .then((response) => {
       if (!response.ok) {
-        throw new Error("Error en la respuesta del servidor")
+        throw new Error("Error en la respuesta del servidor");
       }
-      return response.json()
+      return response.json();
     })
     .then((data) => {
       if (data.success) {
@@ -474,40 +474,40 @@ function deleteProduct(productId) {
           iconColor: "#aa0303",
           confirmButtonColor: "#aa0303",
         }).then(() => {
-          window.location.reload()
-        })
+          window.location.reload();
+        });
       } else {
         Swal.fire({
           title: "Error",
           text: data.message || "Error al eliminar el producto",
           icon: "error",
           confirmButtonColor: "#aa0303",
-        })
+        });
       }
     })
     .catch((error) => {
-      console.error("Error al eliminar el producto:", error)
+      console.error("Error al eliminar el producto:", error);
       Swal.fire({
         title: "Error",
         text: "Error al procesar la solicitud",
         icon: "error",
         confirmButtonColor: "#aa0303",
-      })
-    })
+      });
+    });
 }
 
 async function main() {
-  await fetchAndRenderProducts()
-  await initializeProductManagement()
+  await fetchAndRenderProducts();
+  await initializeProductManagement();
 }
 
-main().catch(console.error)
+main().catch(console.error);
 
 // Limpieza de backdrop al cerrar el modal de edición
-const editProductModalEl = document.getElementById("editProductModal")
+const editProductModalEl = document.getElementById("editProductModal");
 if (editProductModalEl) {
   editProductModalEl.addEventListener("hidden.bs.modal", function () {
-    document.body.classList.remove("modal-open")
-    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove())
-  })
+    document.body.classList.remove("modal-open");
+    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+  });
 }

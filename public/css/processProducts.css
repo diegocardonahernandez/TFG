@@ -107,6 +107,119 @@
   font-weight: 600;
 }
 
+/* Estilos adicionales para los modales rediseñados */
+
+/* Ajustes generales de los modales */
+.modal-xl {
+  max-width: 1140px;
+}
+
+/* Optimización vertical de los controles de formulario */
+.modal-body .form-control,
+.modal-body .form-select,
+.modal-body .input-group {
+  font-size: 0.9rem;
+  padding: 0.4rem 0.75rem;
+  min-height: 38px;
+}
+
+.modal-body label.form-label {
+  margin-bottom: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.modal-body .mb-3 {
+  margin-bottom: 0.75rem !important;
+}
+
+/* Estilos para textarea más compactos */
+.modal-body textarea.form-control {
+  padding: 0.5rem;
+  line-height: 1.4;
+  resize: none;
+}
+
+/* Estilos mejorados para la previsualización de imagen */
+.modal-body .img-thumbnail {
+  padding: 0.25rem;
+  border-radius: 6px;
+  border: 1px solid var(--puro-border-gray);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.modal-body .img-thumbnail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Mejoras para los botones de radio */
+.form-check-input {
+  width: 16px;
+  height: 16px;
+}
+
+.form-check-label {
+  font-size: 0.85rem;
+}
+
+.form-check {
+  margin-bottom: 0;
+}
+
+/* Mejoras para los botones del footer */
+.modal-footer .btn {
+  font-size: 0.9rem;
+  padding: 0.45rem 1.2rem;
+}
+
+/* Transición suave para el modal */
+.modal.fade .modal-dialog {
+  transition: transform 0.25s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+/* Mejoras visuales para el header y footer */
+.modal-header {
+  padding: 0.8rem 1.25rem;
+}
+
+.modal-footer {
+  padding: 0.8rem 1.25rem;
+}
+
+/* Eliminación de bordes innecesarios */
+.modal-content {
+  border: none;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Estilos responsivos */
+@media (max-width: 992px) {
+  .modal-xl {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  /* En móviles volvemos a la estructura vertical pero más compacta */
+  .modal-body .row > [class^="col-"] {
+    margin-bottom: 0.5rem;
+  }
+
+  .modal-body .mb-3 {
+    margin-bottom: 0.6rem !important;
+  }
+
+  .modal-xl {
+    max-width: 95%;
+    margin: 0.5rem auto;
+  }
+}
+
 .form-label {
   font-weight: 500;
   color: #333;

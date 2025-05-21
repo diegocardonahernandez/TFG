@@ -43,6 +43,9 @@ switch ($method) {
             case '/processProducts':
                 require_once __DIR__ . '/../Controller/processProductsController.php';
                 break;
+            case '/processUsers':
+                require_once __DIR__ . '/../Controller/processUsersController.php';
+                break;
             case '/getProduct':
                 require_once __DIR__ . '/../Controller/api/getProduct.php';
                 break;

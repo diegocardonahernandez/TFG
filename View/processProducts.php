@@ -7,7 +7,8 @@
         <p class="text-muted mt-2 mb-0">Gestiona tu catálogo de productos</p>
       </div>
       <div class="col-md-4 text-md-end">
-        <button class="btn btn-danger rounded-pill shadow-sm border-0 px-4 py-2" data-bs-toggle="modal" data-bs-target="#addProductModal">
+        <button class="btn btn-danger rounded-pill shadow-sm border-0 px-4 py-2" data-bs-toggle="modal"
+          data-bs-target="#addProductModal">
           <i class="bi bi-plus-lg me-1"></i> Nuevo Producto
         </button>
       </div>
@@ -134,8 +135,9 @@
   </div>
 
   <!-- Add Product Modal -->
-  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
         <div class="modal-header bg-light py-3">
           <h5 class="modal-title fw-bold" id="addProductModalLabel">
@@ -144,67 +146,88 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">
-          <form id="addProductForm" class="needs-validation" novalidate>
-            <div class="row g-4 mb-3">
-              <div class="col-md-6">
+          <form id="addProductForm" class="needs-validation row" novalidate>
+            <!-- Layout de 3 columnas para mejor organización -->
+            <div class="col-md-4">
+              <!-- Columna 1: Información básica -->
+              <div class="mb-3">
                 <label for="productName" class="form-label fw-medium">Nombre</label>
-                <input type="text" class="form-control form-control-lg rounded-3" id="productName" name="nombre" required>
+                <input type="text" class="form-control rounded-3" id="productName" name="nombre"
+                  required>
                 <div class="invalid-feedback">El nombre es obligatorio</div>
               </div>
-              <div class="col-md-6">
+
+              <div class="mb-3">
                 <label for="productCategory" class="form-label fw-medium">Categoría</label>
-                <select class="form-select form-select-lg rounded-3" id="productCategory" name="id_categoria" required>
+                <select class="form-select rounded-3" id="productCategory" name="id_categoria" required>
                   <option value="">Seleccionar categoría</option>
                   <!-- Categories will be loaded dynamically -->
                 </select>
                 <div class="invalid-feedback">Seleccione una categoría</div>
               </div>
-            </div>
-            <div class="row g-4 mb-3">
-              <div class="col-md-6">
-                <label for="productPrice" class="form-label fw-medium">Precio</label>
-                <div class="input-group input-group-lg">
-                  <input type="number" class="form-control rounded-start-3" id="productPrice" name="precio" step="0.01" required>
-                  <span class="input-group-text rounded-end-3">€</span>
-                  <div class="invalid-feedback">Ingrese un precio válido</div>
-                </div>
+
+              <div class="mb-3">
+                <label for="productStatus" class="form-label fw-medium">Estado</label>
+                <select class="form-select rounded-3" id="productStatus" name="estado" required>
+                  <option value="1">Activo</option>
+                  <option value="0">Inactivo</option>
+                </select>
               </div>
-              <div class="col-md-6">
+            </div>
+
+            <div class="col-md-4">
+              <!-- Columna 2: Precios y stock + imagen -->
+              <div class="mb-3">
+                <label for="productPrice" class="form-label fw-medium">Precio</label>
+                <div class="input-group">
+                  <input type="number" class="form-control rounded-start-3" id="productPrice"
+                    name="precio" step="0.01" required>
+                  <span class="input-group-text rounded-end-3">€</span>
+                </div>
+                <div class="invalid-feedback">Ingrese un precio válido</div>
+              </div>
+
+              <div class="mb-3">
                 <label for="productStock" class="form-label fw-medium">Stock</label>
-                <input type="number" class="form-control form-control-lg rounded-3" id="productStock" name="stock" required>
+                <input type="number" class="form-control rounded-3" id="productStock" name="stock"
+                  required>
                 <div class="invalid-feedback">Ingrese el stock disponible</div>
               </div>
+
+              <div class="mb-3">
+                <label for="productImage" class="form-label fw-medium">Imagen</label>
+                <input type="file" class="form-control rounded-3" id="productImage" name="imagen"
+                  accept="image/*" required>
+                <div class="invalid-feedback">Seleccione una imagen</div>
+                <div class="mt-2">
+                  <img id="imagePreview" src="" alt="Vista previa"
+                    class="img-thumbnail rounded-3 d-none"
+                    style="max-width: 120px; max-height: 120px;">
+                </div>
+              </div>
             </div>
-            <div class="mb-4">
-              <label for="productStatus" class="form-label fw-medium">Estado</label>
-              <select class="form-select form-select-lg rounded-3" id="productStatus" name="estado" required>
-                <option value="1">Activo</option>
-                <option value="0">Inactivo</option>
-              </select>
-              <div class="invalid-feedback">Seleccione el estado del producto</div>
-            </div>
-            <div class="mb-4">
-              <label for="productDescription" class="form-label fw-medium">Descripción</label>
-              <textarea class="form-control rounded-3" id="productDescription" name="descripcion" rows="4" required></textarea>
-              <div class="invalid-feedback">La descripción es obligatoria</div>
-            </div>
-            <div class="mb-4">
-              <label for="detalles_producto" class="form-label fw-medium">Detalles del producto</label>
-              <textarea class="form-control rounded-3" id="detalles_producto" name="detalles_producto" rows="4"></textarea>
-              <div class="invalid-feedback">Los detalles son obligatorios</div>
-            </div>
-            <div class="mb-4">
-              <label for="productImage" class="form-label fw-medium">Imagen</label>
-              <input type="file" class="form-control form-control-lg rounded-3" id="productImage" name="imagen" accept="image/*" required>
-              <div class="invalid-feedback">Seleccione una imagen</div>
-              <div class="mt-3">
-                <img id="imagePreview" src="" alt="Vista previa" class="img-thumbnail rounded-3 d-none" style="max-width: 200px; max-height: 200px;">
+
+            <div class="col-md-4">
+              <!-- Columna 3: Descripciones -->
+              <div class="mb-3">
+                <label for="productDescription" class="form-label fw-medium">Descripción</label>
+                <textarea class="form-control rounded-3" id="productDescription" name="descripcion"
+                  rows="3" required></textarea>
+                <div class="invalid-feedback">La descripción es obligatoria</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="detalles_producto" class="form-label fw-medium">Detalles del
+                  producto</label>
+                <textarea class="form-control rounded-3" id="detalles_producto" name="detalles_producto"
+                  rows="3"></textarea>
               </div>
             </div>
           </form>
         </div>
         <div class="modal-footer border-top py-3">
-          <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-light rounded-pill px-4"
+            data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-danger rounded-pill px-4" id="saveProduct">
             <i class="bi bi-save me-1"></i> Guardar Producto
           </button>
@@ -214,8 +237,9 @@
   </div>
 
   <!-- Edit Product Modal -->
-  <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
       <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
         <div class="modal-header bg-light py-3">
           <h5 class="modal-title fw-bold" id="editProductModalLabel">
@@ -224,72 +248,97 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body p-4">
-          <form id="editProductForm" class="needs-validation" novalidate>
+          <form id="editProductForm" class="needs-validation row" novalidate>
             <input type="hidden" id="editProductId" name="id_producto">
-            <div class="row g-4 mb-3">
-              <div class="col-md-6">
+
+            <!-- Layout de 3 columnas para mejor organización -->
+            <div class="col-md-4">
+              <!-- Columna 1: Información básica -->
+              <div class="mb-3">
                 <label for="editProductName" class="form-label fw-medium">Nombre</label>
-                <input type="text" class="form-control form-control-lg rounded-3" id="editProductName" name="nombre" required>
+                <input type="text" class="form-control rounded-3" id="editProductName" name="nombre"
+                  required>
                 <div class="invalid-feedback">El nombre es obligatorio</div>
               </div>
-              <div class="col-md-6">
+
+              <div class="mb-3">
                 <label for="editProductCategory" class="form-label fw-medium">Categoría</label>
-                <select class="form-select form-select-lg rounded-3" id="editProductCategory" name="id_categoria" required>
+                <select class="form-select rounded-3" id="editProductCategory" name="id_categoria"
+                  required>
                   <option value="">Seleccionar categoría</option>
                 </select>
                 <div class="invalid-feedback">Seleccione una categoría</div>
               </div>
-            </div>
-            <div class="row g-4 mb-3">
-              <div class="col-md-6">
-                <label for="editProductPrice" class="form-label fw-medium">Precio</label>
-                <div class="input-group input-group-lg">
-                  <input type="number" class="form-control rounded-start-3" id="editProductPrice" name="precio" step="0.01" required>
-                  <span class="input-group-text rounded-end-3">€</span>
-                  <div class="invalid-feedback">Ingrese un precio válido</div>
+
+              <div class="mb-3">
+                <label for="editProductStatus" class="form-label fw-medium">Estado</label>
+                <div class="d-flex">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="estado"
+                      id="editProductStatusActive" value="1">
+                    <label class="form-check-label" for="editProductStatusActive">Activo</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="estado"
+                      id="editProductStatusInactive" value="0">
+                    <label class="form-check-label" for="editProductStatusInactive">Inactivo</label>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
+            </div>
+
+            <div class="col-md-4">
+              <!-- Columna 2: Precios y stock + imagen -->
+              <div class="mb-3">
+                <label for="editProductPrice" class="form-label fw-medium">Precio</label>
+                <div class="input-group">
+                  <input type="number" class="form-control rounded-start-3" id="editProductPrice"
+                    name="precio" step="0.01" required>
+                  <span class="input-group-text rounded-end-3">€</span>
+                </div>
+                <div class="invalid-feedback">Ingrese un precio válido</div>
+              </div>
+
+              <div class="mb-3">
                 <label for="editProductStock" class="form-label fw-medium">Stock</label>
-                <input type="number" class="form-control form-control-lg rounded-3" id="editProductStock" name="stock" required>
+                <input type="number" class="form-control rounded-3" id="editProductStock" name="stock"
+                  required>
                 <div class="invalid-feedback">Ingrese el stock disponible</div>
               </div>
-            </div>
-            <div class="mb-4">
-              <label for="editProductDescription" class="form-label fw-medium">Descripción</label>
-              <textarea class="form-control rounded-3" id="editProductDescription" name="descripcion" rows="4" required></textarea>
-              <div class="invalid-feedback">La descripción es obligatoria</div>
-            </div>
-            <div class="mb-4">
-              <label for="editProductDetails" class="form-label fw-medium">Detalles del producto</label>
-              <textarea class="form-control rounded-3" id="editProductDetails" name="detalles_producto" rows="4"></textarea>
-              <div class="invalid-feedback">Los detalles son obligatorios</div>
-            </div>
-            <div class="mb-4">
-              <label for="editProductImage" class="form-label fw-medium">Imagen</label>
-              <input type="file" class="form-control form-control-lg rounded-3" id="editProductImage" name="imagen" accept="image/*">
-              <div class="mt-3">
-                <img id="editProductImagePreview" src="" alt="Previsualización" class="img-thumbnail rounded-3 d-none" style="max-width: 200px; max-height: 200px;" />
+
+              <div class="mb-3">
+                <label for="editProductImage" class="form-label fw-medium">Imagen</label>
+                <input type="file" class="form-control rounded-3" id="editProductImage" name="imagen"
+                  accept="image/*">
+                <div class="mt-2">
+                  <img id="editProductImagePreview" src="" alt="Previsualización"
+                    class="img-thumbnail rounded-3" style="max-width: 120px; max-height: 120px;">
+                </div>
+                <small class="text-muted">Dejar vacío para mantener la imagen actual</small>
               </div>
-              <small class="text-muted">Dejar vacío para mantener la imagen actual</small>
             </div>
-            <div class="mb-3">
-              <label for="editProductStatus" class="form-label fw-medium">Estado</label>
-              <div class="d-flex">
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="estado" id="editProductStatusActive" value="1">
-                  <label class="form-check-label" for="editProductStatusActive">Activo</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="estado" id="editProductStatusInactive" value="0">
-                  <label class="form-check-label" for="editProductStatusInactive">Inactivo</label>
-                </div>
+
+            <div class="col-md-4">
+              <!-- Columna 3: Descripciones -->
+              <div class="mb-3">
+                <label for="editProductDescription" class="form-label fw-medium">Descripción</label>
+                <textarea class="form-control rounded-3" id="editProductDescription" name="descripcion"
+                  rows="3" required></textarea>
+                <div class="invalid-feedback">La descripción es obligatoria</div>
+              </div>
+
+              <div class="mb-3">
+                <label for="editProductDetails" class="form-label fw-medium">Detalles del
+                  producto</label>
+                <textarea class="form-control rounded-3" id="editProductDetails"
+                  name="detalles_producto" rows="3"></textarea>
               </div>
             </div>
           </form>
         </div>
         <div class="modal-footer border-top py-3">
-          <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-light rounded-pill px-4"
+            data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-danger rounded-pill px-4" id="updateProduct">
             <i class="bi bi-check-lg me-1"></i> Actualizar Producto
           </button>
@@ -314,12 +363,15 @@
               <i class="bi bi-exclamation-triangle-fill text-danger fs-1"></i>
             </div>
             <h5 class="fw-bold mb-3">Eliminar Producto</h5>
-            <p class="mb-0">¿Estás seguro de que deseas eliminar el producto <span id="productToDeleteName" class="fw-bold"></span>?</p>
-            <p class="text-danger mt-3"><i class="bi bi-info-circle-fill me-1"></i> Esta acción no se puede deshacer.</p>
+            <p class="mb-0">¿Estás seguro de que deseas eliminar el producto <span id="productToDeleteName"
+                class="fw-bold"></span>?</p>
+            <p class="text-danger mt-3"><i class="bi bi-info-circle-fill me-1"></i> Esta acción no se puede
+              deshacer.</p>
           </div>
         </div>
         <div class="modal-footer border-top py-3">
-          <button type="button" class="btn btn-light rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-light rounded-pill px-4"
+            data-bs-dismiss="modal">Cancelar</button>
           <button type="button" class="btn btn-danger rounded-pill px-4" id="confirmDelete">
             <i class="bi bi-trash me-1"></i> Eliminar
           </button>
