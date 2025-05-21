@@ -49,6 +49,12 @@ switch ($method) {
             case '/getProduct':
                 require_once __DIR__ . '/../Controller/api/getProduct.php';
                 break;
+            case '/getUser':
+                require_once __DIR__ . '/../Controller/api/getUser.php';
+                break;
+            case '/getUsers':
+                require_once __DIR__ . '/../Controller/api/getUsers.php';
+                break;
             case '/logout':
                 require_once __DIR__ . '/../Controller/logout.php';
                 break;
@@ -90,14 +96,26 @@ switch ($method) {
             case '/updateProduct':
                 require_once __DIR__ . '/../Controller/formControllers/updateProductForm.php';
                 break;
+            case '/updateUser':
+                require_once __DIR__ . '/../Controller/formControllers/updateUserForm.php';
+                break;
+            case '/deleteUser':
+                require_once __DIR__ . '/../Controller/api/deleteUser.php';
+                break;
+            case '/deleteProduct':
+                require_once __DIR__ . '/../Controller/api/deleteProduct.php';
+                break;
             case '/getCategories':
                 require_once __DIR__ . '/../Controller/api/getCategories.php';
                 break;
             case '/getProduct':
                 require_once __DIR__ . '/../Controller/api/getProduct.php';
                 break;
-            case '/deleteProduct':
-                require_once __DIR__ . '/../Controller/api/deleteProduct.php';
+            case '/getUser':
+                require_once __DIR__ . '/../Controller/api/getUser.php';
+                break;
+            case '/getUsers':
+                require_once __DIR__ . '/../Controller/api/getUsers.php';
                 break;
             default:
                 echo "Ruta POST no reconocida";
