@@ -207,9 +207,8 @@ class User
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 
-    public static function updateUserData($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $idUsuario)
+    public static function updateUserData($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $tipoUsuario, $idUsuario)
     {
-
         $db = Database::getInstance();
         $query =  "UPDATE usuarios 
         SET nombre = :nombre,
@@ -219,7 +218,8 @@ class User
             genero = :genero,
             peso = :peso,
             altura = :altura,
-            foto_perfil = :foto_perfil
+            foto_perfil = :foto_perfil,
+            tipo_usuario = :tipo_usuario
         WHERE id_usuario = :id_usuario";
         $stmt = $db->prepare($query);
         $stmt->execute([
@@ -231,11 +231,12 @@ class User
             ':peso'             => $peso,
             ':altura'           => $altura,
             ':foto_perfil'      => $fotoPerfil,
+            ':tipo_usuario'     => $tipoUsuario,
             ':id_usuario'       => $idUsuario
         ]);
     }
 
-    public static function updateUserDataAndPassw($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $contrasena, $idUsuario)
+    public static function updateUserDataAndPassw($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $contrasena, $tipoUsuario, $idUsuario)
     {
         $db = Database::getInstance();
         $query =  "UPDATE usuarios 
@@ -247,7 +248,8 @@ class User
         peso = :peso,
         altura = :altura,
         foto_perfil = :foto_perfil,
-        contrasena = :contrasena
+        contrasena = :contrasena,
+        tipo_usuario = :tipo_usuario
     WHERE id_usuario = :id_usuario";
         $stmt = $db->prepare($query);
         $stmt->execute([
@@ -260,6 +262,7 @@ class User
             ':altura'           => $altura,
             ':foto_perfil'      => $fotoPerfil,
             ':contrasena'       => $contrasena,
+            ':tipo_usuario'     => $tipoUsuario,
             ':id_usuario'       => $idUsuario
         ]);
     }

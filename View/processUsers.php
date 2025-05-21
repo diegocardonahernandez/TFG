@@ -50,29 +50,29 @@
                             </thead>
                             <tbody>
                                 <?php for ($i = 0; $i < 10; $i++): ?>
-                                    <tr>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-text"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-text"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-text"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-badge"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-badge"></div>
-                                        </td>
-                                        <td class="px-4 py-3 text-center">
-                                            <div class="d-flex justify-content-center gap-2">
-                                                <div class="skeleton-button"></div>
-                                                <div class="skeleton-button"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-text"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-text"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-text"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-badge"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-badge"></div>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <div class="skeleton-button"></div>
+                                            <div class="skeleton-button"></div>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <?php endfor; ?>
                             </tbody>
                         </table>
@@ -123,81 +123,113 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    <form id="editUserForm" class="needs-validation row" novalidate>
+                    <form id="editUserForm" class="needs-validation row g-3" novalidate>
                         <input type="hidden" id="editUserId" name="id_usuario">
+                        <input type="hidden" id="editUserPhotoActual" name="foto_perfil_actual">
 
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="editUserName" class="form-label fw-medium">Nombre</label>
-                                <input type="text" class="form-control rounded-3" id="editUserName" name="nombre"
-                                    required>
-                                <div class="invalid-feedback">El nombre es obligatorio</div>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <label for="editUserName" class="form-label fw-medium">Nombre</label>
+                                    <input type="text" class="form-control rounded-3" id="editUserName" name="nombre"
+                                        required>
+                                    <div class="invalid-feedback">El nombre es obligatorio</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="editUserLastName" class="form-label fw-medium">Apellido</label>
+                                    <input type="text" class="form-control rounded-3" id="editUserLastName"
+                                        name="apellido" required>
+                                    <div class="invalid-feedback">El apellido es obligatorio</div>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="editUserLastName" class="form-label fw-medium">Apellido</label>
-                                <input type="text" class="form-control rounded-3" id="editUserLastName" name="apellido"
-                                    required>
-                                <div class="invalid-feedback">El apellido es obligatorio</div>
+                            <div class="row g-2 mt-2">
+                                <div class="col-md-6">
+                                    <label for="editUserEmail" class="form-label fw-medium">Correo</label>
+                                    <input type="email" class="form-control rounded-3" id="editUserEmail" name="correo"
+                                        required>
+                                    <div class="invalid-feedback">El correo es obligatorio</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="editUserPhone" class="form-label fw-medium">Teléfono</label>
+                                    <input type="tel" class="form-control rounded-3" id="editUserPhone" name="telefono"
+                                        required>
+                                    <div class="invalid-feedback">El teléfono es obligatorio</div>
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="editUserEmail" class="form-label fw-medium">Correo</label>
-                                <input type="email" class="form-control rounded-3" id="editUserEmail" name="correo"
-                                    required>
-                                <div class="invalid-feedback">El correo es obligatorio</div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editUserPhone" class="form-label fw-medium">Teléfono</label>
-                                <input type="tel" class="form-control rounded-3" id="editUserPhone" name="telefono"
-                                    required>
-                                <div class="invalid-feedback">El teléfono es obligatorio</div>
+                            <div class="row g-2 mt-2">
+                                <div class="col-md-6">
+                                    <label for="editUserType" class="form-label fw-medium">Tipo de Usuario</label>
+                                    <select class="form-select rounded-3" id="editUserType" name="tipo_usuario"
+                                        required>
+                                        <option value="Usuario">Usuario</option>
+                                        <option value="Premium">Premium</option>
+                                        <option value="Administrador">Administrador</option>
+                                    </select>
+                                    <div class="invalid-feedback">Seleccione un tipo de usuario</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="editUserStatus" class="form-label fw-medium">Estado</label>
+                                    <div class="d-flex gap-3 mt-1">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="estado"
+                                                id="editUserStatusActive" value="1">
+                                            <label class="form-check-label" for="editUserStatusActive">Activo</label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="estado"
+                                                id="editUserStatusInactive" value="0">
+                                            <label class="form-check-label"
+                                                for="editUserStatusInactive">Inactivo</label>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="editUserType" class="form-label fw-medium">Tipo de Usuario</label>
-                                <select class="form-select rounded-3" id="editUserType" name="tipo_usuario" required>
-                                    <option value="Usuario">Usuario</option>
-                                    <option value="Premium">Premium</option>
-                                    <option value="Administrador">Administrador</option>
-                                </select>
-                                <div class="invalid-feedback">Seleccione un tipo de usuario</div>
-                            </div>
-
-                            <div class="mb-3">
-                                <label for="editUserStatus" class="form-label fw-medium">Estado</label>
-                                <div class="d-flex">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="estado"
-                                            id="editUserStatusActive" value="1">
-                                        <label class="form-check-label" for="editUserStatusActive">Activo</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="estado"
-                                            id="editUserStatusInactive" value="0">
-                                        <label class="form-check-label" for="editUserStatusInactive">Inactivo</label>
-                                    </div>
+                            <div class="row g-2">
+                                <div class="col-md-6">
+                                    <label for="editUserBirthDate" class="form-label fw-medium">Fecha de
+                                        Nacimiento</label>
+                                    <input type="date" class="form-control rounded-3" id="editUserBirthDate"
+                                        name="fecha_nacimiento" required>
+                                    <div class="invalid-feedback">La fecha de nacimiento es obligatoria</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="editUserGender" class="form-label fw-medium">Género</label>
+                                    <select class="form-select rounded-3" id="editUserGender" name="genero" required>
+                                        <option value="Masculino">Masculino</option>
+                                        <option value="Femenino">Femenino</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                    <div class="invalid-feedback">Seleccione un género</div>
                                 </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="editUserBirthDate" class="form-label fw-medium">Fecha de Nacimiento</label>
-                                <input type="date" class="form-control rounded-3" id="editUserBirthDate"
-                                    name="fecha_nacimiento" required>
-                                <div class="invalid-feedback">La fecha de nacimiento es obligatoria</div>
+                            <div class="row g-2 mt-2">
+                                <div class="col-md-6">
+                                    <label for="editUserWeight" class="form-label fw-medium">Peso (kg)</label>
+                                    <input type="number" class="form-control rounded-3" id="editUserWeight" name="peso"
+                                        min="0" step="0.1">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="editUserHeight" class="form-label fw-medium">Altura (cm)</label>
+                                    <input type="number" class="form-control rounded-3" id="editUserHeight"
+                                        name="altura" min="0" step="0.1">
+                                </div>
                             </div>
 
-                            <div class="mb-3">
-                                <label for="editUserGender" class="form-label fw-medium">Género</label>
-                                <select class="form-select rounded-3" id="editUserGender" name="genero" required>
-                                    <option value="Masculino">Masculino</option>
-                                    <option value="Femenino">Femenino</option>
-                                    <option value="Otro">Otro</option>
-                                </select>
-                                <div class="invalid-feedback">Seleccione un género</div>
+                            <div class="mt-2">
+                                <label for="editUserPhoto" class="form-label fw-medium">Foto de Perfil</label>
+                                <div class="d-flex align-items-center gap-3">
+                                    <input type="file" class="form-control rounded-3" id="editUserPhoto"
+                                        name="foto_perfil" accept="image/*">
+                                    <img id="editUserPhotoPreview" src="" alt="Previsualización"
+                                        class="img-thumbnail rounded-3" style="display: none;">
+                                </div>
+                                <small class="text-muted">Dejar vacío para mantener la imagen actual</small>
                             </div>
                         </div>
                     </form>

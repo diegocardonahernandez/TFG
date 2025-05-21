@@ -225,14 +225,26 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("editUserBirthDate").value =
           user.fecha_nacimiento;
         document.getElementById("editUserGender").value = user.genero;
-
+        document.getElementById("editUserWeight").value = user.peso || "";
+        document.getElementById("editUserHeight").value = user.altura || "";
+        // Foto de perfil
+        const preview = document.getElementById("editUserPhotoPreview");
+        if (user.foto_perfil) {
+          preview.src = user.foto_perfil;
+          preview.style.display = "block";
+          document.getElementById("editUserPhotoActual").value =
+            user.foto_perfil;
+        } else {
+          preview.src = "";
+          preview.style.display = "none";
+          document.getElementById("editUserPhotoActual").value = "";
+        }
         // Set radio button for status
         if (user.estado) {
           document.getElementById("editUserStatusActive").checked = true;
         } else {
           document.getElementById("editUserStatusInactive").checked = true;
         }
-
         editUserModal.show();
       } else {
         showError("Error al cargar los datos del usuario");
@@ -240,6 +252,26 @@ document.addEventListener("DOMContentLoaded", function () {
     } catch (error) {
       showError("Error al cargar los datos del usuario");
     }
+  }
+
+  // Previsualización de imagen en edición
+  const editUserPhotoInput = document.getElementById("editUserPhoto");
+  if (editUserPhotoInput) {
+    editUserPhotoInput.addEventListener("change", function (e) {
+      const preview = document.getElementById("editUserPhotoPreview");
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (ev) {
+          preview.src = ev.target.result;
+          preview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = "";
+        preview.style.display = "none";
+      }
+    });
   }
 
   async function handleUpdateUser() {

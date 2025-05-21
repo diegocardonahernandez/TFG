@@ -34,5 +34,8 @@ echo json_encode([
     'fecha_nacimiento' => $user->getFechaNacimiento(),
     'genero' => $user->getGenero(),
     'tipo_usuario' => $user->getTipoUsuario(),
-    'estado' => $user->getEstado()
+    'estado' => $user->getEstado(),
+    'peso' => $user->getPeso(),
+    'altura' => $user->getAltura(),
+    'foto_perfil' => $user->getFotoPerfil()
 ]);
