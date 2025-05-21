@@ -98,7 +98,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/processProducts">Productos</a></li>
-                            <li><a class="dropdown-item" href="#">Usuarios</a></li>
+                            <li><a class="dropdown-item" href="/processUsers">Usuarios</a></li>
                         </ul>
                     </li>';
                         }

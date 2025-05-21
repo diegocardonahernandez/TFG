@@ -289,9 +289,9 @@ body:not(.has-shipping-bar) .navbar {
 }
 
 .btn-danger {
-  background-color: var(--puro-red);
-  border-color: var(--puro-red);
-  color: var(--puro-white);
+  background-color: var(--puro-red) !important;
+  border-color: var(--puro-red) !important;
+  color: var(--puro-white) !important;
   white-space: nowrap; /* Evitar que el texto se rompa */
 }
 

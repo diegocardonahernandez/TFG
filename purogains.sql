@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-05-2025 a las 09:40:26
+-- Tiempo de generación: 21-05-2025 a las 08:43:08
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -98,13 +98,13 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `detalles_produ
 (29, 'Rack de Sentadillas', 'Estructura resistente para entrenamientos de fuerza.', 'El Rack de Sentadillas PuroGains es una estructura robusta y ajustable que brinda máxima seguridad durante tus entrenamientos de fuerza. Construido en acero de alta resistencia, soporta cargas elevadas y se adapta a distintos tipos de ejercicios como sentadillas, press militar y banco plano. Cuenta con soportes regulables en altura, ganchos de seguridad, y base antideslizante para mayor estabilidad. Su diseño compacto lo hace ideal tanto para gimnasios como para home gym de alto nivel.', 249.99, 5, 3, '/imgs/Equipamiento/rack_sentadillas.png', 0.00, 95, 'activo', '2025-04-04 12:07:18'),
 (30, 'TRX Entrenamiento en Suspensión', 'Sistema de correas ajustables para entrenamientos de cuerpo completo.', 'El TRX de Entrenamiento en Suspensión de PuroGains permite entrenar todo el cuerpo utilizando únicamente el peso corporal. Su sistema de correas ajustables, anclajes resistentes y empuñaduras acolchadas ofrece un entrenamiento funcional seguro y desafiante. Mejora fuerza, estabilidad, coordinación y movilidad con cientos de ejercicios posibles. Ideal para entrenamientos en casa, gimnasio o al aire libre. Incluye bolsa de transporte y guía de uso.', 99.99, 10, 3, '/imgs/Equipamiento/trx.png', 12.00, 43, 'activo', '2025-04-04 12:07:18'),
 (31, 'Soporte para Flexiones', 'Soporte ergonómico para flexiones más profundas y efectivas.', 'El Soporte para Flexiones PuroGains está diseñado para mejorar la postura de muñecas, aumentar el rango de movimiento y activar con mayor intensidad pectorales, hombros y tríceps. Fabricado en acero liviano con base antideslizante, proporciona estabilidad y resistencia en cada repetición. Ideal para entrenamientos funcionales, calistenia o rutinas de fuerza sin equipamiento pesado.', 22.99, 25, 3, '/imgs/Equipamiento/soporte_flexiones.png', 0.00, 70, 'activo', '2025-04-30 07:28:47'),
-(32, 'Chaleco lastrado 10kg', 'Incrementa la intensidad de tus entrenamientos de peso corporal.', 'El Chaleco Lastrado PuroGains de 10kg está diseñado para atletas que buscan progresar en ejercicios de peso corporal como dominadas, fondos y sprints. Con ajuste ergonómico y distribución de peso uniforme, añade resistencia sin comprometer movilidad. Cuenta con cierres seguros, tejido transpirable y compartimentos de carga regulables. Ideal para entrenamientos funcionales, HIIT y preparación física.', 49.99, 10, 3, '/imgs/Equipamiento/chaleco_lastrado.png', 5.00, 80, 'activo', '2025-04-30 07:28:47'),
+(32, 'Chaleco lastrado 10kg', 'Incrementa la intensidad de tus entrenamientos de peso corporal.', 'El Chaleco Lastrado PuroGains de 10kg está diseñado para atletas que buscan progresar en ejercicios de peso corporal como dominadas, fondos y sprints. Con ajuste ergonómico y distribución de peso uniforme, añade resistencia sin comprometer movilidad. Cuenta con cierres seguros, tejido transpirable y compartimentos de carga regulables. Ideal para entrenamientos funcionales, HIIT y preparación física.', 49.99, 10, 3, '/imgs/Equipamiento/chaleco_lastrado.png', 5.00, 81, 'activo', '2025-04-30 07:28:47'),
 (33, 'Rueda Abdominal Doble', 'Tonifica tu core con un movimiento completo y estable.', 'La Rueda Abdominal PuroGains de doble rueda ofrece estabilidad superior para entrenamientos de core efectivos. Su diseño compacto y resistente permite trabajar abdominales, lumbares, brazos y hombros de forma simultánea. Incluye mangos ergonómicos antideslizantes y alfombrilla de apoyo para las rodillas. Perfecta para usar en casa o en el gimnasio.', 17.99, 30, 3, '/imgs/Equipamiento/rueda_abdominal.png', 0.00, 60, 'activo', '2025-04-30 07:28:47'),
 (34, 'Paralelas Estáticas', 'Par de barras bajas para fondos, core y calistenia.', 'Las Paralelas Estáticas PuroGains están fabricadas en acero resistente con recubrimiento antideslizante, ideales para ejercicios de empuje como fondos, L-sit, planchas y flexiones profundas. Su diseño compacto permite fácil transporte y almacenamiento. Pensadas para deportistas que practican calistenia, gimnasia o entrenamientos funcionales avanzados.', 64.99, 8, 3, '/imgs/Equipamiento/paralelas_estaticas.png', 10.00, 75, 'activo', '2025-04-30 07:28:47'),
-(35, 'Esclusas para Barras Olímpicas', 'Asegura tus discos con firmeza y rapidez.', 'Las Esclusas PuroGains aseguran los discos en barras olímpicas de forma rápida y eficaz. Su sistema de cierre con palanca garantiza máxima seguridad durante levantamientos intensos como clean, snatch o peso muerto. Fabricadas en polímero reforzado, son ligeras, duraderas y fáciles de usar. Un accesorio esencial para entrenamientos de fuerza seguros.', 14.99, 50, 3, '/imgs/Equipamiento/esclusas_barras.jpg', 0.00, 68, 'activo', '2025-04-30 07:28:47'),
-(36, 'Piso de Goma Antigolpes', 'Superficie protectora para zonas de levantamiento o gimnasio.', 'Las Losetas de Goma Antigolpes PuroGains protegen el suelo y el equipamiento durante sesiones de levantamiento de peso. Con un grosor de 2 cm y textura antideslizante, absorben impactos, reducen el ruido y evitan deslizamientos. Recomendadas para zonas de sentadilla, peso muerto, power rack o zonas de entrenamiento intensivo.', 39.99, 15, 3, '/imgs/Equipamiento/piso_goma.jpg', 0.00, 55, 'activo', '2025-04-30 07:28:47'),
-(37, 'Banco Plano Reforzado', 'Banco estable para press, abdominales y ejercicios libres.', 'El Banco Plano Reforzado PuroGains es ideal para entrenamientos de pecho, core y ejercicios con mancuernas. Su estructura de acero de alta resistencia y tapizado antidesgarro ofrecen durabilidad y soporte bajo cargas pesadas. Compacto, cómodo y estable, es una herramienta imprescindible en cualquier rutina de fuerza.', 89.99, 12, 3, '/imgs/Equipamiento/banco_plano.jpg', 15.00, 80, 'activo', '2025-04-30 07:28:47'),
-(38, 'Step para Aeróbicos', 'Plataforma ajustable para rutinas de cardio y tonificación.', 'El Step para Aeróbicos PuroGains es ideal para clases dirigidas, cardio funcional y tonificación. Fabricado en plástico resistente con superficie antideslizante, cuenta con patas desmontables que permiten ajustar la altura según el nivel de intensidad. Mejora la coordinación, la resistencia y quema calorías con este versátil accesorio para casa o gimnasio.', 29.99, 20, 3, '/imgs/Equipamiento/step_aerobicos.jpg', 0.00, 50, 'activo', '2025-04-30 07:28:47'),
+(35, 'Esclusas para Barras Olímpicas', 'Asegura tus discos con firmeza y rapidez.', 'Las Esclusas PuroGains aseguran los discos en barras olímpicas de forma rápida y eficaz. Su sistema de cierre con palanca garantiza máxima seguridad durante levantamientos intensos como clean, snatch o peso muerto. Fabricadas en polímero reforzado, son ligeras, duraderas y fáciles de usar. Un accesorio esencial para entrenamientos de fuerza seguros.', 14.99, 50, 3, '/imgs/Equipamiento/esclusas_barras.png', 0.00, 68, 'activo', '2025-04-30 07:28:47'),
+(36, 'Piso de Goma Antigolpes', 'Superficie protectora para zonas de levantamiento o gimnasio.', 'Las Losetas de Goma Antigolpes PuroGains protegen el suelo y el equipamiento durante sesiones de levantamiento de peso. Con un grosor de 2 cm y textura antideslizante, absorben impactos, reducen el ruido y evitan deslizamientos. Recomendadas para zonas de sentadilla, peso muerto, power rack o zonas de entrenamiento intensivo.', 39.99, 15, 3, '/imgs/Equipamiento/piso_goma.png', 0.00, 55, 'activo', '2025-04-30 07:28:47'),
+(37, 'Banco Plano Reforzado', 'Banco estable para press, abdominales y ejercicios libres.', 'El Banco Plano Reforzado PuroGains es ideal para entrenamientos de pecho, core y ejercicios con mancuernas. Su estructura de acero de alta resistencia y tapizado antidesgarro ofrecen durabilidad y soporte bajo cargas pesadas. Compacto, cómodo y estable, es una herramienta imprescindible en cualquier rutina de fuerza.', 89.99, 12, 3, '/imgs/Equipamiento/banco_plano.png', 15.00, 79, 'activo', '2025-04-30 07:28:47'),
+(38, 'Step para Aeróbicos', 'Plataforma ajustable para rutinas de cardio y tonificación.', 'El Step para Aeróbicos PuroGains es ideal para clases dirigidas, cardio funcional y tonificación. Fabricado en plástico resistente con superficie antideslizante, cuenta con patas desmontables que permiten ajustar la altura según el nivel de intensidad. Mejora la coordinación, la resistencia y quema calorías con este versátil accesorio para casa o gimnasio.', 29.99, 20, 3, '/imgs/Equipamiento/step_aerobicos.png', 0.00, 50, 'activo', '2025-04-30 07:28:47'),
 (39, 'Chaqueta Técnica Impermeable', 'Chaqueta ligera ideal para climas húmedos o fríos.', 'La Chaqueta Técnica Impermeable PuroGains está diseñada para mantener el cuerpo seco y cómodo en condiciones adversas. Confeccionada con tela impermeable y transpirable, incluye capucha ajustable, cremalleras selladas y bolsillos funcionales. Ideal para sesiones al aire libre, running o entrenamientos matutinos. Estilo deportivo sin sacrificar protección.', 49.99, 15, 2, '/imgs/Ropa/chaqueta_impermeable.png', 5.00, 85, 'activo', '2025-04-30 07:36:54'),
 (40, 'Pantalón Corto de Compresión', 'Compresión ligera para mejorar circulación y rendimiento.', 'El Pantalón Corto de Compresión PuroGains proporciona soporte muscular y compresión controlada para mayor rendimiento en carreras, entrenamientos de pierna o sesiones de alta intensidad. Su tejido elástico favorece la circulación y reduce el riesgo de lesiones. Diseño con paneles de ventilación y cintura anatómica que se ajusta perfectamente al cuerpo.', 24.99, 30, 2, '/imgs/Ropa/pantalon_corto.png', 0.00, 65, 'activo', '2025-04-30 07:36:54'),
 (41, 'Sujetador Deportivo Alta Sujeción', 'Soporte ideal para entrenamientos de alto impacto.', 'El Sujetador Deportivo PuroGains está diseñado para brindar sujeción, confort y libertad de movimiento. Con tirantes cruzados y banda elástica de refuerzo, es perfecto para HIIT, running o entrenamientos de fuerza. Fabricado con materiales de secado rápido y costuras planas antirozaduras. Una prenda esencial para deportistas que buscan rendimiento sin comprometer comodidad.', 27.99, 25, 2, '/imgs/Ropa/sujetador_deportivo.png', 0.00, 78, 'activo', '2025-04-30 07:36:54'),
@@ -115,7 +115,7 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `detalles_produ
 (46, 'Campera Deportiva Unisex', 'Chaqueta liviana para entrenar en climas frescos.', 'La Campera Deportiva Unisex PuroGains está fabricada en microfibra ultraligera con interior térmico suave. Ideal para sesiones al aire libre, trotes matutinos o para completar tu look deportivo. Cuenta con bolsillos laterales con cremallera, cuello alto y puños ajustables. Disponible en tallas para todos los cuerpos.', 42.99, 18, 2, '/imgs/Ropa/campera_unisex.png', 5.00, 72, 'activo', '2025-04-30 07:36:54'),
 (47, 'Beta-Alanina Power', 'Aumenta la resistencia muscular y retrasa la fatiga.', 'La Beta-Alanina Power de PuroGains está formulada para maximizar la resistencia en entrenamientos de alta intensidad. Reduce la acumulación de ácido láctico en los músculos, permitiendo entrenar por más tiempo sin sensación de ardor o fallo muscular. Ideal para rutinas de fuerza, crossfit o cardio prolongado. Cada porción aporta 3,2g de beta-alanina pura. Tomar 30 min antes del entrenamiento.', 26.99, 40, 1, '/imgs/Suplementos/beta_alanina.png', 0.00, 70, 'activo', '2025-04-30 07:42:59'),
 (48, 'Electrolyte Mix', 'Reposición rápida de minerales y sales esenciales.', 'Electrolyte Mix de PuroGains repone electrolitos clave como sodio, potasio y magnesio perdidos por el sudor. Ideal para evitar calambres, mantener la hidratación y mejorar la recuperación durante sesiones largas o climas calurosos. Su fórmula sin azúcar y de rápida absorción lo convierte en una bebida ideal intra-entreno.', 19.99, 60, 1, '/imgs/Suplementos/electrolyte_mix.png', 0.00, 65, 'activo', '2025-04-30 07:42:59'),
-(49, 'Nitric Shock Booster', 'Vasodilatador para congestión muscular extrema.', 'Nitric Shock Booster es un pre-entreno vasodilatador que mejora el flujo sanguíneo, generando una congestión muscular intensa y mayor oxigenación. Contiene L-arginina, citrulina malato y extractos naturales como remolacha y granada. Aumenta la fuerza, el bombeo muscular y la resistencia anaeróbica.', 32.99, 25, 1, '/imgs/Suplementos/nitric_shock.png', 10.00, 72, 'activo', '2025-04-30 07:42:59'),
+(49, 'Nitric Shock Booster', 'Vasodilatador para congestión muscular extrema.', 'Nitric Shock Booster es un pre-entreno vasodilatador que mejora el flujo sanguíneo, generando una congestión muscular intensa y mayor oxigenación. Contiene L-arginina, citrulina malato y extractos naturales como remolacha y granada. Aumenta la fuerza, el bombeo muscular y la resistencia anaeróbica.', 32.99, 25, 1, '/imgs/Suplementos/nitric_shock.png', 10.00, 80, 'activo', '2025-04-30 07:42:59'),
 (50, 'Colágeno Hidrolizado + Magnesio', 'Mejora la salud articular y la recuperación.', 'El Colágeno Hidrolizado con Magnesio de PuroGains fortalece articulaciones, ligamentos y piel, ayudando a prevenir lesiones por impacto o desgaste. Ideal para atletas de fuerza o personas con rutinas exigentes. Se recomienda su uso diario, disuelto en agua o zumo, preferiblemente por la mañana.', 21.99, 35, 1, '/imgs/Suplementos/colageno_magnesio.png', 0.00, 60, 'activo', '2025-04-30 07:42:59'),
 (51, 'CarboFast Carga Rápida', 'Aporte energético de carbohidratos complejos.', 'CarboFast es un suplemento de maltodextrina y amilopectina diseñado para ofrecer energía sostenida durante sesiones prolongadas. Ideal como carga previa o para reponer glucógeno post-entreno. Su fórmula libre de azúcar refinada lo hace perfecto para deportes de resistencia y volumen limpio.', 27.99, 30, 1, '/imgs/Suplementos/carbofast.png', 0.00, 72, 'activo', '2025-04-30 07:42:59'),
 (52, 'ThermoBurn Xtreme', 'Fórmula avanzada para definición y quema de grasa.', 'ThermoBurn Xtreme es un termogénico con cafeína, extracto de té verde, L-carnitina y cayena. Acelera el metabolismo, favorece la oxidación de grasas y mejora el enfoque mental. Ideal para fases de corte o definición muscular. Tomar por la mañana o antes del cardio, evitar consumir por la noche.', 29.99, 20, 1, '/imgs/Suplementos/thermoburn.png', 0.00, 80, 'activo', '2025-04-30 07:42:59'),
@@ -125,10 +125,10 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `detalles_produ
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario`
+-- Estructura de tabla para la tabla `usuarios`
 --
 
-CREATE TABLE `usuario` (
+CREATE TABLE `usuarios` (
   `id_usuario` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `apellido` varchar(100) NOT NULL,
@@ -143,6 +143,18 @@ CREATE TABLE `usuario` (
   `estado` enum('Activo','Inactivo') DEFAULT 'Activo',
   `foto_perfil` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `telefono`, `correo`, `contrasena`, `fecha_nacimiento`, `genero`, `peso`, `altura`, `tipo_usuario`, `estado`, `foto_perfil`) VALUES
+(1, 'Javier', 'Martinez', '678 82 56 21', 'javiermdeb@gmail.com', '$2y$10$3svaAcOPBrG.yf1hsmiJT.QiAQ.mFySqICCsngJqas2M8tNw5CEwS', '2005-05-06', 'Masculino', 55.00, 175.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(4, 'Jorge', 'Rodriguez', '678 88 37 38', 'jorgerodriguezalonso20@gmail.com', '$2y$10$XnzDtxXe9ZYbmw72vyEQ7ugmOjFHqbnr38L/dYLP/p2cDd7jsKngu', '2003-01-21', 'Masculino', 65.00, 180.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(5, 'Alejandro', 'Canovas', '675 27 82 71', 'aleecanovaslopez@gmail.com', '$2y$10$u9lCX9ee/PXKdt6NteLzV.c822g.pc.NDR44xHQR798oBl28k0c7y', '2005-10-13', 'Masculino', 80.00, 182.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/alex.png'),
+(6, 'Diego', 'Cardona', '653 74 89 23', 'negrillo1124@gmail.com', '$2y$10$1zeY3KeWSgBeHZBAdShwP.zU3JYY3g9Zk0gYWNG8q6l5A9NKroQRG', '2005-11-24', 'Masculino', 70.00, 173.00, 'Administrador', 'Activo', '/imgs/FotosPerfiles/me.png'),
+(7, 'Jonny', 'Garcia', '677 84 55 43', 'jonny@gmail.com', '$2y$10$vrR8apEcjlfg2WDB3nK3uOwtBoRX/.rBzkmnweNrRWjxk0SAgRWcS', '1994-03-25', 'Masculino', 60.00, 155.00, 'Premium', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(9, 'Ruben', 'Saez', '677 77 77 77', 'ruben@gmail.com', '$2y$10$JsuzgFosfkeo59lTo0tHReXP.4SxK6kDk.L5UQiTf7qiAj1YLZZvy', '2004-10-13', 'Masculino', 90.00, 170.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png');
 
 --
 -- Índices para tablas volcadas
@@ -163,9 +175,9 @@ ALTER TABLE `productos`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Indices de la tabla `usuario`
+-- Indices de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
+ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usuario`),
   ADD UNIQUE KEY `correo` (`correo`);
 
@@ -186,10 +198,10 @@ ALTER TABLE `productos`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
--- AUTO_INCREMENT de la tabla `usuario`
+-- AUTO_INCREMENT de la tabla `usuarios`
 --
-ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `usuarios`
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas
