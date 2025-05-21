@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/css/registerStyle.css">
     <link rel="stylesheet" href="/css/userAccountStyle.css">
     <link rel="stylesheet" href="/css/profits.css">
+    <link rel="stylesheet" href="/css/processProducts.css">
 </head>
 
 <body>

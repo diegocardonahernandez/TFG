@@ -225,4 +225,75 @@ class Product implements JsonSerializable
 
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
     }
+
+    public function save()
+    {
+        $db = Database::getInstance();
+        $sql = "INSERT INTO productos (nombre, descripcion, detalles_producto, precio, stock, id_categoria, imagen, estado) 
+                VALUES (:nombre, :descripcion, :detalles_producto, :precio, :stock, :id_categoria, :imagen, :estado)";
+
+        $stmt = $db->prepare($sql);
+        return $stmt->execute([
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion,
+            'detalles_producto' => $this->detalles_producto,
+            'precio' => $this->precio,
+            'stock' => $this->stock,
+            'id_categoria' => $this->id_categoria,
+            'imagen' => $this->imagen,
+            'estado' => $this->estado
+        ]);
+    }
+
+    public function update()
+    {
+        $db = Database::getInstance();
+        $sql = "UPDATE productos 
+                SET nombre = :nombre, 
+                    descripcion = :descripcion, 
+                    detalles_producto = :detalles_producto, 
+                    precio = :precio, 
+                    stock = :stock, 
+                    id_categoria = :id_categoria, 
+                    estado = :estado";
+
+        $params = [
+            'nombre' => $this->nombre,
+            'descripcion' => $this->descripcion,
+            'detalles_producto' => $this->detalles_producto,
+            'precio' => $this->precio,
+            'stock' => $this->stock,
+            'id_categoria' => $this->id_categoria,
+            'estado' => $this->estado,
+            'id_producto' => $this->id_producto
+        ];
+
+        // Add image to update if it was changed
+        if ($this->imagen) {
+            $sql .= ", imagen = :imagen";
+            $params['imagen'] = $this->imagen;
+        }
+
+        $sql .= " WHERE id_producto = :id_producto";
+
+        $stmt = $db->prepare($sql);
+        return $stmt->execute($params);
+    }
+
+    public static function delete($id)
+    {
+        $db = Database::getInstance();
+        $sql = "DELETE FROM productos WHERE id_producto = :id";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(['id' => $id]);
+    }
+
+    public static function getAllWithCategory()
+    {
+        $db = Database::getInstance();
+        $sql = 'SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY p.id_producto ASC';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
 }

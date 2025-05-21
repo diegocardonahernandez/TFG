@@ -1,0 +1,31 @@
+# Ignorar carpeta de imágenes
+/public/imgs/
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# Ignorar archivos de IDE
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Ignorar archivos de dependencias
+/vendor/
+/node_modules/
+
+# Ignorar archivos de logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignorar archivos de caché
+.cache/
+.temp/ 

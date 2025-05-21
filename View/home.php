@@ -22,7 +22,7 @@
                         <h1 class="hero-title">Tu mayor rival es aquel que ves en el espejo</h1>
                         <p class="hero-subtitle">No pongas límites a tu potencial. Únete al plan premium</p>
                         <div class="hero-cta">
-                            <a href="#programs" class="btn btn-primary">¡Vamos!</a>
+                            <a href="#programs" class="btn btn-danger">¡Vamos!</a>
                             <a href="/profits" class="btn btn-outline">Ver Beneficios</a>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <h1 class="hero-title">Transforma tu cuerpo, cambia tu vida</h1>
                         <p class="hero-subtitle">Productos de calidad para maximizar tu rendimiento</p>
                         <div class="hero-cta" id="btnsSlide2">
-                            <a href="#products" class="btn btn-primary">Ver Productos</a>
+                            <a href="#products" class="btn btn-danger">Ver Productos</a>
                             <a href="#testimonials" class="btn btn-outline">Testimonios</a>
                         </div>
                     </div>
@@ -56,7 +56,7 @@
                         <h1 class="hero-title">Entrena con propósito, vive con pasión</h1>
                         <p class="hero-subtitle">Descubre nuestra gama de suplementos premium</p>
                         <div class="hero-cta">
-                            <a href="#subscription" class="btn btn-primary">Suscríbete</a>
+                            <a href="#subscription" class="btn btn-danger">Suscríbete</a>
                             <a href="#faq" class="btn btn-outline">Preguntas Frecuentes</a>
                         </div>
                     </div>
