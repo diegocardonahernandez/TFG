@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/css/userAccountStyle.css">
     <link rel="stylesheet" href="/css/profits.css">
     <link rel="stylesheet" href="/css/processProducts.css">
+    <link rel="stylesheet" href="/css/discountsStyle.css">
 </head>
 
 <body>
@@ -54,9 +55,9 @@
                             </li>
                             <?php
                             if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Premium') {
-                                echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
+                                echo '<li><a class="dropdown-item" href="/discounts">Descuentos</a></li>';
                             } else if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Administrador') {
-                                echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
+                                echo '<li><a class="dropdown-item" href="/discounts">Descuentos</a></li>';
                             } else {
                                 echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Descuentos</a></li>';
                             }

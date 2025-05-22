@@ -370,6 +370,8 @@ function loadProductData(productId) {
       document.getElementById("editProductId").value = product.id_producto;
       document.getElementById("editProductName").value = product.nombre;
       document.getElementById("editProductPrice").value = product.precio;
+      document.getElementById("editProductDiscount").value =
+        product.descuento || 0;
       document.getElementById("editProductStock").value = product.stock;
       document.getElementById("editProductDescription").value =
         product.descripcion;
@@ -383,15 +385,6 @@ function loadProductData(productId) {
       }
       // Cargar categorías y seleccionar la correcta
       loadCategories(product.id_categoria, true);
-      // Previsualización de imagen
-      const preview = document.getElementById("editProductImagePreview");
-      if (product.imagen) {
-        preview.src = product.imagen;
-        preview.style.display = "block";
-      } else {
-        preview.src = "";
-        preview.style.display = "none";
-      }
       // Limpiar input de imagen
       document.getElementById("editProductImage").value = "";
       const editModal = new bootstrap.Modal(
@@ -407,26 +400,6 @@ function loadProductData(productId) {
         icon: "error",
       });
     });
-}
-
-// Previsualización de imagen en edición
-const editProductImageInput = document.getElementById("editProductImage");
-if (editProductImageInput) {
-  editProductImageInput.addEventListener("change", function (e) {
-    const preview = document.getElementById("editProductImagePreview");
-    const file = e.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = function (ev) {
-        preview.src = ev.target.result;
-        preview.style.display = "block";
-      };
-      reader.readAsDataURL(file);
-    } else {
-      preview.src = "";
-      preview.style.display = "none";
-    }
-  });
 }
 
 function confirmDelete(productId) {
@@ -507,7 +480,24 @@ main().catch(console.error);
 const editProductModalEl = document.getElementById("editProductModal");
 if (editProductModalEl) {
   editProductModalEl.addEventListener("hidden.bs.modal", function () {
+    // Remover la clase modal-open del body
     document.body.classList.remove("modal-open");
-    document.querySelectorAll(".modal-backdrop").forEach((el) => el.remove());
+    // Remover el estilo overflow: hidden del body
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+    // Remover todos los modal-backdrop
+    const backdrops = document.querySelectorAll(".modal-backdrop");
+    backdrops.forEach((backdrop) => backdrop.remove());
   });
 }
+
+// Asegurar que el scroll se restaura al cerrar cualquier modal
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("hidden.bs.modal", function () {
+    document.body.classList.remove("modal-open");
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+    const backdrops = document.querySelectorAll(".modal-backdrop");
+    backdrops.forEach((backdrop) => backdrop.remove());
+  });
+});

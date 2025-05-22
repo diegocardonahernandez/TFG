@@ -61,11 +61,17 @@ switch ($method) {
             case '/profits':
                 renderLayout('premiumProfits');
                 break;
+            case '/discounts':
+                require_once __DIR__ . '/../Controller/discountsController.php';
+                break;
             case '/getCategories':
                 require_once __DIR__ . '/../Controller/api/getCategories.php';
                 break;
             case '/getProducts':
                 require_once __DIR__ . '/../Controller/api/getProducts.php';
+                break;
+            case '/products':
+                require_once __DIR__ . '/../Controller/productsController.php';
                 break;
             default:
                 echo "Página no encontrada";

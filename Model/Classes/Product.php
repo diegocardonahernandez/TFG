@@ -255,6 +255,7 @@ class Product implements JsonSerializable
                     precio = :precio, 
                     stock = :stock, 
                     id_categoria = :id_categoria, 
+                    descuento = :descuento,
                     estado = :estado";
 
         $params = [
@@ -264,6 +265,7 @@ class Product implements JsonSerializable
             'precio' => $this->precio,
             'stock' => $this->stock,
             'id_categoria' => $this->id_categoria,
+            'descuento' => $this->descuento,
             'estado' => $this->estado,
             'id_producto' => $this->id_producto
         ];
@@ -292,6 +294,19 @@ class Product implements JsonSerializable
     {
         $db = Database::getInstance();
         $sql = 'SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY p.id_producto ASC';
+        $stmt = $db->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
+
+    public static function getDiscountedProducts()
+    {
+        $db = Database::getInstance();
+        $sql = 'SELECT p.*, c.nombre AS categoria 
+                FROM productos p 
+                JOIN categorias c ON p.id_categoria = c.id_categoria 
+                WHERE p.descuento > 0 
+                ORDER BY p.descuento DESC';
         $stmt = $db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');

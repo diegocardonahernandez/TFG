@@ -17,6 +17,7 @@ try {
   $product->setDescripcion($_POST['descripcion']);
   $product->setDetallesProducto($_POST['detalles_producto'] ?? '');
   $product->setPrecio($_POST['precio']);
+  $product->setDescuento($_POST['descuento'] ?? 0);
   $product->setStock($_POST['stock']);
   $product->setIdCategoria($_POST['id_categoria']);
   $product->setEstado(isset($_POST['estado']) ? intval($_POST['estado']) : 0);
