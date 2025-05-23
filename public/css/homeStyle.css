@@ -51,7 +51,6 @@
 /* Segundo slide - Imagen y overlay */
 .slide-2 .slide-background {
   background-image: url("/imgs/slide2.webp");
-  background-size: 100% 100%;
 }
 .slide-2 .slide-background::after {
   content: "";
