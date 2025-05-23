@@ -42,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['user_profile_peso'],
             $_POST['user_profile_altura'],
             $ruta_foto,
+            $userToUpdate->getTipoUsuario(),
+            $userToUpdate->getEstado(),
             $_SESSION['userId']
         );
         exit();
@@ -61,6 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST['user_profile_altura'],
             $ruta_foto,
             password_hash($_POST['user_profile_new_password'], PASSWORD_BCRYPT),
+            $userToUpdate->getTipoUsuario(),
+            $userToUpdate->getEstado(),
             $_SESSION['userId']
         );
 

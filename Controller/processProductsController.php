@@ -1,8 +1,11 @@
 <?php
 
 require_once __DIR__ . '/../Functions/redirectView.php';
-require_once __DIR__ . '/../Model/Classes/Product.php';
 
-$productos = Product::getAll();
+// Check if user is logged in and is admin
+if (!isset($_SESSION['userId']) || $_SESSION['userType'] !== 'Administrador') {
+  header('Location: /');
+  exit();
+}
 
-renderLayout('processProducts', ["products" => $productos]);
+renderLayout('processProducts');

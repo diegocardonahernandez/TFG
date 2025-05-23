@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/../Functions/redirectView.php';
+
 $method = $_SERVER["REQUEST_METHOD"];
 $request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
@@ -39,18 +40,38 @@ switch ($method) {
             case '/accountUser':
                 require_once __DIR__ . '/../Controller/userAccountController.php';
                 break;
-            case '/logout':
-                require_once __DIR__ . '/../Controller/logout.php';
-                break;
-
             case '/processProducts':
                 require_once __DIR__ . '/../Controller/processProductsController.php';
                 break;
             case '/processUsers':
                 require_once __DIR__ . '/../Controller/processUsersController.php';
                 break;
+            case '/getProduct':
+                require_once __DIR__ . '/../Controller/api/getProduct.php';
+                break;
+            case '/getUser':
+                require_once __DIR__ . '/../Controller/api/getUser.php';
+                break;
+            case '/getUsers':
+                require_once __DIR__ . '/../Controller/api/getUsers.php';
+                break;
+            case '/logout':
+                require_once __DIR__ . '/../Controller/logout.php';
+                break;
             case '/profits':
                 renderLayout('premiumProfits');
+                break;
+            case '/discounts':
+                require_once __DIR__ . '/../Controller/discountsController.php';
+                break;
+            case '/getCategories':
+                require_once __DIR__ . '/../Controller/api/getCategories.php';
+                break;
+            case '/getProducts':
+                require_once __DIR__ . '/../Controller/api/getProducts.php';
+                break;
+            case '/products':
+                require_once __DIR__ . '/../Controller/productsController.php';
                 break;
             default:
                 echo "Página no encontrada";
@@ -74,6 +95,33 @@ switch ($method) {
                 break;
             case '/deleteAccount':
                 require_once __DIR__ . '/../Controller/deleteUser.php';
+                break;
+            case '/addProduct':
+                require_once __DIR__ . '/../Controller/formControllers/addProductForm.php';
+                break;
+            case '/updateProduct':
+                require_once __DIR__ . '/../Controller/formControllers/updateProductForm.php';
+                break;
+            case '/updateUser':
+                require_once __DIR__ . '/../Controller/formControllers/updateUserForm.php';
+                break;
+            case '/deleteUser':
+                require_once __DIR__ . '/../Controller/api/deleteUser.php';
+                break;
+            case '/deleteProduct':
+                require_once __DIR__ . '/../Controller/api/deleteProduct.php';
+                break;
+            case '/getCategories':
+                require_once __DIR__ . '/../Controller/api/getCategories.php';
+                break;
+            case '/getProduct':
+                require_once __DIR__ . '/../Controller/api/getProduct.php';
+                break;
+            case '/getUser':
+                require_once __DIR__ . '/../Controller/api/getUser.php';
+                break;
+            case '/getUsers':
+                require_once __DIR__ . '/../Controller/api/getUsers.php';
                 break;
             default:
                 echo "Ruta POST no reconocida";

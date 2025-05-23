@@ -2,7 +2,7 @@
 
 require_once __DIR__ .  '/../../Config/Database.php';
 
-class Category
+class Category implements JsonSerializable
 {
 
     private $id_categoria;
@@ -36,5 +36,13 @@ class Category
         $stmt = $db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Category');
+    }
+
+    public function jsonSerialize(): mixed
+    {
+        return [
+            'id_categoria' => $this->id_categoria,
+            'nombre' => $this->nombre
+        ];
     }
 }
