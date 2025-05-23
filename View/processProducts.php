@@ -63,35 +63,35 @@
                             </thead>
                             <tbody>
                                 <?php for ($i = 0; $i < 10; $i++): ?>
-                                    <tr>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-text"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-image"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-text"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-badge"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-text"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-badge"></div>
-                                        </td>
-                                        <td class="px-4 py-3">
-                                            <div class="skeleton-badge"></div>
-                                        </td>
-                                        <td class="px-4 py-3 text-center">
-                                            <div class="d-flex justify-content-center gap-2">
-                                                <div class="skeleton-button"></div>
-                                                <div class="skeleton-button"></div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-text"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-image"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-text"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-badge"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-text"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-badge"></div>
+                                    </td>
+                                    <td class="px-4 py-3">
+                                        <div class="skeleton-badge"></div>
+                                    </td>
+                                    <td class="px-4 py-3 text-center">
+                                        <div class="d-flex justify-content-center gap-2">
+                                            <div class="skeleton-button"></div>
+                                            <div class="skeleton-button"></div>
+                                        </div>
+                                    </td>
+                                </tr>
                                 <?php endfor; ?>
                             </tbody>
                         </table>
@@ -299,17 +299,27 @@
                                 </div>
                                 <div class="col-md-6">
                                     <label for="editProductStatus" class="form-label fw-medium">Estado</label>
-                                    <div class="d-flex gap-3 mt-1">
+                                    <div class="status-radio-group">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="estado"
-                                                id="editProductStatusActive" value="1">
-                                            <label class="form-check-label" for="editProductStatusActive">Activo</label>
+                                                id="editProductStatusActive" value="activo">
+                                            <label class="form-check-label" for="editProductStatusActive">
+                                                <i class="bi bi-check-circle-fill me-1"></i>Activo
+                                            </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="estado"
-                                                id="editProductStatusInactive" value="0">
-                                            <label class="form-check-label"
-                                                for="editProductStatusInactive">Inactivo</label>
+                                                id="editProductStatusInactive" value="inactivo">
+                                            <label class="form-check-label" for="editProductStatusInactive">
+                                                <i class="bi bi-x-circle-fill me-1"></i>Inactivo
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="estado"
+                                                id="editProductStatusOutOfStock" value="agotado">
+                                            <label class="form-check-label" for="editProductStatusOutOfStock">
+                                                <i class="bi bi-exclamation-triangle-fill me-1"></i>Agotado
+                                            </label>
                                         </div>
                                     </div>
                                 </div>

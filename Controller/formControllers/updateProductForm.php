@@ -20,7 +20,13 @@ try {
   $product->setDescuento($_POST['descuento'] ?? 0);
   $product->setStock($_POST['stock']);
   $product->setIdCategoria($_POST['id_categoria']);
-  $product->setEstado(isset($_POST['estado']) ? intval($_POST['estado']) : 0);
+
+  // Validar y establecer el estado
+  $estado = $_POST['estado'] ?? 'inactivo';
+  if (!in_array($estado, ['activo', 'inactivo', 'agotado'])) {
+    throw new Exception('Estado no válido');
+  }
+  $product->setEstado($estado);
 
   // Handle image upload if a new image is provided
   if (isset($_FILES['imagen']) && $_FILES['imagen']['size'] > 0) {

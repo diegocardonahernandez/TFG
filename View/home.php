@@ -90,6 +90,7 @@
         <!-- Utilizando Bootstrap para la adaptación responsiva -->
         <div class="row">
             <?php foreach ($popularProducts as $index => $popularProduct): ?>
+            <?php if ($popularProduct->getEstado() != 'inactivo'): ?>
             <div class="col-lg-4 col-md-6 col-sm-12 product-item">
                 <div class="product-card">
                     <?php if ($index === 0): ?>
@@ -135,6 +136,7 @@
                     </div>
                 </div>
             </div>
+            <?php endif; ?>
             <?php endforeach; ?>
         </div>
 

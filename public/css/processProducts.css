@@ -157,14 +157,65 @@
 .form-check-input {
   width: 16px;
   height: 16px;
+  margin-top: 0.2rem;
 }
 
 .form-check-label {
   font-size: 0.85rem;
+  padding-left: 0.25rem;
 }
 
 .form-check {
   margin-bottom: 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.form-check:hover {
+  background-color: rgba(170, 3, 3, 0.05);
+}
+
+/* Contenedor de radio buttons para estado */
+.status-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.status-radio-group .form-check {
+  flex: 1;
+  min-width: 100px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  background-color: white;
+}
+
+.status-radio-group .form-check-input:checked + .form-check-label {
+  color: #aa0303;
+  font-weight: 500;
+}
+
+.status-radio-group .form-check-input:checked {
+  background-color: #aa0303;
+  border-color: #aa0303;
+}
+
+/* Ajustes responsivos para los radio buttons */
+@media (max-width: 768px) {
+  .status-radio-group {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .status-radio-group .form-check {
+    width: 100%;
+    min-width: unset;
+  }
 }
 
 /* Mejoras para los botones del footer */

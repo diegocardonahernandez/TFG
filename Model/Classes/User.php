@@ -207,7 +207,7 @@ class User
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'User');
     }
 
-    public static function updateUserData($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $tipoUsuario, $idUsuario)
+    public static function updateUserData($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $tipoUsuario, $estado, $idUsuario)
     {
         $db = Database::getInstance();
         $query =  "UPDATE usuarios 
@@ -219,7 +219,8 @@ class User
             peso = :peso,
             altura = :altura,
             foto_perfil = :foto_perfil,
-            tipo_usuario = :tipo_usuario
+            tipo_usuario = :tipo_usuario,
+            estado = :estado
         WHERE id_usuario = :id_usuario";
         $stmt = $db->prepare($query);
         $stmt->execute([
@@ -232,11 +233,12 @@ class User
             ':altura'           => $altura,
             ':foto_perfil'      => $fotoPerfil,
             ':tipo_usuario'     => $tipoUsuario,
+            ':estado'           => $estado,
             ':id_usuario'       => $idUsuario
         ]);
     }
 
-    public static function updateUserDataAndPassw($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $contrasena, $tipoUsuario, $idUsuario)
+    public static function updateUserDataAndPassw($nombre, $apellido, $telefono, $fechaNacimiento, $genero, $peso, $altura, $fotoPerfil, $contrasena, $tipoUsuario, $estado, $idUsuario)
     {
         $db = Database::getInstance();
         $query =  "UPDATE usuarios 
@@ -249,7 +251,8 @@ class User
         altura = :altura,
         foto_perfil = :foto_perfil,
         contrasena = :contrasena,
-        tipo_usuario = :tipo_usuario
+        tipo_usuario = :tipo_usuario,
+        estado = :estado
     WHERE id_usuario = :id_usuario";
         $stmt = $db->prepare($query);
         $stmt->execute([
@@ -263,6 +266,7 @@ class User
             ':foto_perfil'      => $fotoPerfil,
             ':contrasena'       => $contrasena,
             ':tipo_usuario'     => $tipoUsuario,
+            ':estado'           => $estado,
             ':id_usuario'       => $idUsuario
         ]);
     }

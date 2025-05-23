@@ -61,6 +61,30 @@ function renderProducts(products) {
   products.forEach((product) => {
     const row = document.createElement("tr");
     row.className = "product-row";
+
+    // Determinar el estilo del badge según el estado
+    let estadoBadgeClass = "bg-light text-dark";
+    let estadoIcon = "";
+    let estadoText = "";
+
+    switch (product.estado) {
+      case "activo":
+        estadoBadgeClass = "bg-success text-white";
+        estadoIcon = '<i class="bi bi-check-circle-fill me-1"></i>';
+        estadoText = "Activo";
+        break;
+      case "inactivo":
+        estadoBadgeClass = "bg-danger text-white";
+        estadoIcon = '<i class="bi bi-x-circle-fill me-1"></i>';
+        estadoText = "Inactivo";
+        break;
+      case "agotado":
+        estadoBadgeClass = "bg-warning text-dark";
+        estadoIcon = '<i class="bi bi-exclamation-triangle-fill me-1"></i>';
+        estadoText = "Agotado";
+        break;
+    }
+
     row.innerHTML = `
         <td class="px-4 py-3">${product.id_producto}</td>
         <td class="px-4 py-3">
@@ -87,14 +111,8 @@ function renderProducts(products) {
           }
         </td>
         <td class="px-4 py-3">
-          <span class="badge ${
-            product.estado ? "bg-success" : "bg-danger"
-          } rounded-pill px-3 py-2">
-            ${
-              product.estado
-                ? '<i class="bi bi-check-circle-fill me-1"></i> Activo'
-                : "Inactivo"
-            }
+          <span class="badge ${estadoBadgeClass} rounded-pill px-3 py-2">
+            ${estadoIcon}${estadoText}
           </span>
         </td>
         <td class="px-4 py-3 text-center">
@@ -270,13 +288,15 @@ async function initializeProductManagement() {
   const editProductForm = document.getElementById("editProductForm");
 
   updateProductBtn.addEventListener("click", function () {
-    // Asegurar que el valor de 'estado' es el del radio seleccionado
-    const estadoValue = document.querySelector('input[name="estado"]:checked');
-    if (estadoValue) {
-      // Si existe un input hidden con name="estado", actualízalo, si no, ignora (FormData lo recoge del radio)
-    }
     if (editProductForm.checkValidity()) {
       const formData = new FormData(editProductForm);
+      // Asegurar que el estado se envíe correctamente
+      const estadoValue = document.querySelector(
+        'input[name="estado"]:checked'
+      );
+      if (estadoValue) {
+        formData.set("estado", estadoValue.value);
+      }
 
       Swal.fire({
         title: "Actualizando producto",
@@ -378,11 +398,12 @@ function loadProductData(productId) {
       document.getElementById("editProductDetails").value =
         product.detalles_producto || "";
       // Establecer el estado del producto en los radio buttons
-      if (product.estado) {
-        document.getElementById("editProductStatusActive").checked = true;
-      } else {
-        document.getElementById("editProductStatusInactive").checked = true;
-      }
+      document.getElementById("editProductStatusActive").checked =
+        product.estado === "activo";
+      document.getElementById("editProductStatusInactive").checked =
+        product.estado === "inactivo";
+      document.getElementById("editProductStatusOutOfStock").checked =
+        product.estado === "agotado";
       // Cargar categorías y seleccionar la correcta
       loadCategories(product.id_categoria, true);
       // Limpiar input de imagen

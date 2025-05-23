@@ -182,7 +182,7 @@ class Product implements JsonSerializable
     {
 
         $db = Database::getInstance();
-        $sql = "SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY p.popularidad DESC LIMIT 12";
+        $sql = "SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria WHERE p.estado = 'activo' ORDER BY p.popularidad DESC LIMIT 12";
         $stmt = $db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');

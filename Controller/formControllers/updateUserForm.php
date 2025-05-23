@@ -59,6 +59,7 @@ try {
             $fotoPerfil,
             $_POST['contrasena'],
             $_POST['tipo_usuario'],
+            $user->getEstado(),
             $_POST['id_usuario']
         );
     } else {
@@ -72,6 +73,7 @@ try {
             $altura,
             $fotoPerfil,
             $_POST['tipo_usuario'],
+            $user->getEstado(),
             $_POST['id_usuario']
         );
     }
