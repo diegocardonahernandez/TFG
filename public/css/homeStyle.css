@@ -8,9 +8,8 @@
 .hero-slide {
   position: relative;
   width: 100%;
-  /* Altura modificada para mantener proporciones 1536x1024 */
-  height: 75vh; /* Reducido de 86vh */
-  min-height: 450px; /* Reducido de 600px */
+  height: 86vh;
+  min-height: 450px;
   overflow: hidden;
   background-color: black;
 }
@@ -30,8 +29,7 @@
 
 /* Primer slide - Imagen y overlay */
 .slide-1 .slide-background {
-  background-image: url();
-  background-size: 100% 100%;
+  background-image: url("/imgs/slide1.png");
 }
 
 .slide-1 .slide-background::after {
@@ -52,9 +50,9 @@
 
 /* Segundo slide - Imagen y overlay */
 .slide-2 .slide-background {
-  background-image: url();
+  background-image: url("/imgs/slide2.webp");
+  background-size: 100% 100%;
 }
-
 .slide-2 .slide-background::after {
   content: "";
   position: absolute;
@@ -77,7 +75,7 @@
 
 /* Tercer slide - Imagen y overlay */
 .slide-3 .slide-background {
-  background-image: url();
+  background-image: url("/imgs/slide3.png");
 }
 
 .slide-3 .slide-background::after {

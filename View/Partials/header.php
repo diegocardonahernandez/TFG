@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/css/registerStyle.css">
     <link rel="stylesheet" href="/css/userAccountStyle.css">
     <link rel="stylesheet" href="/css/profits.css">
+    <link rel="stylesheet" href="/css/processProducts.css">
+    <link rel="stylesheet" href="/css/discountsStyle.css">
 </head>
 
 <body>
@@ -53,9 +55,9 @@
                             </li>
                             <?php
                             if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Premium') {
-                                echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
+                                echo '<li><a class="dropdown-item" href="/discounts">Descuentos</a></li>';
                             } else if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Administrador') {
-                                echo '<li><a class="dropdown-item" href="#">Descuentos</a></li>';
+                                echo '<li><a class="dropdown-item" href="/discounts">Descuentos</a></li>';
                             } else {
                                 echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Descuentos</a></li>';
                             }
@@ -94,7 +96,7 @@
                         if ($_SESSION['userType'] == 'Administrador') {
                             echo '<li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="bi bi-gear"></i>  Administración
+                            </i>  Administración
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/processProducts">Productos</a></li>

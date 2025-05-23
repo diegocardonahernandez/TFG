@@ -118,7 +118,7 @@
                             <div class="user-profile-input-wrapper">
                                 <i class="fas fa-weight user-profile-input-icon"></i>
                                 <input type="number" id="user_profile_peso" name="user_profile_peso"
-                                    class="user-profile-form-input"
+                                    class="user-profile-form-input" step="0.1"
                                     value="<?php echo intval($currentUser->getPeso()); ?>">
                             </div>
                             <span class="user-profile-error-message" id="user-profile-errorWeight"></span>

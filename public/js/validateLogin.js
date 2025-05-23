@@ -87,5 +87,5 @@ form.addEventListener("submit", (e) => {
           });
         }
       });
-  }, 3000);
+  }, 2000);
 });
