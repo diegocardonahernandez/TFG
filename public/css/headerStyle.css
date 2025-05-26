@@ -315,22 +315,6 @@ body:not(.has-shipping-bar) .navbar {
   color: var(--puro-red);
 }
 
-.cart-count {
-  position: absolute;
-  top: -8px;
-  right: -8px;
-  background-color: var(--puro-red);
-  color: var(--puro-white);
-  font-size: 0.7rem;
-  font-weight: 600;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 /* Navbar toggler for mobile */
 .navbar-toggler {
   border-color: var(--puro-red);

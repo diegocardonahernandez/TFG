@@ -129,7 +129,10 @@
                         </ul>
 
                         <div class="product-actions">
-                            <a href="#" class="btn-product btn-add-cart">Añadir al carrito</a>
+                            <form action="/cart" method="post">
+                                <input type="hidden" name="id" value="<?= $popularProduct->getIdProducto() ?>">
+                                <button type="submit" class="btn-product btn-add-cart">Añadir al carrito</button>
+                            </form>
                             <a href="/product?id=<?= $popularProduct->getIdProducto() ?>"
                                 class="btn-product btn-details">Detalles</a>
                         </div>

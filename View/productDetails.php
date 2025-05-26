@@ -21,7 +21,7 @@
                 <div class="pdv-gallery">
                     <div class="pdv-main-image-wrapper">
                         <?php if ($details[0]->getStock() <= 10 && $details[0]->getStock() > 0): ?>
-                            <span class="pdv-badge pdv-stock-alert">¡Últimas unidades!</span>
+                        <span class="pdv-badge pdv-stock-alert">¡Últimas unidades!</span>
                         <?php endif; ?>
 
                         <img src="<?= $details[0]->getImagen() ?>" class="pdv-main-image"
@@ -74,34 +74,36 @@
 
                     <div class="pdv-purchase-section">
                         <?php if ($details[0]->getStock() > 0): ?>
-                            <div class="pdv-purchase-controls">
-                                <div class="pdv-quantity-control">
-                                    <label for="quantity">Cantidad</label>
-                                    <div class="pdv-quantity-buttons">
-                                        <button class="pdv-qty-btn btnDecrease" aria-label="Disminuir cantidad">-</button>
-                                        <input type="number" id="quantity" name="quantity" value="1" min="1"
-                                            max="<?= $details[0]->getStock() ?>">
-                                        <button class="pdv-qty-btn btnIncrease" aria-label="Aumentar cantidad">+</button>
-                                    </div>
+                        <div class="pdv-purchase-controls">
+                            <div class="pdv-quantity-control">
+                                <label for="quantity">Cantidad</label>
+                                <div class="pdv-quantity-buttons">
+                                    <button class="pdv-qty-btn btnDecrease" aria-label="Disminuir cantidad">-</button>
+                                    <input type="number" id="quantity" name="quantity" value="1" min="1"
+                                        max="<?= $details[0]->getStock() ?>">
+                                    <button class="pdv-qty-btn btnIncrease" aria-label="Aumentar cantidad">+</button>
                                 </div>
-                                <div class="pdv-action-buttons">
-                                    <button class="pdv-action-btn pdv-add-to-cart"
-                                        data-product="<?= $details[0]->getIdProducto() ?>">
+                            </div>
+                            <div class="pdv-action-buttons">
+                                <form action="/cart" method="post">
+                                    <input type="hidden" name="id" value="<?= $details[0]->getIdProducto() ?>">
+                                    <button class="pdv-action-btn pdv-add-to-cart">
                                         <i class="fas fa-shopping-cart"></i> Añadir al carrito
                                     </button>
-                                    <button class="pdv-action-btn pdv-buy-now">
-                                        <i class="fas fa-bolt"></i> Comprar ahora
-                                    </button>
-                                </div>
-                            </div>
-                        <?php else: ?>
-                            <div class="pdv-out-of-stock">
-                                <p>Actualmente este producto está agotado</p>
-                                <button class="pdv-action-btn pdv-notify-me"
-                                    data-product="<?= $details[0]->getIdProducto() ?>">
-                                    <i class="fas fa-bell"></i> Notificarme cuando esté disponible
+                                </form>
+                                <button class="pdv-action-btn pdv-buy-now">
+                                    <i class="fas fa-bolt"></i> Comprar ahora
                                 </button>
                             </div>
+                        </div>
+                        <?php else: ?>
+                        <div class="pdv-out-of-stock">
+                            <p>Actualmente este producto está agotado</p>
+                            <button class="pdv-action-btn pdv-notify-me"
+                                data-product="<?= $details[0]->getIdProducto() ?>">
+                                <i class="fas fa-bell"></i> Notificarme cuando esté disponible
+                            </button>
+                        </div>
                         <?php endif; ?>
                     </div>
                 </div>

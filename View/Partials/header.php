@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="/css/profits.css">
     <link rel="stylesheet" href="/css/processProducts.css">
     <link rel="stylesheet" href="/css/discountsStyle.css">
+    <link rel="stylesheet" href="/css/cartStyle.css">
 </head>
 
 <body>
@@ -119,9 +120,8 @@
                 </form>
                 <!-- Añadido icono del carrito -->
                 <div class="cart-icon-container">
-                    <a href="#" class="cart-icon">
+                    <a href="/cart" class="cart-icon">
                         <i class="bi bi-cart4"></i>
-                        <span class="cart-count">0</span>
                     </a>
                 </div>
             </div>

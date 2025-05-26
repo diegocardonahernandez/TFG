@@ -64,6 +64,9 @@ switch ($method) {
             case '/discounts':
                 require_once __DIR__ . '/../Controller/discountsController.php';
                 break;
+            case '/cart':
+                require_once __DIR__ . '/../Controller/cartController.php';
+                break;
             case '/getCategories':
                 require_once __DIR__ . '/../Controller/api/getCategories.php';
                 break;
@@ -122,6 +125,15 @@ switch ($method) {
                 break;
             case '/getUsers':
                 require_once __DIR__ . '/../Controller/api/getUsers.php';
+                break;
+            case '/cart':
+                require_once __DIR__ . '/../Controller/cartPostController.php';
+                break;
+            case '/removeProduct':
+                require_once __DIR__ . '/../Controller/cartRemoveController.php';
+                break;
+            case '/updateCartProduct':
+                require_once __DIR__ . '/../Controller/cartUpdateController.php';
                 break;
             default:
                 echo "Ruta POST no reconocida";

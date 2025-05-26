@@ -111,10 +111,13 @@ $availableDiscountedProducts = array_filter($discountedProducts, function ($prod
                         </ul>
 
                         <div class="discount-product-actions">
-                            <a href="#" class="btn-product btn-add-cart discount-btn-product discount-btn-add-cart"
-                                data-product="<?= $product->getIdProducto() ?>">
-                                Añadir al carrito
-                            </a>
+                            <form action="/cart" method="post">
+                                <input type="hidden" name="id" value="<?= $product->getIdProducto() ?>">
+                                <button type="submit"
+                                    class="btn-product btn-add-cart discount-btn-product discount-btn-add-cart">
+                                    Añadir al carrito
+                                </button>
+                            </form>
                             <a href="/product?id=<?= $product->getIdProducto(); ?>"
                                 class="btn-product btn-details discount-btn-product discount-btn-details">
                                 Detalles
