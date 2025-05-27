@@ -61,11 +61,17 @@ switch ($method) {
             case '/profits':
                 renderLayout('premiumProfits');
                 break;
+            case '/testimonials':
+                renderLayout('testimonials');
+                break;
             case '/discounts':
                 require_once __DIR__ . '/../Controller/discountsController.php';
                 break;
             case '/cart':
                 require_once __DIR__ . '/../Controller/cartController.php';
+                break;
+            case '/search':
+                require_once __DIR__ . '/../Controller/searchController.php';
                 break;
             case '/getCategories':
                 require_once __DIR__ . '/../Controller/api/getCategories.php';

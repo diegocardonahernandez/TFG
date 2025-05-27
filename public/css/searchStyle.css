@@ -1,0 +1,228 @@
+/* Encabezado de búsqueda */
+.search-header {
+  background: var(--puro-black);
+  color: var(--puro-white);
+  padding: 3rem 0;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.search-title-container {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.search-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.search-subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  margin-top: 1rem;
+}
+
+/* Sección de resultados */
+.search-results {
+  padding: 3rem 0;
+  background-color: var(--puro-light-gray);
+}
+
+/* Sin resultados */
+.no-results-found {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.no-results-icon {
+  font-size: 3.5rem;
+  color: var(--puro-gray);
+  margin-bottom: 1.5rem;
+}
+
+.no-results-found h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--puro-black);
+}
+
+.no-results-found p {
+  font-size: 1.1rem;
+  color: var(--puro-gray);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+/* Tarjetas de producto */
+.search-product-item {
+  margin-bottom: 2rem;
+}
+
+.search-product-card {
+  background-color: var(--puro-white);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.search-product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.search-product-image-container {
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-product-image {
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.search-product-card:hover .search-product-image {
+  transform: scale(1.05);
+}
+
+.search-product-content {
+  padding: 1.5rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-product-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--puro-black);
+}
+
+.search-product-description {
+  font-size: 0.95rem;
+  color: var(--puro-gray);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.search-product-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+.search-product-meta-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.search-meta-label {
+  font-weight: 600;
+  color: var(--puro-black);
+}
+
+.search-meta-value {
+  color: var(--puro-red);
+  font-weight: 600;
+}
+
+.search-product-actions {
+  margin-top: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-btn-product {
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+}
+
+.search-btn-add-cart {
+  background-color: var(--puro-red);
+  color: var(--puro-white);
+  border: 2px solid var(--puro-red);
+}
+
+.search-btn-add-cart:hover {
+  background-color: #a30000;
+  border-color: #a30000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(170, 3, 3, 0.2);
+}
+
+.search-btn-notify {
+  background-color: #ff9800;
+  color: var(--puro-white);
+}
+
+.search-btn-notify:hover {
+  background-color: #f57c00;
+}
+
+.search-btn-details {
+  background-color: transparent;
+  color: var(--puro-black);
+  border: 1px solid #ddd;
+}
+
+.search-btn-details:hover {
+  background-color: var(--puro-black);
+  color: var(--puro-white);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .search-title {
+    font-size: 2rem;
+  }
+
+  .search-subtitle {
+    font-size: 1rem;
+  }
+
+  .search-product-actions {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .search-title {
+    font-size: 1.8rem;
+  }
+
+  .search-header {
+    padding: 2rem 0;
+  }
+}

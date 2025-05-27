@@ -293,7 +293,7 @@ class Product implements JsonSerializable
     public static function getAllWithCategory()
     {
         $db = Database::getInstance();
-        $sql = 'SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY p.id_producto ASC';
+        $sql = 'SELECT p.*, c.nombre AS categoria FROM productos p JOIN categorias c ON p.id_categoria = c.id_categoria ORDER BY p.nombre';
         $stmt = $db->prepare($sql);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
@@ -309,6 +309,18 @@ class Product implements JsonSerializable
                 ORDER BY p.descuento DESC';
         $stmt = $db->prepare($sql);
         $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
+    }
+
+    public static function getSearchProducts($search)
+    {
+        $db = Database::getInstance();
+        $sql = "SELECT p.*, c.nombre AS categoria 
+                FROM productos p 
+                JOIN categorias c ON p.id_categoria = c.id_categoria 
+                WHERE p.nombre LIKE :search";
+        $stmt = $db->prepare($sql);
+        $stmt->execute(['search' => '%' . $search . '%']);
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
     }
 }

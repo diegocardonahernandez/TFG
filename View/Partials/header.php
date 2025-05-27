@@ -21,10 +21,11 @@
     <link rel="stylesheet" href="/css/processProducts.css">
     <link rel="stylesheet" href="/css/discountsStyle.css">
     <link rel="stylesheet" href="/css/cartStyle.css">
+    <link rel="stylesheet" href="/css/searchStyle.css">
+    <link rel="stylesheet" href="/css/testimonialsStyle.css">
 </head>
 
 <body>
-    <!-- Añadida barra informativa de envíos -->
     <div class="shipping-info-bar">
         <p><i class="bi bi-truck"></i> ¡Envío GRATIS en pedidos superiores a 50€!</p>
     </div>
@@ -113,12 +114,11 @@
                     }
                     ?>
                 </ul>
-                <form class="d-flex" role="search" id="searchBar">
-                    <input class="form-control me-2" type="search" placeholder="Encuentra tu producto"
-                        aria-label="Search">
+                <form class="d-flex" role="search" id="searchBar" action="/search" method="GET">
+                    <input class="form-control me-2" type="search" name="q" placeholder="Encuentra tu producto"
+                        value="<?php echo isset($_GET['q']) ? $_GET['q'] : ''; ?>" aria-label="Search" required>
                     <button class="btn btn-outline-success" type="submit">Buscar</button>
                 </form>
-                <!-- Añadido icono del carrito -->
                 <div class="cart-icon-container">
                     <a href="/cart" class="cart-icon">
                         <i class="bi bi-cart4"></i>
