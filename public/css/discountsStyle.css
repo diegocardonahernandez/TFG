@@ -190,6 +190,34 @@
   transform: translateY(-7px);
 }
 
+.discount-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: linear-gradient(135deg, #dc1414 0%, #a30000 100%);
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(220, 20, 20, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discount-badge .discount-percentage {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  display: block;
+  text-align: center;
+}
+
+.discount-product-card:hover .discount-badge {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(220, 20, 20, 0.3);
+}
+
 .stock-badge {
   position: absolute;
   top: 1rem;

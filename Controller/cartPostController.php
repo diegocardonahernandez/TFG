@@ -5,6 +5,16 @@ if ($_SERVER['REQUEST_METHOD'] != 'POST') {
     exit;
 }
 
+// Inicializar la sesión si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Asegurarse de que existe el carrito en la sesión
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
 // Obtener el cuerpo de la petición
 $data = json_decode(file_get_contents('php://input'), true);
 
@@ -22,7 +32,14 @@ $id = $data['id'];
 $quantity = isset($data['quantity']) ? (int)$data['quantity'] : 1;
 $action = isset($data['action']) ? $data['action'] : 'increment';
 
-$key = array_search($id, array_column($_SESSION['cart'], 'id'));
+// Buscar el producto en el carrito
+$key = false;
+foreach ($_SESSION['cart'] as $index => $item) {
+    if ($item['id'] == $id) {
+        $key = $index;
+        break;
+    }
+}
 
 if ($key !== false) {
     if ($action === 'update') {

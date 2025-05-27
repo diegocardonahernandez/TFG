@@ -24,7 +24,7 @@
                 <div class="item-details">
                     <h3><?php echo $product[0]->getNombre(); ?></h3>
                     <?php if (isset($_SESSION['userType'])) {
-                                if ($_SESSION['userType'] == "Premium" || $_SESSION['userType'] == "Administrador") {
+                                if ($_SESSION['userType'] == "Premium" || $_SESSION['userType'] == "Administrador" && $product[0]->getDescuento() > 0) {
                                     $precio = $product[0]->getPrecio() - ($product[0]->getPrecio() * $product[0]->getDescuento() / 100);
                             ?>
 

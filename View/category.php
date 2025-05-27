@@ -47,7 +47,7 @@
                             <li class="category-product-meta-item">
                                 <span class="category-meta-label">Disponibilidad</span>
                                 <span
-                                    class="category-meta-value"><?= $product->getStock() > 0 ? 'En stock' : 'Agotado' ?></span>
+                                    class="category-meta-value"><?= ($product->getStock() > 0 && $product->getEstado() !== 'agotado') ? 'En stock' : 'Agotado' ?></span>
                             </li>
                             <li class="category-product-meta-item">
                                 <span class="category-meta-label">Categoría</span>
@@ -60,7 +60,7 @@
                         </ul>
 
                         <div class="category-product-actions">
-                            <?php if ($product->getStock() > 0): ?>
+                            <?php if ($product->getStock() > 0 && $product->getEstado() !== 'agotado'): ?>
                             <form action="/cart" method="post">
                                 <input type="hidden" name="id" value="<?= $product->getIdProducto() ?>">
                                 <button type="submit" class="btn-product btn-add-cart">Añadir al carrito</button>

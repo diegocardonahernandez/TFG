@@ -1,5 +1,10 @@
 <?php
 
+// Inicializar la sesión si no está iniciada
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header('HTTP/1.1 405 Method Not Allowed');
     echo json_encode(['error' => 'Método no permitido']);
@@ -25,8 +30,19 @@ if ($quantity < 1 || $quantity > 99) {
     exit;
 }
 
+// Asegurarse de que existe el carrito en la sesión
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
 // Buscar el producto en el carrito
-$key = array_search($productId, array_column($_SESSION['cart'], 'id'));
+$key = false;
+foreach ($_SESSION['cart'] as $index => $item) {
+    if ($item['id'] == $productId) {
+        $key = $index;
+        break;
+    }
+}
 
 if ($key === false) {
     header('HTTP/1.1 404 Not Found');
