@@ -151,7 +151,7 @@ contrasenaNewUser.addEventListener("input", () => {
   // Verifica que passwordStrength existe antes de usarlo
   const passwordStrength = document.getElementById("passwordStrength");
   const passwordStrengthText = document.getElementById("passwordStrengthText");
-  
+
   if (passwordStrength && passwordStrengthText) {
     const percent = (strength / 5) * 100;
     passwordStrength.style.width = `${percent}%`;
@@ -346,16 +346,18 @@ alturaNewUser.addEventListener("input", () => {
 // Añadir listener para la foto de perfil
 fotoNewUser.addEventListener("change", () => {
   const file = fotoNewUser.files[0];
-  
+
   if (file) {
     // Validar tipo de archivo (opcional)
-    const validTypes = ['image/jpeg', 'image/png', 'image/gif'];
+    const validTypes = ["image/jpeg", "image/png", "image/gif"];
     if (!validTypes.includes(file.type)) {
-      errorUserImage.innerHTML = "Solo se permiten archivos de imagen (JPG, PNG, GIF).";
+      errorUserImage.innerHTML =
+        "Solo se permiten archivos de imagen (JPG, PNG, GIF).";
       errorUserImage.style.display = "block";
       fotoNewUser.value = "";
       isUserImageValid = false;
-    } else if (file.size > 5000000) { // 5MB
+    } else if (file.size > 5000000) {
+      // 5MB
       errorUserImage.innerHTML = "La imagen no debe exceder los 5MB.";
       errorUserImage.style.display = "block";
       fotoNewUser.value = "";
@@ -371,7 +373,7 @@ fotoNewUser.addEventListener("change", () => {
     errorUserImage.style.display = "none";
     isUserImageValid = true;
   }
-  
+
   checkFormValidity();
 });
 
@@ -458,7 +460,6 @@ btnCreateAccount.addEventListener("click", (e) => {
           Swal.fire({
             title: "¡Registro exitoso!",
             text: "Tu cuenta ha sido creada con éxito. Serás redirigido a la página de inicio de sesión.",
-            icon: "success",
             confirmButtonText: "Aceptar",
             confirmButtonColor: "#aa0303",
           }).then(() => {
