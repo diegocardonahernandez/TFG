@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-05-2025 a las 08:43:08
+-- Tiempo de generación: 28-05-2025 a las 12:45:39
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -111,7 +111,7 @@ INSERT INTO `productos` (`id_producto`, `nombre`, `descripcion`, `detalles_produ
 (42, 'Mallas 3/4 FlexFit', 'Diseño tres cuartos para entrenamiento funcional y versatilidad.', 'Las Mallas 3/4 FlexFit PuroGains están confeccionadas con tejidos elásticos de alto rendimiento que permiten movilidad total sin restricciones. El largo por debajo de la rodilla favorece la frescura y el soporte muscular. Cuentan con cintura elástica de compresión y costuras planas para evitar irritaciones. Ideales para fuerza, cardio o movilidad.', 29.99, 20, 2, '/imgs/Ropa/mallas_34.png', 10.00, 60, 'activo', '2025-04-30 07:36:54'),
 (43, 'Remera DryFit Hombre', 'Camiseta ligera y transpirable para entrenamientos diarios.', 'La Remera DryFit para hombre de PuroGains es una prenda versátil que ofrece transpirabilidad, ligereza y diseño moderno. El tejido técnico evacúa la humedad manteniéndote seco y cómodo. Ideal para entrenamientos indoor y outdoor, trote, pesas o uso urbano deportivo. Disponible en colores neutros y corte regular.', 18.99, 40, 2, '/imgs/Ropa/remera_hombre.png', 0.00, 75, 'activo', '2025-04-30 07:36:54'),
 (44, 'Top Crop Deportivo', 'Diseño moderno, funcional y cómodo para entrenamientos con estilo.', 'El Top Crop Deportivo PuroGains combina funcionalidad con estilo. Su corte corto es perfecto para entrenamientos de fuerza, clases dirigidas o yoga. El tejido elástico se ajusta cómodamente al cuerpo mientras permite libertad de movimiento. Cuello alto, espalda ventilada y logo frontal reflectante. Una prenda pensada para mujeres activas que marcan diferencia.', 22.99, 35, 2, '/imgs/Ropa/top_crop.png', 0.00, 68, 'activo', '2025-04-30 07:36:54'),
-(45, 'Pantalón Jogger Oversize', 'Comodidad y estilo relajado para entrenar o descansar.', 'El Jogger Oversize PuroGains ofrece una silueta moderna y holgada con tejido suave al tacto. Su diseño combina moda urbana con funcionalidad deportiva, ideal para estiramientos, movilidad o días de descanso activo. Cuenta con bolsillos laterales y cintura elástica ajustable. Perfecto para quienes buscan comodidad sin perder estética.', 34.99, 28, 2, '/imgs/Ropa/jogger_oversize.png', 0.00, 58, 'activo', '2025-04-30 07:36:54'),
+(45, 'Pantalón Jogger Oversize', 'Comodidad y estilo relajado para entrenar o descansar.', 'El Jogger Oversize PuroGains ofrece una silueta moderna y holgada con tejido suave al tacto. Su diseño combina moda urbana con funcionalidad deportiva, ideal para estiramientos, movilidad o días de descanso activo. Cuenta con bolsillos laterales y cintura elástica ajustable. Perfecto para quienes buscan comodidad sin perder estética.', 34.99, 28, 2, '/imgs/Ropa/jogger_oversize.png', 26.00, 58, 'activo', '2025-04-30 07:36:54'),
 (46, 'Campera Deportiva Unisex', 'Chaqueta liviana para entrenar en climas frescos.', 'La Campera Deportiva Unisex PuroGains está fabricada en microfibra ultraligera con interior térmico suave. Ideal para sesiones al aire libre, trotes matutinos o para completar tu look deportivo. Cuenta con bolsillos laterales con cremallera, cuello alto y puños ajustables. Disponible en tallas para todos los cuerpos.', 42.99, 18, 2, '/imgs/Ropa/campera_unisex.png', 5.00, 72, 'activo', '2025-04-30 07:36:54'),
 (47, 'Beta-Alanina Power', 'Aumenta la resistencia muscular y retrasa la fatiga.', 'La Beta-Alanina Power de PuroGains está formulada para maximizar la resistencia en entrenamientos de alta intensidad. Reduce la acumulación de ácido láctico en los músculos, permitiendo entrenar por más tiempo sin sensación de ardor o fallo muscular. Ideal para rutinas de fuerza, crossfit o cardio prolongado. Cada porción aporta 3,2g de beta-alanina pura. Tomar 30 min antes del entrenamiento.', 26.99, 40, 1, '/imgs/Suplementos/beta_alanina.png', 0.00, 70, 'activo', '2025-04-30 07:42:59'),
 (48, 'Electrolyte Mix', 'Reposición rápida de minerales y sales esenciales.', 'Electrolyte Mix de PuroGains repone electrolitos clave como sodio, potasio y magnesio perdidos por el sudor. Ideal para evitar calambres, mantener la hidratación y mejorar la recuperación durante sesiones largas o climas calurosos. Su fórmula sin azúcar y de rápida absorción lo convierte en una bebida ideal intra-entreno.', 19.99, 60, 1, '/imgs/Suplementos/electrolyte_mix.png', 0.00, 65, 'activo', '2025-04-30 07:42:59'),
@@ -149,12 +149,12 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuario`, `nombre`, `apellido`, `telefono`, `correo`, `contrasena`, `fecha_nacimiento`, `genero`, `peso`, `altura`, `tipo_usuario`, `estado`, `foto_perfil`) VALUES
-(1, 'Javier', 'Martinez', '678 82 56 21', 'javiermdeb@gmail.com', '$2y$10$3svaAcOPBrG.yf1hsmiJT.QiAQ.mFySqICCsngJqas2M8tNw5CEwS', '2005-05-06', 'Masculino', 55.00, 175.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
-(4, 'Jorge', 'Rodriguez', '678 88 37 38', 'jorgerodriguezalonso20@gmail.com', '$2y$10$XnzDtxXe9ZYbmw72vyEQ7ugmOjFHqbnr38L/dYLP/p2cDd7jsKngu', '2003-01-21', 'Masculino', 65.00, 180.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
-(5, 'Alejandro', 'Canovas', '675 27 82 71', 'aleecanovaslopez@gmail.com', '$2y$10$u9lCX9ee/PXKdt6NteLzV.c822g.pc.NDR44xHQR798oBl28k0c7y', '2005-10-13', 'Masculino', 80.00, 182.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/alex.png'),
-(6, 'Diego', 'Cardona', '653 74 89 23', 'negrillo1124@gmail.com', '$2y$10$1zeY3KeWSgBeHZBAdShwP.zU3JYY3g9Zk0gYWNG8q6l5A9NKroQRG', '2005-11-24', 'Masculino', 70.00, 173.00, 'Administrador', 'Activo', '/imgs/FotosPerfiles/me.png'),
-(7, 'Jonny', 'Garcia', '677 84 55 43', 'jonny@gmail.com', '$2y$10$vrR8apEcjlfg2WDB3nK3uOwtBoRX/.rBzkmnweNrRWjxk0SAgRWcS', '1994-03-25', 'Masculino', 60.00, 155.00, 'Premium', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
-(9, 'Ruben', 'Saez', '677 77 77 77', 'ruben@gmail.com', '$2y$10$JsuzgFosfkeo59lTo0tHReXP.4SxK6kDk.L5UQiTf7qiAj1YLZZvy', '2004-10-13', 'Masculino', 90.00, 170.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png');
+(1, 'Diego', 'Cardona', '603 15 62 73', 'negrillo1124@gmail.com', '$2y$10$KbMDGujKMdExWJ8t/hnd4eH3Mz7HWJ.UiFxTjRFbw4.99b/b7t8pi', '2005-11-24', 'Masculino', 70.00, 173.00, 'Administrador', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(2, 'Javier', 'Martinez', '677 83 61 72', 'javiermdeb@gmail.com', '$2y$10$g4.s4HdPfgoUnzs0nuckyeBMOBccx229e.PPcQXthWeeEoxAt8rte', '2005-05-06', 'Masculino', 55.00, 175.00, 'Premium', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(3, 'Jorge', 'Rodriguez', '653 42 62 71', 'jorgerodriguezalonso20@gmail.com', '$2y$10$dVYuOAw8nL.p/pF2QXgIM.ntBooOjBC1YdaUSaV7hQiwFhxq9i/BK', '2003-01-22', 'Masculino', 80.00, 180.00, 'Premium', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(4, 'Alejandro', 'Canovas', '635 38 92 12', 'aleecanovaslopez@gmail.com', '$2y$10$XNud.ehdcNI3Ec3Pqnr5xurerh3GDntLNI3LQksOUWR0hrWSVV522', '2005-10-13', 'Masculino', 85.00, 183.00, 'Premium', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(5, 'Natalia', 'Suarez', '653 78 39 99', 'natalia29@gmail.com', '$2y$10$A2HBHyw8m4G0jTjZPXcZjuiSP0xEq/qbsa0itctmxkrMlACEA9yvC', '2000-04-10', 'Femenino', 60.00, 175.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png'),
+(6, 'Lamine', 'Yamal', '655 54 34 42', 'lamine@gmail.com', '$2y$10$1CfoEG5KgN6yq8no99wNtusU7zdCelrQ0UsgkPcSmPNYlv7PS45Ba', '2007-06-21', 'Masculino', 60.00, 175.00, 'Usuario', 'Activo', '/imgs/FotosPerfiles/userIcon.png');
 
 --
 -- Índices para tablas volcadas
@@ -195,13 +195,13 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Restricciones para tablas volcadas
