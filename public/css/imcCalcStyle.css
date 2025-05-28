@@ -885,6 +885,7 @@
 
 .imc-consultation-btn {
   background-color: var(--puro-white);
+  border-color: var(--puro-white);
   color: #d52f2f;
   text-decoration: none;
   padding: 0.8rem 1.5rem;

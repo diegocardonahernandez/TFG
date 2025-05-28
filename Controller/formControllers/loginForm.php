@@ -16,6 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (password_verify($password, $usuario->getContrasena())) {
                 $_SESSION['userId'] = $usuario->getIdUsuario();
                 $_SESSION['userType'] = $usuario->getTipoUsuario();
+                $_SESSION['userEmail'] = $usuario->getCorreo();
 
                 header('Content-Type: application/json');
                 echo json_encode(["success" => "true"]);

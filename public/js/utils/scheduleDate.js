@@ -63,17 +63,47 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // Aquí podrías enviar los datos a un servidor o procesarlos
-        Swal.fire({
-          title: "¡Consulta agendada!",
-          text: `Recibiras un correo resumiendo la información de la consulta solicitada . 
-          ¡Gracias por confiar en nosotros!`,
-          icon: "success",
-          confirmButtonColor: "#2E8B57",
-        });
+        // Actualizar campos ocultos
+        document.getElementById("hidden-fecha-consulta").value =
+          result.value.fecha;
+        document.getElementById("hidden-motivo-consulta").value =
+          result.value.motivo;
 
-        // Aquí se implementaría el código para guardar la consulta
-        console.log("Datos de consulta:", result.value);
+        // Enviar formulario mediante fetch
+        const formData = new FormData(document.getElementById("consultaForm"));
+
+        fetch("/schedule-consultation", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              Swal.fire({
+                title: "¡Consulta Agendada!",
+                text: "Te hemos enviado un correo con los detalles de tu consulta",
+                icon: "success",
+                confirmButtonColor: "#2E8B57",
+              }).then(() => {
+                window.location.href = "/imc";
+              });
+            } else {
+              Swal.fire({
+                title: "Error",
+                text: data.message,
+                icon: "error",
+                confirmButtonColor: "#d33",
+              });
+            }
+          })
+          .catch((error) => {
+            Swal.fire({
+              title: "Error",
+              text: "Hubo un problema al agendar tu consulta. Por favor, intenta de nuevo.",
+              icon: "error",
+              confirmButtonColor: "#d33",
+            });
+          });
       }
     });
   }
@@ -104,94 +134,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return date.toLocaleDateString("es-ES", options);
   }
 });
-
-// Alternativa: Modal de Bootstrap (descomenta este código y comenta el anterior si prefieres usar Bootstrap)
-/*
-document.addEventListener("DOMContentLoaded", function () {
-  // Elementos del DOM
-  const consultaBtn = document.querySelector(".imc-consultation-btn");
-  
-  // Agregar el modal al DOM
-  addConsultaModal();
-  
-  // Obtener referencia al modal después de agregarlo
-  const consultaModal = new bootstrap.Modal(document.getElementById('consultaModal'));
-  
-  // Evento para el botón de agendar consulta
-  if (consultaBtn) {
-    consultaBtn.addEventListener("click", function (event) {
-      event.preventDefault();
-      consultaModal.show();
-    });
-  }
-  
-  // Manejar el envío del formulario
-  const consultaForm = document.getElementById('consultaForm');
-  if (consultaForm) {
-    consultaForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Obtener los datos del formulario
-      const formData = new FormData(consultaForm);
-      const fecha = formData.get('fecha-consulta');
-      const motivo = formData.get('motivo-consulta');
-      
-      // Esconder el modal
-      consultaModal.hide();
-      
-      // Mostrar confirmación
-      setTimeout(() => {
-        Swal.fire({
-          title: '¡Consulta agendada!',
-          text: `Tu consulta ha sido programada para el ${formatDate(fecha)}. Te contactaremos pronto para confirmar.`,
-          icon: 'success',
-          confirmButtonColor: '#4CAF50'
-        });
-      }, 500);
-      
-      // Aquí se implementaría el código para guardar la consulta
-      console.log('Datos de consulta:', { fecha, motivo });
-      
-      // Resetear formulario
-      consultaForm.reset();
-    });
-  }
-  
-  /**
-   * Agrega el HTML del modal de consulta al final del body
-   */
-function addConsultaModal() {
-  const modalHTML = `
-      <div class="modal fade" id="consultaModal" tabindex="-1" aria-labelledby="consultaModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="consultaModalLabel">Agendar consulta</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="consultaForm">
-              <div class="modal-body">
-                <div class="mb-3">
-                  <label for="fecha-consulta" class="form-label">Fecha de consulta</label>
-                  <input type="date" class="form-control" id="fecha-consulta" name="fecha-consulta" min="${getTomorrowDate()}" required>
-                </div>
-                <div class="mb-3">
-                  <label for="motivo-consulta" class="form-label">Motivo de consulta</label>
-                  <textarea class="form-control" id="motivo-consulta" name="motivo-consulta" rows="4" placeholder="Describe brevemente el motivo de tu consulta" required></textarea>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Agendar</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    `;
-
-  document.body.insertAdjacentHTML("beforeend", modalHTML);
-}
 
 /**
  * Obtiene la fecha de mañana en formato YYYY-MM-DD para el atributo min del input date

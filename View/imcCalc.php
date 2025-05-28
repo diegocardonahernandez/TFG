@@ -145,9 +145,13 @@
                         </div>';
                         } else {
                             echo '  <div class="imc-consultation-action">
-                            <a href="#" class="imc-consultation-btn" id="scheduleBtn">
-                                <i class="fas fa-calendar-check"></i> Agendar consulta
-                            </a>
+                            <form action="/schedule-consultation" method="POST" class="imc-consultation-form" id="consultaForm">
+                                <input type="hidden" name="fecha-consulta" id="hidden-fecha-consulta">
+                                <input type="hidden" name="motivo-consulta" id="hidden-motivo-consulta">
+                                <button type="submit" class="imc-consultation-btn" id="scheduleBtn">
+                                    <i class="fas fa-calendar-check"></i> Agendar consulta
+                                </button>
+                            </form>
                         </div>';
                         }
 

@@ -82,6 +82,9 @@ switch ($method) {
             case '/products':
                 require_once __DIR__ . '/../Controller/productsController.php';
                 break;
+            case '/sendEmail':
+                require_once __DIR__ . '/../Controller/api/send.php';
+                break;
             default:
                 echo "Página no encontrada";
                 break;
@@ -140,6 +143,9 @@ switch ($method) {
                 break;
             case '/updateCartProduct':
                 require_once __DIR__ . '/../Controller/cartUpdateController.php';
+                break;
+            case '/schedule-consultation':
+                require_once __DIR__ . '/../Controller/formControllers/scheduleConsultationForm.php';
                 break;
             default:
                 echo "Ruta POST no reconocida";
