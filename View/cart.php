@@ -75,7 +75,13 @@
                 <span>Total</span>
                 <span class="total-amount">0.00 €</span>
             </div>
+            <?php
+                if (isset($_SESSION['userId'])) { ?>
             <button class="checkout-btn">Proceder al Pago</button>
+            <?php } else { ?>
+            <button class="checkout-btn disabledPayment" onclick="window.location.href='/login'">Iniciar sesión</button>
+            <p class="login-message">Inicie sesión para proceder al pago</p>
+            <?php } ?>
         </div>
     </div>
     <?php endif; ?>

@@ -56,8 +56,8 @@
                             <li class="pdv-meta-list-item">
                                 <span class="pdv-meta-tag">Disponibilidad</span>
                                 <span
-                                    class="pdv-meta-content <?= $details[0]->getStock() > 0 ? 'pdv-available' : 'pdv-unavailable' ?>">
-                                    <?= $details[0]->getStock() > 0 ? 'En stock' : 'Agotado' ?>
+                                    class="pdv-meta-content <?= ($details[0]->getStock() > 0 && $details[0]->getEstado() !== 'agotado') ? 'pdv-available' : 'pdv-unavailable' ?>">
+                                    <?= ($details[0]->getStock() > 0 && $details[0]->getEstado() !== 'agotado') ? 'En stock' : 'Agotado' ?>
                                 </span>
                             </li>
                             <li class="pdv-meta-list-item">
@@ -73,7 +73,7 @@
                     </div>
 
                     <div class="pdv-purchase-section">
-                        <?php if ($details[0]->getStock() > 0): ?>
+                        <?php if ($details[0]->getStock() > 0 && $details[0]->getEstado() !== 'agotado'): ?>
                         <div class="pdv-purchase-controls">
                             <div class="pdv-quantity-control">
                                 <label for="quantity">Cantidad</label>

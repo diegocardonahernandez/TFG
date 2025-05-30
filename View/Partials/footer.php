@@ -14,10 +14,8 @@
             <div class="footer-links">
                 <h4 class="footer-heading">Enlaces rápidos</h4>
                 <ul class="footer-nav">
-                    <li><a href="/planes">Planes de entrenamiento</a></li>
-                    <li><a href="/nutricion">Nutrición</a></li>
-                    <li><a href="/tienda">Tienda</a></li>
-                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/Suplementos">Nutrición</a></li>
+                    <li><a href="/products">Tienda</a></li>
                     <li><a href="/sobre-nosotros">Sobre nosotros</a></li>
                 </ul>
             </div>
@@ -56,15 +54,6 @@
                         <i class="bi bi-youtube"></i>
                     </a>
                 </div>
-
-                <h4 class="footer-heading" style="margin-top: 1.5rem;">Newsletter</h4>
-                <p>Recibe tips y novedades</p>
-                <form class="newsletter-form">
-                    <input type="email" class="newsletter-input" placeholder="Tu email">
-                    <button type="submit" class="newsletter-button">
-                        <i class="bi bi-send"></i>
-                    </button>
-                </form>
             </div>
         </div>
 
