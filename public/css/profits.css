@@ -1,10 +1,11 @@
 /* Premium Hero Background */
 .premium-benefits-hero {
   position: relative;
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
   background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
   color: var(--puro-white);
   overflow: hidden;
+  min-height: 100vh;
 }
 
 .premium-overlay {
@@ -52,13 +53,16 @@
 }
 
 .premium-title {
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 800;
   text-transform: uppercase;
-  background: linear-gradient(90deg, #fff, #ccc);
+  background: linear-gradient(90deg, #ffffff, #e0e0e0);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shimmerText 4s linear infinite;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.02em;
 }
 
 .premium-title span {
@@ -66,120 +70,200 @@
 }
 
 .premium-subtitle {
-  font-size: 1.2rem;
-  color: var(--puro-gray);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.9);
   max-width: 700px;
-  margin: 1rem auto 0;
-  animation: fadeIn 1s ease-out;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+  font-weight: 400;
+  animation: fadeIn 1.2s ease-out;
 }
 
 /* Grid de beneficios */
 .premium-benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 4rem;
+  padding: 0 1rem;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 992px) {
+  .premium-benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .premium-benefit-card {
+    max-width: 350px;
+    margin: 0 auto;
+    width: 100%;
+  }
 }
 
 .premium-benefit-card {
-  background-color: #1e1e1e;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: linear-gradient(145deg, #222222, #1a1a1a);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
   overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .premium-benefit-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.05);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .premium-benefit-card i {
-  font-size: 2.5rem;
+  font-size: 2.8rem;
   color: var(--puro-red);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.premium-benefit-card:hover i {
+  transform: scale(1.1);
 }
 
 .premium-benefit-card h3 {
   color: var(--puro-white);
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
 }
 
 .premium-benefit-card p {
-  color: var(--puro-gray);
-  font-size: 0.95rem;
-  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.7;
 }
 
-/* CTA */
+/* CTA Section */
 .premium-cta {
-  margin-top: 3rem;
+  margin-top: 5rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .premium-price {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   color: var(--puro-white);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.premium-price strong {
+  color: var(--puro-red);
+  font-size: 1.5rem;
 }
 
 .btn-premium {
   display: inline-block;
-  background-color: var(--puro-red);
+  background: linear-gradient(135deg, var(--puro-red), #ff1a1a);
   color: var(--puro-white);
-  padding: 0.9rem 2rem;
-  border-radius: 6px;
+  padding: 1rem 2.5rem;
+  border-radius: 8px;
   text-transform: uppercase;
   font-weight: 700;
-  font-size: 0.95rem;
-  letter-spacing: 1px;
+  font-size: 1rem;
+  letter-spacing: 1.5px;
   text-decoration: none;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.btn-premium::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transition: all 0.6s;
-  z-index: -1;
-}
-
-.btn-premium:hover::before {
-  left: 100%;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
 }
 
 .btn-premium:hover {
-  background-color: #df0000;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(170, 3, 3, 0.3);
+  background: linear-gradient(135deg, #ff1a1a, var(--puro-red));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 0, 0, 0.3);
 }
 
-/* Responsive */
+.btn-premium:active {
+  transform: translateY(-1px);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .premium-benefits-hero {
+    padding: 6rem 1.5rem;
+  }
+
+  .premium-benefits-grid {
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .premium-cta {
+    margin-top: 4rem;
+    padding: 1.5rem;
+  }
+}
+
 @media (max-width: 576px) {
+  .premium-benefits-hero {
+    padding: 4rem 1rem;
+  }
+
   .premium-title {
     font-size: 2rem;
   }
 
   .premium-subtitle {
     font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .premium-benefit-card {
+    padding: 2rem 1.5rem;
   }
 
   .btn-premium {
     width: 100%;
+    max-width: 300px;
+    padding: 1rem 1.5rem;
+  }
+}
+
+/* Accessibility Improvements */
+@media (prefers-reduced-motion: reduce) {
+  .premium-benefit-card,
+  .btn-premium,
+  .premium-benefit-card i {
+    transition: none;
+  }
+
+  .premium-benefit-card:hover {
+    transform: none;
+  }
+
+  .premium-title {
+    animation: none;
+  }
+}
+
+/* High Contrast Mode */
+@media (forced-colors: active) {
+  .premium-title,
+  .premium-subtitle,
+  .premium-benefit-card h3,
+  .premium-benefit-card p {
+    -webkit-text-fill-color: currentColor;
+    background: none;
+  }
+
+  .btn-premium {
+    border: 2px solid currentColor;
   }
 }

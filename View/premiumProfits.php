@@ -32,18 +32,10 @@
                     Asistencia ultra rápida con seguimiento personalizado. Tu tiempo es valioso, tu progreso también.
                 </p>
             </div>
-            <div class="premium-benefit-card">
-                <i class="bi bi-bar-chart-fill"></i>
-                <h3>Estadísticas Avanzadas</h3>
-                <p>
-                    Controla tu progreso con gráficos, historial de peso, calorías, medidas y más. Motívate con datos
-                    reales.
-                </p>
-            </div>
         </div>
 
         <div class="premium-cta">
-            <p class="premium-price">Desde solo <strong>$6.99 USD/mes</strong></p>
+            <p class="premium-price">Desde solo <strong>6.99€/mes</strong></p>
             <a href="/register" class="btn-premium">Hazte Premium Ahora</a>
         </div>
     </div>
