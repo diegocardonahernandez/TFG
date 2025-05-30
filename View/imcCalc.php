@@ -1,4 +1,3 @@
-<!-- Encabezado de la calculadora IMC -->
 <section class="imc-header">
     <div class="container">
         <div class="imc-title-container">
@@ -8,11 +7,9 @@
     </div>
 </section>
 
-<!-- Sección de calculadora -->
 <section class="imc-calculator-section">
     <div class="container">
         <div class="row">
-            <!-- Columna del formulario -->
             <div class="col-lg-6 col-md-12">
                 <div class="imc-calculator-card">
                     <div class="imc-calculator-content">
@@ -67,13 +64,11 @@
                 </div>
             </div>
 
-            <!-- Columna de resultados -->
             <div class="col-lg-6 col-md-12">
                 <div class="imc-results-card">
                     <div class="imc-results-content">
                         <h3 class="imc-results-title"><a href="#imcExplication">Índice de Masa Corporal</a></h3>
 
-                        <!-- Contenedor inicial (visible por defecto) -->
                         <div id="imcInitialState" class="imc-initial-state">
                             <div class="imc-icon-container">
                                 <i class="fas fa-calculator"></i>
@@ -82,7 +77,6 @@
                                 de IMC</p>
                         </div>
 
-                        <!-- Contenedor de resultados (oculto inicialmente) -->
                         <div id="imcResultsContainer" class="imc-results-container" style="display: none;">
                             <div class="imc-result-indicator">
                                 <div class="imc-result-value">
@@ -122,7 +116,6 @@
             </div>
         </div>
 
-        <!-- NUEVA SECCIÓN: Banner de consulta profesional -->
         <div class="row mt-4">
             <div class="col-12">
                 <div class="imc-consultation-banner">
@@ -161,7 +154,6 @@
             </div>
         </div>
 
-        <!-- Sección informativa sobre IMC -->
         <div class="row mt-5">
             <div class="col-12">
                 <div class="imc-info-card" id="imcExplication">

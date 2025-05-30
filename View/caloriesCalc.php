@@ -1,4 +1,3 @@
-<!-- Encabezado de la calculadora de calorías -->
 <section class="calorie-header">
     <div class="container">
         <div class="calorie-title-container">
@@ -8,11 +7,9 @@
     </div>
 </section>
 
-<!-- Sección de calculadora -->
 <section class="calorie-calculator-section">
     <div class="container">
         <div class="row">
-            <!-- Columna del formulario -->
             <div class="col-lg-6 col-md-12">
                 <div class="calorie-calculator-card">
                     <div class="calorie-calculator-content">
@@ -117,13 +114,11 @@
                 </div>
             </div>
 
-            <!-- Columna de resultados -->
             <div class="col-lg-6 col-md-12">
                 <div class="calorie-results-card">
                     <div class="calorie-results-content">
                         <h3 class="calorie-results-title">Tus necesidades nutricionales</h3>
 
-                        <!-- Contenedor inicial (visible por defecto) -->
                         <div id="calorieInitialState" class="calorie-initial-state">
                             <div class="calorie-icon-container">
                                 <i class="fas fa-utensils"></i>
@@ -132,7 +127,6 @@
                                 necesidades calóricas</p>
                         </div>
 
-                        <!-- Contenedor de resultados (oculto inicialmente) -->
                         <div id="calorieResultsContainer" class="calorie-results-container" style="display: none;">
                             <div class="calorie-result-summary">
                                 <div class="calorie-daily-value">
@@ -141,7 +135,6 @@
                                 </div>
                             </div>
 
-                            <!-- Distribución de macronutrientes -->
                             <div class="calorie-macros-container">
                                 <h4 class="calorie-macros-title">Distribución de macronutrientes</h4>
 
@@ -205,7 +198,6 @@
                                 </div>
                             </div>
 
-                            <!-- Productos recomendados -->
                             <div class="calorie-products-suggestion">
                                 <h4 class="calorie-products-title">Suplementos recomendados</h4>
                                 <div class="calorie-products-container" id="calorieProducts">
@@ -217,7 +209,6 @@
             </div>
         </div>
 
-        <!-- Sección informativa sobre necesidades calóricas -->
         <div class="row mt-5">
             <div class="col-12">
                 <div class="calorie-info-card">

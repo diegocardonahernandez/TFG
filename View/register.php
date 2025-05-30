@@ -1,7 +1,5 @@
-<!-- Register Section -->
 <section class="register-section">
     <div class="register-container">
-        <!-- Panel izquierdo con imagen y mensaje motivacional -->
         <div class="register-image-panel">
             <div class="overlay"></div>
             <div class="register-motivational">
@@ -10,16 +8,13 @@
             </div>
         </div>
 
-        <!-- Panel derecho con formulario de registro -->
         <div class="register-form-panel">
-            <!-- Logo y cabecera -->
             <div class="register-header">
                 <div class="register-title-container">
                     <h1 class="register-title">Crear Cuenta</h1>
                 </div>
             </div>
 
-            <!-- Formulario -->
             <form class="register-form" action="/registerForm" method="post" enctype="multipart/form-data"
                 id="register-form">
                 <div class="form-row">

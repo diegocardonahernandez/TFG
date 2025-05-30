@@ -1,7 +1,5 @@
-<!-- Login Section -->
 <section class="login-section">
     <div class="login-container">
-        <!-- Panel izquierdo con imagen y mensaje motivacional -->
         <div class="login-image-panel">
             <div class="overlay"></div>
             <div class="login-motivational">
@@ -10,16 +8,13 @@
             </div>
         </div>
 
-        <!-- Panel derecho con formulario de login -->
         <div class="login-form-panel">
-            <!-- Logo y cabecera -->
             <div class="login-header">
                 <div class="login-title-container">
                     <h1 class="login-title">Iniciar Sesión</h1>
                 </div>
             </div>
 
-            <!-- Formulario -->
             <form class="login-form" action="/loginForm" method="POST">
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>

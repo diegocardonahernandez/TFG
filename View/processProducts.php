@@ -1,4 +1,3 @@
-<!-- Product Administration Section -->
 <section class="admin-section py-5">
     <div class="container">
         <div class="row mb-4 align-items-center">
@@ -14,7 +13,6 @@
             </div>
         </div>
 
-        <!-- Products Table -->
         <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
             <div class="card-header bg-white py-3 border-0">
                 <div class="d-flex justify-content-between align-items-center">
@@ -26,10 +24,8 @@
                 </div>
             </div>
             <div class="card-body p-0">
-                <!-- Skeleton Loading -->
                 <div id="productsSkeleton" class="p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
-                        <!-- <div class="skeleton-title"></div> -->
                     </div>
                     <div class="table-responsive">
                         <table class="table">
@@ -98,7 +94,6 @@
                     </div>
                 </div>
 
-                <!-- Products Table (hidden initially) -->
                 <div id="productsTable" class="d-none">
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
@@ -115,7 +110,6 @@
                                 </tr>
                             </thead>
                             <tbody id="productsTableBody">
-                                <!-- Productos serán insertados aquí por JS -->
                             </tbody>
                         </table>
                     </div>
@@ -124,7 +118,6 @@
                         <p class="mt-3 mb-0 text-muted">No hay productos disponibles</p>
                         <p class="text-muted">Añade un nuevo producto para comenzar</p>
                     </div>
-                    <!-- Paginación dinámica -->
                     <div id="paginationContainer"></div>
                     <div class="text-center mt-3">
                         <small class="text-muted" id="paginationInfo"></small>
@@ -134,7 +127,6 @@
         </div>
     </div>
 
-    <!-- Add Product Modal -->
     <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-xl modal-dialog-centered">
@@ -147,9 +139,7 @@
                 </div>
                 <div class="modal-body p-4">
                     <form id="addProductForm" class="needs-validation row" novalidate>
-                        <!-- Layout de 3 columnas para mejor organización -->
                         <div class="col-md-4">
-                            <!-- Columna 1: Información básica -->
                             <div class="mb-3">
                                 <label for="productName" class="form-label fw-medium">Nombre</label>
                                 <input type="text" class="form-control rounded-3" id="productName" name="nombre"
@@ -161,7 +151,6 @@
                                 <label for="productCategory" class="form-label fw-medium">Categoría</label>
                                 <select class="form-select rounded-3" id="productCategory" name="id_categoria" required>
                                     <option value="">Seleccionar categoría</option>
-                                    <!-- Categories will be loaded dynamically -->
                                 </select>
                                 <div class="invalid-feedback">Seleccione una categoría</div>
                             </div>
@@ -176,7 +165,6 @@
                         </div>
 
                         <div class="col-md-4">
-                            <!-- Columna 2: Precios y stock + imagen -->
                             <div class="mb-3">
                                 <label for="productPrice" class="form-label fw-medium">Precio</label>
                                 <div class="input-group">
@@ -208,7 +196,6 @@
                         </div>
 
                         <div class="col-md-4">
-                            <!-- Columna 3: Descripciones -->
                             <div class="mb-3">
                                 <label for="productDescription" class="form-label fw-medium">Descripción</label>
                                 <textarea class="form-control rounded-3" id="productDescription" name="descripcion"
@@ -236,7 +223,6 @@
         </div>
     </div>
 
-    <!-- Edit Product Modal -->
     <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -365,7 +351,6 @@
         </div>
     </div>
 
-    <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow rounded-4 overflow-hidden">

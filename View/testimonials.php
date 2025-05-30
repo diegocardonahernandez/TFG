@@ -7,7 +7,6 @@
         </div>
 
         <div class="testimonials-grid">
-            <!-- Testimonial 1 -->
             <div class="testimonial-card">
                 <span class="testimonial-date">Hace 2 días</span>
                 <p class="testimonial-quote">Los suplementos de esta tienda han transformado completamente mi rutina de
@@ -27,8 +26,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Testimonial 2 -->
             <div class="testimonial-card">
                 <span class="testimonial-date">Hace 1 semana</span>
                 <p class="testimonial-quote">El servicio al cliente es excepcional. Siempre responden rápidamente a mis
@@ -49,7 +46,6 @@
                 </div>
             </div>
 
-            <!-- Testimonial 3 -->
             <div class="testimonial-card">
                 <span class="testimonial-date">Hace 2 semanas</span>
                 <p class="testimonial-quote">La calculadora de calorías y el IMC son herramientas fantásticas. Me han
@@ -70,7 +66,6 @@
                 </div>
             </div>
 
-            <!-- Testimonial 4 -->
             <div class="testimonial-card">
                 <span class="testimonial-date">Hace 3 semanas</span>
                 <p class="testimonial-quote">Los precios son muy competitivos y la calidad de los productos es
@@ -91,7 +86,6 @@
                 </div>
             </div>
 
-            <!-- Testimonial 5 -->
             <div class="testimonial-card">
                 <span class="testimonial-date">Hace 1 mes</span>
                 <p class="testimonial-quote">La variedad de productos es impresionante. Encuentro todo lo que necesito
@@ -112,7 +106,6 @@
                 </div>
             </div>
 
-            <!-- Testimonial 6 -->
             <div class="testimonial-card">
                 <span class="testimonial-date">Hace 1 mes</span>
                 <p class="testimonial-quote">El programa premium vale cada céntimo. Las recomendaciones personalizadas

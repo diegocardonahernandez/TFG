@@ -1,4 +1,3 @@
-<!-- Encabezado de la categoría -->
 <section class="category-header">
     <div class="container">
         <div class="category-title-container">
@@ -8,7 +7,6 @@
     </div>
 </section>
 
-<!-- Sección de productos por categoría -->
 <section class="category-products">
     <div class="container">
         <?php if (empty($products)): ?>

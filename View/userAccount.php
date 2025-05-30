@@ -1,4 +1,3 @@
-<!-- Perfil de Usuario Section -->
 <section class="user-profile-section">
     <div class="user-profile-container">
         <div class="user-profile-header">
@@ -13,16 +12,13 @@
         </div>
 
         <div class="user-profile-content">
-            <!-- Panel principal con formulario unificado -->
             <div class="user-profile-main">
                 <form action="/updateUserData" class="user-profile-form" id="user-profile-form" method="post"
                     enctype="multipart/form-data">
-                    <!-- Imagen de perfil integrada en el formulario -->
                     <div class="user-profile-top-section">
                         <div class="user-profile-image-container">
                             <div class="user-profile-image" id="user-profile-image-preview"
                                 style="background-image: url('<?php echo !empty($currentUser->getFotoPerfil()) ? $currentUser->getFotoPerfil() : '/assets/img/default-profile.jpg'; ?>');">
-                                <!-- La imagen se establecerá mediante JavaScript o PHP -->
                             </div>
                             <label for="user-profile-image-upload" class="user-profile-image-upload-btn">
                                 <i class="fas fa-camera"></i>
@@ -184,7 +180,6 @@
                         <button type="reset" class="user-profile-btn-cancel">Cancelar</button>
                     </div>
 
-                    <!-- Danger Zone -->
                     <div class="user-profile-danger-zone">
                         <h3 class="user-profile-danger-title">Zona de Peligro</h3>
                         <div class="user-profile-danger-content">

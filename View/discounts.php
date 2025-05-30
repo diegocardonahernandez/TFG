@@ -2,13 +2,11 @@
 require_once __DIR__ . '/../View/Partials/header.php';
 require_once __DIR__ . '/../Functions/valuationProduct.php';
 
-// Filtrar productos que tengan stock disponible
 $availableDiscountedProducts = array_filter($discountedProducts, function ($product) {
     return $product->getStock() > 0;
 });
 ?>
 
-<!-- Encabezado de la sección de descuentos -->
 <section class="discounts-header">
     <div class="container">
         <div class="discounts-title-container">
@@ -40,7 +38,6 @@ $availableDiscountedProducts = array_filter($discountedProducts, function ($prod
     </div>
 </section>
 
-<!-- Sección de productos con descuento -->
 <section class="discounts-products">
     <div class="container">
         <?php if (empty($availableDiscountedProducts)): ?>
@@ -58,12 +55,10 @@ $availableDiscountedProducts = array_filter($discountedProducts, function ($prod
             <div class="col-lg-4 col-md-6 col-sm-12 discount-product-item product-item"
                 style="animation-delay: <?= ($index + 1) * 0.1 ?>s;">
                 <div class="discount-product-card">
-                    <!-- Badge de descuento formal -->
                     <div class="discount-badge">
                         <span class="discount-percentage">-<?= $product->getDescuento() ?>%</span>
                     </div>
 
-                    <!-- Badge de stock bajo -->
                     <?php if ($product->getStock() <= 10): ?>
                     <span class="stock-badge">¡Últimas <?= $product->getStock() ?> unidades!</span>
                     <?php endif; ?>

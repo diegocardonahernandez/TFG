@@ -1,6 +1,3 @@
-<!-- productDetails.php (archivo optimizado) -->
-
-<!-- Encabezado de producto más compacto -->
 <section class="pdv-product-header">
     <div class="container">
         <div class="pdv-title-container">
@@ -12,11 +9,9 @@
     </div>
 </section>
 
-<!-- Sección de detalles del producto optimizada -->
 <section class="pdv-details">
     <div class="container">
         <div class="row">
-            <!-- Columna de imagen del producto -->
             <div class="col-lg-5 col-md-12">
                 <div class="pdv-gallery">
                     <div class="pdv-main-image-wrapper">
@@ -30,7 +25,6 @@
                 </div>
             </div>
 
-            <!-- Columna de información y compra -->
             <div class="col-lg-7 col-md-12">
                 <div class="pdv-info-panel">
                     <div class="pdv-top-info">
@@ -112,7 +106,6 @@
     </div>
 </section>
 
-<!-- Tabs de información adicional compactados -->
 <section class="pdv-info-tabs">
     <div class="container">
         <ul class="nav nav-tabs" id="productTabs" role="tablist">

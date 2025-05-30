@@ -1,4 +1,3 @@
-<!-- User Administration Section -->
 <section class="admin-section py-5">
     <div class="container">
         <div class="row mb-4 align-items-center">
@@ -8,7 +7,6 @@
             </div>
         </div>
 
-        <!-- Users Table -->
         <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
             <div class="card-header bg-white py-3 border-0">
                 <div class="d-flex justify-content-between align-items-center">
@@ -20,7 +18,6 @@
                 </div>
             </div>
             <div class="card-body p-0">
-                <!-- Skeleton Loading -->
                 <div id="usersSkeleton" class="p-4">
                     <div class="d-flex justify-content-between align-items-center mb-4">
                     </div>
@@ -79,7 +76,6 @@
                     </div>
                 </div>
 
-                <!-- Users Table (hidden initially) -->
                 <div id="usersTable" class="d-none">
                     <div class="table-responsive">
                         <table class="table table-hover align-middle mb-0">
@@ -94,7 +90,6 @@
                                 </tr>
                             </thead>
                             <tbody id="usersTableBody">
-                                <!-- Users will be inserted here by JS -->
                             </tbody>
                         </table>
                     </div>
@@ -102,7 +97,6 @@
                         <i class="bi bi-people text-muted" style="font-size: 3rem;"></i>
                         <p class="mt-3 mb-0 text-muted">No hay usuarios disponibles</p>
                     </div>
-                    <!-- Paginación dinámica -->
                     <div id="paginationContainer"></div>
                     <div class="text-center mt-3">
                         <small class="text-muted" id="paginationInfo"></small>
@@ -112,7 +106,6 @@
         </div>
     </div>
 
-    <!-- Edit User Modal -->
     <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
@@ -245,7 +238,6 @@
         </div>
     </div>
 
-    <!-- Delete Confirmation Modal -->
     <div class="modal fade" id="deleteConfirmModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow rounded-4 overflow-hidden">
