@@ -1,9 +1,6 @@
-// Script para la funcionalidad de "Agendar consulta"
 document.addEventListener("DOMContentLoaded", function () {
-  // Elementos del DOM
   const consultaBtn = document.getElementById("scheduleBtn");
 
-  // Evento para el botón de agendar consulta
   if (consultaBtn) {
     consultaBtn.addEventListener("click", function (event) {
       event.preventDefault();
@@ -11,9 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /**
-   * Muestra el modal de SweetAlert para agendar consulta
-   */
   function showConsultaModal() {
     Swal.fire({
       title: "Agendar Consulta",
@@ -45,7 +39,6 @@ document.addEventListener("DOMContentLoaded", function () {
         const fecha = document.getElementById("fecha-consulta").value;
         const motivo = document.getElementById("motivo-consulta").value;
 
-        // Validar que ambos campos estén completos
         if (!fecha) {
           Swal.showValidationMessage("Por favor selecciona una fecha");
           return false;
@@ -58,18 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
           return false;
         }
 
-        // Retornar los datos para usarlos después
         return { fecha, motivo };
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        // Actualizar campos ocultos
         document.getElementById("hidden-fecha-consulta").value =
           result.value.fecha;
         document.getElementById("hidden-motivo-consulta").value =
           result.value.motivo;
 
-        // Enviar formulario mediante fetch
         const formData = new FormData(document.getElementById("consultaForm"));
 
         fetch("/schedule-consultation", {

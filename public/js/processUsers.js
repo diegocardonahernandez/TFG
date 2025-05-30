@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Elements
   const usersTable = document.getElementById("usersTable");
   const usersSkeleton = document.getElementById("usersSkeleton");
   const usersTableBody = document.getElementById("usersTableBody");
@@ -10,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const paginationContainer = document.getElementById("paginationContainer");
   const paginationInfo = document.getElementById("paginationInfo");
 
-  // Modals
   const editUserModal = new bootstrap.Modal(
     document.getElementById("editUserModal")
   );
@@ -18,10 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("deleteConfirmModal")
   );
 
-  // Forms
   const editUserForm = document.getElementById("editUserForm");
 
-  // Buttons
   const updateUserBtn = document.getElementById("updateUser");
   const confirmDeleteBtn = document.getElementById("confirmDelete");
 
@@ -29,14 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalPages = 1;
   let userToDelete = null;
 
-  // Load initial data
   loadUsers(currentPage);
 
-  // Event Listeners
   updateUserBtn.addEventListener("click", handleUpdateUser);
   confirmDeleteBtn.addEventListener("click", handleDeleteUser);
 
-  // Functions
   async function loadUsers(page) {
     try {
       const response = await fetch(`/getUsers?page=${page}`);
@@ -53,16 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function displayUsers(data) {
-    // Hide skeleton and show table
     usersSkeleton.classList.add("d-none");
     usersTable.classList.remove("d-none");
     usersCountSkeleton.classList.add("d-none");
     usersCountReal.classList.remove("d-none");
 
-    // Update counts
     totalUsers.textContent = data.totalUsers;
 
-    // Clear table
     usersTableBody.innerHTML = "";
 
     if (data.users.length === 0) {
@@ -72,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     noUsersMessage.classList.add("d-none");
 
-    // Add users to table
     data.users.forEach((user) => {
       const row = document.createElement("tr");
       row.innerHTML = `
@@ -109,12 +98,10 @@ document.addEventListener("DOMContentLoaded", function () {
       usersTableBody.appendChild(row);
     });
 
-    // Update pagination
     currentPage = data.currentPage;
     totalPages = data.totalPages;
     updatePagination(data);
 
-    // Assign event handlers
     assignActionHandlers();
   }
 
@@ -161,7 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     paginationContainer.innerHTML = html;
 
-    // Add event listeners to pagination links
     paginationContainer.querySelectorAll("a.page-link").forEach((link) => {
       link.addEventListener("click", function (e) {
         e.preventDefault();
@@ -173,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Update pagination info
     paginationInfo.textContent = `Mostrando ${data.startIndex + 1} a ${
       data.endIndex
     } de ${data.totalUsers} usuarios`;
@@ -191,7 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function assignActionHandlers() {
-    // Edit user
     document.querySelectorAll(".edit-user").forEach((button) => {
       button.addEventListener("click", function () {
         const userId = this.dataset.userId;
@@ -199,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    // Delete user
     document.querySelectorAll(".delete-user").forEach((button) => {
       button.addEventListener("click", function () {
         const userId = this.dataset.userId;
@@ -215,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const user = await response.json();
 
       if (response.ok) {
-        // Fill form with user data
         document.getElementById("editUserId").value = user.id_usuario;
         document.getElementById("editUserName").value = user.nombre;
         document.getElementById("editUserLastName").value = user.apellido;
@@ -227,7 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("editUserGender").value = user.genero;
         document.getElementById("editUserWeight").value = user.peso || "";
         document.getElementById("editUserHeight").value = user.altura || "";
-        // Foto de perfil
         const preview = document.getElementById("editUserPhotoPreview");
         if (user.foto_perfil) {
           preview.src = user.foto_perfil;
@@ -239,7 +220,6 @@ document.addEventListener("DOMContentLoaded", function () {
           preview.style.display = "none";
           document.getElementById("editUserPhotoActual").value = "";
         }
-        // Set radio button for status
         if (user.estado) {
           document.getElementById("editUserStatusActive").checked = true;
         } else {
@@ -254,7 +234,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Previsualización de imagen en edición
   const editUserPhotoInput = document.getElementById("editUserPhoto");
   if (editUserPhotoInput) {
     editUserPhotoInput.addEventListener("change", function (e) {
@@ -354,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// Limpieza de backdrop al cerrar el modal de edición
 const editUserModalEl = document.getElementById("editUserModal");
 if (editUserModalEl) {
   editUserModalEl.addEventListener("hidden.bs.modal", function () {

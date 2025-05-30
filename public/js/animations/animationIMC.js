@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Añadir efecto de animación de escritura al título
   const title = document.querySelector(".imc-title");
   const titleText = title.textContent;
   title.innerHTML = `<span>${titleText}</span>`;
 
-  // Añadir efecto hover a los elementos de la escala
   const scaleSegments = document.querySelectorAll(".imc-scale-segment");
 
   scaleSegments.forEach((segment) => {
@@ -19,11 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Añadir efecto de partículas flotantes al banner de consulta
   const consultationBanner = document.querySelector(".imc-consultation-banner");
 
   if (consultationBanner) {
-    // Crear partículas flotantes
     for (let i = 0; i < 10; i++) {
       const particle = document.createElement("div");
       particle.className = "imc-particle";
@@ -36,12 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
       particle.style.left = `${Math.random() * 100}%`;
       particle.style.opacity = `${Math.random() * 0.5 + 0.2}`;
 
-      // Añadir animación CSS
       particle.style.animation = `float ${
         Math.random() * 5 + 3
       }s ease-in-out infinite alternate`;
 
-      // Crear la animación
       const keyframes = `
                 @keyframes float {
                     0% {
@@ -57,7 +51,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             `;
 
-      // Añadir la animación al head
       const styleElement = document.createElement("style");
       styleElement.innerHTML = keyframes;
       document.head.appendChild(styleElement);
@@ -66,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Añadir efecto al botón de consulta
   const consultationBtn = document.querySelector(".imc-consultation-btn");
 
   if (consultationBtn) {
@@ -79,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Efecto para el botón calcular
   const calculateBtn = document.querySelector(".imc-btn-calculate");
 
   if (calculateBtn) {
@@ -92,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Animación suave al hacer scroll
   function animateOnScroll() {
     const elements = document.querySelectorAll(
       ".imc-calculator-card, .imc-results-card, .imc-consultation-banner, .imc-info-card"
@@ -108,7 +98,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Añadir clase para la animación de scroll
   const style = document.createElement("style");
   style.innerHTML = `
         .imc-calculator-card, .imc-results-card, .imc-consultation-banner, .imc-info-card {
@@ -124,30 +113,23 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   document.head.appendChild(style);
 
-  // Escuchar el evento scroll
   window.addEventListener("scroll", animateOnScroll);
 
-  // Ejecutar una vez al cargar para elementos que ya son visibles
   animateOnScroll();
 
-  // Añadir efecto al resultado de IMC cuando se calcula
   const imcCalculatorForm = document.getElementById("imcCalculatorForm");
 
   if (imcCalculatorForm) {
     imcCalculatorForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      // Lógica de cálculo existente aquí...
-
-      // Añadir efecto de contador para el valor de IMC
       const imcValue = document.getElementById("imcValue");
       const finalValue = parseFloat(imcValue.textContent || "0");
 
-      // Mostrar el contador
       function animateCounter(finalValue) {
         let startValue = 0;
-        const duration = 1500; // ms
-        const frameDuration = 1000 / 60; // 60fps
+        const duration = 1500;
+        const frameDuration = 1000 / 60;
         const totalFrames = Math.round(duration / frameDuration);
         const increment = (finalValue - startValue) / totalFrames;
 
@@ -167,7 +149,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }, frameDuration);
       }
 
-      // Mostrar contenedor de resultados si está oculto
       const resultsContainer = document.getElementById("imcResultsContainer");
       const initialState = document.getElementById("imcInitialState");
 
@@ -175,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function () {
         initialState.style.display = "none";
         resultsContainer.style.display = "block";
 
-        // Animar el contador después de mostrar los resultados
         animateCounter(finalValue);
       }
     });

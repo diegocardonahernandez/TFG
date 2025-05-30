@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Animación de escritura al título (similar a animationIMC.js)
   const title = document.querySelector(".calorie-title");
   const titleText = title.textContent;
   title.innerHTML = `<span>${titleText}</span>`;
 
-  // Añadir efecto hover a las tarjetas de producto
   const productCards = document.querySelectorAll(".calorie-product-card");
   productCards.forEach((card) => {
     card.addEventListener("mouseenter", function () {
@@ -18,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Efecto para botones
   const buttons = document.querySelectorAll(
     ".calorie-btn-calculate, .calorie-product-btn"
   );
@@ -32,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Animación suave al hacer scroll
   function animateOnScroll() {
     const elements = document.querySelectorAll(
       ".calorie-calculator-card, .calorie-results-card, .calorie-info-card, .calorie-products-suggestion"
@@ -48,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Añadir clase para la animación de scroll
   const scrollStyle = document.createElement("style");
   scrollStyle.innerHTML = `
         .calorie-calculator-card, .calorie-results-card, .calorie-info-card, .calorie-products-suggestion {
@@ -64,13 +59,10 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
   document.head.appendChild(scrollStyle);
 
-  // Escuchar el evento scroll
   window.addEventListener("scroll", animateOnScroll);
 
-  // Ejecutar una vez al cargar para elementos que ya son visibles
   animateOnScroll();
 
-  // Añadir efecto a los formularios - resaltar campos activos
   const formGroups = document.querySelectorAll(".calorie-form-group");
   formGroups.forEach((group) => {
     const input = group.querySelector("input, select");
@@ -85,7 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Añadir estilo para campos activos
   const formStyle = document.createElement("style");
   formStyle.innerHTML = `
         .active-field::before {
@@ -101,7 +92,6 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
   document.head.appendChild(formStyle);
 
-  // Animación para los macronutrientes
   const macroItems = document.querySelectorAll(
     ".calorie-macro-item, .calorie-info-macro-item"
   );
@@ -127,7 +117,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Efectos para opciones de objetivo
   const goalOptions = document.querySelectorAll(
     ".calorie-goal-option input[type='radio']"
   );
@@ -136,11 +125,9 @@ document.addEventListener("DOMContentLoaded", function () {
       if (this.checked) {
         const icon = this.nextElementSibling.querySelector("i");
         if (icon) {
-          // Aplicar animación de pulso al icono
           icon.style.animation = "pulse 1s infinite";
         }
 
-        // Efecto visual al seleccionar
         const label = this.nextElementSibling;
         label.style.transform = "translateY(-5px)";
         setTimeout(() => {
@@ -150,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Animación de efectos ripple para botones
   const rippleButtons = document.querySelectorAll(
     ".calorie-btn-calculate, .calorie-product-btn"
   );
@@ -172,7 +158,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Añadir estilo para efecto ripple
   const rippleStyle = document.createElement("style");
   rippleStyle.innerHTML = `
         .calorie-btn-calculate, .calorie-product-btn {

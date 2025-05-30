@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let nutrientsChartInstance = null;
 
-  // Función para mostrar animaciones
   function animateValue(element, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(step);
   }
 
-  // Función para animar la aparición de elementos con delay
   function animateElements(elements, delay = 100) {
     elements.forEach((element, index) => {
       setTimeout(() => {
@@ -65,10 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (productsGoal && productsGoal.length > 0) {
           productsGoal.forEach((product) => {
-            // Verificar las propiedades que vienen en el objeto product
             console.log("Producto recibido:", product);
 
-            // Usar las propiedades correctas con verificación de existencia
             const productHTML = `
           <div class="calorie-product-card">
             <img src="${product.imagen || ""}" alt="${
@@ -104,22 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Evento de envío del formulario
   form.addEventListener("submit", (event) => {
     event.preventDefault();
 
-    // Mostrar indicador de carga
     initialText.innerHTML =
       '<i class="fas fa-circle-notch fa-spin"></i> Calculando...';
 
-    // Simulamos un breve retraso para dar sensación de procesamiento
     setTimeout(() => {
-      // Obtener el objetivo seleccionado
       const selectedGoal = document.querySelector(
         "input[name=goal]:checked"
       ).value;
 
-      // Realizar cálculos
       const tmb = calculateTMB(
         +weightInput.value,
         +heightInput.value,
@@ -133,10 +124,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const nutrients = macroNutrientDistribution(result, +weightInput.value);
 
-      // Cargar productos recomendados (pasando el objetivo)
       loadRecommendedProducts();
 
-      // Preparar para animaciones (establecer valores iniciales)
       resultProteinGrams.innerHTML = "0";
       resultCarbsGrams.innerHTML = "0";
       resultFatGrams.innerHTML = "0";
@@ -145,11 +134,9 @@ document.addEventListener("DOMContentLoaded", () => {
       resultFatCalories.innerHTML = "0";
       resultCalories.innerHTML = "0";
 
-      // Mostrar contenedor de resultados
       resultContainer.style.display = "block";
       initialText.innerHTML = "Resultados:";
 
-      // Configurar animaciones de elementos con opacidad y posición
       const macroItems = document.querySelectorAll(".calorie-macro-item");
       macroItems.forEach((item) => {
         item.style.opacity = "0";
@@ -157,10 +144,8 @@ document.addEventListener("DOMContentLoaded", () => {
         item.style.transition = "opacity 0.5s ease, transform 0.5s ease";
       });
 
-      // Iniciar animación de conteo para el valor de calorías
       animateValue(resultCalories, 0, Math.round(result), 1500);
 
-      // Iniciar animaciones para los valores de macronutrientes (con un poco de retraso)
       setTimeout(() => {
         animateValue(
           resultProteinGrams,
@@ -194,16 +179,13 @@ document.addEventListener("DOMContentLoaded", () => {
           1200
         );
 
-        // Animar aparición de elementos
         animateElements(macroItems, 150);
       }, 600);
 
-      // Eliminar instancia de gráfico existente si hay una
       if (nutrientsChartInstance) {
         nutrientsChartInstance.destroy();
       }
 
-      // Crear nueva instancia de gráfico con animación
       setTimeout(() => {
         nutrientsChartInstance = new Chart(nutrientsChart, {
           type: "doughnut",
@@ -253,31 +235,27 @@ document.addEventListener("DOMContentLoaded", () => {
           },
         });
       }, 400);
-    }, 800); // Fin de setTimeout
+    }, 800);
   });
 
-  // Evento de reset del formulario
   resetButton.addEventListener("click", () => {
     form.reset();
 
-    // Ocultar resultados con animación fade-out
     resultContainer.style.opacity = "0";
     setTimeout(() => {
       resultContainer.style.display = "none";
-      resultContainer.style.opacity = "1"; // Restaurar opacidad para próxima vez
+      resultContainer.style.opacity = "1";
       initialText.style.display = "block";
       initialText.innerHTML =
         "Completa el formulario para ver tus necesidades calóricas";
-      productsGoalContainer.innerHTML = ""; // Limpiar contenedor de productos
+      productsGoalContainer.innerHTML = "";
     }, 300);
 
-    // Si hay un gráfico, destruirlo
     if (nutrientsChartInstance) {
       nutrientsChartInstance.destroy();
       nutrientsChartInstance = null;
     }
   });
 
-  // Inicializar transiciones
   resultContainer.style.transition = "opacity 0.3s ease";
 });

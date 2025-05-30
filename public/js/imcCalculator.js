@@ -1,6 +1,4 @@
-// Script principal para la calculadora de IMC
 document.addEventListener("DOMContentLoaded", function () {
-  // Elementos del DOM
   const formIMC = document.getElementById("imcCalculatorForm");
   const heightInput = document.getElementById("imc-height");
   const weightInput = document.getElementById("imc-weight");
@@ -10,16 +8,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const imcInterpretation = document.getElementById("imcInterpretation");
   const categoryElement = document.getElementById("imcCategory");
 
-  // Añadir CSS necesario para los marcadores (inmediatamente)
   addMarkerStyles();
 
-  // Función para calcular IMC
   function calculateIMC(weight, height) {
     const heightInMeters = height / 100;
     return weight / Math.pow(heightInMeters, 2);
   }
 
-  // Función que se ejecuta al enviar el formulario
   formIMC.addEventListener("submit", function (event) {
     event.preventDefault();
 
@@ -28,50 +23,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const imc = calculateIMC(weight, height);
 
-    // Formatear IMC a un decimal
     const formattedIMC = parseFloat(imc.toFixed(1));
 
-    // Mostrar resultado
     resultContainer.style.display = "block";
     initialState.style.display = "none";
 
-    // Asegurar que el valor del IMC se actualice correctamente
     resultIMC.innerHTML = formattedIMC;
 
-    // Mostrar la interpretación (en lugar de ocultarla)
     imcInterpretation.style.display = "block";
 
-    // Generar interpretación del IMC
     generateInterpretation(formattedIMC);
 
-    // Posicionar el marcador en la escala
     positionImcMarker(formattedIMC);
 
-    // Mostrar productos recomendados basados en IMC
     showRecommendedProducts(formattedIMC);
   });
 
-  // Agregar listener para resetear el formulario
   formIMC.addEventListener("reset", function () {
     resultContainer.style.display = "none";
     initialState.style.display = "block";
 
-    // Resetear el marcador
     const marker = document.getElementById("imcMarker");
     if (marker) {
       marker.style.display = "none";
     }
   });
 
-  /**
-   * Posiciona el marcador en la escala de IMC según el valor calculado
-   * @param {number} imcValue - Valor del IMC calculado
-   */
   function positionImcMarker(imcValue) {
     const marker = document.getElementById("imcMarker");
     const scaleContainer = document.querySelector(".imc-scale-container");
 
-    // Si no existe el marcador, crearlo
     if (!marker) {
       const newMarker = document.createElement("div");
       newMarker.id = "imcMarker";
@@ -79,45 +60,31 @@ document.addEventListener("DOMContentLoaded", function () {
       scaleContainer.appendChild(newMarker);
     }
 
-    // Obtener el ancho total de la escala
     const scaleWidth = document.querySelector(".imc-scale").offsetWidth;
 
-    // Definir los límites de la escala IMC para el cálculo
-    const minIMC = 15; // Valor mínimo considerado en la escala
-    const maxIMC = 40; // Valor máximo considerado en la escala
+    const minIMC = 15;
+    const maxIMC = 40;
     const imcRange = maxIMC - minIMC;
 
-    // Limitar el valor de IMC para la visualización en la escala
     let boundedIMC = Math.max(minIMC, Math.min(maxIMC, imcValue));
 
-    // Calcular la posición porcentual en la escala
     let percentage = ((boundedIMC - minIMC) / imcRange) * 100;
 
-    // Limitar el porcentaje entre 0% y 100%
     percentage = Math.max(0, Math.min(100, percentage));
 
-    // Posicionar el marcador
     const markerElement = document.getElementById("imcMarker");
     markerElement.style.left = `${percentage}%`;
 
-    // Hacer visible el marcador
     markerElement.style.display = "block";
 
-    // Actualizar la categoría y el color del marcador
     updateCategoryAndMarker(imcValue);
   }
 
-  /**
-   * Actualiza la categoría de IMC y el color del marcador
-   * @param {number} imcValue - Valor del IMC calculado
-   */
   function updateCategoryAndMarker(imcValue) {
     const marker = document.getElementById("imcMarker");
 
-    // Resetear clases del marcador
     marker.className = "imc-scale-marker";
 
-    // Determinar la categoría según el valor IMC
     let category, markerClass;
 
     if (imcValue < 18.5) {
@@ -140,24 +107,17 @@ document.addEventListener("DOMContentLoaded", function () {
       markerClass = "imc-marker-obese";
     }
 
-    // Actualizar el texto de la categoría
     categoryElement.textContent = category;
 
-    // Añadir clase al marcador según la categoría
     marker.classList.add(markerClass);
   }
 
-  /**
-   * Genera la interpretación textual del IMC
-   * @param {number} imcValue - Valor del IMC calculado
-   */
   function generateInterpretation(imcValue) {
     const gender = document.querySelector('input[name="gender"]:checked').value;
     const interpretation = document.getElementById("imcInterpretation");
 
     let message = "";
 
-    // Interpretación general basada en el IMC
     if (imcValue < 18.5) {
       message = `Tu IMC de ${imcValue} indica que tienes bajo peso. `;
     } else if (imcValue >= 18.5 && imcValue < 25) {
@@ -172,16 +132,11 @@ document.addEventListener("DOMContentLoaded", function () {
       message = `Tu IMC de ${imcValue} indica obesidad grado III. `;
     }
 
-    // Mostrar la interpretación
     interpretation.textContent = message;
     interpretation.style.display = "block";
   }
 
-  /**
-   * Añade los estilos CSS necesarios para los marcadores de IMC
-   */
   function addMarkerStyles() {
-    // Comprobar si los estilos ya existen para evitar duplicaciones
     if (!document.getElementById("imc-marker-styles")) {
       const style = document.createElement("style");
       style.id = "imc-marker-styles";

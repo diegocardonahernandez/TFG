@@ -1,6 +1,4 @@
-// Detectar si estamos en página de producto (un solo quantity) o carrito (múltiples)
 if (document.querySelector(".cart-container")) {
-  // Carrito: manejar múltiples productos
   const decreaseButtons = document.querySelectorAll(".btnDecrease");
   const increaseButtons = document.querySelectorAll(".btnIncrease");
 
@@ -26,7 +24,6 @@ if (document.querySelector(".cart-container")) {
     });
   });
 } else {
-  // Página de producto
   const quantityElem = document.getElementById("quantity");
   const decreaseElem = document.querySelector(".btnDecrease");
   const increaseElem = document.querySelector(".btnIncrease");

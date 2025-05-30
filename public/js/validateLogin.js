@@ -35,7 +35,6 @@ form.addEventListener("submit", (e) => {
     didOpen: () => Swal.showLoading(),
   });
 
-  // Ejecutar después de 3 segundos
   setTimeout(() => {
     fetch("/loginForm", {
       method: "POST",

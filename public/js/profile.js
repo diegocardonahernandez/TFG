@@ -1,9 +1,8 @@
-// Estado de validaciones - inicializamos todos con null para indicar que no se han validado
 let isNameValid = null;
 let isLastNameValid = null;
 let isCurrentPassValid = null;
-let isPasswordValid = true; // Por defecto true si no se cambia la contraseña
-let isConfirmPasswordValid = true; // Por defecto true si no se cambia la contraseña
+let isPasswordValid = true;
+let isConfirmPasswordValid = true;
 let isBirthdayValid = null;
 let isPhoneValid = null;
 let isWeightValid = null;
@@ -13,7 +12,6 @@ let isUserImageValid = true;
 const profileForm = document.getElementById("user-profile-form");
 const btnSaveChanges = document.querySelector(".user-profile-btn-save");
 
-// Campos del formulario
 const profileInputFirstName = document.getElementById("user_profile_nombre");
 const profileInputLastName = document.getElementById("user_profile_apellido");
 const profileInputEmail = document.getElementById("user_profile_correo");
@@ -34,7 +32,6 @@ const profileInputConfirmPassword = document.getElementById(
   "user_profile_confirm_password"
 );
 
-// Campos de error
 const profileErrorName = document.getElementById("user-profile-errorName");
 const profileErrorLastName = document.getElementById(
   "user-profile-errorLastName"
@@ -56,7 +53,6 @@ const profileErrorCurrentPassword = document.getElementById(
   "user-profile-errorCurrentPassword"
 );
 
-// Medidor de fuerza
 const profilePasswordStrength = document.getElementById(
   "user-profile-passwordStrength"
 );
@@ -64,37 +60,27 @@ const profilePasswordStrengthText = document.getElementById(
   "user-profile-passwordStrengthText"
 );
 
-// Añadir referencia al contenedor de la imagen de perfil
 const profileImagePreview = document.getElementById(
   "user-profile-image-preview"
 );
 const profileImageInput = document.getElementById("user-profile-image-upload");
 
-// Función para validar los campos al cargar la página
 function validateInitialFormValues() {
-  // Validar nombre
   validateName(profileInputFirstName.value);
 
-  // Validar apellido
   validateLastName(profileInputLastName.value);
 
-  // Validar fecha de nacimiento
   validateBirthday(profileInputBirthDate.value);
 
-  // Validar teléfono
   validatePhone(profileInputPhone.value);
 
-  // Validar peso
   validateWeight(profileInputWeight.value);
 
-  // Validar altura
   validateHeight(profileInputHeight.value);
 
-  // Comprobar validez del formulario
   checkFormValidity();
 }
 
-// Función para validar nombre
 function validateName(value) {
   if (value.length < 3) {
     profileErrorName.textContent =
@@ -114,7 +100,6 @@ function validateName(value) {
   }
 }
 
-// Función para validar apellido
 function validateLastName(value) {
   if (value.length < 3) {
     profileErrorLastName.textContent =
@@ -134,7 +119,6 @@ function validateLastName(value) {
   }
 }
 
-// Función para validar fecha de nacimiento
 function validateBirthday(value) {
   if (!value) {
     profileErrorBirthday.textContent =
@@ -170,12 +154,10 @@ function validateBirthday(value) {
   }
 }
 
-// Función para validar teléfono
 function validatePhone(value) {
   const number = value.replace(/\D/g, "");
 
   if (number.length === 0) {
-    // Si está vacío, podría ser opcional
     profileErrorPhone.style.display = "none";
     profileInputPhone.style.border = "1px solid #ccc";
     isPhoneValid = true;
@@ -201,7 +183,6 @@ function validatePhone(value) {
   }
 }
 
-// Función para validar peso
 function validateWeight(value) {
   if (!value.trim()) {
     profileErrorWeight.textContent = "Este campo es obligatorio.";
@@ -223,7 +204,6 @@ function validateWeight(value) {
   }
 }
 
-// Función para validar altura
 function validateHeight(value) {
   if (!value.trim()) {
     profileErrorHeight.textContent = "Este campo es obligatorio.";
@@ -246,7 +226,6 @@ function validateHeight(value) {
   }
 }
 
-// Nombre
 profileInputFirstName.addEventListener("input", () => {
   profileInputFirstName.value =
     profileInputFirstName.value.charAt(0).toUpperCase() +
@@ -255,7 +234,6 @@ profileInputFirstName.addEventListener("input", () => {
   checkFormValidity();
 });
 
-// Apellido
 profileInputLastName.addEventListener("input", () => {
   profileInputLastName.value =
     profileInputLastName.value.charAt(0).toUpperCase() +
@@ -264,19 +242,16 @@ profileInputLastName.addEventListener("input", () => {
   checkFormValidity();
 });
 
-// Fecha de nacimiento
 profileInputBirthDate.addEventListener("input", () => {
   validateBirthday(profileInputBirthDate.value);
   checkFormValidity();
 });
 
-// Teléfono
 profileInputPhone.addEventListener("input", () => {
   const number = profileInputPhone.value.replace(/\D/g, "");
 
   validatePhone(profileInputPhone.value);
 
-  // Aplicamos formato si es válido
   if (isPhoneValid && number.length === 9) {
     const formatted = number.replace(
       /(\d{3})(\d{2})(\d{2})(\d{2})/,
@@ -288,30 +263,26 @@ profileInputPhone.addEventListener("input", () => {
   checkFormValidity();
 });
 
-// Peso
 profileInputWeight.addEventListener("input", () => {
   validateWeight(profileInputWeight.value);
   checkFormValidity();
 });
 
-// Altura
 profileInputHeight.addEventListener("input", () => {
   validateHeight(profileInputHeight.value);
   checkFormValidity();
 });
 
-// Nueva Contraseña - Solo validamos si se está ingresando una
 profileInputNewPassword.addEventListener("input", () => {
   const password = profileInputNewPassword.value;
 
-  // Si el campo está vacío, no requiere validación
   if (!password) {
     profileErrorPassword.style.display = "none";
     profileInputNewPassword.style.border = "1px solid #ccc";
     profilePasswordStrength.style.width = "0%";
     profilePasswordStrengthText.textContent = "";
     isPasswordValid = true;
-    isCurrentPassValid = true; // Resetear validación de contraseña actual
+    isCurrentPassValid = true;
     checkFormValidity();
     return;
   }
@@ -352,20 +323,16 @@ profileInputNewPassword.addEventListener("input", () => {
     isPasswordValid = true;
   }
 
-  // Validar también la confirmación si ya existe
   if (profileInputConfirmPassword.value) {
     validateConfirmPassword();
   }
 
-  // Verificar si la contraseña actual está rellenada
   isCurrentPassValid = profileInputCurrentPassword.value.trim().length > 0;
 
   checkFormValidity();
 });
 
-// Función para validar confirmación de contraseña
 function validateConfirmPassword() {
-  // Si no hay contraseña nueva, no hay nada que confirmar
   if (!profileInputNewPassword.value) {
     profileErrorConfirm.style.display = "none";
     profileInputConfirmPassword.style.border = "1px solid #ccc";
@@ -392,23 +359,19 @@ profileInputConfirmPassword.addEventListener("input", () => {
 });
 
 function checkFormValidity() {
-  // Si hay contraseña nueva, necesitamos validar también la confirmación y que la contraseña actual esté rellenada
   if (profileInputNewPassword.value) {
     isPasswordValid =
       isPasswordValid && profileInputNewPassword.value.length > 0;
     isConfirmPasswordValid =
       isConfirmPasswordValid &&
       profileInputConfirmPassword.value === profileInputNewPassword.value;
-    // Verificar que la contraseña actual esté rellenada
     isCurrentPassValid = profileInputCurrentPassword.value.trim().length > 0;
   } else {
-    // Si no hay contraseña nueva, ambos campos son válidos por defecto
     isPasswordValid = true;
     isConfirmPasswordValid = true;
-    isCurrentPassValid = true; // No es necesario verificar la contraseña actual si no se cambia la contraseña
+    isCurrentPassValid = true;
   }
 
-  // Habilitamos el botón si todos los campos son válidos
   if (
     isNameValid &&
     isLastNameValid &&
@@ -418,7 +381,7 @@ function checkFormValidity() {
     isHeightValid &&
     isPasswordValid &&
     isConfirmPasswordValid &&
-    isCurrentPassValid // Añadimos la verificación de la contraseña actual
+    isCurrentPassValid
   ) {
     btnSaveChanges.removeAttribute("disabled");
     console.log("Formulario válido: Botón habilitado");
@@ -434,13 +397,12 @@ function checkFormValidity() {
       isHeightValid,
       isPasswordValid,
       isConfirmPasswordValid,
-      isCurrentPassValid, // Añadimos al log
+      isCurrentPassValid,
     });
     return false;
   }
 }
 
-// Añadir listener para la vista previa de la imagen
 profileImageInput.addEventListener("change", function () {
   if (this.files && this.files[0]) {
     const reader = new FileReader();
@@ -453,31 +415,23 @@ profileImageInput.addEventListener("change", function () {
   }
 });
 
-// Ejecutar validación inicial al cargar la página
 document.addEventListener("DOMContentLoaded", () => {
   validateInitialFormValues();
 });
 
-// Manejar el envío del formulario con validación
 profileForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
-  // Verificar si se intenta cambiar la contraseña
   const isChangingPassword = profileInputNewPassword.value.trim() !== "";
 
-  // Crear objeto FormData con los datos del formulario
   const formData = new FormData(profileForm);
 
-  // Enviar los datos al servidor mediante AJAX
   fetch("/updateUserData", {
     method: "POST",
     body: formData,
   })
     .then((response) => response.json())
     .then((data) => {
-      // Manejar las diferentes respuestas del servidor
       if (data.passwordNotChanged) {
-        // Caso 1: Solo se actualizaron datos personales (sin cambio de contraseña)
         Swal.fire({
           title: "¡Datos actualizados!",
           text: "Tus datos personales han sido actualizados correctamente.",
@@ -485,12 +439,10 @@ profileForm.addEventListener("submit", function (event) {
           confirmButtonText: "Volver",
         });
 
-        // Si el servidor ha devuelto la ruta de la nueva imagen, actualizamos la vista
         if (data.new_image_path) {
           profileImagePreview.style.backgroundImage = `url('${data.new_image_path}')`;
         }
       } else if (data.success) {
-        // Caso 2: Se actualizaron datos y contraseña correctamente
         Swal.fire({
           title: "¡Cambios guardados!",
           text: isChangingPassword
@@ -500,7 +452,6 @@ profileForm.addEventListener("submit", function (event) {
           confirmButtonText: "Volver",
         }).then((result) => {
           if (result.isConfirmed && isChangingPassword) {
-            // Si se cambió la contraseña, limpiamos los campos relacionados
             profileInputCurrentPassword.value = "";
             profileInputNewPassword.value = "";
             profileInputConfirmPassword.value = "";
@@ -509,12 +460,10 @@ profileForm.addEventListener("submit", function (event) {
           }
         });
 
-        // Si el servidor ha devuelto la ruta de la nueva imagen, actualizamos la vista
         if (data.new_image_path) {
           profileImagePreview.style.backgroundImage = `url('${data.new_image_path}')`;
         }
       } else if (data.incorrectPassword) {
-        // Caso 3: La contraseña actual es incorrecta
         Swal.fire({
           icon: "error",
           title: "Contraseña incorrecta",
@@ -522,13 +471,11 @@ profileForm.addEventListener("submit", function (event) {
           confirmButtonColor: "#aa0303",
           confirmButtonText: "Volver",
         });
-        // Marcar el campo de contraseña actual como inválido
         profileInputCurrentPassword.style.border = "1px solid red";
         profileErrorCurrentPassword.textContent =
           "La contraseña actual es incorrecta.";
         profileErrorCurrentPassword.style.display = "block";
       } else {
-        // Caso general de error
         Swal.fire({
           icon: "error",
           title: "Error",
@@ -548,23 +495,19 @@ profileForm.addEventListener("submit", function (event) {
     });
 });
 
-// Corregir el estilo de la contraseña actual cuando el usuario comienza a escribir
 profileInputCurrentPassword.addEventListener("input", function () {
   if (profileErrorCurrentPassword.style.display === "block") {
     profileInputCurrentPassword.style.border = "1px solid #ccc";
     profileErrorCurrentPassword.style.display = "none";
   }
 
-  // Validar si hay contenido en el campo de contraseña actual
   isCurrentPassValid = profileInputCurrentPassword.value.trim().length > 0;
 
-  // Solo es necesario validar si se está intentando cambiar la contraseña
   if (profileInputNewPassword.value) {
     checkFormValidity();
   }
 });
 
-// Visualizador de contraseñas (mostrar/ocultar)
 document
   .querySelectorAll(".user-profile-toggle-password")
   .forEach(function (toggleBtn) {
@@ -582,7 +525,6 @@ document
     });
   });
 
-// Modal de confirmación para eliminar cuenta
 document
   .getElementById("user-profile-delete-account-btn")
   .addEventListener("click", function () {
@@ -628,11 +570,10 @@ document
     });
   });
 
-// Botón de cancelar - resetea el formulario y valida de nuevo
 document
   .querySelector(".user-profile-btn-cancel")
   .addEventListener("click", function () {
     setTimeout(() => {
       validateInitialFormValues();
-    }, 100); // Pequeño timeout para asegurar que el reset se ha completado
+    }, 100);
   });

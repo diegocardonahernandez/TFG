@@ -49,13 +49,13 @@ let isGenderValid = false;
 let isPhoneValid = false;
 let isWeightValid = false;
 let isHeightValid = false;
-let isUserImageValid = true; // Cambiado a true por defecto ya que la foto es opcional
+let isUserImageValid = true;
 let isTermsAccepted = false;
 
 function animateIcon(iconElement) {
   iconElement.style.display = "inline";
   iconElement.classList.remove("animate-check");
-  void iconElement.offsetWidth; // fuerza reflow para reiniciar la animación
+  void iconElement.offsetWidth;
   iconElement.classList.add("animate-check");
 }
 
@@ -81,10 +81,9 @@ nameNewUser.addEventListener("input", () => {
     errorName.style.display = "none";
     nameNewUser.style.border = "1px solid #ccc";
 
-    // Mostrar el icono y activar la animación
     iconNameCheck.style.display = "inline";
-    iconNameCheck.classList.remove("animate-check"); // Reiniciar
-    void iconNameCheck.offsetWidth; // Forzar reflow para reiniciar animación
+    iconNameCheck.classList.remove("animate-check");
+    void iconNameCheck.offsetWidth;
     iconNameCheck.classList.add("animate-check");
 
     isNameValid = true;
@@ -148,7 +147,6 @@ contrasenaNewUser.addEventListener("input", () => {
   if (/\d/.test(password)) strength++;
   if (/[\W_]/.test(password)) strength++;
 
-  // Verifica que passwordStrength existe antes de usarlo
   const passwordStrength = document.getElementById("passwordStrength");
   const passwordStrengthText = document.getElementById("passwordStrengthText");
 
@@ -343,12 +341,10 @@ alturaNewUser.addEventListener("input", () => {
   checkFormValidity();
 });
 
-// Añadir listener para la foto de perfil
 fotoNewUser.addEventListener("change", () => {
   const file = fotoNewUser.files[0];
 
   if (file) {
-    // Validar tipo de archivo (opcional)
     const validTypes = ["image/jpeg", "image/png", "image/gif"];
     if (!validTypes.includes(file.type)) {
       errorUserImage.innerHTML =
@@ -357,7 +353,6 @@ fotoNewUser.addEventListener("change", () => {
       fotoNewUser.value = "";
       isUserImageValid = false;
     } else if (file.size > 5000000) {
-      // 5MB
       errorUserImage.innerHTML = "La imagen no debe exceder los 5MB.";
       errorUserImage.style.display = "block";
       fotoNewUser.value = "";
@@ -368,7 +363,6 @@ fotoNewUser.addEventListener("change", () => {
       isUserImageValid = true;
     }
   } else {
-    // No hay archivo seleccionado, pero esto es opcional
     errorUserImage.innerHTML = "";
     errorUserImage.style.display = "none";
     isUserImageValid = true;
@@ -398,7 +392,7 @@ function checkFormValidity() {
     isPhoneValid &&
     isWeightValid &&
     isHeightValid &&
-    isUserImageValid && // Incluido en la validación
+    isUserImageValid &&
     isTermsAccepted
   ) {
     btnCreateAccount.removeAttribute("disabled");
@@ -417,7 +411,6 @@ btnCreateAccount.addEventListener("click", (e) => {
 
   const formData = new FormData(formRegister);
 
-  // Mostrar mensaje de carga inmediatamente
   Swal.fire({
     title: "Procesando datos",
     text: "Por favor espere mientras procesamos su solicitud...",
@@ -427,7 +420,6 @@ btnCreateAccount.addEventListener("click", (e) => {
     didOpen: () => Swal.showLoading(),
   });
 
-  // Esperar 3 segundos antes de enviar el fetch
   setTimeout(() => {
     fetch("/registerForm", {
       method: "POST",

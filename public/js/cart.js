@@ -1,49 +1,38 @@
-// Selección de elementos principales del carrito
 const cartContainer = document.querySelector(".cart-container");
 const cartItems = document.querySelector(".cart-items");
 const cartSummary = document.querySelector(".cart-summary");
 
-// Elementos del resumen del carrito
 const subtotalElement = document.querySelector(".subtotal");
 const shippingElement = document.querySelector(".shipping");
 const totalAmountElement = document.querySelector(".total-amount");
 const checkoutButton = document.querySelector(".checkout-btn");
 
-// Selección de todos los items del carrito
 const cartItemElements = document.querySelectorAll(".cart-item");
 
-// Constantes para el cálculo
 const FREE_SHIPPING_THRESHOLD = 50;
 const SHIPPING_COST = 3.5;
 
-// Función para formatear precios
 const formatPrice = (price) => {
   return price.toFixed(2) + " €";
 };
 
-// Función para extraer el número de un string con formato de precio (ej: "123.45 €")
 const extractNumber = (priceString) => {
   return parseFloat(priceString.replace(/[^0-9.,]/g, "").replace(",", "."));
 };
 
-// Función para obtener el precio actual del item (normal o con descuento)
 const getItemPrice = (priceElement) => {
-  // Si tiene descuento, tomar el precio con descuento
   if (priceElement.classList.contains("discounted")) {
     const discountedPrice =
       priceElement.querySelector(".discounted-price").textContent;
     return extractNumber(discountedPrice);
   }
-  // Si no tiene descuento, tomar el precio normal
   return extractNumber(priceElement.textContent);
 };
 
-// Función para calcular el total de un item
 const calculateItemTotal = (price, quantity) => {
   return price * quantity;
 };
 
-// Función para actualizar el total de un item
 const updateItemTotal = (element) => {
   const price = getItemPrice(element.price);
   const quantity = parseInt(element.quantityInput.value);
@@ -52,7 +41,6 @@ const updateItemTotal = (element) => {
   return total;
 };
 
-// Función para actualizar el resumen del carrito
 const updateCartSummary = () => {
   let subtotal = 0;
   const currentElements = getCartItemElements(
@@ -65,7 +53,6 @@ const updateCartSummary = () => {
     subtotal += calculateItemTotal(price, quantity);
   });
 
-  // Si no hay elementos, establecer todos los valores a 0
   if (currentElements.length === 0) {
     subtotalElement.textContent = formatPrice(0);
     shippingElement.textContent = formatPrice(0);
@@ -80,7 +67,6 @@ const updateCartSummary = () => {
     shippingElement.textContent = formatPrice(shipping);
     totalAmountElement.textContent = formatPrice(total);
 
-    // Actualizar estilo del envío gratuito
     if (shipping === 0) {
       shippingElement.style.color = "var(--puro-red)";
       shippingElement.style.fontWeight = "bold";
@@ -90,7 +76,6 @@ const updateCartSummary = () => {
     }
   }
 
-  // Mostrar/ocultar mensaje de carrito vacío
   const emptyCartMessage = document.querySelector(".empty-cart");
   if (emptyCartMessage) {
     if (currentElements.length === 0) {
@@ -105,7 +90,6 @@ const updateCartSummary = () => {
   }
 };
 
-// Funciones para seleccionar elementos específicos de cada item del carrito
 const getCartItemElements = (cartItemElements) => {
   return Array.from(cartItemElements).map((cartItem) => ({
     container: cartItem,
@@ -121,16 +105,13 @@ const getCartItemElements = (cartItemElements) => {
   }));
 };
 
-// Selección del mensaje de carrito vacío
 const emptyCartMessage = document.querySelector(".empty-cart");
 const continueShoppingBtn = document.querySelector(".continue-shopping");
 
 const elements = getCartItemElements(cartItemElements);
 
-// Inicializar los totales
 updateCartSummary();
 
-// Función para actualizar la cantidad en el servidor
 const updateQuantityOnServer = async (productId, quantity) => {
   try {
     const response = await fetch("/updateCartProduct", {
@@ -158,13 +139,10 @@ const updateQuantityOnServer = async (productId, quantity) => {
   }
 };
 
-// Event listeners para los botones de cantidad
 elements.forEach((element) => {
-  // Event listener para el input de cantidad
   element.quantityInput.addEventListener("change", async () => {
     let quantity = parseInt(element.quantityInput.value);
 
-    // Validar límites
     if (quantity < 1) quantity = 1;
     if (quantity > 99) quantity = 99;
 
@@ -174,7 +152,6 @@ elements.forEach((element) => {
     if (success) {
       updateCartSummary();
     } else {
-      // Revertir cambios si hay error
       const currentElements = getCartItemElements(
         document.querySelectorAll(".cart-item")
       );
@@ -187,7 +164,6 @@ elements.forEach((element) => {
     }
   });
 
-  // Event listener para el botón de aumentar
   element.increaseBtn.addEventListener("click", async () => {
     const currentValue = parseInt(element.quantityInput.value);
     if (currentValue < 99) {
@@ -203,7 +179,6 @@ elements.forEach((element) => {
     }
   });
 
-  // Event listener para el botón de disminuir
   element.decreaseBtn.addEventListener("click", async () => {
     const currentValue = parseInt(element.quantityInput.value);
     if (currentValue > 1) {
@@ -219,7 +194,6 @@ elements.forEach((element) => {
     }
   });
 
-  // Event listener para el botón de eliminar
   element.removeBtn.addEventListener("click", async () => {
     try {
       const response = await fetch("/removeProduct", {

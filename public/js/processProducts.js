@@ -11,7 +11,6 @@ const totalProductsSpan = document.getElementById("totalProducts");
 let currentPage = 1;
 
 async function fetchAndRenderProducts(page = 1) {
-  // Mostrar skeleton y ocultar tabla
   productsSkeleton.classList.remove("d-none");
   productsTable.classList.add("d-none");
   productsCountSkeleton.classList.remove("d-none");
@@ -21,15 +20,11 @@ async function fetchAndRenderProducts(page = 1) {
     const res = await fetch(`/getProducts?page=${page}`);
     const data = await res.json();
 
-    // Renderizar productos
     renderProducts(data.products);
-    // Renderizar contador
     totalProductsSpan.textContent = data.totalProducts;
     productsCountSkeleton.classList.add("d-none");
     productsCountReal.classList.remove("d-none");
-    // Renderizar paginación
     renderPagination(data.currentPage, data.totalPages);
-    // Renderizar info de paginación
     if (paginationInfo) {
       if (data.totalProducts > 0) {
         paginationInfo.textContent = `Mostrando ${data.startIndex + 1}-${
@@ -39,13 +34,11 @@ async function fetchAndRenderProducts(page = 1) {
         paginationInfo.textContent = "";
       }
     }
-    // Mostrar/ocultar mensaje de no productos
     if (data.products.length === 0) {
       noProductsMessage.classList.remove("d-none");
     } else {
       noProductsMessage.classList.add("d-none");
     }
-    // Ocultar skeleton y mostrar tabla
     productsSkeleton.classList.add("d-none");
     productsTable.classList.remove("d-none");
   } catch (error) {
@@ -62,7 +55,6 @@ function renderProducts(products) {
     const row = document.createElement("tr");
     row.className = "product-row";
 
-    // Determinar el estilo del badge según el estado
     let estadoBadgeClass = "bg-light text-dark";
     let estadoIcon = "";
     let estadoText = "";
@@ -134,7 +126,6 @@ function renderProducts(products) {
       `;
     productsTableBody.appendChild(row);
   });
-  // Reasignar handlers de edición y borrado
   assignActionHandlers();
 }
 
@@ -173,7 +164,6 @@ function renderPagination(currentPage, totalPages) {
   }" aria-label="Siguiente"><span aria-hidden="true"><i class="bi bi-chevron-right"></i></span></a></li>`;
   html += `</ul></nav>`;
   paginationContainer.innerHTML = html;
-  // Asignar eventos
   paginationContainer.querySelectorAll("a.page-link").forEach((link) => {
     link.addEventListener("click", function (e) {
       e.preventDefault();
@@ -187,14 +177,12 @@ function renderPagination(currentPage, totalPages) {
 }
 
 function assignActionHandlers() {
-  // Editar producto
   document.querySelectorAll(".edit-product").forEach((button) => {
     button.addEventListener("click", function () {
       const productId = this.dataset.productId;
       loadProductData(productId);
     });
   });
-  // Eliminar producto
   document.querySelectorAll(".delete-product").forEach((button) => {
     button.addEventListener("click", function () {
       const productId = this.dataset.productId;
@@ -204,13 +192,10 @@ function assignActionHandlers() {
 }
 
 async function initializeProductManagement() {
-  // Load categories for both forms
   await loadCategories();
 
-  // Set default status for new products
   document.getElementById("productStatus").value = "1";
 
-  // Add Product Form Handler
   const addProductForm = document.getElementById("addProductForm");
   const saveProductBtn = document.getElementById("saveProduct");
 
@@ -265,7 +250,6 @@ async function initializeProductManagement() {
     }
   });
 
-  // Edit Product Handlers
   const editButtons = document.querySelectorAll(".edit-product");
   editButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -274,7 +258,6 @@ async function initializeProductManagement() {
     });
   });
 
-  // Delete Product Handlers
   const deleteButtons = document.querySelectorAll(".delete-product");
   deleteButtons.forEach((button) => {
     button.addEventListener("click", function () {
@@ -283,14 +266,12 @@ async function initializeProductManagement() {
     });
   });
 
-  // Update Product Handler
   const updateProductBtn = document.getElementById("updateProduct");
   const editProductForm = document.getElementById("editProductForm");
 
   updateProductBtn.addEventListener("click", function () {
     if (editProductForm.checkValidity()) {
       const formData = new FormData(editProductForm);
-      // Asegurar que el estado se envíe correctamente
       const estadoValue = document.querySelector(
         'input[name="estado"]:checked'
       );
@@ -347,7 +328,6 @@ async function initializeProductManagement() {
   });
 }
 
-// Helper Functions
 async function loadCategories(selectedId = null, forEdit = false) {
   try {
     const response = await fetch("/getCategories");
@@ -397,16 +377,13 @@ function loadProductData(productId) {
         product.descripcion;
       document.getElementById("editProductDetails").value =
         product.detalles_producto || "";
-      // Establecer el estado del producto en los radio buttons
       document.getElementById("editProductStatusActive").checked =
         product.estado === "activo";
       document.getElementById("editProductStatusInactive").checked =
         product.estado === "inactivo";
       document.getElementById("editProductStatusOutOfStock").checked =
         product.estado === "agotado";
-      // Cargar categorías y seleccionar la correcta
       loadCategories(product.id_categoria, true);
-      // Limpiar input de imagen
       document.getElementById("editProductImage").value = "";
       const editModal = new bootstrap.Modal(
         document.getElementById("editProductModal")
@@ -497,22 +474,17 @@ async function main() {
 
 main().catch(console.error);
 
-// Limpieza de backdrop al cerrar el modal de edición
 const editProductModalEl = document.getElementById("editProductModal");
 if (editProductModalEl) {
   editProductModalEl.addEventListener("hidden.bs.modal", function () {
-    // Remover la clase modal-open del body
     document.body.classList.remove("modal-open");
-    // Remover el estilo overflow: hidden del body
     document.body.style.overflow = "";
     document.body.style.paddingRight = "";
-    // Remover todos los modal-backdrop
     const backdrops = document.querySelectorAll(".modal-backdrop");
     backdrops.forEach((backdrop) => backdrop.remove());
   });
 }
 
-// Asegurar que el scroll se restaura al cerrar cualquier modal
 document.querySelectorAll(".modal").forEach((modal) => {
   modal.addEventListener("hidden.bs.modal", function () {
     document.body.classList.remove("modal-open");
