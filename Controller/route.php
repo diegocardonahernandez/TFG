@@ -37,6 +37,9 @@ switch ($method) {
             case '/register':
                 require_once __DIR__ . '/../Controller/registerController.php';
                 break;
+            case '/privacy':
+                renderLayout('privacy');
+                break;
             case '/accountUser':
                 require_once __DIR__ . '/../Controller/userAccountController.php';
                 break;

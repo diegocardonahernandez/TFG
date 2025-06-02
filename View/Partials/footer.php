@@ -59,8 +59,8 @@
 
         <!-- Footer Bottom / Copyright -->
         <div class="footer-bottom">
-            <p>&copy; 2025 PuroGains. Todos los derechos reservados. <a href="/privacidad">Política de privacidad</a> |
-                <a href="/terminos">Términos de uso</a>
+            <p>&copy; 2025 PuroGains. Todos los derechos reservados. <a href="/privacy">Política de privacidad</a> |
+                <a href="/terms">Términos de uso</a>
             </p>
         </div>
     </div>
