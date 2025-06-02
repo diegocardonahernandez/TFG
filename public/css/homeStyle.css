@@ -184,12 +184,12 @@
 .hero-cta {
   display: flex;
   gap: 1rem;
-  /* Estados iniciales para animaciones */
   opacity: 0;
   transform: translateY(40px) scale(0.9);
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
 
-/* Botones y controles estilizados */
 .hero-cta .btn {
   padding: 0.6rem 1.8rem;
   font-weight: 600;
@@ -197,8 +197,12 @@
   letter-spacing: 1px;
   transition: all 0.3s ease;
   border-radius: 4px;
+  white-space: nowrap;
+  min-width: 140px;
+  text-align: center;
 }
 
+/* Botones y controles estilizados */
 .btn-danger {
   position: relative;
   overflow: hidden;
@@ -610,6 +614,16 @@
     overflow: visible;
     border-right: none;
   }
+
+  .hero-cta {
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .hero-cta .btn {
+    padding: 0.6rem 1.5rem;
+    min-width: 130px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -629,6 +643,18 @@
   .hero-cta {
     animation-duration: 0.8s;
   }
+
+  .hero-cta {
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  .hero-cta .btn {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
+    min-width: 120px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -647,8 +673,17 @@
     margin-bottom: 1.2rem;
   }
 
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    width: 100%;
+  }
+
   .hero-cta .btn {
-    padding: 0.5rem 1.2rem;
+    width: 100%;
+    max-width: 280px;
+    padding: 0.6rem 1rem;
     font-size: 0.85rem;
   }
 }

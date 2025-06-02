@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", function () {
         cta.style.animation = "none";
         cta.style.opacity = "0";
         cta.style.transform = "translateY(40px) scale(0.9)";
+        // Resetear estilos específicos de los botones
+        const buttons = cta.querySelectorAll(".btn");
+        buttons.forEach((btn) => {
+          btn.style.animation = "none";
+          btn.style.opacity = "1";
+          btn.style.transform = "none";
+        });
       }
     });
   }
@@ -38,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtitle = activeSlide.querySelector(".hero-subtitle");
     const cta = activeSlide.querySelector(".hero-cta");
     const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 576;
 
     // Aplicar animaciones según el slide
     setTimeout(() => {
@@ -55,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
           subtitle.style.animationDelay = "0.8s";
         }
         if (cta) {
+          // Solo animar el contenedor, no los botones individuales
           cta.style.animation = isMobile
             ? "buttonsSlideUp 0.8s ease-out forwards"
             : "buttonsSlideUp 1s ease-out forwards";
@@ -77,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
           subtitle.style.animationDelay = "0.9s";
         }
         if (cta) {
+          // Solo animar el contenedor, no los botones individuales
           cta.style.animation = isMobile
             ? "buttonsSlideUp 0.8s ease-out forwards"
             : "buttonsSlideUp 1s ease-out forwards";
@@ -97,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
           subtitle.style.animationDelay = "0.85s";
         }
         if (cta) {
+          // Solo animar el contenedor, no los botones individuales
           cta.style.animation = isMobile
             ? "buttonsSlideUp 0.8s ease-out forwards"
             : "buttonsSlideUp 1s ease-out forwards";
@@ -188,6 +199,16 @@ document.addEventListener("DOMContentLoaded", function () {
           white-space: normal !important;
           overflow: visible !important;
           border-right: none !important;
+        }
+        .hero-cta {
+          flex-direction: column !important;
+          align-items: center !important;
+          gap: 0.8rem !important;
+          width: 100% !important;
+        }
+        .hero-cta .btn {
+          width: 100% !important;
+          max-width: 280px !important;
         }
       `;
       document.head.appendChild(style);
