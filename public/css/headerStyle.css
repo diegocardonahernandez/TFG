@@ -288,6 +288,12 @@ body:not(.has-shipping-bar) .navbar {
   color: var(--puro-white);
 }
 
+.btn-outline-success:active {
+  background-color: var(--puro-red) !important;
+  border-color: var(--puro-red) !important;
+  color: var(--puro-white) !important;
+}
+
 .btn-danger {
   background-color: var(--puro-red) !important;
   border-color: var(--puro-red) !important;

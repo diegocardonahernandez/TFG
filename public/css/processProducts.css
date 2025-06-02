@@ -296,50 +296,61 @@
 
 .pagination {
   margin-bottom: 0;
+  gap: 0.25rem;
+  padding: 0.5em;
 }
 
 .page-item .page-link {
-  border: none;
-  color: #555;
+  border: 1px solid #e9ecef;
+  color: #495057;
   font-weight: 500;
   padding: 0.5rem 0.85rem;
-  margin: 0 0.15rem;
-  border-radius: 50%;
-  transition: all 0.2s ease-in-out;
+  margin: 0;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background-color: #fff;
+  min-width: 38px;
+  text-align: center;
 }
 
 .page-item .page-link:hover {
-  background-color: rgba(170, 3, 3, 0.1);
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
   color: #aa0303;
-  transform: translateY(-2px);
+  transform: none;
+  box-shadow: none;
 }
 
 .page-item.active .page-link {
   background-color: #aa0303;
   color: #fff;
-  box-shadow: 0 4px 8px rgba(170, 3, 3, 0.3);
+  border-color: #aa0303;
+  box-shadow: none;
 }
 
 .page-item.disabled .page-link {
   color: #adb5bd;
-  background-color: transparent;
+  background-color: #fff;
+  border-color: #e9ecef;
   pointer-events: none;
 }
 
 .page-item:first-child .page-link,
 .page-item:last-child .page-link {
-  border-radius: 30px;
-  padding: 0.5rem 0.95rem;
+  border-radius: 4px;
+  padding: 0.5rem 0.85rem;
 }
 
 .pagination .bi {
   font-size: 0.85rem;
+  vertical-align: middle;
 }
 
 .pagination-info {
   color: #6c757d;
   font-size: 0.85rem;
   margin-top: 0.75rem;
+  text-align: center;
 }
 
 /* Mejoras generales para botones y elementos UI */
