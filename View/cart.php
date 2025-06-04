@@ -77,10 +77,10 @@
             </div>
             <?php
                 if (isset($_SESSION['userId'])) { ?>
-            <button class="checkout-btn">Proceder al Pago</button>
+            <a href="/processPayment" class="checkout-btn">Proceder al Pago</a>
             <?php } else { ?>
-            <button class="checkout-btn disabledPayment" onclick="window.location.href='/login'">Iniciar sesión</button>
-            <p class="login-message">Inicie sesión para proceder al pago</p>
+            <a href="/login" class="checkout-btn disabledPayment">Iniciar sesión</a>
+            <p class="login-message"> <i class="bi bi-exclamation-triangle"></i> Inicie sesión para proceder al pago</p>
             <?php } ?>
         </div>
     </div>
