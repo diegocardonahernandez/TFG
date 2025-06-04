@@ -22,6 +22,11 @@ require_once __DIR__ . '/../lib/stripe/init.php';
 \Stripe\Stripe::setApiKey('sk_test_51RVrxgQ46PVjWGdXHNKc9goQkExIJozD1NAUJiIKYNdlZ6I6VvCB0Myyvnl07UQoxhfOSXL2IbbY6lNwFEx9G8Zk00yWgE7KEk');
 
 try {
+
+    foreach ($_SESSION['cart'] as $item) {
+        Product::decreaseStock($item['id'], $item['quantity']);
+    }
+
     $session = \Stripe\Checkout\Session::retrieve($sessionId);
     $paymentIntent = \Stripe\PaymentIntent::retrieve($session->payment_intent);
 
@@ -34,6 +39,8 @@ try {
         'date' => date('d/m/Y H:i', $paymentIntent->created),
         'paymentMethod' => $paymentIntent->payment_method_types[0] ?? 'card'
     ];
+
+    unset($_SESSION['cart']);
 
     renderLayout('paymentConfirmation', [
         "currentUser" => $currentUser,

@@ -56,10 +56,12 @@
                         </ul>
                         <div class="category-product-actions">
                             <?php if ($product->getStock() > 0 && $product->getEstado() !== 'agotado'): ?>
-                            <a href="#" class="category-btn-product category-btn-add-cart"
-                                data-product="<?= $product->getIdProducto() ?>">
-                                <i class="fas fa-shopping-cart"></i> Añadir al carrito
-                            </a>
+                            <form action="/cart" method="post" class="cart-form">
+                                <input type="hidden" name="id" value="<?= $product->getIdProducto() ?>">
+                                <button type="submit" class="category-btn-product category-btn-add-cart">
+                                    <i class="fas fa-shopping-cart"></i> Añadir al carrito
+                                </button>
+                            </form>
                             <?php else: ?>
                             <button class="category-btn-product category-btn-notify"
                                 data-product="<?= $product->getIdProducto() ?>">

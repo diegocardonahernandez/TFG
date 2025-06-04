@@ -323,4 +323,13 @@ class Product implements JsonSerializable
         $stmt->execute(['search' => '%' . $search . '%']);
         return $stmt->fetchAll(PDO::FETCH_CLASS, 'Product');
     }
+
+
+    public static function decreaseStock($id, $quantity)
+    {
+        $db = Database::getInstance();
+        $sql = "UPDATE productos SET stock = stock - :quantity WHERE id_producto = :id";
+        $stmt = $db->prepare($sql);
+        return $stmt->execute(['id' => $id, 'quantity' => $quantity]);
+    }
 }
