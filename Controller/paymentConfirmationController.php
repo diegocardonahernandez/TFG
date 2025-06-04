@@ -24,7 +24,7 @@ require_once __DIR__ . '/../lib/stripe/init.php';
 try {
 
     foreach ($_SESSION['cart'] as $item) {
-        Product::decreaseStock($item['id'], $item['quantity']);
+        Product::decreaseStockAndUpdatePopularidad($item['id'], $item['quantity']);
     }
 
     $session = \Stripe\Checkout\Session::retrieve($sessionId);

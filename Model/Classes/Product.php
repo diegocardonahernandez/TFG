@@ -325,10 +325,10 @@ class Product implements JsonSerializable
     }
 
 
-    public static function decreaseStock($id, $quantity)
+    public static function decreaseStockAndUpdatePopularidad($id, $quantity)
     {
         $db = Database::getInstance();
-        $sql = "UPDATE productos SET stock = stock - :quantity WHERE id_producto = :id";
+        $sql = "UPDATE productos SET stock = stock - :quantity, popularidad = popularidad + :quantity WHERE id_producto = :id";
         $stmt = $db->prepare($sql);
         return $stmt->execute(['id' => $id, 'quantity' => $quantity]);
     }
