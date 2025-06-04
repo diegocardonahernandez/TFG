@@ -57,7 +57,7 @@
                         </div>
 
                         <div class="payment-form-actions">
-                            <button type="submit" class="payment-btn-process">Procesar Pago con Stripe</button>
+                            <button type="submit" class="payment-btn-process">Pagar Ahora</button>
                             <a href="/cart" class="payment-btn-cancel">Cancelar</a>
                         </div>
                     </div>

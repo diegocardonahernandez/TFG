@@ -69,17 +69,12 @@
                     <div class="pdv-purchase-section">
                         <?php if ($details[0]->getStock() > 0 && $details[0]->getEstado() !== 'agotado'): ?>
                             <div class="pdv-purchase-controls">
-                                <div class="pdv-action-buttons">
-                                    <form action="/cart" method="post">
-                                        <input type="hidden" name="id" value="<?= $details[0]->getIdProducto() ?>">
-                                        <button class="pdv-action-btn pdv-add-to-cart">
-                                            <i class="fas fa-shopping-cart"></i> Añadir al carrito
-                                        </button>
-                                    </form>
-                                    <button class="pdv-action-btn pdv-buy-now">
-                                        <i class="fas fa-bolt"></i> Comprar ahora
+                                <form action="/cart" method="post" class="pdv-cart-form">
+                                    <input type="hidden" name="id" value="<?= $details[0]->getIdProducto() ?>">
+                                    <button type="submit" class="pdv-action-btn pdv-add-to-cart">
+                                        <i class="fas fa-shopping-cart"></i> Añadir al carrito
                                     </button>
-                                </div>
+                                </form>
                             </div>
                         <?php else: ?>
                             <div class="pdv-out-of-stock">
@@ -214,5 +209,4 @@
             </div>
         </div>
     </div>
-    <script src="/js/utils/btnsCuantities.js"></script>
 </section>
