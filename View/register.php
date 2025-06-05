@@ -153,7 +153,7 @@
                 <div class="form-options">
                     <div class="terms-agreement">
                         <input type="checkbox" id="registro_terms" name="registro_terms" required>
-                        <label for="registro_terms">Acepto los <a href="terms.php" class="terms-link">Términos y
+                        <label for="registro_terms">Acepto los <a href="/terms" class="terms-link">Términos y
                                 Condiciones</a>
                             y la <a href="/privacy" class="terms-link">Política de Privacidad</a></label>
                     </div>

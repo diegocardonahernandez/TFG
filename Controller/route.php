@@ -40,6 +40,9 @@ switch ($method) {
             case '/privacy':
                 renderLayout('privacy');
                 break;
+            case '/terms':
+                renderLayout('terms');
+                break;
             case '/accountUser':
                 require_once __DIR__ . '/../Controller/userAccountController.php';
                 break;
