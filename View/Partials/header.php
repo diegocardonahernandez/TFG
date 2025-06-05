@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="/css/loginStyle.css">
     <link rel="stylesheet" href="/css/registerStyle.css">
     <link rel="stylesheet" href="/css/userAccountStyle.css">
-    <link rel="stylesheet" href="/css/profits.css">
     <link rel="stylesheet" href="/css/processProducts.css">
     <link rel="stylesheet" href="/css/discountsStyle.css">
     <link rel="stylesheet" href="/css/cartStyle.css">
@@ -73,18 +72,6 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="/calories">Calcula Tus Calorías</a></li>
                             <li><a class="dropdown-item" href="/imc">Calculadora IMC</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <?php
-                            if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Premium') {
-                                echo '<li><a class="dropdown-item" href="#">Tu Rutina Ideal</a></li>';
-                            } else if (isset($_SESSION['userId']) && $_SESSION['userType'] === 'Administrador') {
-                                echo '<li><a class="dropdown-item" href="#">Tu Rutina Ideal</a></li>';
-                            } else {
-                                echo '<li><a class="dropdown-item disabled" href="#" title="Requiere cuenta Premium">Tu Rutina Ideal</a></li>';
-                            }
-                            ?>
                         </ul>
                     </li>
                     <?php

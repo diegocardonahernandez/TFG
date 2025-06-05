@@ -1,42 +1,64 @@
-<section class="premium-benefits-hero">
-    <div class="premium-overlay"></div>
-    <div class="container premium-benefits-content">
+<link rel="stylesheet" href="/css/premiumStyle.css">
+<div class="premium-section">
+    <div class="premium-header">
         <div class="premium-title-container">
-            <h2 class="premium-title">Hazte <span>Premium</span></h2>
-            <p class="premium-subtitle">
-                Obtén ventajas exclusivas, acceso prioritario y herramientas avanzadas para transformar tu físico
-            </p>
-        </div>
-
-        <div class="premium-benefits-grid">
-            <div class="premium-benefit-card">
-                <i class="bi bi-tags-fill"></i>
-                <h3>Descuentos Exclusivos</h3>
-                <p>
-                    Recibe hasta un <strong>30% OFF</strong> mensual en productos de nuestra tienda: desde suplementos
-                    hasta equipamiento top.
-                </p>
-            </div>
-            <div class="premium-benefit-card">
-                <i class="bi bi-calendar-check-fill"></i>
-                <h3>Tu Rutina Ideal</h3>
-                <p>
-                    Genera rutinas personalizadas según tu objetivo: <em>definición</em>, <em>volumen</em> o
-                    <em>rendimiento</em>. Adaptadas a tu nivel, metas y disponibilidad.
-                </p>
-            </div>
-            <div class="premium-benefit-card">
-                <i class="bi bi-lightning-fill"></i>
-                <h3>Atención Prioritaria 24/7</h3>
-                <p>
-                    Asistencia ultra rápida con seguimiento personalizado. Tu tiempo es valioso, tu progreso también.
-                </p>
-            </div>
-        </div>
-
-        <div class="premium-cta">
-            <p class="premium-price">Desde solo <strong>6.99€/mes</strong></p>
-            <a href="/register" class="btn-premium">Hazte Premium Ahora</a>
+            <h1 class="premium-title">Beneficios <span>Premium</span></h1>
+            <p class="premium-subtitle">Desbloquea todo el potencial de tu experiencia de compra</p>
         </div>
     </div>
-</section>
+
+    <div class="premium-content">
+        <div class="premium-benefits-grid">
+            <div class="premium-benefit-card">
+                <div class="benefit-icon">
+                    <i class="bi bi-tag-fill"></i>
+                </div>
+                <h3 class="benefit-title">Descuentos Exclusivos</h3>
+                <p class="benefit-description">Accede a ofertas especiales y descuentos únicos en toda nuestra selección
+                    de productos premium.</p>
+                <div class="benefit-highlight">
+                    <span class="highlight-value">Hasta 60%</span>
+                    <span class="highlight-label">de descuento</span>
+                </div>
+            </div>
+
+            <div class="premium-benefit-card">
+                <div class="benefit-icon">
+                    <i class="bi bi-truck"></i>
+                </div>
+                <h3 class="benefit-title">Entrega Express</h3>
+                <p class="benefit-description">Recibe tus productos en un máximo de 24 horas con nuestro servicio de
+                    entrega prioritario.</p>
+                <div class="benefit-highlight">
+                    <span class="highlight-value">24h</span>
+                    <span class="highlight-label">entrega garantizada</span>
+                </div>
+            </div>
+
+            <div class="premium-benefit-card">
+                <div class="benefit-icon">
+                    <i class="bi bi-headset"></i>
+                </div>
+                <h3 class="benefit-title">Atención Prioritaria</h3>
+                <p class="benefit-description">Accede a nuestro equipo de soporte premium con tiempos de respuesta más
+                    rápidos.</p>
+                <div class="benefit-highlight">
+                    <span class="highlight-value">24/7</span>
+                    <span class="highlight-label">soporte dedicado</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="premium-cta-container">
+            <div class="premium-cta-content">
+                <h2 class="premium-cta-title">¿Listo para mejorar tu experiencia?</h2>
+                <p class="premium-cta-subtitle">Únete a Premium por solo <span class="premium-price">4.99€</span> al mes
+                </p>
+                <a href="#" class="btn-premium">Hazte Premium Ahora</a>
+                <p class="premium-cta-note">Cancelación en cualquier momento</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/animations/premium.js"></script>
