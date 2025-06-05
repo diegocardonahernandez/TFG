@@ -50,7 +50,7 @@
                         <p class="hero-subtitle">Descubre nuestra gama de suplementos premium</p>
                         <div class="hero-cta">
                             <a href="#subscription" class="btn btn-danger">Suscríbete</a>
-                            <a href="#faq" class="btn btn-outline">Preguntas Frecuentes</a>
+                            <a href="/faq" class="btn btn-outline">Preguntas Frecuentes</a>
                         </div>
                     </div>
                 </div>
