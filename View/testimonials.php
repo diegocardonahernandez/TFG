@@ -51,7 +51,7 @@
                 <p class="testimonial-quote">La calculadora de calorías y el IMC son herramientas fantásticas. Me han
                     ayudado mucho a mantener un seguimiento de mi progreso.</p>
                 <div class="testimonial-author">
-                    <img src="/imgs/ClientesTestimonios/ana.avif" alt="Ana Martínez" class="author-image">
+                    <img src="/imgs/ClientesTestimonios/ana.webp" alt="Ana Martínez" class="author-image">
                     <div class="author-info">
                         <h3 class="author-name">Ana Martínez</h3>
                         <p class="author-role">Cliente Premium</p>
