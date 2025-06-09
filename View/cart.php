@@ -24,27 +24,27 @@
                 <div class="item-details">
                     <h3><?php echo $product[0]->getNombre(); ?></h3>
                     <?php if (isset($_SESSION['userType'])) {
-                                if ($_SESSION['userType'] == "Premium" || $_SESSION['userType'] == "Administrador" && $product[0]->getDescuento() > 0) {
-                                    $precio = $product[0]->getPrecio() - ($product[0]->getPrecio() * $product[0]->getDescuento() / 100);
-                            ?>
+                        if (($product[0]->getDescuento() > 0) && ($_SESSION['userType'] == "Premium" || $_SESSION['userType'] == "Administrador")) {
+                            $precio = $product[0]->getPrecio() - ($product[0]->getPrecio() * $product[0]->getDescuento() / 100);
+                    ?>
 
                     <div class="item-price discounted">
                         <span class="original-price"><?php echo number_format($product[0]->getPrecio(), 2); ?> €</span>
                         <span class="discounted-price"><?php echo number_format($precio, 2); ?> €</span>
                     </div>
                     <?php
-                                } else {
-                                    $precio = $product[0]->getPrecio();
-                                ?>
+                        } else {
+                            $precio = $product[0]->getPrecio();
+                        ?>
                     <p class="item-price"><?php echo number_format($precio, 2); ?> €</p>
                     <?php
-                                }
-                            } else {
-                                $precio = $product[0]->getPrecio();
-                                ?>
+                        }
+                    } else {
+                        $precio = $product[0]->getPrecio();
+                        ?>
                     <p class="item-price"><?php echo number_format($precio, 2); ?> €</p>
                     <?php
-                            } ?>
+                    } ?>
                 </div>
 
                 <div class="item-quantity">

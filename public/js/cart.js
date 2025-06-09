@@ -22,8 +22,7 @@ const extractNumber = (priceString) => {
 
 const getItemPrice = (priceElement) => {
   if (priceElement.classList.contains("discounted")) {
-    const discountedPrice =
-      priceElement.querySelector(".discounted-price").textContent;
+    const discountedPrice = priceElement.querySelector(".discounted-price").textContent;
     return extractNumber(discountedPrice);
   }
   return extractNumber(priceElement.textContent);
