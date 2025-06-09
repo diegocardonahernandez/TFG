@@ -70,6 +70,9 @@ switch ($method) {
             case '/profits':
                 renderLayout('premiumProfits');
                 break;
+            case '/premium':
+                require_once __DIR__ . '/../Controller/premiumSubscriptionController.php';
+                break;
             case '/testimonials':
                 renderLayout('testimonials');
                 break;
