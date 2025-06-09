@@ -48,17 +48,68 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="premium-cta-container">
-            <div class="premium-cta-content">
-                <h2 class="premium-cta-title">¿Listo para mejorar tu experiencia?</h2>
-                <p class="premium-cta-subtitle">Únete a Premium por solo <span class="premium-price">4.99€</span> al mes
-                </p>
-                <a href="#" class="btn-premium">Hazte Premium Ahora</a>
-                <p class="premium-cta-note">Cancelación en cualquier momento</p>
+    <?php if (isset($_SESSION['userType']) && ($_SESSION['userType'] === 'Premium' || $_SESSION['userType'] === 'Administrador')): ?>
+        <div class="premium-status-section">
+            <div class="premium-status-card">
+                <div class="status-icon">
+                    <i class="bi bi-trophy-fill"></i>
+                </div>
+                <h2 class="status-title">¡Membresía Premium Activa!</h2>
+                <p class="status-description">Ya estás disfrutando de todos los beneficios premium. Sigue aprovechando tus ventajas exclusivas.</p>
+                <div class="status-highlight">
+                    <span class="highlight-value">Premium</span>
+                    <span class="highlight-label">Membresía activa</span>
+                </div>
             </div>
         </div>
-    </div>
+    <?php else: ?>
+        <div class="premium-subscription-section">
+            <div class="subscription-container">
+                <div class="subscription-header">
+                    <h2 class="subscription-title">Únete al Club Premium</h2>
+                    <p class="subscription-subtitle">Da el siguiente paso en tu transformación fitness</p>
+                </div>
+                
+                <div class="subscription-card">
+                    <div class="price-tag">
+                        <div class="price-value">4.99€</div>
+                        <div class="price-period">por mes</div>
+                        <div class="price-savings">Ahorra hasta 60€ al mes en tus compras</div>
+                    </div>
+
+                    <div class="subscription-highlights">
+                        <div class="highlight-item">
+                            <i class="bi bi-shield-check"></i>
+                            <span>Garantía de satisfacción de 30 días</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="bi bi-credit-card"></i>
+                            <span>Pago seguro y flexible</span>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="bi bi-x-circle"></i>
+                            <span>Cancelación en cualquier momento</span>
+                        </div>
+                    </div>
+
+                    <div class="subscription-cta">
+                        <form action="/subscribe" method="post" class="subscription-form">
+                            <button type="submit" class="btn-subscribe">
+                                <span class="btn-text">Unirse Ahora</span>
+                                <i class="bi bi-arrow-right"></i>
+                            </button>
+                        </form>
+                        <p class="subscription-note">
+                            <i class="bi bi-lock-fill"></i>
+                            Pago seguro procesado por Stripe
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endif; ?>
 </div>
 
 <script src="/js/animations/premium.js"></script>
