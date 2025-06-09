@@ -14,12 +14,21 @@
             <div class="container h-100">
                 <div class="carousel-caption position-left">
                     <div class="hero-content animate__animated animate__fadeInLeft">
-                        <h1 class="hero-title">Tu mayor rival es aquel que ves en el espejo</h1>
-                        <p class="hero-subtitle">No pongas límites a tu potencial. Únete al plan premium</p>
-                        <div class="hero-cta">
-                            <a href="#programs" class="btn btn-danger">¡Vamos!</a>
-                            <a href="/profits" class="btn btn-outline">Ver Beneficios</a>
-                        </div>
+                        <?php if (isset($_SESSION['userType']) && ($_SESSION['userType'] === 'Premium' || $_SESSION['userType'] === 'Administrador')): ?>
+                            <h1 class="hero-title" data-user-type="<?= $_SESSION['userType'] ?>">Tu mayor rival es aquel que ves en el espejo</h1>
+                            <p class="hero-subtitle" data-user-type="<?= $_SESSION['userType'] ?>">Disfruta de todos los beneficios de tu membresía premium</p>
+                            <div class="hero-cta" data-user-type="<?= $_SESSION['userType'] ?>">
+                                <a href="/profits" class="btn btn-danger">Mis beneficios</a>
+                                <a href="/discounts" class="btn btn-outline">Descuentos</a>
+                            </div>
+                        <?php else: ?>
+                            <h1 class="hero-title">Tu mayor rival es aquel que ves en el espejo</h1>
+                            <p class="hero-subtitle">No pongas límites a tu potencial. Únete al plan premium</p>
+                            <div class="hero-cta">
+                                <a href="#programs" class="btn btn-danger">¡Vamos!</a>
+                                <a href="/profits" class="btn btn-outline">Ver Beneficios</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -46,12 +55,21 @@
             <div class="container h-100">
                 <div class="carousel-caption position-right">
                     <div class="hero-content animate__animated animate__fadeInRight">
-                        <h1 class="hero-title">Entrena con propósito, vive con pasión</h1>
-                        <p class="hero-subtitle">Descubre nuestra gama de suplementos premium</p>
-                        <div class="hero-cta">
-                            <a href="#subscription" class="btn btn-danger">Suscríbete</a>
-                            <a href="/faq" class="btn btn-outline">Preguntas Frecuentes</a>
-                        </div>
+                        <?php if (isset($_SESSION['userType']) && ($_SESSION['userType'] === 'Premium' || $_SESSION['userType'] === 'Administrador')): ?>
+                            <h1 class="hero-title" data-user-type="<?= $_SESSION['userType'] ?>">Entrena con propósito, vive con pasión</h1>
+                            <p class="hero-subtitle" data-user-type="<?= $_SESSION['userType'] ?>">Calcula tus necesidades calóricas y transforma tu cuerpo con precisión</p>
+                            <div class="hero-cta" data-user-type="<?= $_SESSION['userType'] ?>">
+                                <a href="/calories" class="btn btn-danger">Calcula tus calorías</a>
+                                <a href="/faq" class="btn btn-outline">Preguntas frecuentes</a>
+                            </div>
+                        <?php else: ?>
+                            <h1 class="hero-title">Entrena con propósito, vive con pasión</h1>
+                            <p class="hero-subtitle">Descubre nuestra gama de suplementos premium</p>
+                            <div class="hero-cta">
+                                <a href="#subscription" class="btn btn-danger">Suscríbete</a>
+                                <a href="/faq" class="btn btn-outline">Preguntas Frecuentes</a>
+                            </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
