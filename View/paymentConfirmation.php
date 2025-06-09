@@ -22,6 +22,13 @@
                     <span class="detail-value"><?php echo number_format($paymentData['amount'], 2); ?>
                         <?php echo $paymentData['currency']; ?></span>
                 </div>
+                <?php if ($paymentData['shipping'] > 0): ?>
+                <div class="detail-item">
+                    <span class="detail-label">Gastos de Envío:</span>
+                    <span class="detail-value"><?php echo number_format($paymentData['shipping'], 2); ?>
+                        <?php echo $paymentData['currency']; ?></span>
+                </div>
+                <?php endif; ?>
                 <div class="detail-item">
                     <span class="detail-label">Fecha:</span>
                     <span class="detail-value"><?php echo $paymentData['date']; ?></span>
@@ -35,10 +42,6 @@
                 <a href="/" class="btn-home">
                     <i class="fas fa-home"></i>
                     Volver al Inicio
-                </a>
-                <a href="/mis-pedidos" class="btn-orders">
-                    <i class="fas fa-shopping-bag"></i>
-                    Ver Mis Pedidos
                 </a>
             </div>
         </div>
@@ -142,54 +145,27 @@
 
 .confirmation-actions {
     display: flex;
-    gap: 1rem;
     justify-content: center;
+    margin-top: 2rem;
 }
 
-.btn-home,
-.btn-orders {
+.btn-home {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2.5rem;
     border-radius: 8px;
     font-weight: 600;
     text-decoration: none;
     transition: var(--transition-standard);
-}
-
-.btn-home {
     background-color: var(--puro-red);
     color: var(--puro-white);
+    font-size: 1.1rem;
 }
 
 .btn-home:hover {
     background-color: var(--puro-red-hover);
     transform: translateY(-2px);
-}
-
-.btn-orders {
-    background-color: transparent;
-    color: var(--puro-black);
-    border: 1px solid var(--puro-border-gray);
-}
-
-.btn-orders:hover {
-    background-color: var(--puro-black);
-    color: var(--puro-white);
-    border-color: var(--puro-black);
-}
-
-@keyframes scaleIn {
-    from {
-        transform: scale(0);
-        opacity: 0;
-    }
-
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
 }
 
 @media (max-width: 768px) {
@@ -201,12 +177,7 @@
         font-size: 1.8rem;
     }
 
-    .confirmation-actions {
-        flex-direction: column;
-    }
-
-    .btn-home,
-    .btn-orders {
+    .btn-home {
         width: 100%;
         justify-content: center;
     }

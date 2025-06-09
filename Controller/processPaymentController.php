@@ -35,6 +35,9 @@ foreach ($_SESSION['cart'] as $item) {
 $shipping = $subtotal >= $freeShippingThreshold ? 0 : $shipping;
 $total = $subtotal + $shipping;
 
+// Store shipping cost in session for payment processing
+$_SESSION['shipping'] = $shipping;
+
 $cartData = [
     'products' => $products,
     'subtotal' => $subtotal,

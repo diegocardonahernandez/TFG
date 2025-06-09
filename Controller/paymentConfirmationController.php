@@ -50,10 +50,12 @@ try {
         'currency' => strtoupper($paymentIntent->currency),
         'status' => $paymentIntent->status,
         'date' => date('d/m/Y H:i', $paymentIntent->created),
-        'paymentMethod' => $paymentIntent->payment_method_types[0] ?? 'card'
+        'paymentMethod' => $paymentIntent->payment_method_types[0] ?? 'card',
+        'shipping' => $session->shipping_cost ? $session->shipping_cost->amount_total / 100 : 0
     ];
 
     unset($_SESSION['cart']);
+    unset($_SESSION['shipping']); // Clean up shipping cost from session
 
     // Generate PDF receipt
     $options = new Options();
