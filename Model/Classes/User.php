@@ -273,12 +273,19 @@ class User
 
     public static function deleteUser($id)
     {
-
         $db = Database::getInstance();
         $query = "DELETE FROM usuarios WHERE id_usuario = :id";
         $stmt = $db->prepare($query);
         $stmt->execute([":id" => $id]);
 
         return $stmt->rowCount();
+    }
+
+    public static function upgradeToPremium($userId)
+    {
+        $db = Database::getInstance();
+        $query = "UPDATE usuarios SET tipo_usuario = 'Premium' WHERE id_usuario = :id";
+        $stmt = $db->prepare($query);
+        return $stmt->execute([":id" => $userId]);
     }
 }

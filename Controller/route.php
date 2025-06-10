@@ -73,6 +73,9 @@ switch ($method) {
             case '/premium':
                 require_once __DIR__ . '/../Controller/premiumSubscriptionController.php';
                 break;
+            case '/premiumSuccess':
+                require_once __DIR__ . '/../Controller/premiumSuccessController.php';
+                break;
             case '/testimonials':
                 renderLayout('testimonials');
                 break;
@@ -167,6 +170,9 @@ switch ($method) {
                 break;
             case '/pay':
                 require_once __DIR__ . '/../Controller/paymentController.php';
+                break;
+            case '/premiumPayment':
+                require_once __DIR__ . '/../Controller/premiumPaymentController.php';
                 break;
             default:
                 echo "Ruta POST no reconocida";

@@ -18,8 +18,7 @@
                 <div class="premium-cta">
                     <h2 class="premium-cta-title">¿Listo para dar el siguiente paso?</h2>
                     <p class="premium-cta-text">Únete a nuestra comunidad premium y desbloquea todo tu potencial</p>
-                    <form action="/pay" method="POST">
-                        <input type="hidden" name="plan" value="premium">
+                    <form action="/premiumPayment" method="POST">
                         <button type="submit" class="premium-btn-subscribe">
                             ¡Vamos a por ello!
                             <i class="fas fa-arrow-right"></i>
