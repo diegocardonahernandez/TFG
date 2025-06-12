@@ -1,6 +1,5 @@
 <?php
 
-// Inicializar la sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -11,7 +10,6 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Obtener el cuerpo de la petición
 $data = json_decode(file_get_contents('php://input'), true);
 
 if (!isset($data['productId']) || !isset($data['quantity'])) {
@@ -23,19 +21,16 @@ if (!isset($data['productId']) || !isset($data['quantity'])) {
 $productId = $data['productId'];
 $quantity = (int)$data['quantity'];
 
-// Validar la cantidad
 if ($quantity < 1 || $quantity > 99) {
     header('HTTP/1.1 400 Bad Request');
     echo json_encode(['error' => 'Cantidad no válida']);
     exit;
 }
 
-// Asegurarse de que existe el carrito en la sesión
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-// Buscar el producto en el carrito
 $key = false;
 foreach ($_SESSION['cart'] as $index => $item) {
     if ($item['id'] == $productId) {
@@ -50,10 +45,8 @@ if ($key === false) {
     exit;
 }
 
-// Actualizar la cantidad
 $_SESSION['cart'][$key]['quantity'] = $quantity;
 
-// Devolver respuesta exitosa
 header('Content-Type: application/json');
 echo json_encode([
     'success' => true,

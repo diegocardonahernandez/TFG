@@ -1,6 +1,5 @@
 <?php
 
-// Solo ejecutar si la solicitud es POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     require_once __DIR__ . '/../../Model/Classes/User.php';

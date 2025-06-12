@@ -3,12 +3,10 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-// Incluir los archivos necesarios de PHPMailer
 require __DIR__ . '/../../lib/phpmailer/src/Exception.php';
 require __DIR__ . '/../../lib/phpmailer/src/PHPMailer.php';
 require __DIR__ . '/../../lib/phpmailer/src/SMTP.php';
 
-// Crear una instancia de PHPMailer
 $mail = new PHPMailer(true);
 
 try {
@@ -27,24 +25,20 @@ try {
     $motivoConsulta = $_POST['motivo-consulta'];
     $destinatario = $_SESSION['userEmail'];
 
-    // Configuración del servidor SMTP
-    $mail->isSMTP();                                      // Usar SMTP
-    $mail->Host       = 'smtp.gmail.com';                 // Servidor SMTP de Gmail
-    $mail->SMTPAuth   = true;                             // Habilitar autenticación SMTP
-    $mail->Username   = 'purogainscompany@gmail.com';            // Tu correo Gmail
-    $mail->Password   = 'qgwn avwv lnks zmml';                // Contraseña de aplicación de Gmail
-    $mail->SMTPSecure = 'tls';                            // Encriptación TLS
-    $mail->Port       = 587;                              // Puerto SMTP
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'purogainscompany@gmail.com';
+    $mail->Password   = 'qgwn avwv lnks zmml';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port       = 587;
 
-    // Remitente y destinatario
     $mail->setFrom('purogainscompany@gmail.com', 'PUROGAINS');
     $mail->addAddress($destinatario, 'Destinatario');
 
-    // Contenido del correo
-    $mail->isHTML(true);                                  // Habilitar HTML
+    $mail->isHTML(true);
     $mail->Subject = '¡Tu consulta ha sido agendada! - PUROGAINS';
 
-    // Formatear la fecha para mostrarla más amigable
     setlocale(LC_TIME, 'es_ES.UTF-8');
     $fechaFormateada = strftime("%A %d de %B del %Y", strtotime($fechaConsulta));
 
@@ -76,17 +70,14 @@ try {
         </div>
     </div>";
 
-    // Versión texto plano
     $mail->AltBody = "¡Tu consulta está confirmada!\n\n" .
         "Fecha: $fechaFormateada\n" .
         "Motivo de la consulta: $motivoConsulta\n\n" .
         "Importante: Recibirás un correo de confirmación con el enlace de la videollamada 24 horas antes de tu consulta.\n\n" .
         "Si necesitas modificar o cancelar tu consulta, por favor contáctanos respondiendo este correo.";
 
-    // Enviar
     $mail->send();
 
-    // Devolver respuesta JSON
     header('Content-Type: application/json');
     echo json_encode(['success' => true, 'message' => 'Consulta agendada correctamente']);
 } catch (Exception $e) {

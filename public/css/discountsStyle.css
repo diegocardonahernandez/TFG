@@ -1,4 +1,4 @@
-/* Encabezado de descuentos - Diseño moderno con animación */
+
 .discounts-header {
   background: var(--puro-black);
   color: var(--puro-white);
@@ -8,7 +8,6 @@
   overflow: hidden;
 }
 
-/* Efecto de gradiente animado para el fondo */
 .discounts-header::after {
   content: "";
   position: absolute;
@@ -26,7 +25,6 @@
   z-index: 0;
 }
 
-/* Línea superior con efecto pulsante */
 .discounts-header::before {
   content: "";
   position: absolute;
@@ -91,7 +89,6 @@
   animation: fadeIn 1s ease-out 0.3s forwards;
 }
 
-/* Contador regresivo */
 .discounts-timer {
   margin-top: 2rem;
   display: flex;
@@ -140,13 +137,11 @@
   margin-top: 0.3rem;
 }
 
-/* Sección de productos con descuento */
 .discounts-products {
   padding: 3rem 0;
   background-color: var(--puro-light-gray);
 }
 
-/* Sin descuentos */
 .no-discounts-found {
   text-align: center;
   padding: 3rem 0;
@@ -172,7 +167,6 @@
   margin: 0 auto 2rem;
 }
 
-/* Tarjetas de producto con descuento */
 .discount-product-item {
   margin-bottom: 2rem;
 }
@@ -195,7 +189,6 @@
   transform: translateY(-7px);
 }
 
-/* Estilo del badge de descuento */
 .discount-badge {
   position: absolute;
   top: 1rem;
@@ -240,15 +233,15 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background-color: #ff9800; /* Warning yellow */
-  color: #ffffff; /* Dark text */
+  background-color: #ff9800;
+  color: #ffffff;
   padding: 0.1rem 0.5rem;
   border-radius: 0.5rem;
   font-size: 0.9rem;
   font-weight: 700;
-  z-index: 2; /* Below discount badge */
+  z-index: 2;
   box-shadow: 0 2px 8px rgba(255, 193, 7, 0.2);
-  border: 1px solid #ff9800; /* Slightly darker yellow border */
+  border: 1px solid #ff9800;
 }
 
 .discount-product-image-container {
@@ -291,7 +284,6 @@
   min-height: 40px;
 }
 
-/* Contenedor de precios */
 .discount-price-container {
   margin-bottom: 0.7rem;
   display: flex;
@@ -443,7 +435,6 @@
   color: var(--puro-white);
 }
 
-/* Animaciones */
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
@@ -506,7 +497,6 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 992px) {
   .discounts-title {
     font-size: 2.2rem;

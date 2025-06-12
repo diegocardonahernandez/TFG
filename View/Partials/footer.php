@@ -1,7 +1,6 @@
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
-            <!-- Brand/Logo Section -->
             <div class="footer-brand">
                 <a href="/" class="footer-logo">PuroGains</a>
                 <p class="footer-description">
@@ -10,7 +9,6 @@
                 </p>
             </div>
 
-            <!-- Quick Links Section -->
             <div class="footer-links">
                 <h4 class="footer-heading">Enlaces rápidos</h4>
                 <ul class="footer-nav">
@@ -20,7 +18,6 @@
                 </ul>
             </div>
 
-            <!-- Contact Information -->
             <div class="footer-contact">
                 <h4 class="footer-heading">Contacto</h4>
                 <div class="contact-info">
@@ -37,7 +34,6 @@
                 </div>
             </div>
 
-            <!-- Social & Newsletter -->
             <div class="footer-social">
                 <h4 class="footer-heading">Síguenos</h4>
                 <div class="social-icons">
@@ -57,7 +53,6 @@
             </div>
         </div>
 
-        <!-- Footer Bottom / Copyright -->
         <div class="footer-bottom">
             <p>&copy; 2025 PuroGains. Todos los derechos reservados. <a href="/privacy">Política de privacidad</a> |
                 <a href="/terms">Términos de uso</a>

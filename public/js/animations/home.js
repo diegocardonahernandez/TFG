@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   var myCarousel = document.getElementById("carouselExampleCaptions");
 
-  // Función para resetear todas las animaciones
   function resetAnimations() {
     let slides = document.querySelectorAll(".carousel-item");
     slides.forEach(function (slide) {
@@ -28,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         cta.style.animation = "none";
         cta.style.opacity = "0";
         cta.style.transform = "translateY(40px) scale(0.9)";
-        // Resetear estilos específicos de los botones
         const buttons = cta.querySelectorAll(".btn");
         buttons.forEach((btn) => {
           btn.style.animation = "none";
@@ -39,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Función para aplicar animaciones al slide activo
   function applyAnimations(activeSlide) {
     const title = activeSlide.querySelector(".hero-title");
     const subtitle = activeSlide.querySelector(".hero-subtitle");
@@ -47,7 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const isMobile = window.innerWidth <= 768;
     const isSmallMobile = window.innerWidth <= 576;
 
-    // Aplicar animaciones según el slide
     setTimeout(() => {
       if (activeSlide.classList.contains("slide-1")) {
         if (title) {
@@ -63,7 +59,6 @@ document.addEventListener("DOMContentLoaded", function () {
           subtitle.style.animationDelay = "0.8s";
         }
         if (cta) {
-          // Solo animar el contenedor, no los botones individuales
           cta.style.animation = isMobile
             ? "buttonsSlideUp 0.8s ease-out forwards"
             : "buttonsSlideUp 1s ease-out forwards";
@@ -86,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
           subtitle.style.animationDelay = "0.9s";
         }
         if (cta) {
-          // Solo animar el contenedor, no los botones individuales
           cta.style.animation = isMobile
             ? "buttonsSlideUp 0.8s ease-out forwards"
             : "buttonsSlideUp 1s ease-out forwards";
@@ -107,7 +101,6 @@ document.addEventListener("DOMContentLoaded", function () {
           subtitle.style.animationDelay = "0.85s";
         }
         if (cta) {
-          // Solo animar el contenedor, no los botones individuales
           cta.style.animation = isMobile
             ? "buttonsSlideUp 0.8s ease-out forwards"
             : "buttonsSlideUp 1s ease-out forwards";
@@ -117,7 +110,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 100);
   }
 
-  // Aplicar animaciones al primer slide al cargar
   const firstSlide = document.querySelector(".carousel-item.active");
   if (firstSlide) {
     setTimeout(() => {
@@ -125,14 +117,12 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 500);
   }
 
-  // Event listener para cambios de slide
   myCarousel.addEventListener("slide.bs.carousel", function (e) {
     resetAnimations();
     let nextSlide = e.relatedTarget;
     applyAnimations(nextSlide);
   });
 
-  // Mejorar la interacción con los controles
   const controlButtons = document.querySelectorAll(
     ".carousel-control-prev, .carousel-control-next"
   );
@@ -156,7 +146,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Agregar efecto de parallax sutil al scroll
   window.addEventListener("scroll", function () {
     const scrolled = window.pageYOffset;
     const parallax = document.querySelector(".carousel");
@@ -166,7 +155,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Pausar el carousel cuando se hace hover
   myCarousel.addEventListener("mouseenter", function () {
     this.style.animationPlayState = "paused";
   });
@@ -175,7 +163,6 @@ document.addEventListener("DOMContentLoaded", function () {
     this.style.animationPlayState = "running";
   });
 
-  // Agregar efecto de vibración a los botones CTA
   const ctaButtons = document.querySelectorAll(".hero-cta .btn");
   ctaButtons.forEach((button) => {
     button.addEventListener("mouseenter", function () {
@@ -187,7 +174,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Mejora para dispositivos táctiles
   if ("ontouchstart" in window) {
     myCarousel.addEventListener("touchstart", function () {
       const style = document.createElement("style");
@@ -215,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Manejar cambios de tamaño de ventana
   window.addEventListener("resize", function () {
     const activeSlide = document.querySelector(".carousel-item.active");
     if (activeSlide) {

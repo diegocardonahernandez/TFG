@@ -1,4 +1,3 @@
-/* Variables compartidas con el sitio principal */
 :root {
   --puro-red: #8b0000;
   --puro-black: #000000;
@@ -7,7 +6,6 @@
   --puro-gray: #333333;
 }
 
-/* Estilos para la sección de términos */
 .terms-section {
   min-height: calc(100vh - 150px);
   padding: 2rem 0;
@@ -172,7 +170,6 @@
   margin: 0;
 }
 
-/* Animaciones */
 .terms-section-block {
   opacity: 0;
   transform: translateY(20px);
@@ -190,7 +187,6 @@
   }
 }
 
-/* Añadir delay en cascada para las secciones */
 .terms-section-block:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -219,7 +215,6 @@
   animation-delay: 0.9s;
 }
 
-/* Responsive */
 @media (max-width: 992px) {
   .terms-title {
     font-size: 2rem;

@@ -1,6 +1,4 @@
-/* Hero Section Styles - Adaptado para imágenes 1536x1024 */
 
-/* Estilos generales para el carousel y slides */
 .carousel {
   position: relative;
 }
@@ -14,7 +12,6 @@
   background-color: black;
 }
 
-/* Fondos específicos para cada slide */
 .slide-background {
   position: absolute;
   top: 0;
@@ -26,7 +23,6 @@
   background-repeat: no-repeat;
 }
 
-/* Primer slide - Imagen y overlay */
 .slide-1 .slide-background {
   background-image: url("/imgs/slide1.png");
 }
@@ -47,7 +43,6 @@
   z-index: 1;
 }
 
-/* Estilos especiales para usuarios premium */
 .slide-1 .hero-title[data-user-type="premium"],
 .slide-1 .hero-title[data-user-type="administrador"],
 .slide-3 .hero-title[data-user-type="premium"],
@@ -118,7 +113,6 @@
   color: #000;
 }
 
-/* Segundo slide - Imagen y overlay */
 .slide-2 .slide-background {
   background-image: url("/imgs/slide2.webp");
 }
@@ -142,7 +136,6 @@
   justify-content: center;
 }
 
-/* Tercer slide - Imagen y overlay */
 .slide-3 .slide-background {
   background-image: url("/imgs/slide3.png");
 }
@@ -163,7 +156,6 @@
   z-index: 1;
 }
 
-/* Posicionamiento del contenido según cada slide */
 .carousel-caption {
   position: absolute;
   z-index: 10;
@@ -177,7 +169,6 @@
   right: 0;
 }
 
-/* Posición izquierda - Primer slide */
 .position-left {
   align-items: center;
   justify-content: flex-start;
@@ -187,11 +178,10 @@
 
 .position-left .hero-content {
   width: 50%;
-  padding-left: 3rem; /* Reducido de 4rem */
+  padding-left: 3rem; 
   margin-right: auto;
 }
 
-/* Posición abajo - Segundo slide */
 .position-bottom {
   align-items: flex-end;
   justify-content: center;
@@ -200,11 +190,10 @@
 
 .position-bottom .hero-content {
   width: 80%;
-  padding-bottom: 3rem; /* Reducido de 4rem */
+  padding-bottom: 3rem; 
   margin: 0 auto;
 }
 
-/* Posición derecha - Tercer slide */
 .position-right {
   align-items: center;
   justify-content: flex-end;
@@ -213,7 +202,7 @@
 
 .position-right .hero-content {
   width: 50%;
-  padding-right: 3rem; /* Reducido de 4rem */
+  padding-right: 3rem; 
   margin-left: auto;
   margin-right: 1%;
 }
@@ -222,7 +211,6 @@
   justify-content: flex-end;
 }
 
-/* Estilos del contenido */
 .hero-content {
   color: var(--puro-white);
   padding: 1.5rem;
@@ -243,11 +231,10 @@
 }
 
 .hero-subtitle {
-  font-size: 1.2rem; /* Reducido de 1.4rem */
-  margin-bottom: 1.5rem; /* Reducido de 2rem */
+  font-size: 1.2rem; 
+  margin-bottom: 1.5rem; 
   font-weight: 300;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  /* Estados iniciales para animaciones */
   opacity: 0;
   transform: translateY(30px);
 }
@@ -273,7 +260,6 @@
   text-align: center;
 }
 
-/* Botones y controles estilizados */
 .btn-danger {
   position: relative;
   overflow: hidden;
@@ -324,15 +310,14 @@
   color: var(--puro-black);
 }
 
-/* Indicadores personalizados */
 .carousel-indicators {
   z-index: 15;
-  margin-bottom: 1.5rem; /* Reducido de 2rem */
+  margin-bottom: 1.5rem; 
 }
 
 .carousel-indicators button {
-  width: 25px; /* Reducido de 30px */
-  height: 4px; /* Reducido de 5px */
+  width: 25px; 
+  height: 4px; 
   border-radius: 0;
   background-color: rgba(255, 255, 255, 0.6);
   border: none;
@@ -346,7 +331,6 @@
   border: none;
 }
 
-/* Controles de navegación */
 .carousel-control-next,
 .carousel-control-prev {
   width: 5%;
@@ -356,8 +340,8 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  width: 30px; /* Reducido de 35px */
-  height: 30px; /* Reducido de 35px */
+  width: 30px; 
+  height: 30px; 
   background-size: 50%;
   border-radius: 0;
   background-color: rgba(0, 0, 0, 0.6);
@@ -371,7 +355,6 @@
   opacity: 1;
 }
 
-/* Efectos de transición entre slides */
 .carousel .carousel-item {
   transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
@@ -380,7 +363,6 @@
   z-index: 9;
 }
 
-/* Animaciones para entradas con Animate.css */
 .animate__animated {
   animation-duration: 1.2s;
   animation-fill-mode: both;
@@ -392,9 +374,6 @@
   animation-delay: 0.3s;
 }
 
-/* ===== ANIMACIONES MODERNAS PARA HERO SECTION ===== */
-
-/* Animaciones base para los títulos */
 @keyframes titleSlideInLeft {
   0% {
     opacity: 0;
@@ -449,7 +428,6 @@
   }
 }
 
-/* Animaciones para subtítulos */
 @keyframes subtitleFadeIn {
   0% {
     opacity: 0;
@@ -461,7 +439,6 @@
   }
 }
 
-/* Animaciones para botones */
 @keyframes buttonsSlideUp {
   0% {
     opacity: 0;
@@ -473,7 +450,6 @@
   }
 }
 
-/* Animación de texto typewriter */
 @keyframes typewriter {
   0% {
     width: 0;
@@ -488,7 +464,6 @@
   }
 }
 
-/* Efecto de brillo que pasa por el texto */
 @keyframes textShine {
   0% {
     background-position: -200% center;
@@ -498,13 +473,11 @@
   }
 }
 
-/* Clases para aplicar las animaciones */
 .hero-title-animated {
   position: relative;
   overflow: hidden;
 }
 
-/* Slide 1 - Animación desde la izquierda con efecto de brillo */
 .slide-1.active .hero-title {
   animation: titleSlideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   background: none;
@@ -517,7 +490,6 @@
   display: none;
 }
 
-/* Slide 2 - Animación desde abajo con efecto bounce */
 .slide-2.active .hero-title {
   animation: titleSlideInUp 1.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   animation-delay: 0.2s;
@@ -529,7 +501,6 @@
   border-right: none;
 }
 
-/* Slide 3 - Animación desde la derecha con efecto zoom */
 .slide-3.active .hero-title {
   animation: titleSlideInRight 1.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)
     forwards;
@@ -537,7 +508,6 @@
   animation-delay: 0.25s;
 }
 
-/* Animaciones para subtítulos */
 .slide-1.active .hero-subtitle {
   animation: subtitleFadeIn 1s ease-out forwards;
   animation-delay: 0.8s;
@@ -556,7 +526,6 @@
   opacity: 0;
 }
 
-/* Animaciones para botones */
 .slide-1.active .hero-cta {
   animation: buttonsSlideUp 1s ease-out forwards;
   animation-delay: 1.2s;
@@ -575,7 +544,6 @@
   opacity: 0;
 }
 
-/* Animación adicional para el primer slide al cargar la página */
 .carousel-item.active:first-child .hero-title {
   animation: titleSlideInLeft 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   animation-delay: 0.5s;
@@ -591,7 +559,6 @@
   animation-delay: 1.4s;
 }
 
-/* Efecto de escritura para el segundo slide */
 .slide-2.active .hero-title {
   border-right: 3px solid var(--puro-white);
   white-space: nowrap;
@@ -600,7 +567,6 @@
     typewriter 2s steps(40) 0.5s forwards;
 }
 
-/* Animación de pulso para elementos interactivos */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -617,7 +583,6 @@
   animation: pulse 0.6s ease-in-out;
 }
 
-/* Efecto de partículas para el fondo (opcional) */
 @keyframes float {
   0%,
   100% {
@@ -628,7 +593,6 @@
   }
 }
 
-/* Resetear animaciones cuando el slide no está activo */
 .carousel-item:not(.active) .hero-title,
 .carousel-item:not(.active) .hero-subtitle,
 .carousel-item:not(.active) .hero-cta {
@@ -647,13 +611,11 @@
   transform: translateY(40px) scale(0.9);
 }
 
-/* Animación especial para cuando se hace hover sobre el slide completo */
 .carousel-item:hover .hero-title {
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 2px 2px 4px rgba(0, 0, 0, 0.7);
   transition: text-shadow 0.3s ease;
 }
 
-/* Responsive - Adaptado a los diferentes posicionamientos */
 @media (max-width: 992px) {
   .hero-title {
     font-size: 2.2rem;
@@ -759,7 +721,6 @@
   }
 }
 
-/* Featured Products Section */
 .featured-products {
   padding: 4rem 0;
   background-color: var(--puro-light-gray);
@@ -816,7 +777,6 @@
   margin: 1rem auto 0;
 }
 
-/* Product Card Styling */
 .product-card {
   border: none;
   border-radius: 8px;
@@ -854,7 +814,7 @@
 .product-image-container {
   position: relative;
   overflow: hidden;
-  padding-top: 100%; /* Relación de aspecto cuadrada (1:1) */
+  padding-top: 100%; 
 }
 
 .product-image {
@@ -863,7 +823,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Para asegurar que la imagen completa sea visible */
+  object-fit: contain; 
   transition: transform 0.5s ease;
 }
 
@@ -971,7 +931,6 @@
   transition: all 0.3s ease;
 }
 
-/* Efecto de brillo desplazado */
 .btn-add-cart::before {
   content: "";
   position: absolute;
@@ -993,7 +952,6 @@
   left: 100%;
 }
 
-/* Hover con sombra y elevación */
 .btn-add-cart:hover {
   background-color: #a30000;
   border-color: #a30000;
@@ -1014,7 +972,6 @@
   color: var(--puro-white);
 }
 
-/* Animation for products appearing */
 .product-item {
   opacity: 0;
   transform: translateY(20px);
@@ -1032,7 +989,6 @@
   }
 }
 
-/* Add animation delay for cascading effect */
 .product-item:nth-child(1) {
   animation-delay: 0.1s;
 }
@@ -1052,7 +1008,6 @@
   animation-delay: 0.6s;
 }
 
-/* View More Button */
 .view-more-container {
   text-align: center;
   margin-top: 3rem;

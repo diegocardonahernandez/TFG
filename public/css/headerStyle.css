@@ -4,16 +4,15 @@
 }
 
 :root {
-  --puro-red: #8b0000; /* Deep red from the logo */
-  --puro-black: #000000; /* Black from the logo text */
-  --puro-white: #ffffff; /* White for contrast */
-  --puro-light-gray: #f8f8f8; /* Light background for subtle elements */
-  --puro-gray: #333333; /* Dark gray for text */
-  --shipping-bar-height: 34px; /* Altura fija para la barra de información de envío */
-  --navbar-height: 70px; /* Altura fija para la barra de navegación */
+  --puro-red: #8b0000; 
+  --puro-black: #000000; 
+  --puro-white: #ffffff; 
+  --puro-light-gray: #f8f8f8; 
+  --puro-gray: #333333; 
+  --shipping-bar-height: 34px; 
+  --navbar-height: 70px; 
 }
 
-/* Shipping info bar styles */
 .shipping-info-bar {
   width: 100%;
   background-color: var(--puro-red);
@@ -39,7 +38,6 @@
   letter-spacing: 0.5px;
 }
 
-/* Ajustar el padding-top cuando está presente la barra de información */
 body.has-shipping-bar {
   padding-top: calc(var(--shipping-bar-height) + var(--navbar-height));
 }
@@ -52,7 +50,6 @@ body:not(.has-shipping-bar) {
   width: 9.3em;
 }
 
-/* Navbar styling */
 .navbar {
   padding: 0.75rem 1rem;
   background: whitesmoke !important;
@@ -60,7 +57,7 @@ body:not(.has-shipping-bar) {
   position: fixed;
   top: var(
     --shipping-bar-height
-  ); /* Altura de la barra de información de envío */
+  ); 
   left: 0;
   right: 0;
   width: 100%;
@@ -71,7 +68,6 @@ body:not(.has-shipping-bar) {
   align-items: center;
 }
 
-/* Ajustar la posición del navbar cuando no esté presente la barra de información */
 body:not(.has-shipping-bar) .navbar {
   top: 0;
 }
@@ -92,7 +88,6 @@ body:not(.has-shipping-bar) .navbar {
   z-index: 100;
 }
 
-/* Brand styling */
 .navbar-brand {
   font-weight: 800;
   font-size: 1.5rem;
@@ -106,7 +101,6 @@ body:not(.has-shipping-bar) .navbar {
   filter: drop-shadow(0 3px 5px rgba(139, 0, 0, 0.2));
 }
 
-/* Add logo before brand text - Optional if you want to add the logo via CSS */
 .navbar-brand::before {
   content: "";
   background-size: contain;
@@ -117,26 +111,23 @@ body:not(.has-shipping-bar) .navbar {
   display: inline-block;
 }
 
-/* Diseño de los enlaces principales */
 .navbar-nav {
   height: 100%;
   display: flex;
   align-items: center;
-  /* Añadir más espacio entre elementos */
   gap: 0.5rem;
-  justify-content: center; /* Centrar elementos también en escritorio */
+  justify-content: center;
 }
 
-/* Navigation links - Incrementado el espacio */
 .navbar-nav .nav-link {
   color: var(--puro-black) !important;
   font-weight: 550;
-  padding: 0.5rem 0.75rem !important; /* Reducido padding horizontal para caber más elementos */
-  margin: 0 0.4rem; /* Aumentado margin horizontal */
+  padding: 0.5rem 0.75rem !important; 
+  margin: 0 0.4rem; 
   transition: all 0.3s ease;
   position: relative;
   font-family: "navItemsFont";
-  white-space: nowrap; /* Evitar que el texto se rompa */
+  white-space: nowrap; 
 }
 
 .navbar-nav .nav-link:hover::after,
@@ -144,15 +135,13 @@ body:not(.has-shipping-bar) .navbar {
   width: 80%;
 }
 
-/* Active and hover states */
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link:hover {
   color: var(--puro-red) !important;
 }
 
-/* Contenedor principal con más ancho */
 .container-fluid {
-  max-width: 1240px; /* Incrementado de 1140px */
+  max-width: 1240px; 
   padding: 0 1rem;
   width: 100%;
   display: flex;
@@ -160,14 +149,13 @@ body:not(.has-shipping-bar) .navbar {
 }
 
 #searchBar {
-  margin-top: 0; /* Eliminado el margen que desalineaba el buscador */
-  margin-left: auto; /* Empuja el buscador a la derecha */
-  margin-right: 1rem; /* Espacio antes del carrito */
-  min-width: 220px; /* Ancho mínimo para el buscador */
-  flex-shrink: 1; /* Permitir que se encoja si es necesario */
+  margin-top: 0; 
+  margin-left: auto; 
+  margin-right: 1rem; 
+  min-width: 220px; 
+  flex-shrink: 1; 
 }
 
-/* Dropdown styling */
 .dropdown {
   position: relative;
 }
@@ -177,21 +165,18 @@ body:not(.has-shipping-bar) .navbar {
   transition: color 0.3s ease;
 }
 
-/* Remove the arrow and adjust padding */
 .dropdown .nav-link {
   padding-right: 1rem !important;
 }
 
-/* Efecto de resaltado para el elemento activo */
 .dropdown:hover .nav-link {
   color: var(--puro-red) !important;
 }
 
-/* Animación del menú dropdown */
 .dropdown-menu {
   display: block;
   margin-top: 0;
-  border: 2px solid var(--puro-red); /* Borde rojo para las listas desplegables */
+  border: 2px solid var(--puro-red); 
   border-radius: 8px 8px 8px 8px;
   padding: 0.5rem 0;
   background-color: white;
@@ -204,9 +189,9 @@ body:not(.has-shipping-bar) .navbar {
     opacity 0.2s ease;
   overflow: hidden;
   position: absolute;
-  top: 100%; /* Asegurar que comienza justo debajo del ítem padre */
+  top: 100%; 
   left: 0;
-  min-width: 180px; /* Ancho mínimo para el menú desplegable */
+  min-width: 180px; 
 }
 
 .dropdown:hover .dropdown-menu {
@@ -215,7 +200,6 @@ body:not(.has-shipping-bar) .navbar {
   pointer-events: auto;
 }
 
-/* Animación para los elementos dentro del dropdown */
 .dropdown-item {
   padding: 0.5rem 1.5rem;
   position: relative;
@@ -250,7 +234,6 @@ body:not(.has-shipping-bar) .navbar {
   opacity: 1;
 }
 
-/* Delay en cascada para los elementos del dropdown */
 .dropdown:hover .dropdown-item:nth-child(1) {
   transition-delay: 0.05s;
 }
@@ -267,7 +250,6 @@ body:not(.has-shipping-bar) .navbar {
   transition-delay: 0.25s;
 }
 
-/* Search form styling */
 .form-control {
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -298,14 +280,13 @@ body:not(.has-shipping-bar) .navbar {
   background-color: var(--puro-red) !important;
   border-color: var(--puro-red) !important;
   color: var(--puro-white) !important;
-  white-space: nowrap; /* Evitar que el texto se rompa */
+  white-space: nowrap; 
 }
 
-/* Cart icon styling */
 .cart-icon-container {
   margin-left: 0.5rem;
   position: relative;
-  flex-shrink: 0; /* Evitar que el carrito se encoja */
+  flex-shrink: 0; 
 }
 
 .cart-icon {
@@ -321,7 +302,6 @@ body:not(.has-shipping-bar) .navbar {
   color: var(--puro-red);
 }
 
-/* Navbar toggler for mobile */
 .navbar-toggler {
   border-color: var(--puro-red);
   padding: 0.25rem 0.5rem;
@@ -331,27 +311,22 @@ body:not(.has-shipping-bar) .navbar {
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(139, 0, 0, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
 }
 
-/* Clase helper para botones en navbar */
 .nav-item .btn {
   padding: 0.5rem 1rem;
   margin: 0 0.25rem;
   font-size: 0.9rem;
 }
 
-/* Mobile Responsive Fixes */
 @media (max-width: 991.98px) {
-  /* Fix navbar height issues on mobile */
   .navbar {
     height: auto;
     min-height: var(--navbar-height);
   }
 
-  /* Adjust body padding for mobile */
   body.has-shipping-bar {
     padding-top: calc(var(--shipping-bar-height) + var(--navbar-height));
   }
 
-  /* Adjust the mobile menu appearance */
   .navbar-collapse {
     position: absolute;
     top: 100%;
@@ -366,13 +341,12 @@ body:not(.has-shipping-bar) .navbar {
     overflow-y: auto;
   }
 
-  /* Centrar elementos del navbar en móvil */
   .navbar-nav {
     margin: 0 auto;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center !important; /* Fuerza centrado horizontal */
+    align-items: center !important; 
     text-align: center;
     gap: 1rem;
   }
@@ -402,7 +376,6 @@ body:not(.has-shipping-bar) .navbar {
     transform: translateY(-2px);
   }
 
-  /* Mejorar aspecto de los dropdowns en móvil */
   .dropdown {
     width: 100%;
     display: flex;
@@ -410,7 +383,6 @@ body:not(.has-shipping-bar) .navbar {
     align-items: center;
   }
 
-  /* Animación del dropdown en móvil (similar a escritorio) */
   .dropdown-menu {
     position: static;
     width: 90%;
@@ -434,7 +406,6 @@ body:not(.has-shipping-bar) .navbar {
     transform: translateY(0) scaleY(1);
   }
 
-  /* Centrar y animar items del dropdown */
   .dropdown-item {
     text-align: center;
     padding: 0.7rem 1rem;
@@ -452,7 +423,6 @@ body:not(.has-shipping-bar) .navbar {
     padding-left: 1.5rem;
   }
 
-  /* Animación de flecha en hover */
   .dropdown-item::before {
     content: "→";
     position: absolute;
@@ -467,7 +437,6 @@ body:not(.has-shipping-bar) .navbar {
     transform: translateX(0);
   }
 
-  /* Ajustes para botones en móvil */
   .nav-item .btn {
     min-width: 180px;
     margin: 0.5rem 0;
@@ -483,7 +452,6 @@ body:not(.has-shipping-bar) .navbar {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
-  /* Ajustar barra de búsqueda para móvil */
   #searchBar {
     margin: 1.5rem auto;
     width: 100%;
@@ -503,7 +471,6 @@ body:not(.has-shipping-bar) .navbar {
     border-radius: 0 4px 4px 0;
   }
 
-  /* Centrar carrito en móvil */
   .cart-icon-container {
     margin: 1rem auto;
     width: 100%;
@@ -524,13 +491,11 @@ body:not(.has-shipping-bar) .navbar {
     transform: translateY(-2px);
   }
 
-  /* Ajuste para logo en móvil */
   #logo {
     width: 8.5em;
   }
 }
 
-/* Small mobile adjustments */
 @media (max-width: 575.98px) {
   .shipping-info-bar p {
     font-size: 0.8rem;
@@ -544,7 +509,6 @@ body:not(.has-shipping-bar) .navbar {
     padding-left: 0;
   }
 
-  /* Mejoras para pantallas muy pequeñas */
   #searchBar {
     max-width: 250px;
   }
@@ -560,9 +524,7 @@ body:not(.has-shipping-bar) .navbar {
   }
 }
 
-/* Para garantizar que los efectos funcionen correctamente en dispositivos táctiles */
 @media (max-width: 991.98px) {
-  /* JavaScript puede añadir esta clase cuando se hace clic en el dropdown */
   .dropdown.show .dropdown-menu {
     display: block;
     opacity: 1;
@@ -570,7 +532,6 @@ body:not(.has-shipping-bar) .navbar {
     pointer-events: auto;
   }
 
-  /* Fix para dropdown toggle en móvil */
   .dropdown .nav-link::after {
     content: "▼";
     font-size: 0.7em;
@@ -584,7 +545,6 @@ body:not(.has-shipping-bar) .navbar {
   }
 }
 
-/* Media query para pantallas medianas donde los elementos empiezan a apretarse */
 @media (min-width: 992px) and (max-width: 1199.98px) {
   .container-fluid {
     max-width: 100%;
@@ -607,15 +567,12 @@ body:not(.has-shipping-bar) .navbar {
   }
 }
 
-/* Media query para ajustes específicos cuando hay muchos módulos */
 @media (min-width: 992px) {
-  /* Cuando hay muchos elementos, reducir espaciado */
   .navbar-nav.many-items .nav-link {
     padding: 0.5rem 0.4rem !important;
     margin: 0 0.1rem;
   }
 
-  /* Si hay más de 5 elementos principales en el menú */
   .navbar-nav:has(> li:nth-child(6)) .nav-link {
     padding: 0.5rem 0.4rem !important;
     margin: 0 0.1rem;

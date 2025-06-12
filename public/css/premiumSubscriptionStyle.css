@@ -1,4 +1,4 @@
-/* Premium Subscription Styles */
+
 :root {
     --premium-gradient: linear-gradient(135deg, var(--puro-red) 0%, #ff416c 100%);
     --premium-shadow: 0 10px 30px rgba(139, 0, 0, 0.2);
@@ -27,7 +27,6 @@
     z-index: 1;
 }
 
-/* Header Styles */
 .premium-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -74,7 +73,6 @@
     margin-top: 1.5rem;
 }
 
-/* Content Styles */
 .premium-content {
     max-width: 1200px;
     margin: 0 auto;
@@ -200,7 +198,6 @@
     transform: translateX(5px);
 }
 
-/* Animations */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -230,7 +227,6 @@
     animation-delay: 0.6s;
 }
 
-/* Responsive Design */
 @media (max-width: 992px) {
     .premium-title {
         font-size: 2.5rem;
@@ -294,7 +290,6 @@
     }
 }
 
-/* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     .premium-subscription-section {
         background-color: var(--puro-dark-bg);

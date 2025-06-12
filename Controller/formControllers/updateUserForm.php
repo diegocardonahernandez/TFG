@@ -21,12 +21,10 @@ try {
     $user->setTipoUsuario($_POST['tipo_usuario']);
     $user->setEstado(isset($_POST['estado']) ? intval($_POST['estado']) : 0);
 
-    // Obtener peso y altura del POST o mantener los actuales si no se envían
     $peso = isset($_POST['peso']) ? $_POST['peso'] : null;
     $altura = isset($_POST['altura']) ? $_POST['altura'] : null;
     $fotoPerfil = $user->getFotoPerfil();
 
-    // Manejo de la imagen de perfil si se sube una nueva
     if (isset($_FILES['foto_perfil']) && $_FILES['foto_perfil']['size'] > 0) {
         $fileName = basename($_FILES['foto_perfil']['name']);
         $targetDir = __DIR__ . '/../../public/imgs/FotosPerfiles/';
@@ -45,7 +43,6 @@ try {
         $fotoPerfil = $_POST['foto_perfil_actual'];
     }
 
-    // If password is provided, update it
     if (!empty($_POST['contrasena'])) {
         $user->setContrasena($_POST['contrasena']);
         $result = $user->updateUserDataAndPassw(

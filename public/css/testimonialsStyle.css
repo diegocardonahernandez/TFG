@@ -129,7 +129,6 @@
   right: 20px;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -153,7 +152,6 @@
   animation-delay: 0.4s;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .testimonials-section {
     padding: 60px 0;
@@ -173,7 +171,6 @@
   }
 }
 
-/* Efectos de hover adicionales */
 .testimonial-card::after {
   content: "";
   position: absolute;
@@ -195,7 +192,6 @@
   opacity: 1;
 }
 
-/* Estilos para las estrellas de valoración */
 .star {
   color: #fbbf24;
   font-size: 1rem;

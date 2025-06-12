@@ -98,21 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  /**
-   * Obtiene la fecha de mañana en formato YYYY-MM-DD para el atributo min del input date
-   * @returns {string} Fecha de mañana en formato YYYY-MM-DD
-   */
   function getTomorrowDate() {
     const tomorrow = new Date();
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tomorrow.toISOString().split("T")[0];
   }
 
-  /**
-   * Formatea una fecha YYYY-MM-DD a un formato más legible
-   * @param {string} dateString - Fecha en formato YYYY-MM-DD
-   * @returns {string} Fecha formateada
-   */
   function formatDate(dateString) {
     const options = {
       weekday: "long",
@@ -125,21 +116,12 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-/**
- * Obtiene la fecha de mañana en formato YYYY-MM-DD para el atributo min del input date
- * @returns {string} Fecha de mañana en formato YYYY-MM-DD
- */
 function getTomorrowDate() {
   const tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
   return tomorrow.toISOString().split("T")[0];
 }
 
-/**
- * Formatea una fecha YYYY-MM-DD a un formato más legible
- * @param {string} dateString - Fecha en formato YYYY-MM-DD
- * @returns {string} Fecha formateada
- */
 function formatDate(dateString) {
   const options = {
     weekday: "long",

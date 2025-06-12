@@ -1,4 +1,4 @@
-/* Variables compartidas con el sitio principal */
+
 :root {
   --puro-red: #8b0000;
   --puro-black: #000000;
@@ -165,7 +165,6 @@
   letter-spacing: 0.1px;
 }
 
-/* Discount badge for cart items */
 .cart-item .discount-badge {
   position: absolute;
   top: 0.5rem;
@@ -474,7 +473,6 @@
   border: 1px solid rgba(139, 0, 0, 0.1);
 }
 
-/* Mejoras de accesibilidad */
 @media (prefers-reduced-motion: reduce) {
   .disabledPayment::after,
   .disabledPayment:hover::after {
@@ -483,7 +481,6 @@
   }
 }
 
-/* Modo alto contraste */
 @media (forced-colors: active) {
   .disabledPayment,
   .login-message {
@@ -491,7 +488,6 @@
   }
 }
 
-/* Responsive adjustments */
 @media (max-width: 576px) {
   .login-message {
     font-size: 0.85rem;
@@ -504,7 +500,6 @@
   }
 }
 
-/* Focus styles for accessibility */
 .disabledPayment:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.2);

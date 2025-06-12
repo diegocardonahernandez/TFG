@@ -1,4 +1,4 @@
-/* Encabezado de categoría - Diseño moderno con animación */
+
 .category-header {
   background: var(--puro-black);
   color: var(--puro-white);
@@ -8,7 +8,6 @@
   overflow: hidden;
 }
 
-/* Efecto de gradiente animado para el fondo */
 .category-header::after {
   content: "";
   position: absolute;
@@ -26,7 +25,6 @@
   z-index: 0;
 }
 
-/* Línea superior con efecto pulsante */
 .category-header::before {
   content: "";
   position: absolute;
@@ -91,7 +89,6 @@
   animation: fadeIn 1s ease-out 0.3s forwards;
 }
 
-/* Partículas decorativas */
 .category-header::after {
   content: "";
   position: absolute;
@@ -125,7 +122,6 @@
   z-index: 0;
 }
 
-/* Definiciones de animaciones */
 @keyframes gradientFlow {
   0% {
     background-position: 0% 50%;
@@ -188,13 +184,11 @@
   }
 }
 
-/* Sección de productos */
 .category-products {
   padding: 3rem 0;
   background-color: var(--puro-light-gray);
 }
 
-/* Sin productos */
 .no-products-found {
   text-align: center;
   padding: 3rem 0;
@@ -238,7 +232,6 @@
   box-shadow: 0 4px 8px rgba(170, 3, 3, 0.2);
 }
 
-/* Tarjetas de producto */
 .category-product-item {
   margin-bottom: 2rem;
 }
@@ -356,7 +349,6 @@
   transition: all 0.3s ease;
 }
 
-/* Brillo deslizante */
 .category-btn-add-cart::before {
   content: "";
   position: absolute;
@@ -378,7 +370,6 @@
   left: 100%;
 }
 
-/* Sombra y desplazamiento */
 .category-btn-add-cart:hover {
   background-color: #cf0000;
   border-color: #cf0000;
@@ -412,7 +403,6 @@
   color: rgb(255, 255, 255);
 }
 
-/* Badge de stock */
 .category-product-badge {
   position: absolute;
   top: 1rem;
@@ -432,7 +422,6 @@
   right: auto;
 }
 
-/* Responsive */
 @media (max-width: 992px) {
   .category-title {
     font-size: 2.2rem;

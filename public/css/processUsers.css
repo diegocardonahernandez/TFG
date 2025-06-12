@@ -92,14 +92,10 @@
   font-weight: 600;
 }
 
-/* Estilos adicionales para los modales rediseñados */
-
-/* Ajustes generales de los modales */
 .modal-xl {
   max-width: 1140px;
 }
 
-/* Optimización vertical de los controles de formulario */
 .modal-body .form-control,
 .modal-body .form-select,
 .modal-body .input-group {
@@ -117,14 +113,12 @@
   margin-bottom: 0.75rem !important;
 }
 
-/* Estilos para textarea más compactos */
 .modal-body textarea.form-control {
   padding: 0.5rem;
   line-height: 1.4;
   resize: none;
 }
 
-/* Mejoras para los botones de radio */
 .form-check-input {
   width: 16px;
   height: 16px;
@@ -138,13 +132,11 @@
   margin-bottom: 0;
 }
 
-/* Mejoras para los botones del footer */
 .modal-footer .btn {
   font-size: 0.9rem;
   padding: 0.45rem 1.2rem;
 }
 
-/* Transición suave para el modal */
 .modal.fade .modal-dialog {
   transition: transform 0.25s ease-out;
 }
@@ -153,7 +145,6 @@
   transform: none;
 }
 
-/* Mejoras visuales para el header y footer */
 .modal-header {
   padding: 0.8rem 1.25rem;
 }
@@ -162,13 +153,11 @@
   padding: 0.8rem 1.25rem;
 }
 
-/* Eliminación de bordes innecesarios */
 .modal-content {
   border: none;
   box-shadow: var(--shadow-lg);
 }
 
-/* Estilos responsivos */
 @media (max-width: 992px) {
   .modal-xl {
     max-width: 90%;
@@ -176,7 +165,6 @@
 }
 
 @media (max-width: 767px) {
-  /* En móviles volvemos a la estructura vertical pero más compacta */
   .modal-body .row > [class^="col-"] {
     margin-bottom: 0.5rem;
   }
@@ -207,7 +195,6 @@
   border-color: #aa0303;
 }
 
-/* Estilos para la paginación */
 .pagination-container {
   background-color: #fff;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
@@ -262,7 +249,6 @@
   margin-top: 0.75rem;
 }
 
-/* Mejoras generales para botones y elementos UI */
 .btn {
   font-weight: 500;
   transition: all 0.2s ease;
@@ -315,7 +301,6 @@
   }
 }
 
-/* Skeleton Loading Styles */
 @keyframes shimmer {
   0% {
     background-position: -1000px 0;
@@ -361,7 +346,6 @@
   width: 80px;
 }
 
-/* Estilos para el modal de edición de usuario */
 .modal-dialog.modal-lg {
   max-width: 900px;
 }
@@ -413,7 +397,6 @@
   max-height: 100px;
 }
 
-/* Ajustes para campos específicos */
 .modal-body input[type="number"] {
   width: 100%;
 }
@@ -422,7 +405,6 @@
   width: 100%;
 }
 
-/* Ajustes para el footer del modal */
 .modal-footer {
   padding: 0.75rem 1.25rem;
 }

@@ -1,4 +1,4 @@
-/* Variables compartidas con el sitio principal */
+
 :root {
   --puro-red: #aa0303;
   --puro-black: #000000;
@@ -6,10 +6,9 @@
   --puro-gray: #666666;
   --puro-light-gray: #f8f8f8;
 }
-
-/* Estilos para la sección de login */
 .login-section {
-  min-height: calc(100vh - 150px); /* Ajustar según el header y footer */
+  min-height: calc(100vh - 150px); 
+  min-height: calc(100vh - 150px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,10 +45,9 @@
   height: 500px;
 }
 
-/* Panel izquierdo con imagen */
 .login-image-panel {
   width: 45%;
-  background-image: url("/imgs/login.webp"); /* Imagen de fondo de una persona ejercitándose */
+  background-image: url("/imgs/login.webp");
   background-size: cover;
   background-position: center;
   position: relative;
@@ -105,7 +103,6 @@
   margin-top: 1.5rem;
 }
 
-/* Panel derecho con formulario */
 .login-form-panel {
   width: 55%;
   padding: 2rem;
@@ -142,7 +139,6 @@
   background-color: var(--puro-red);
 }
 
-/* Estilos del formulario */
 .login-form {
   display: flex;
   flex-direction: column;
@@ -204,7 +200,7 @@
 }
 
 .help-link {
-  color: var(--puro-black); /* Color visible sobre fondo blanco */
+  color: var(--puro-black);
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.3s ease;
@@ -232,8 +228,8 @@
 }
 
 .btn-login {
-  position: relative; /* Necesario para posicionar ::before */
-  overflow: hidden; /* Oculta el efecto fuera del botón */
+  position: relative;
+  overflow: hidden;
   background-color: var(--puro-red);
   color: var(--puro-white);
   border: none;
@@ -248,7 +244,6 @@
   margin-top: 0.9rem;
 }
 
-/* Brillo al hacer hover */
 .btn-login::before {
   content: "";
   position: absolute;
@@ -267,8 +262,8 @@
 }
 
 .btn-login {
-  position: relative; /* Necesario para posicionar ::before */
-  overflow: hidden; /* Oculta el efecto fuera del botón */
+  position: relative;
+  overflow: hidden;
   background-color: var(--puro-red);
   color: var(--puro-white);
   border: none;
@@ -283,7 +278,6 @@
   margin-top: 0.9rem;
 }
 
-/* Brillo al hacer hover */
 .btn-login::before {
   content: "";
   position: absolute;
@@ -305,7 +299,6 @@
   left: 100%;
 }
 
-/* Sombra y elevación */
 .btn-login:hover {
   background-color: #a30000;
   border-color: #a30000;
@@ -320,7 +313,7 @@
 }
 
 .register-link-a {
-  color: var(--puro-red); /* Rojo desde el inicio */
+  color: var(--puro-red);
   text-decoration: none;
   font-size: 0.9rem;
   transition: all 0.3s ease;
@@ -342,7 +335,7 @@
 }
 
 .register-link-a:hover {
-  color: #a30000; /* Rojo más oscuro al pasar el mouse */
+  color: #a30000;
 }
 
 .register-link-a:hover::after {
@@ -351,14 +344,13 @@
 
 .login-errorMessage {
   color: var(--puro-red);
-  font-size: 0.75rem; /* Slightly smaller */
+  font-size: 0.75rem;
   margin-top: 4px;
   display: none;
   font-weight: 500;
   line-height: 1.2;
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -374,7 +366,6 @@
   animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* Responsive */
 @media (max-width: 992px) {
   .login-container {
     flex-direction: column;

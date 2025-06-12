@@ -1,6 +1,5 @@
 <?php
 
-// Inicializar la sesión si no está iniciada
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -31,6 +30,6 @@ $cart = array_filter($cart, function ($item) use ($productId) {
     return $item['id'] != $productId;
 });
 
-$_SESSION['cart'] = array_values($cart); // reindex array
+$_SESSION['cart'] = array_values($cart);
 
 echo json_encode(['success' => true]);

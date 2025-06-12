@@ -36,7 +36,6 @@ try {
         Product::decreaseStockAndUpdatePopularidad($item['id'], $item['quantity']);
     }
 
-    // Retrieve session with expanded line_items
     $session = \Stripe\Checkout\Session::retrieve([
         'id' => $sessionId,
         'expand' => ['line_items']
@@ -55,9 +54,8 @@ try {
     ];
 
     unset($_SESSION['cart']);
-    unset($_SESSION['shipping']); // Clean up shipping cost from session
+    unset($_SESSION['shipping']);
 
-    // Generate PDF receipt
     $options = new Options();
     $options->set('isHtml5ParserEnabled', true);
     $options->set('isPhpEnabled', true);
@@ -66,7 +64,6 @@ try {
 
     $dompdf = new Dompdf($options);
 
-    // Create HTML content for PDF (professional and formal)
     $html = '
     <!DOCTYPE html>
     <html>
@@ -169,17 +166,14 @@ try {
     </body>
     </html>';
 
-    // Generate PDF
     $dompdf->loadHtml($html);
     $dompdf->setPaper('A4', 'portrait');
     $dompdf->render();
 
-    // Save PDF to temporary file
     $pdfContent = $dompdf->output();
     $tempFile = tempnam(sys_get_temp_dir(), 'receipt_');
     file_put_contents($tempFile, $pdfContent);
 
-    // Send email with PDF attachment (professional and formal)
     $mail = new PHPMailer(true);
     try {
         $mail->isSMTP();
@@ -218,16 +212,13 @@ try {
 
         $mail->AltBody = "Estimado/a {$currentUser->getNombre()} {$currentUser->getApellido()},\n\nGracias por su compra en PUROGAINS. Adjuntamos la factura en PDF.\n\nNúmero de factura: {$session->id}\nFecha: " . date('d/m/Y H:i', $paymentIntent->created) . "\nTotal: " . number_format($session->amount_total / 100, 2) . " €\n\nSi tiene cualquier consulta, puede responder a este correo o escribirnos a purogainscompany@gmail.com.\n\nPUROGAINS";
 
-        // Attach the PDF receipt
         $mail->addAttachment($tempFile, 'recibo_purogains_' . $session->id . '.pdf', 'base64', 'application/pdf');
 
         $mail->send();
 
-        // Clean up temporary file
         unlink($tempFile);
     } catch (Exception $e) {
         error_log("Error al enviar el correo de confirmación: " . $mail->ErrorInfo);
-        // Clean up temporary file in case of error
         if (file_exists($tempFile)) {
             unlink($tempFile);
         }

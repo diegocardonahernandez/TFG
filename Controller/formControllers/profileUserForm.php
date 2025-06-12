@@ -7,7 +7,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $userToUpdate = User::getUserById($_SESSION['userId']);
     $passwordUser = $_POST['user_profile_current_password'];
 
-    // Manejo del archivo de imagen
     if (isset($_FILES['user-profile-image-upload']) && $_FILES['user-profile-image-upload']['error'] === UPLOAD_ERR_OK) {
         $foto_nombre = basename($_FILES['user-profile-image-upload']['name']);
         $foto_tmp = $_FILES['user-profile-image-upload']['tmp_name'];
@@ -23,16 +22,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $ruta_foto = '/imgs/FotosPerfiles/' . $nombre_archivo_unico;
     } else {
-        // Foto por defecto si no se sube nada nuevo
         $ruta_foto = $userToUpdate->getFotoPerfil();
     }
 
-    // Si no se quiere cambiar la contraseña
     if (empty($passwordUser)) {
         header('Content-Type: application/json');
         echo json_encode(["passwordNotChanged" => true]);
 
-        // Aquí ya se pasa la ruta de la foto, no el archivo
         User::updateUserData(
             $_POST['user_profile_nombre'],
             $_POST['user_profile_apellido'],

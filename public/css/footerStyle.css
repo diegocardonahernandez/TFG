@@ -1,13 +1,12 @@
-/* Footer Styles - Improved Accessibility */
 :root {
-  --puro-red: #8b0000; /* Deep red from the logo */
-  --puro-red-bright: #cc0000; /* Brighter red for better contrast - cambiado de #ff4444 */
-  --puro-red-hover: #a00000; /* Medium red for hover states - cambiado de #cc0000 */
-  --puro-red-light: #660000; /* Darker red for subtle elements */
-  --puro-black: #000000; /* Black from the logo text */
-  --puro-white: #ffffff; /* White for contrast */
-  --puro-light-gray: #f8f8f8; /* Light background for subtle elements */
-  --puro-gray: #333333; /* Dark gray for text */
+  --puro-red: #8b0000;
+  --puro-red-bright: #cc0000;
+  --puro-red-hover: #a00000;
+  --puro-red-light: #660000;
+  --puro-black: #000000;
+  --puro-white: #ffffff;
+  --puro-light-gray: #f8f8f8;
+  --puro-gray: #333333;
 }
 
 .footer {
@@ -64,7 +63,6 @@
   transform: translateY(-1px);
 }
 
-/* Focus states for accessibility */
 .footer-logo:focus,
 .footer-nav a:focus,
 .social-icon:focus,
@@ -127,7 +125,6 @@
   padding: 0.2rem 0;
 }
 
-/* Improved underline effect with better contrast */
 .footer-nav a::after {
   content: "";
   position: absolute;
@@ -148,14 +145,13 @@
   width: 100%;
 }
 
-/* Additional visual feedback on hover */
 .footer-nav a:hover {
   background-color: rgba(
     139,
     0,
     0,
     0.2
-  ); /* Cambiado a usar el rojo oscuro con transparencia */
+  );
   border-radius: 3px;
   padding: 0.2rem 0.5rem;
   margin-left: -0.5rem;
@@ -199,7 +195,7 @@
 .social-icon:hover {
   background-color: var(--puro-red-bright);
   transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4); /* Cambiado a usar el rojo oscuro */
+  box-shadow: 0 4px 12px rgba(139, 0, 0, 0.4);
   border-color: var(--puro-red-bright);
 }
 
@@ -226,10 +222,9 @@
   text-decoration: none;
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
   :root {
-    --puro-red-bright: #cc0000; /* Mantener consistencia con el rojo oscuro */
+
   }
 
   .footer-nav a {

@@ -16,22 +16,17 @@ try {
     if ($session->payment_status === 'paid') {
         $userId = $session->metadata->user_id;
         
-        // Update user to premium
         if (User::upgradeToPremium($userId)) {
-            // Update session
             $_SESSION['userType'] = 'Premium';
             
-            // Redirect to success page
             header('Location: /');
             exit;
         }
     }
     
-    // If something went wrong, redirect back to premium page
     header('Location: /premium');
     exit;
 } catch (Error $e) {
-    // Log error and redirect
     error_log($e->getMessage());
     header('Location: /premium');
     exit;

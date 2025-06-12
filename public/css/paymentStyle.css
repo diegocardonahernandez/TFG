@@ -1,4 +1,4 @@
-/* Variables compartidas con el sitio principal */
+
 :root {
   --puro-red: #aa0303;
   --puro-red-hover: #8f0202;
@@ -18,7 +18,6 @@
   --transition-standard: all 0.3s ease;
 }
 
-/* Estilos para la sección de pago */
 .payment-section {
   padding: 1.5rem 0;
   background-color: var(--puro-light-gray);
@@ -141,7 +140,6 @@
   font-size: 1.1rem;
 }
 
-/* Información de seguridad y envío gratis en línea */
 .payment-info-container {
   display: flex;
   gap: 1rem;
@@ -191,7 +189,6 @@
   font-weight: 600;
 }
 
-/* Métodos de pago */
 .payment-methods {
   display: flex;
   gap: 1rem;
@@ -210,7 +207,6 @@
   transform: translateY(-2px);
 }
 
-/* Botones de acción */
 .payment-form-actions {
   display: flex;
   gap: 1rem;
@@ -282,7 +278,6 @@
   border-color: var(--puro-black);
 }
 
-/* Animaciones */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -294,7 +289,6 @@
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .payment-info-container {
     flex-direction: column;
@@ -328,7 +322,6 @@
   }
 }
 
-/* Modo oscuro */
 @media (prefers-color-scheme: dark) {
   :root {
     --puro-black: #ffffff;

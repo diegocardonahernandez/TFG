@@ -18,7 +18,6 @@ class Product implements JsonSerializable
     private $fecha_creacion;
     private $categoria;
 
-    // Implementación de JsonSerializable para incluir propiedades privadas en la serialización JSON
     public function jsonSerialize(): mixed
     {
         return [
@@ -270,7 +269,6 @@ class Product implements JsonSerializable
             'id_producto' => $this->id_producto
         ];
 
-        // Add image to update if it was changed
         if ($this->imagen) {
             $sql .= ", imagen = :imagen";
             $params['imagen'] = $this->imagen;

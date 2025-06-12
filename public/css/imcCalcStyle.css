@@ -1,4 +1,4 @@
-/* ===== 1. VARIABLES Y CONFIGURACIÓN GLOBAL ===== */
+
 :root {
   --puro-red: #aa0303;
   --puro-dark-red: #8a0202;
@@ -33,7 +33,6 @@
   --disclaimer-icon: #f57c00;
 }
 
-/* ===== 2. ANIMACIONES ===== */
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
@@ -179,7 +178,6 @@
   }
 }
 
-/* ===== 3. ESTRUCTURA PRINCIPAL Y ENCABEZADO ===== */
 .imc-header {
   background: linear-gradient(
     135deg,
@@ -265,8 +263,6 @@
   background-color: var(--puro-light-gray);
 }
 
-/* ===== 4. COMPONENTES DE LA CALCULADORA ===== */
-/* 4.1 Tarjeta calculadora */
 .imc-calculator-card {
   background-color: var(--puro-white);
   border-radius: var(--radius-md);
@@ -317,7 +313,6 @@
   line-height: 1.5;
 }
 
-/* 4.2 Formulario */
 .imc-calculator-form {
   display: flex;
   flex-direction: column;
@@ -386,7 +381,6 @@
   cursor: pointer;
 }
 
-/* 4.3 Botones y acciones */
 .imc-form-actions {
   display: flex;
   gap: 1rem;
@@ -458,7 +452,6 @@
   color: var(--puro-white);
 }
 
-/* 4.4 Validación de formulario */
 .imc-form-input.error {
   border-color: var(--puro-red);
   box-shadow: 0 0 0 2px rgba(170, 3, 3, 0.1);
@@ -475,8 +468,6 @@
   display: block;
 }
 
-/* ===== 5. COMPONENTES DE RESULTADOS ===== */
-/* 5.1 Tarjeta de resultados */
 .imc-results-card {
   background-color: var(--puro-white);
   border-radius: var(--radius-md);
@@ -525,7 +516,6 @@
   background-color: var(--puro-red);
 }
 
-/* 5.2 Estado inicial */
 .imc-initial-state {
   display: flex;
   flex-direction: column;
@@ -546,7 +536,6 @@
   font-size: 1.1rem;
 }
 
-/* 5.3 Visualización de resultados */
 .imc-results-container {
   flex-grow: 1;
   display: flex;
@@ -594,7 +583,6 @@
   display: inline-block;
 }
 
-/* Colores para cada categoría de IMC */
 .imc-category-underweight {
   background-color: var(--underweight-bg);
   color: var(--underweight-text);
@@ -628,7 +616,6 @@
   color: var(--puro-gray);
 }
 
-/* 5.4 Escala visual de IMC */
 .imc-scale-container {
   position: relative;
   padding: 2rem 0;
@@ -773,8 +760,6 @@
   transform: translateY(-2px);
 }
 
-/* ===== 6. COMPONENTES INFORMATIVOS ===== */
-/* 6.1 Banner de consulta */
 .imc-consultation-banner {
   background: linear-gradient(135deg, #c53e3e 0%, #da2a2a 100%);
   border-radius: var(--radius-md);
@@ -927,7 +912,6 @@
   animation: buttonShimmer 1.5s infinite;
 }
 
-/* Estilos para el modal de consulta */
 .swal-consulta-form {
   text-align: left;
   margin-top: 15px;
@@ -958,7 +942,6 @@
   min-height: 80px;
 }
 
-/* Estilos personalizados para SweetAlert */
 .consulta-sweet-popup {
   padding: 20px;
   width: 500px;
@@ -971,7 +954,6 @@
   font-weight: 500;
 }
 
-/* Estilos responsive */
 @media (max-width: 576px) {
   .consulta-sweet-popup {
     width: 90%;
@@ -984,7 +966,6 @@
   }
 }
 
-/* Efecto de enfoque para los inputs */
 .swal-form-input:focus,
 .swal-form-textarea:focus {
   border-color: #2e8b57;
@@ -992,7 +973,6 @@
   box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.25);
 }
 
-/* 6.2 Tarjeta informativa */
 .imc-info-card {
   background-color: var(--puro-white);
   border-radius: var(--radius-md);
@@ -1031,7 +1011,6 @@
   position: relative;
 }
 
-/* Continuación de 6.2 Tarjeta informativa */
 .imc-info-header::before {
   content: "";
   position: absolute;
@@ -1100,7 +1079,6 @@
   margin-right: 3%;
 }
 
-/* 6.3 Disclaimer */
 .imc-disclaimer {
   background-color: var(--disclaimer-bg);
   border-radius: var(--radius-md);
@@ -1123,8 +1101,6 @@
   line-height: 1.6;
 }
 
-/* ===== 7. UTILIDADES Y AYUDANTES ===== */
-/* 7.1 Tooltips */
 [data-tooltip] {
   position: relative;
   cursor: help;
@@ -1153,7 +1129,6 @@
   opacity: 1;
 }
 
-/* 7.2 Estados y modificadores */
 .imc-text-bold {
   font-weight: 600;
 }
@@ -1199,7 +1174,6 @@
   animation: shimmer 1.5s infinite;
 }
 
-/* ===== 8. RESPONSIVIDAD ===== */
 @media (max-width: 1200px) {
   .imc-title {
     font-size: 2.5rem;
@@ -1323,7 +1297,6 @@
   }
 }
 
-/* ===== 9. MEJORAS DE ACCESIBILIDAD ===== */
 .imc-sr-only {
   position: absolute;
   width: 1px;
@@ -1336,14 +1309,12 @@
   border-width: 0;
 }
 
-/* ===== 10. OPTIMIZACIONES DE RENDIMIENTO ===== */
 .imc-hardware-accelerated {
   transform: translateZ(0);
   backface-visibility: hidden;
   perspective: 1000px;
 }
 
-/* ===== 11. TEMAS Y MODO OSCURO ===== */
 @media (prefers-color-scheme: dark) {
   :root {
     --puro-white: #161616;

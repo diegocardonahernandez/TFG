@@ -11,7 +11,6 @@ if (!isset($_SESSION['userId']) || $_SESSION['userType'] !== 'Administrador') {
 }
 
 try {
-  // Get category name to determine folder
   $db = Database::getInstance();
   $sql = "SELECT nombre FROM categorias WHERE id_categoria = :id_categoria";
   $stmt = $db->prepare($sql);
@@ -22,7 +21,6 @@ try {
     throw new Exception('Categoría no encontrada.');
   }
 
-  // Map category names to folder names
   $categoryFolders = [
     'Ropa' => 'Ropa',
     'Suplementos' => 'Suplementos',
@@ -32,7 +30,6 @@ try {
   $folderName = $categoryFolders[$category['nombre']] ?? 'products';
   $targetDir = __DIR__ . '/../../public/imgs/' . $folderName . '/';
 
-  // Create directory if it doesn't exist
   if (!file_exists($targetDir)) {
     if (!mkdir($targetDir, 0777, true)) {
       throw new Exception('Error al crear el directorio de imágenes.');
@@ -43,28 +40,23 @@ try {
   $targetFile = $targetDir . $fileName;
   $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
-  // Check if image file is a actual image or fake image
   $check = getimagesize($_FILES['imagen']['tmp_name']);
   if ($check === false) {
     throw new Exception('El archivo no es una imagen.');
   }
 
-  // Check file size (5MB max)
   if ($_FILES['imagen']['size'] > 5000000) {
     throw new Exception('El archivo es demasiado grande.');
   }
 
-  // Allow certain file formats
   if ($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg') {
     throw new Exception('Solo se permiten archivos JPG, JPEG y PNG.');
   }
 
-  // Upload file
   if (!move_uploaded_file($_FILES['imagen']['tmp_name'], $targetFile)) {
     throw new Exception('Error al subir el archivo.');
   }
 
-  // Create product
   $product = new Product();
   $product->setNombre($_POST['nombre']);
   $product->setDescripcion($_POST['descripcion']);
